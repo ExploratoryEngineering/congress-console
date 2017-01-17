@@ -1,0 +1,34 @@
+<template bindable="devices">
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="table__head-data">EUI</th>
+        <th class="table__head-data">Dev address</th>
+        <th class="table__head-data">App key</th>
+        <th class="table__head-data">State</th>
+        <th class="table__head-data"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="api-client" repeat.for="device of devices">
+        <td class="table__data">${device.deviceEUI}</td>
+        <td class="table__data">${device.appSKey}</td>
+        <td class="table__data">${device.devAddr}</td>
+        <td class="table__data">${device.state}</td>
+        <td class="table__data table__data--align-right">
+          <dropdown>
+            <dropdown-title><a class="material-icons">more_vert</a></dropdown-title>
+            <dropdown-container>
+              <div class="dropdown__menu-item">Edit</div>
+              <div class="dropdown__menu-item">Delete</div>
+            </dropdown-container>
+          </dropdown>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
