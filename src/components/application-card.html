@@ -1,0 +1,13 @@
+<template bindable="application">
+  <require from="components/graph-chart"></require>
+  <a route-href="route: application_details; params.bind: { applicationId: application.appEUI }" class="application">
+    <div class="card card--selectable application-card">
+      <div class="card__header">
+        <h2 class="application-card__header">${application.name}</h2>
+      </div>
+      <div class="card__body card__body--no-padding">
+        <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+      </div>
+    </div>
+  </a>
+</template>
