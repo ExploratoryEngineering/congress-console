@@ -1,0 +1,9 @@
+<template bindable="router" class="tab-navigation">
+  <nav class="tab-navigation__tabs">
+    <div class="tab-navigation__selected-bar"></div>
+    <a repeat.for="row of router.navigation"
+       class="tab-navigation__tab ${row.isActive ? 'tab-navigation__tab--selected' : ''}"
+       route-href="route.bind: row.config.name">${row.title}</a>
+  </nav>
+  </nav>
+</template>
