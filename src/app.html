@@ -1,0 +1,5 @@
+<template>
+  <require from="components/loading-indicator"></require>
+  <loading-indicator loading.bind="router.isNavigating"></loading-indicator>
+  <router-view class="page-content"></router-view>
+</template>

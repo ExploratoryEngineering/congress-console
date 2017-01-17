@@ -1,0 +1,18 @@
+<template>
+  <require from="components/application-details-side-bar-menu.html"></require>
+  <require from="components/tab-navigation.html"></require>
+  <require from="components/device-table.html"></require>
+  <require from="components/nav-header.html"></require>
+  <application-details-side-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router">
+  </application-details-side-bar-menu>
+  <main class="flex-element--grow">
+    <nav-header heading="Application devices"></nav-header>
+    <div class="section">
+      <div class="card">
+        <device-table devices.bind="devices"></device-table>
+      </div>
+    </div>
+    <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewDevice()"><i
+      class="material-icons">add</i></button>
+  </main>
+</template>
