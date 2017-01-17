@@ -1,0 +1,11 @@
+<template>
+  <div ref="dropdown" class="dropdown">
+    <div class="dropdown__title" click.delegate="toggleDropdown()">
+      <slot name="dropdown-title">Fallback title</slot>
+      <!--<span class="dropdown__caret material-icons">expand_more</span>-->
+    </div>
+    <div ref="container" class="dropdown__container ${active ? 'dropdown__container--visible' : ''}">
+      <slot name="dropdown-container">Fallback items</slot>
+    </div>
+  </div>
+</template>
