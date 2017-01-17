@@ -1,0 +1,5 @@
+<template class="form-group" bindable="name,value,label,floatinglabel">
+  <textarea id="${name}" class="form-group__input form-group__input--textarea ${value ? 'form-group__input--has-data' : ''}"
+    value.bind="value" type="text"></textarea>
+  <label for="${name}" class="form-group__label ${floatinglabel ? 'form-group__label--floating' : '' }">${label}</label>
+</template>

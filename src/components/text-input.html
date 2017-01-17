@@ -1,0 +1,4 @@
+<template class="form-group" bindable="name,value,label,floatinglabel">
+  <input id="${name}" class="form-group__input ${value ? 'form-group__input--has-data' : ''}" value.bind="value" type="text" />
+  <label for="${name}" class="form-group__label ${floatinglabel ? 'form-group__label--floating' : '' }">${label}</label>
+</template>
