@@ -1,0 +1,23 @@
+<template>
+  <require from="components/text-input.html"></require>
+  <require from="components/textarea-input.html"></require>
+  <require from="components/select-input.html"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2>Create your new device</h2>
+      </div>
+      <div class="flex-container__body flex-container__body--centered">
+        <form class="form" submit.delegate="submitDevice()">
+          <text-input value.two-way="device.name" name="device-name" label="Name" floatinglabel="true"></text-input>
+          <textarea-input value.two-way="device.description" name="device-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
+          <text-input value.two-way="device.contactEmail" name="device-contact-email" label="Contact Email" floatinglabel="true"></text-input>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialog.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.trigger="submitDevice()">Create new device</button>
+      </div>
+    </div>
+  </div>
+</template>

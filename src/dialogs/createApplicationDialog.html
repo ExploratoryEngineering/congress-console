@@ -1,0 +1,23 @@
+<template>
+  <require from="components/text-input.html"></require>
+  <require from="components/textarea-input.html"></require>
+  <require from="components/select-input.html"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2>Create your new application</h2>
+      </div>
+      <div class="flex-container__body flex-container__body--centered">
+        <form class="form" submit.delegate="submitApplication()">
+          <text-input value.two-way="application.name" name="application-name" label="Name" floatinglabel="true"></text-input>
+          <textarea-input value.two-way="application.description" name="application-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
+          <text-input value.two-way="application.contactEmail" name="application-contact-email" label="Contact Email" floatinglabel="true"></text-input>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialog.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.trigger="submitApplication()">Create new Application</button>
+      </div>
+    </div>
+  </div>
+</template>
