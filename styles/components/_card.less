@@ -1,0 +1,47 @@
+@card-background-color: @color--white;
+@card-color: inherit;
+@card-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+
+@card-selectable-transition: box-shadow 0.15s ease-out;
+@card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.38);
+
+.card {
+  background-color: @card-background-color;
+  border-radius: 2px;
+  box-shadow: @card-box-shadow;
+  color: @card-color;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: @grid-size*3;
+  position: relative;
+
+  &__header {
+    padding: @grid-size*2;
+
+    &--no-padding {
+      padding: 0;
+    }
+  }
+
+  &__body {
+    display: flex;
+    padding: @grid-size*2;
+    flex-grow: 1;
+    flex-direction: column;
+    position: relative;
+
+    &--no-padding {
+      padding: 0;
+    }
+  }
+
+  &--selectable {
+    transition: @card-selectable-transition;
+
+    &:hover,
+    &:focus
+    &:active {
+      box-shadow: @card-selectable-hover-box-shadow;
+    }
+  }
+}

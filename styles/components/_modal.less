@@ -1,0 +1,25 @@
+@modal-background-color: @color-grey-theme--light;
+
+.modal {
+  background-color: @modal-background-color;
+  display: flex;
+  min-height: 400px;
+  min-width: 600px;
+
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 10%;
+  max-height: 60%;
+  max-width: 100%;
+}
+
+// Overlay component configuration
+ai-dialog-overlay {
+  transition: background-color 0.5s @animation-cubic-bezier-1;
+  background-color: rgba(0, 0, 0, @opacity-100);
+
+  &.active {
+    background-color: rgba(0, 0, 0, @opacity-54);
+  }
+}

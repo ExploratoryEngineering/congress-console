@@ -1,0 +1,42 @@
+// caret - The triangle pointy thing which points to/from/in an element.
+
+.caret-base {
+  content: '';
+  position: absolute;
+}
+
+.caret-down(@color, @size) {
+  border-bottom: 0;
+  border-left: @size solid transparent;
+  border-right: @size solid transparent;
+  border-top: @size solid @color;
+
+  .caret-base();
+}
+
+.caret-left(@color, @size) {
+  border-bottom: @size solid transparent;
+  border-left: 0;
+  border-right: @size solid @color;
+  border-top: @size solid transparent;
+
+  .caret-base();
+}
+
+.caret-right(@color, @size) {
+  border-bottom: @size solid transparent;
+  border-left: @size solid @color;
+  border-right: 0;
+  border-top: @size solid transparent;
+
+  .caret-base();
+}
+
+.caret-up(@color, @size) {
+  border-bottom: @size solid @color;
+  border-left: @size solid transparent;
+  border-right: @size solid transparent;
+  border-top: 0;
+
+  .caret-base();
+}

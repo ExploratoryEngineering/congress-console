@@ -1,0 +1,44 @@
+@flex-container-header-color: @font-color-primary;
+@flex-container-header-border-color: @color-grey-theme--dark;
+
+.flex-element {
+  &--grow {
+    flex-grow: 1;
+    overflow: auto;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+
+  &__header {
+    border-bottom: solid 1px @flex-container-header-border-color;
+    color: @flex-container-header-color;
+    padding: @grid-size*4;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: @grid-size*4;
+
+    &--centered {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--no-padding {
+      padding: 0;
+    }
+  }
+
+  &__footer {
+    align-self: flex-end;
+    padding: @grid-size*4;
+  }
+}
+

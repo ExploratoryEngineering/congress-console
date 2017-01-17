@@ -1,0 +1,28 @@
+@charset "UTF-8";
+// Force all following css to be interpreted as UTF-8. Must be on top of stylesheet
+
+// Normalize ALL the things
+@import "../node_modules/normalize.css/normalize.css";
+
+// Default setup
+@import "setup/_border-box";
+@import "setup/_typography";
+
+@import "variables/_variables";
+@import "mixins/_mixins";
+
+// Grid setup
+@grid-size: 8px;
+@grid-gutter-size: @grid-size * 4;
+
+// Opacities
+@opacity-0: 0%;
+@opacity-12: 12%;
+@opacity-38: 38%;
+@opacity-54: 54%;
+@opacity-87: 87%;
+@opacity-100: 100%;
+
+
+// Animations
+@animation-cubic-bezier-1: cubic-bezier(0.15, 0.99, 0.18, 1.01);

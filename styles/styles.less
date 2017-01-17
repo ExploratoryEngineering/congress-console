@@ -1,0 +1,42 @@
+@import "_setup";
+@import "base/_base";
+@import "layout/_layout";
+@import "components/_components";
+@import "views/_views";
+
+@animation-cubic-bezier-1: cubic-bezier(0.15, 0.99, 0.18, 1.01);
+
+.splash-container {
+  background-color: #eeeeee;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity .75s @animation-cubic-bezier-1;
+
+  &--fade-out {
+    opacity: 0;
+  }
+}
+
+.splash {
+  box-sizing: border-box;
+  font-family: "Helvetica","Arial",sans-serif;
+  margin: 10% 0 0 0;
+  text-align: center;
+}
+
+.splash__message {
+  color: @font-color-opacity--black-54;
+  font-size: 72px;
+  line-height: 72px;
+  text-transform: uppercase;
+}
+
+.splash__logo {
+  display: inline-block;
+  margin: 24px;
+  width: 120px;
+}

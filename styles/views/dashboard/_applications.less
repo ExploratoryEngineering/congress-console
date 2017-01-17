@@ -1,0 +1,40 @@
+@service-card-background-color: @color--blue;
+@service-card-color: @font-color-primary--colored;
+@service-card-color-secondary: @font-color-secondary--colored;
+
+.application {
+  display: inline-block;
+}
+
+.applications-container {
+  align-items: flex-start;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: @grid-size*4;
+}
+
+.application-card {
+  background-color: @service-card-background-color;
+  color: @service-card-color;
+  cursor: pointer;
+  height: 160px;
+  margin-right: 20px;
+  width: 300px;
+
+  &__header {
+    display: inline-block;
+    margin: 0 auto 0 0;
+  }
+
+  &__statistics-text {
+    color: @service-card-color-secondary;
+    float: right;
+    font-size: 20px;
+    font-weight: @font-weight--light;
+  }
+
+  &__graph {
+    color: @service-card-color-secondary;
+  }
+}
