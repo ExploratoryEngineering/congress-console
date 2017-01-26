@@ -3,6 +3,10 @@ import { bindable, noView } from 'aurelia-framework';
 import '../../node_modules/nprogress/nprogress.css';
 import NProgress from 'nprogress';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('LoadingIndicator');
+
 // Simple config
 NProgress.configure({
   showSpinner: false,
@@ -15,7 +19,7 @@ export class LoadingIndicator {
   @bindable loading = false;
 
   loadingChanged(isLoading) {
-    console.log('LoadingIndicator: IsLoading ', isLoading);
+    Log.info('IsLoading ', isLoading);
     if (isLoading) {
       NProgress.start();
     } else {

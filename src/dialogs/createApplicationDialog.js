@@ -3,6 +3,10 @@ import { DialogController } from 'aurelia-dialog';
 import { ApplicationService } from 'Services/ApplicationService';
 import { Application } from 'Models/Application';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Application dialog');
+
 export class CreateApplicationDialog {
   static inject = [ApplicationService, DialogController];
 
@@ -17,11 +21,11 @@ export class CreateApplicationDialog {
     this.applicationService.createNewApplication(this.application).then(() => {
       this.dialog.ok();
     }).catch(error => {
-      console.error('Create application: Error occured', error);
+      Log.error('Create application: Error occured', error);
     });
   }
 
   activate(args) {
-    console.log('Create application with args', args);
+    Log.debug('Create application with args', args);
   }
 }

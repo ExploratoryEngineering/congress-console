@@ -1,16 +1,20 @@
 import 'whatwg-fetch';
 import '../styles/styles.less';
 
+import {LogManager} from 'aurelia-framework';
+import {ConsoleAppender} from 'aurelia-logging-console';
+
 // Promise polyfill
 import * as Bluebird from 'bluebird';
 Bluebird.config({ warnings: false });
 
 export async function configure(aurelia) {
+  LogManager.addAppender(new ConsoleAppender());
+  LogManager.setLevel(LogManager.logLevel.debug);
+
   aurelia.use
     .standardConfiguration()
-    .developmentLogging()
     .plugin('aurelia-dialog');
-
 
   // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
   // aurelia.use.plugin('aurelia-html-import-template-loader')

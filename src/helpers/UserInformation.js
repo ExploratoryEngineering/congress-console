@@ -1,5 +1,9 @@
 import Cookies from 'js-cookie';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('UserInformation');
+
 export default class UserInformation {
   static LOGGED_IN_COOKIE_NAME = 'loggedIn';
   static state = {
@@ -7,7 +11,7 @@ export default class UserInformation {
   };
 
   static isLoggedIn() {
-    console.log('Userinformation checking is loggedIn');
+    Log.debug('Userinformation checking is loggedIn');
     this.refreshLoggedIn();
     return this.state.isLoggedIn;
   }

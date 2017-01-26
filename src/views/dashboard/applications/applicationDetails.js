@@ -3,6 +3,9 @@ import { Router } from 'aurelia-router';
 import { ApplicationService } from 'Services/ApplicationService';
 import { DeviceService } from 'Services/DeviceService';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+const Log  = LogBuilder.create('Application details');
+
 export class ServiceDetails {
   static inject = [ApplicationService, DeviceService, Router];
 
@@ -35,7 +38,7 @@ export class ServiceDetails {
         this.devices = devices;
       })
     ]).catch(err => {
-      console.error(err);
+      Log.error(err);
       this.router.navigateToRoute('dashboard');
     });
   }

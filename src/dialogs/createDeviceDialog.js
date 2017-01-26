@@ -3,6 +3,10 @@ import { DialogController } from 'aurelia-dialog';
 import { DeviceService } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Device Dialog');
+
 export class CreateDeviceDialog {
   static inject = [DeviceService, DialogController];
 
@@ -17,12 +21,12 @@ export class CreateDeviceDialog {
     this.deviceService.createNewDevice(this.device).then(() => {
       this.dialog.ok();
     }).catch(error => {
-      console.error('Create device: Error occured', error);
+      Log.error('Create device: Error occured', error);
     });
   }
 
   activate(args) {
     this.device.appEUI = args.appEUI;
-    console.log(this.device);
+    Log.debug(this.device);
   }
 }

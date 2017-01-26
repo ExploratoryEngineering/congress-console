@@ -3,6 +3,10 @@ import { Redirect, Router } from 'aurelia-router';
 import { routes } from './appRoutes';
 import UserInformation from 'Helpers/UserInformation';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create();
+
 export class App {
   static inject = [Router];
 
@@ -23,7 +27,7 @@ export class App {
 class AuthorizeStep {
   run(navigationInstruction, next) {
     if (navigationInstruction.getAllInstructions().some(i => i.config.settings.auth)) {
-      console.log('Auth protected route', navigationInstruction, !!UserInformation.isLoggedIn());
+      Log.debug('Auth protected route', navigationInstruction, !!UserInformation.isLoggedIn());
       let isLoggedIn = !!UserInformation.isLoggedIn();// insert magic here;
       if (!isLoggedIn) {
         return next.cancel(new Redirect('login'));

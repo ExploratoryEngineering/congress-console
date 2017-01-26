@@ -5,6 +5,10 @@ import { ApplicationService } from 'Services/ApplicationService';
 
 import { CreateApplicationDialog } from 'Dialogs/createApplicationDialog';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Applications');
+
 export class Services {
   static inject = [ApplicationService, DialogService, Router];
 
@@ -33,7 +37,7 @@ export class Services {
         this.availableApplications = applications;
         res();
       }).catch(err => {
-        console.error(err);
+        Log.error(err);
         res();
       });
     });

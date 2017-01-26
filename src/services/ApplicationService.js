@@ -3,6 +3,10 @@ import { HttpClient } from 'aurelia-http-client';
 
 import NetworkInformation from 'Helpers/NetworkInformation';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Application service');
+
 export class ApplicationService {
   static inject = [HttpClient];
 
@@ -21,7 +25,7 @@ export class ApplicationService {
   fetchApplicationByEUI(applicationEui) {
     return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications/${applicationEui}`)
       .then(application => {
-        console.log('ApplicationService: Fetching application', application);
+        Log.debug('ApplicationService: Fetching application', application);
         return new Application(application);
       });
   }
@@ -31,9 +35,9 @@ export class ApplicationService {
       `/api/networks/${NetworkInformation.selectedNetwork}/applications`,
       this.mapToServer(application)
     ).then(res => {
-      console.log('Success!', res);
+      Log.debug('Create success', res);
     }).catch(err => {
-      console.error(err);
+      Log.error('Error creating application', err);
     });
   }
 
@@ -42,9 +46,9 @@ export class ApplicationService {
       `/api/networks/${NetworkInformation.selectedNetwork}/applications/${application.appEUI}`,
       this.mapToServer(application)
     ).then(res => {
-      console.log('Success!', res);
+      Log.debug('Update success', res);
     }).catch(err => {
-      console.error(err);
+      Log.error('Error updating application', err);
     });
   }
 
@@ -52,9 +56,9 @@ export class ApplicationService {
     return this.httpClient.del(
       `/api/networks/${NetworkInformation.selectedNetwork}/applications/${application.appEUI}`
     ).then(res => {
-      console.log('Success!', res);
+      Log.debug('Delete success!', res);
     }).catch(err => {
-      console.error(err);
+      Log.error('Delete failed', err);
     });
   }
 
