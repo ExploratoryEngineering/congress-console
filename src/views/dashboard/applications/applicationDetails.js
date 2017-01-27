@@ -3,6 +3,8 @@ import { Router } from 'aurelia-router';
 import { ApplicationService } from 'Services/ApplicationService';
 import { DeviceService } from 'Services/DeviceService';
 
+import NetworkInformation from 'Helpers/NetworkInformation';
+import { Websocket } from 'Helpers/Websocket';
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log  = LogBuilder.create('Application details');
 
@@ -15,11 +17,37 @@ export class ServiceDetails {
 
   devices = [];
 
+  websocket = null;
+
   constructor(applicationService, deviceService, router) {
     this.router = router;
 
     this.applicationService = applicationService;
     this.deviceService = deviceService;
+  }
+
+
+  openApplicationStream() {
+    if (!this.websocket) {
+      this.websocket = new Websocket({
+        url: `ws://localhost:8080/networks/${NetworkInformation.selectedNetwork}/applications/${this.application.appEUI}/data`,
+        onerror: (err) => { Log.error('WS Error', err); },
+        onopen: (msg) => { Log.debug('WS Open: ', msg); },
+        onclose: (msg) => { Log.debug('WS Close: ', msg); },
+        onmessage: this.onApplicationStreamMessage
+      });
+    } else {
+      if (this.websocket.reconnect());
+    }
+  }
+
+  onApplicationStreamMessage(message) {
+    Log.debug('WS Message: ', message, JSON.parse(message.data));
+  }
+
+  closeApplicationStream(application)  {
+    this.websocket.close();
+    this.websocket = null;
   }
 
   activate(args) {
@@ -37,9 +65,15 @@ export class ServiceDetails {
       this.deviceService.fetchDevices(args.applicationId).then((devices) => {
         this.devices = devices;
       })
-    ]).catch(err => {
+    ]).then(() => {
+      this.openApplicationStream();
+    }).catch(err => {
       Log.error(err);
       this.router.navigateToRoute('dashboard');
     });
+  }
+
+  deactivate() {
+    this.closeApplicationStream();
   }
 }
