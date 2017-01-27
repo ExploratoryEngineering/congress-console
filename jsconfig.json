@@ -1,8 +1,18 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "lib": ["es2017", "dom"],
-    "experimentalDecorators": true
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "experimentalDecorators": true,
+    "paths": {
+      "Services": "./src/services",
+      "Helpers": "./src/helpers",
+      "Models": "./src/models",
+      "Components": "./src/components",
+      "Dialogs": "./src/dialogs"
+    }
   },
   "exclude": [
     "dist",
