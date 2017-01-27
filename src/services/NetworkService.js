@@ -1,11 +1,12 @@
 import { Network } from '../models/Network';
 import { HttpClient } from 'aurelia-http-client';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Network service');
+
 export class NetworkService {
   static inject = [HttpClient];
-
-  // Debug only
-  createdNetworks = [];
 
   constructor(httpClient) {
     this.httpClient = httpClient;
@@ -36,14 +37,14 @@ export class NetworkService {
 
   updateNetwork(network) {
     return new Promise((res) => {
-      console.log('Updating network', network);
+      Log.debug('Updating network', network);
       res(network);
     });
   }
 
   deleteNetwork(network) {
     return new Promise((res) => {
-      console.log('Deleting network', network);
+      Log.debug('Deleting network', network);
       res();
     });
   }

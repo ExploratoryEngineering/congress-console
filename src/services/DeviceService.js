@@ -3,6 +3,10 @@ import { HttpClient } from 'aurelia-http-client';
 
 import NetworkInformation from 'Helpers/NetworkInformation';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Device service');
+
 export class DeviceService {
   static inject = [HttpClient];
 
@@ -14,7 +18,7 @@ export class DeviceService {
     return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications/${applicationEui}/devices`)
       .then(data => data.content.devices)
       .then(devices => {
-        console.log('Fetched devices', devices);
+        Log.debug('Fetched devices', devices);
         return devices.map(device => new Device(this.mapFromServer(device)));
       });
   }
@@ -22,31 +26,31 @@ export class DeviceService {
   fetchDeviceByEUI(applicationEui, deviceEui) {
     return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications/${applicationEui}/devices/${deviceEui}`)
       .then(device => {
-        console.log('Fetched device ', device);
+        Log.debug('Fetched device ', device);
         return new Client(device);
       });
   }
 
   createNewDevice(device) {
-    console.log('ClientService: Creating client', device);
+    Log.debug('ClientService: Creating client', device);
     return this.httpClient.post(
       `/api/networks/${NetworkInformation.selectedNetwork}/applications/${device.appEUI}/devices`,
       this.mapToServer(device)
       ).then(res => {
-        console.log('Created device ', res);
+        Log.debug('Created device ', res);
       });
   }
 
   updateDevice(device) {
     return new Promise((res) => {
-      console.log('Updating device', device);
+      Log.debug('Updating device', device);
       res(device);
     });
   }
 
   deleteDevice(device) {
     return new Promise((res) => {
-      console.log('Deleting device', device);
+      Log.debug('Deleting device', device);
       res();
     });
   }
