@@ -6,6 +6,9 @@ import { DeviceService } from 'Services/DeviceService';
 
 import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
 
+import { LogBuilder } from 'Helpers/LogBuilder';
+const Log  = LogBuilder.create('Application devices');
+
 export class ServiceDetails {
   static inject = [ApplicationService, DeviceService, DialogService, Router];
 
@@ -53,7 +56,7 @@ export class ServiceDetails {
         this.devices = devices;
       })
     ]).catch(err => {
-      console.error(err);
+      Log.error(err);
       this.router.navigateToRoute('dashboard');
     });
   }
