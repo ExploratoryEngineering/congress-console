@@ -1,9 +1,12 @@
 import { bindable, containerless } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
 import Debug from 'Helpers/Debug';
 
 @containerless
 export class ApplicationCard {
+  static inject = [EventAggregator];
+
   @bindable application;
 
   chartData = {
@@ -34,6 +37,10 @@ export class ApplicationCard {
 
   debugInterval = '';
 
+  constructor(eventAggregator) {
+    this.eventAggregator = eventAggregator;
+  }
+
   initiateChartData() {
     const randData = Debug.getRandomArray(20, 10000000);
 
@@ -60,6 +67,9 @@ export class ApplicationCard {
     }, 5000);
   }
 
+  editApplication() {
+    this.eventAggregator.publish('application:edit', this.application);
+  }
 
   unbind() {
     clearInterval(this.debugInterval);

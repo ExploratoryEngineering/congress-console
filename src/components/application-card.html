@@ -1,9 +1,20 @@
 <template bindable="application">
   <require from="components/graph-chart"></require>
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
   <a route-href="route: application_details; params.bind: { applicationId: application.appEUI }" class="application">
     <div class="card card--selectable application-card">
       <div class="card__header">
         <h2 class="application-card__header">${application.name}</h2>
+        <div class="application-card__header application-card__header--right">
+          <dropdown>
+            <dropdown-title><span class="material-icons">more_vert</span></dropdown-title>
+            <dropdown-container>
+              <div class="dropdown__menu-item" click.trigger="editApplication()">Edit</div>
+            </dropdown-container>
+          </dropdown>
+        </div>
       </div>
       <div class="card__body card__body--no-padding">
         <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
