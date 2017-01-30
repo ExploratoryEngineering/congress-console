@@ -1,0 +1,14 @@
+[
+  {
+    "component": "jquery",
+    "justification": "jQuery is only used in test"
+  },
+  {
+    "component": "jquery-ui-dialog",
+    "justification": "Only used in selenium test-drives"
+  },
+  {
+    "component": "jquery-ui-autocomplete",
+    "justification": "Only used in selenium test-drives"
+  }
+]
