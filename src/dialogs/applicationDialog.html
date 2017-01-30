@@ -5,7 +5,7 @@
   <div class="modal">
     <div class="flex-container">
       <div class="flex-container__header">
-        <h2>Create your new application</h2>
+        <h2>${dialogHeader}</h2>
       </div>
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="submitApplication()">
@@ -16,7 +16,7 @@
       </div>
       <div class="flex-container__footer">
         <button class="button button--flat" click.delegate="dialog.cancel()">Cancel</button>
-        <button class="button button--primary" type="submit" click.trigger="submitApplication()">Create new Application</button>
+        <button class="button button--primary" type="submit" click.trigger="submitApplication()">${confirmButtonText}</button>
       </div>
     </div>
   </div>

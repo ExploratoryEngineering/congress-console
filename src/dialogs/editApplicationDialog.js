@@ -9,13 +9,13 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application dialog');
 
 @useView('./applicationDialog.html')
-export class CreateApplicationDialog {
+export class EditApplicationDialog {
   static inject = [ApplicationService, DialogController];
 
   application = new Application();
 
-  dialogHeader = 'Create your new application';
-  confirmButtonText = 'Create new application';
+  dialogHeader = 'Edit application';
+  confirmButtonText = 'Update application';
 
   constructor(applicationService, dialogController) {
     this.applicationService = applicationService;
@@ -23,14 +23,14 @@ export class CreateApplicationDialog {
   }
 
   submitApplication() {
-    this.applicationService.createNewApplication(this.application).then(() => {
-      this.dialog.ok();
+    this.applicationService.updateApplication(this.application).then(() => {
+      this.dialog.ok(this.application);
     }).catch(error => {
       Log.error('Create application: Error occured', error);
     });
   }
 
   activate(args) {
-    Log.debug('Create application with args', args);
+    this.application = args.application;
   }
 }
