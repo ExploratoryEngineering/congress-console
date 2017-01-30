@@ -75,7 +75,7 @@
     "@easy-webpack/config-babel": "^4.0.0",
     "@easy-webpack/config-common-chunks-simple": "^2.0.3",
     "@easy-webpack/config-copy-files": "^1.1.2",
-    "@easy-webpack/config-css": "^4.0.0",
+    "@easy-webpack/config-css": "^4.0.1",
     "@easy-webpack/config-env-development": "^2.1.5",
     "@easy-webpack/config-env-production": "^3.0.0",
     "@easy-webpack/config-external-source-maps": "^3.1.0",
@@ -117,7 +117,7 @@
     "prettier": "^0.13.1",
     "protractor": "^4.0.11",
     "wait-on": "^2.0.1",
-    "webpack": "2.1.0-beta.27",
-    "webpack-dev-server": "2.1.0-beta.12"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
   }
 }
