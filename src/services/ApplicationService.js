@@ -36,8 +36,6 @@ export class ApplicationService {
       this.mapToServer(application)
     ).then(res => {
       Log.debug('Create success', res);
-    }).catch(err => {
-      Log.error('Error creating application', err);
     });
   }
 
@@ -47,8 +45,6 @@ export class ApplicationService {
       this.mapToServer(application)
     ).then(res => {
       Log.debug('Update success', res);
-    }).catch(err => {
-      Log.error('Error updating application', err);
     });
   }
 
@@ -57,8 +53,6 @@ export class ApplicationService {
       `/api/networks/${NetworkInformation.selectedNetwork}/applications/${application.appEUI}`
     ).then(res => {
       Log.debug('Delete success!', res);
-    }).catch(err => {
-      Log.error('Delete failed', err);
     });
   }
 
