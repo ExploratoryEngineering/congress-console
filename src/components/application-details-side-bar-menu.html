@@ -3,28 +3,38 @@
   <require from="components/dropdown-title"></require>
   <require from="components/dropdown-container"></require>
   <require from="components/generic-side-bar-nav.html"></require>
+  <require from="components/propeller.html"></require>
   <require from="components/raven.html"></require>
   <aside class="side-bar__wrapper">
+    <div class="sub-header">
+      <h2 class="sub-header__header-text">
+        Telenor LORA <span class="sub-header__header-logo"><propeller color="rgba(0, 0, 0, .54)"></propeller>
+      </h2>
+    </div>
+    <div class="side-bar__separator"></div>
     <dropdown>
       <dropdown-title>
-        <div class="sub-header">
-          <h2 class="sub-header__header-text">${application.name}</h2>
+        <div class="application-dropdown">
+          <h2 class="application-dropdown__header-text">${application.name}</h2>
         </div>
       </dropdown-title>
       <dropdown-container>
         <nav>
           <a route-href="route.bind: router.currentInstruction.config.name; params.bind: { applicationId: selectableApplication.appEUI }"
-            class="sub-header__menu-item" repeat.for="selectableApplication of selectableapplications">${selectableApplication.name}</a>
+            class="application-dropdown__menu-item" repeat.for="selectableApplication of selectableapplications">${selectableApplication.name}</a>
         </nav>
       </dropdown-container>
     </dropdown>
     <div class="side-bar__separator"></div>
     <nav class="side-bar__content-container">
+      <a repeat.for="row of router.navigation" class="side-bar__menu-entry ${row.isActive ? 'side-bar__menu-entry--selected' : ''}"
+        route-href="route.bind: row.config.name; params.bind: { applicationId: application.appEUI }">${row.title}</a>
+    </nav>
+    <div class="side-bar__separator"></div>
+    <nav class="side-bar__content-container">
       <a class="side-bar__menu-entry" route-href="route: applications_overview">
         <!--<i class="material-icons">arrow_back</i>-->
         Applications</a>
-      <a repeat.for="row of router.navigation" class="side-bar__menu-entry ${row.isActive ? 'side-bar__menu-entry--selected' : ''}"
-        route-href="route.bind: row.config.name; params.bind: { applicationId: application.appEUI }">${row.title}</a>
     </nav>
     <div class="side-bar__separator"></div>
     <generic-side-bar-nav containerless></generic-side-bar-nav>
