@@ -19,18 +19,14 @@ export class CreateApplicationDialog {
 
   constructor(applicationService, dialogController) {
     this.applicationService = applicationService;
-    this.dialog = dialogController;
+    this.dialogController = dialogController;
   }
 
   submitApplication() {
-    this.applicationService.createNewApplication(this.application).then(() => {
-      this.dialog.ok();
+    return this.applicationService.createNewApplication(this.application).then(() => {
+      this.dialogController.ok();
     }).catch(error => {
       Log.error('Create application: Error occured', error);
     });
-  }
-
-  activate(args) {
-    Log.debug('Create application with args', args);
   }
 }
