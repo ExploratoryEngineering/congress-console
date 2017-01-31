@@ -7,10 +7,11 @@ import Debug from 'Helpers/Debug';
 export class ApplicationCard {
   static inject = [EventAggregator];
 
+  UPDATE_INTERVAL = 5000;
+
   @bindable application;
 
-  chartData = {
-  };
+  chartData = null;
   chartOptions = {
     maintainAspectRatio: false,
     showLines: false,
@@ -35,7 +36,7 @@ export class ApplicationCard {
   chartType = 'bar';
   chart = {};
 
-  debugInterval = '';
+  dataInterval = null;
 
   constructor(eventAggregator) {
     this.eventAggregator = eventAggregator;
@@ -56,15 +57,21 @@ export class ApplicationCard {
   }
 
   setDataOnInterval() {
-    this.debugInterval = setInterval(() => {
+    this.dataInterval = setInterval(() => {
       const value = Debug.getRandomNumber(10000000);
       const data = Object.assign({}, this.chartData);
 
-      data.datasets[0].data.splice(0, 1);
-      data.datasets[0].data.push(value);
+      if (data.datasets) {
+        data.datasets[0].data.splice(0, 1);
+        data.datasets[0].data.push(value);
+      } else {
+        data.datasets = [{
+          data: [value]
+        }];
+      }
 
       this.chartData = data;
-    }, 5000);
+    }, this.UPDATE_INTERVAL);
   }
 
   editApplication() {
@@ -72,7 +79,8 @@ export class ApplicationCard {
   }
 
   unbind() {
-    clearInterval(this.debugInterval);
+    clearInterval(this.dataInterval);
+    this.dataInterval = null;
   }
 
   bind() {
