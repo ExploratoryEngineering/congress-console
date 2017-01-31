@@ -19,12 +19,12 @@ export class EditApplicationDialog {
 
   constructor(applicationService, dialogController) {
     this.applicationService = applicationService;
-    this.dialog = dialogController;
+    this.dialogController = dialogController;
   }
 
   submitApplication() {
-    this.applicationService.updateApplication(this.application).then(() => {
-      this.dialog.ok(this.application);
+    return this.applicationService.updateApplication(this.application).then(() => {
+      this.dialogController.ok(this.application);
     }).catch(error => {
       Log.error('Create application: Error occured', error);
     });
