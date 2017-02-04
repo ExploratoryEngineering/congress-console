@@ -12,6 +12,7 @@ import babel from '@easy-webpack/config-babel';
 import html from '@easy-webpack/config-html';
 import css from '@easy-webpack/config-css';
 import less from '@easy-webpack/config-less';
+import typescript from '@easy-webpack/config-typescript';
 import fontAndImages from '@easy-webpack/config-fonts-and-images';
 import globalBluebird from '@easy-webpack/config-global-bluebird';
 import globalRegenerator from '@easy-webpack/config-global-regenerator';
@@ -107,6 +108,7 @@ let config = generateConfig(
   aurelia({ root: rootDir, src: srcDir, title: title, baseUrl: baseUrl }),
 
   babel({ options: { /* uses settings from .babelrc */ } }),
+  typescript(ENV !== 'test' ? {} : { options: { doTypeCheck: false, sourceMap: false, inlineSourceMap: true, inlineSources: true } }),
   html(),
   css({ filename: 'styles.css', allChunks: true, sourceMap: false }),
   ENV === 'production' ? less({

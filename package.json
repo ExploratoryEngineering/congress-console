@@ -88,6 +88,7 @@
     "@easy-webpack/config-json": "^3.1.0",
     "@easy-webpack/config-less": "^3.0.0",
     "@easy-webpack/config-test-coverage-istanbul": "^3.2.0",
+    "@easy-webpack/config-typescript": "^5.1.0",
     "@easy-webpack/config-uglify": "^2.2.3",
     "@easy-webpack/core": "^2.0.0",
     "aurelia-protractor-plugin": "^1.0.1",
@@ -119,6 +120,7 @@
     "prettier": "^0.13.1",
     "protractor": "^4.0.11",
     "retire": "^1.2.11",
+    "typescript": "^2.1.5",
     "wait-on": "^2.0.1",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0"
