@@ -9,6 +9,9 @@ export class Dropdown {
   closeOnItemSelect = true;
   closeOnOutsideClick = true;
 
+  handleDropdownClick = (event) => { };
+  handleBodyClick = (event) => { };
+
   constructor() {
     this.handleDropdownClick = e => {
       if (this.closeOnItemSelect) {

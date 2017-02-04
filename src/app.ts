@@ -10,9 +10,10 @@ const Log = LogBuilder.create();
 export class App {
   static inject = [Router];
 
+  router: Router;
+
   constructor(router) {
     this.router = router;
-    this.userInformation = UserInformation;
   }
 
   configureRouter(config, router) {

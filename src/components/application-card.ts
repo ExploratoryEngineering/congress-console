@@ -7,11 +7,13 @@ import Debug from 'Helpers/Debug';
 export class ApplicationCard {
   static inject = [EventAggregator];
 
+  eventAggregator: EventAggregator;
+
   UPDATE_INTERVAL = 5000;
 
   @bindable application;
 
-  chartData = null;
+  chartData;
   chartOptions = {
     maintainAspectRatio: false,
     showLines: false,
@@ -36,7 +38,7 @@ export class ApplicationCard {
   chartType = 'bar';
   chart = {};
 
-  dataInterval = null;
+  dataInterval;
 
   constructor(eventAggregator) {
     this.eventAggregator = eventAggregator;
@@ -51,13 +53,14 @@ export class ApplicationCard {
         data: randData,
         backgroundColor: 'rgba(255, 255, 255, .7)'
       }
-      ]};
+      ]
+    };
 
     this.setDataOnInterval();
   }
 
   setDataOnInterval() {
-    this.dataInterval = setInterval(() => {
+    this.dataInterval = window.setInterval(() => {
       const value = Debug.getRandomNumber(10000000);
       const data = Object.assign({}, this.chartData);
 

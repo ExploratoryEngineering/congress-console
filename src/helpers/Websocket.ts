@@ -1,22 +1,22 @@
 import { LogBuilder } from 'Helpers/LogBuilder';
 
-const GUARD_DOG_INTERVAL = 5000;
-const APP_WAKE_TIME = 10000;
-const WS = window.WebSocket;
+const GUARD_DOG_INTERVAL: number = 5000;
+const APP_WAKE_TIME: number = 10000;
+const WS = WebSocket;
 const Log = LogBuilder.create('Websocket');
 
 export class Websocket {
-  socket = null;
-  lastGuardDogBark = 0;
-  guardDogIntervalId = 0;
+  private socket: WebSocket;
+  private lastGuardDogBark = 0;
+  private guardDogIntervalId = 0;
 
   constructor({
     url = '',
-    onmessage = () => {},
-    onopen = () => {},
-    onclose = () => {},
-    onerror = () => {}
-  } = config) {
+    onmessage = (message: any) => { },
+    onopen = (open: any) => { },
+    onclose = (close: any) => { },
+    onerror = (error: any) => { }
+  } = {}) {
     this._connect({
       url: url,
       onmessage: onmessage,
@@ -63,11 +63,12 @@ export class Websocket {
 
   initiateGuardDog() {
     this.lastGuardDogBark = (new Date()).getTime();
-    this.guardDogIntervalId = setInterval(() => {
+
+    this.guardDogIntervalId = window.setInterval(() => {
       const newBark = (new Date()).getTime();
       if (newBark - this.lastGuardDogBark > (GUARD_DOG_INTERVAL + GUARD_DOG_INTERVAL / 2)) {
-        Log.info('GUARDDOG: BARK TOO LATE, RECONNECT');
-        setTimeout(function() {
+        Log.info('Reconnect due to guard dog');
+        setTimeout(function () {
           this.reconnect();
         }, APP_WAKE_TIME);
       }

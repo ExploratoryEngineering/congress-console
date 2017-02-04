@@ -2,15 +2,13 @@ import { Router } from 'aurelia-router';
 import UserInformation from 'Helpers/UserInformation';
 
 export class Login {
-  heading = 'Login for Self Service Portal';
+  inject = [Router];
 
-  static inject() {
-    return [Router];
-  }
+  heading = 'Login for Self Service Portal';
+  router: Router;
 
   constructor(router) {
     this.router = router;
-    this.userInformation = UserInformation;
   }
 
   login() {

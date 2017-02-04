@@ -32,11 +32,11 @@ describe('ApplicationCard component', () => {
 
   describe('Binding behaviour', () => {
     it('should initiate chartData upon bind', () => {
-      expect(applicationCard.chartData).toBe(null);
+      expect(applicationCard.chartData).toBeFalsy();
 
       applicationCard.bind();
 
-      expect(applicationCard.chartData).not.toBe(null);
+      expect(applicationCard.chartData).toBeTruthy();
     });
 
     it('should add dataInterval upon bind', () => {
@@ -47,16 +47,16 @@ describe('ApplicationCard component', () => {
 
     it('should clear dataInterval upon unbind', () => {
       applicationCard.bind();
-      expect(applicationCard.dataInterval).not.toBe(null);
+      expect(applicationCard.dataInterval).toBeTruthy();
 
       applicationCard.unbind();
-      expect(applicationCard.dataInterval).toBe(null);
+      expect(applicationCard.dataInterval).toBeFalsy();
     });
   });
 
   describe('Chart data', () => {
     it('should have no data upon initialization', () => {
-      expect(applicationCard.chartData).toBe(null);
+      expect(applicationCard.chartData).toBeFalsy();
     });
 
     it('should append data to existing data sets', () => {
@@ -78,15 +78,15 @@ describe('ApplicationCard component', () => {
 
     it('should create data structure upon calling interval when no data', () => {
       applicationCard.setDataOnInterval();
-      expect(applicationCard.chartData).toBe(null);
+      expect(applicationCard.chartData).toBeFalsy();
 
       jasmine.clock().tick(applicationCard.UPDATE_INTERVAL - 50);
 
-      expect(applicationCard.chartData).toBe(null);
+      expect(applicationCard.chartData).toBeFalsy();
 
       jasmine.clock().tick(100);
 
-      expect(applicationCard.chartData).not.toBe(null);
+      expect(applicationCard.chartData).toBeTruthy();
     });
   });
 

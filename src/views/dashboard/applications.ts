@@ -4,6 +4,8 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { ApplicationService } from 'Services/ApplicationService';
 
+import { Application } from 'Models/Application';
+
 import { CreateApplicationDialog } from 'Dialogs/createApplicationDialog';
 import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
 
@@ -14,6 +16,11 @@ const Log = LogBuilder.create('Applications');
 export class Services {
   static inject = [ApplicationService, DialogService, Router, EventAggregator];
 
+  applicationService: ApplicationService;
+  dialogService: DialogService;
+  router: Router;
+  eventAggregator: EventAggregator;
+
   constructor(applicationService, dialogService, router, eventAggregator) {
     this.applicationService = applicationService;
     this.dialogService = dialogService;
@@ -22,7 +29,7 @@ export class Services {
     this.eventAggregator = eventAggregator;
   }
 
-  availableApplications = [];
+  availableApplications: Application[] = [];
 
   createNewApplication() {
     this.dialogService.open({ viewModel: CreateApplicationDialog }).then(response => {

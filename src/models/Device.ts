@@ -1,6 +1,18 @@
 import Debug from 'Helpers/Debug';
 
 export class Device {
+  deviceEUI: string;
+  devAddr: string;
+  appSKey: string;
+  nwkSKey: string;
+  appEui: string;
+  state: string;
+  fCntUp: number;
+  fCntDn: number;
+  relaxedCounter: boolean;
+  devNonce: number;
+  devNonceHistory: any;
+
   constructor({
     deviceEUI = Debug.getRandomHexString(),
     devAddr = Debug.getRandomHexString(3, false),

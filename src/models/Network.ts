@@ -1,6 +1,11 @@
 import Debug from 'Helpers/Debug';
 
 export class Network {
+  netEui: string;
+  netKey: number;
+  nwkId: string;
+  name: string;
+
   constructor({
     NetEUI = '',
     NetKey = Debug.getRandomNumber(),
@@ -8,7 +13,7 @@ export class Network {
     Name = ''
   } = {}) {
     this.netEui = NetEUI;
-    this.NetKey = NetKey;
+    this.netKey = NetKey;
     this.nwkId = NwkID;
     this.name = Name;
   }

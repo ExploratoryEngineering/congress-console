@@ -3,21 +3,28 @@ import { Router } from 'aurelia-router';
 import { ApplicationService } from 'Services/ApplicationService';
 import { DeviceService } from 'Services/DeviceService';
 
+import { Device } from 'Models/Device';
+import { Application } from 'Models/Application';
+
 import NetworkInformation from 'Helpers/NetworkInformation';
 import { Websocket } from 'Helpers/Websocket';
 import { LogBuilder } from 'Helpers/LogBuilder';
-const Log  = LogBuilder.create('Application details');
+const Log = LogBuilder.create('Application details');
 
 export class ServiceDetails {
   static inject = [ApplicationService, DeviceService, Router];
 
-  application = {};
-  allApplications = [];
-  selectableApplications = [];
+  application: Application;
+  allApplications: Application[] = [];
+  selectableApplications: Application[] = [];
 
-  devices = [];
+  router: Router;
+  applicationService: ApplicationService;
+  deviceService: DeviceService;
 
-  websocket = null;
+  devices: Device[] = [];
+
+  websocket: Websocket | null;
 
   constructor(applicationService, deviceService, router) {
     this.router = router;
@@ -26,6 +33,9 @@ export class ServiceDetails {
     this.deviceService = deviceService;
   }
 
+  onApplicationStreamMessage(message) {
+    Log.debug('WS Message: ', message, JSON.parse(message.data));
+  }
 
   openApplicationStream() {
     if (!this.websocket) {
@@ -37,17 +47,15 @@ export class ServiceDetails {
         onmessage: this.onApplicationStreamMessage
       });
     } else {
-      if (this.websocket.reconnect());
+      this.websocket.reconnect();
     }
   }
 
-  onApplicationStreamMessage(message) {
-    Log.debug('WS Message: ', message, JSON.parse(message.data));
-  }
-
-  closeApplicationStream(application)  {
-    this.websocket.close();
-    this.websocket = null;
+  closeApplicationStream() {
+    if (this.websocket) {
+      this.websocket.close();
+      this.websocket = null;
+    }
   }
 
   activate(args) {
@@ -55,9 +63,16 @@ export class ServiceDetails {
       this.applicationService.fetchApplications().then((applications) => {
         this.allApplications = applications;
 
-        this.application = this.allApplications.find((application) => {
+        let selectedApplication = this.allApplications.find((application) => {
           return application.appEUI === args.applicationId;
         });
+
+        if (selectedApplication) {
+          this.application = selectedApplication;
+        } else {
+          return;
+        }
+
         this.selectableApplications = this.allApplications.filter((application) => {
           return application.appEUI !== this.application.appEUI;
         });
