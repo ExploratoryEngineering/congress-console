@@ -29,7 +29,10 @@
       "Dialogs/*": [
         "src/dialogs/*"
       ]
-    }
+    },
+    "typeRoots": [
+      "./typings/globals"
+    ]
   },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true
