@@ -1,15 +1,11 @@
 import { Application } from 'Models/Application';
 import { HttpClient } from 'aurelia-http-client';
 
-import NetworkInformation from 'Helpers/NetworkInformation';
+import { NetworkInformation } from 'Helpers/NetworkInformation';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Application service');
-
-interface ApplicationFromServer {
-
-}
 
 export class ApplicationService {
   static inject = [HttpClient];

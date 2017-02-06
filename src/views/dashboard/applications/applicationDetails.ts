@@ -6,7 +6,7 @@ import { DeviceService } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
 import { Application } from 'Models/Application';
 
-import NetworkInformation from 'Helpers/NetworkInformation';
+import { NetworkInformation } from 'Helpers/NetworkInformation';
 import { Websocket } from 'Helpers/Websocket';
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application details');

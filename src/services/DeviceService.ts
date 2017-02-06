@@ -1,7 +1,7 @@
 import { Device } from 'Models/Device';
 import { HttpClient } from 'aurelia-http-client';
 
-import NetworkInformation from 'Helpers/NetworkInformation';
+import { NetworkInformation } from 'Helpers/NetworkInformation';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
