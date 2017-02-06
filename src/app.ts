@@ -1,7 +1,7 @@
 import { Redirect, Router } from 'aurelia-router';
 
 import { routes } from './appRoutes';
-import UserInformation from 'Helpers/UserInformation';
+import { UserInformation } from 'Helpers/UserInformation';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 

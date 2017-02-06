@@ -4,7 +4,7 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('UserInformation');
 
-export default class UserInformation {
+export class UserInformation {
   static LOGGED_IN_COOKIE_NAME = 'loggedIn';
   static state = {
     isLoggedIn: false

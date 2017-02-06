@@ -1,5 +1,5 @@
 import { Router } from 'aurelia-router';
-import UserInformation from 'Helpers/UserInformation';
+import { UserInformation } from 'Helpers/UserInformation';
 
 export class Login {
   static inject = [Router];
