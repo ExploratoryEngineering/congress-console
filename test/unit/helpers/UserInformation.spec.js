@@ -1,4 +1,4 @@
-import UserInformation from 'Helpers/UserInformation';
+import { UserInformation } from 'Helpers/UserInformation';
 
 describe('The UserInformation helper', () => {
   beforeEach(() => {

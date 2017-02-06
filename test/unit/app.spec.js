@@ -1,5 +1,5 @@
 import {App} from 'app';
-import UserInformation from 'Helpers/UserInformation';
+import { UserInformation } from 'Helpers/UserInformation';
 
 class RouterStub {
   configure(handler) {
