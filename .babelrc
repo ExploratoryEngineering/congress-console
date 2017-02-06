@@ -17,7 +17,7 @@
             },
             "loose": true,
             "modules": false,
-            "whitelist": [
+            "include": [
               "transform-es2015-literals",
               "transform-es2015-template-literals"
             ],
@@ -43,7 +43,7 @@
             },
             "loose": true,
             "modules": "commonjs",
-            "whitelist": [
+            "include": [
               "transform-es2015-literals",
               "transform-es2015-template-literals"
             ],
