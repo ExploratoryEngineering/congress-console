@@ -7,6 +7,22 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Device service');
 
+interface NewDevice {
+  AppEui: string
+}
+
+export interface NewOTAADevice extends NewDevice {
+
+}
+
+export interface NewABPDevice extends NewDevice {
+  Type: string,
+  DevAddr: string,
+  AppSKey: string,
+  AppEui: string,
+  NwkSKey: string
+}
+
 export class DeviceService {
   static inject = [HttpClient];
   httpClient: HttpClient;
@@ -32,11 +48,11 @@ export class DeviceService {
       });
   }
 
-  createNewDevice(device: Device): Promise<Device> {
+  createNewDevice(device: NewABPDevice | NewOTAADevice): Promise<Device> {
     Log.debug('ClientService: Creating client', device);
     return this.httpClient.post(
-      `/api/networks/${NetworkInformation.selectedNetwork}/applications/${device.appEui}/devices`,
-      Device.toDto(device)
+      `/api/networks/${NetworkInformation.selectedNetwork}/applications/${device.AppEui}/devices`,
+      device
     ).then(res => {
       Log.debug('Created device ', res);
       return Device.newFromDto(res);
