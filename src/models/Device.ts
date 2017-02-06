@@ -38,4 +38,36 @@ export class Device {
     this.devNonce = devNonce;
     this.devNonceHistory = devNonceHistory;
   }
+
+  static newFromDto(device): Device {
+    return new Device({
+      deviceEUI: device.DeviceEUI,
+      devAddr: device.DevAddr,
+      appSKey: device.AppSKey,
+      nwkSKey: device.NwkSKey,
+      appEUI: device.AppEUI,
+      state: device.State,
+      fCntUp: device.FCntUp,
+      fCntDn: device.FCntDn,
+      relaxedCounter: device.RelaxedCounter,
+      devNonce: device.DevNonce,
+      devNonceHistory: device.DevNonceHistory
+    });
+  }
+
+  static toDto(device: Device) {
+    return {
+      DeviceEUI: device.deviceEUI,
+      DevAddr: device.devAddr,
+      AppSKey: device.appSKey,
+      NwkSKey: device.nwkSKey,
+      AppEUI: device.appEui,
+      State: device.state,
+      FCntUp: device.fCntUp,
+      FCntDn: device.fCntDn,
+      RelaxedCounter: device.relaxedCounter,
+      DevNonce: device.devNonce,
+      DevNonceHistory: device.devNonceHistory
+    };
+  }
 }
