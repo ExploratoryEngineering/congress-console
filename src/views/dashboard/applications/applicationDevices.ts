@@ -4,19 +4,27 @@ import { DialogService } from 'aurelia-dialog';
 import { ApplicationService } from 'Services/ApplicationService';
 import { DeviceService } from 'Services/DeviceService';
 
+import { Application } from 'Models/Application';
+import { Device } from 'Models/Device';
+
 import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
-const Log  = LogBuilder.create('Application devices');
+const Log = LogBuilder.create('Application devices');
 
 export class ServiceDetails {
   static inject = [ApplicationService, DeviceService, DialogService, Router];
 
-  application = {};
-  allApplications = [];
-  selectableApplications = [];
+  application: Application;
+  allApplications: Application[] = [];
+  selectableApplications: Application[] = [];
 
-  devices = [];
+  router: Router;
+  applicationService: ApplicationService;
+  deviceService: DeviceService;
+  dialogService: DialogService;
+
+  devices: Device[] = [];
 
   constructor(applicationService, deviceService, dialogService, router) {
     this.router = router;
@@ -45,9 +53,16 @@ export class ServiceDetails {
       this.applicationService.fetchApplications().then((applications) => {
         this.allApplications = applications;
 
-        this.application = this.allApplications.find((application) => {
+        let selectedApplication = this.allApplications.find((application) => {
           return application.appEUI === args.applicationId;
         });
+
+        if (selectedApplication) {
+          this.application = selectedApplication;
+        } else {
+          return;
+        }
+
         this.selectableApplications = this.allApplications.filter((application) => {
           return application.appEUI !== this.application.appEUI;
         });

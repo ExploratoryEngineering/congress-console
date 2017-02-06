@@ -9,13 +9,30 @@
       </div>
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="submitDevice()">
-          <text-input value.two-way="device.name" name="device-name" label="Name" floatinglabel="true"></text-input>
-          <textarea-input value.two-way="device.description" name="device-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
-          <text-input value.two-way="device.contactEmail" name="device-contact-email" label="Contact Email" floatinglabel="true"></text-input>
+          <div class="form-group">
+            <label class="radio-group">
+              <div class="radio-group__input">
+                <input type="radio" value="otaa" checked.bind="selectedType" name="device-type" />
+              </div>
+              <div class="radio-group__input-text">
+                <h3>OTAA</h3>
+                <span>Over The Air Activation - The simplest way of adding a device to the LoRa network</span>
+              </div>
+            </label>
+            <label class="radio-group">
+              <div class="radio-group__input">
+                <input type="radio" value="abp" checked.bind="selectedType" name="device-type"/>
+              </div>
+              <div class="radio-group__input-text">
+                <h3>ABP</h3>
+                <span>Activation By Personalization - The not so simplest way of adding a device to the LoRa network</span>
+              </div>
+            </label>
+          </div>
         </form>
       </div>
       <div class="flex-container__footer">
-        <button class="button button--flat" click.delegate="dialog.cancel()">Cancel</button>
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
         <button class="button button--primary" type="submit" click.trigger="submitDevice()">Create new device</button>
       </div>
     </div>

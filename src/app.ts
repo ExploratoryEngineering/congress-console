@@ -1,7 +1,7 @@
 import { Redirect, Router } from 'aurelia-router';
 
 import { routes } from './appRoutes';
-import UserInformation from 'Helpers/UserInformation';
+import { UserInformation } from 'Helpers/UserInformation';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -10,9 +10,10 @@ const Log = LogBuilder.create();
 export class App {
   static inject = [Router];
 
+  router: Router;
+
   constructor(router) {
     this.router = router;
-    this.userInformation = UserInformation;
   }
 
   configureRouter(config, router) {
