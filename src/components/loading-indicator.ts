@@ -1,7 +1,7 @@
 import { bindable, noView } from 'aurelia-framework';
 
 import '../../node_modules/nprogress/nprogress.css';
-import NProgress from 'nprogress';
+import * as NProgress from 'nprogress';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
