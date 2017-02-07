@@ -87,7 +87,7 @@ export class ServiceDetails {
       this.openApplicationStream();
     }).catch(err => {
       Log.error(err);
-      this.router.navigateToRoute('dashboard');
+      this.router.navigateToRoute('overview');
     });
   }
 
