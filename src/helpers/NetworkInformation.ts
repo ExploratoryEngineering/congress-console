@@ -1,4 +1,20 @@
+import { NetworkService } from 'Services/NetworkService';
+import { Network } from 'Models/Network';
+
 export class NetworkInformation {
-  static availableNetworks: string[] = [];
-  static selectedNetwork: string = '74-0a-09-3a-2c-22-69-f3';
+  static inject = [NetworkService];
+
+  availableNetworks: Network[] = [];
+  selectedNetwork: Network;
+
+  constructor(private networkService: NetworkService) {
+    this.networkService = networkService;
+  }
+
+  fetchNetworks(): Promise<any> {
+    return this.networkService.fetchAllNetworks().then((networks) => {
+      this.availableNetworks = networks;
+      this.selectedNetwork = networks[0];
+    });
+  }
 }
