@@ -6,7 +6,7 @@ export class Device {
   appSKey: string;
   nwkSKey: string;
   appEui: string;
-  state: string;
+  deviceType: string;
   fCntUp: number;
   fCntDn: number;
   relaxedCounter: boolean;
@@ -19,7 +19,7 @@ export class Device {
     appSKey = Debug.getRandomHexString(16, false),
     nwkSKey = Debug.getRandomHexString(16, false),
     appEUI = '',
-    state = 'ABP',
+    deviceType = 'ABP',
     fCntUp = 0,
     fCntDn = 0,
     relaxedCounter = true,
@@ -31,7 +31,7 @@ export class Device {
     this.appSKey = appSKey;
     this.nwkSKey = nwkSKey;
     this.appEui = appEUI;
-    this.state = state;
+    this.deviceType = deviceType;
     this.fCntUp = fCntUp;
     this.fCntDn = fCntDn;
     this.relaxedCounter = relaxedCounter;
@@ -46,7 +46,7 @@ export class Device {
       appSKey: device.AppSKey,
       nwkSKey: device.NwkSKey,
       appEUI: device.AppEUI,
-      state: device.State,
+      deviceType: device.DeviceType,
       fCntUp: device.FCntUp,
       fCntDn: device.FCntDn,
       relaxedCounter: device.RelaxedCounter,
@@ -62,7 +62,7 @@ export class Device {
       AppSKey: device.appSKey,
       NwkSKey: device.nwkSKey,
       AppEUI: device.appEui,
-      State: device.state,
+      deviceType: device.deviceType,
       FCntUp: device.fCntUp,
       FCntDn: device.fCntDn,
       RelaxedCounter: device.relaxedCounter,
