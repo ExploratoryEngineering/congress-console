@@ -1,8 +1,8 @@
 import 'whatwg-fetch';
 import '../styles/styles.less';
 
-import {LogManager} from 'aurelia-framework';
-import {ConsoleAppender} from 'aurelia-logging-console';
+import { LogManager } from 'aurelia-framework';
+import { ConsoleAppender } from 'aurelia-logging-console';
 
 // Promise polyfill
 import * as Bluebird from 'bluebird';
