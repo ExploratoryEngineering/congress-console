@@ -24,15 +24,17 @@ export interface NewABPDevice extends NewDevice {
 }
 
 export class DeviceService {
-  static inject = [HttpClient];
+  static inject = [HttpClient, NetworkInformation];
   httpClient: HttpClient;
+  networkInformation: NetworkInformation;
 
-  constructor(httpClient) {
+  constructor(httpClient, networkInformation) {
     this.httpClient = httpClient;
+    this.networkInformation = networkInformation;
   }
 
   fetchDevices(applicationEui: string): Promise<Device[]> {
-    return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications/${applicationEui}/devices`)
+    return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices`)
       .then(data => data.content.devices)
       .then(devices => {
         Log.debug('Fetched devices', devices);
@@ -41,7 +43,7 @@ export class DeviceService {
   }
 
   fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
-    return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications/${applicationEui}/devices/${deviceEui}`)
+    return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}`)
       .then(device => {
         Log.debug('Fetched device ', device);
         return Device.newFromDto(device);
@@ -51,7 +53,7 @@ export class DeviceService {
   createNewDevice(device: NewABPDevice | NewOTAADevice): Promise<Device> {
     Log.debug('ClientService: Creating client', device);
     return this.httpClient.post(
-      `/api/networks/${NetworkInformation.selectedNetwork}/applications/${device.AppEui}/devices`,
+      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${device.AppEui}/devices`,
       device
     ).then(res => {
       Log.debug('Created device ', res);

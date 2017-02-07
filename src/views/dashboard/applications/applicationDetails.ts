@@ -12,7 +12,7 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application details');
 
 export class ServiceDetails {
-  static inject = [ApplicationService, DeviceService, Router];
+  static inject = [ApplicationService, DeviceService, Router, NetworkInformation];
 
   application: Application;
   allApplications: Application[] = [];
@@ -21,16 +21,18 @@ export class ServiceDetails {
   router: Router;
   applicationService: ApplicationService;
   deviceService: DeviceService;
+  networkInformation: NetworkInformation;
 
   devices: Device[] = [];
 
   websocket: Websocket | null;
 
-  constructor(applicationService, deviceService, router) {
+  constructor(applicationService, deviceService, router, networkInformation: NetworkInformation) {
     this.router = router;
 
     this.applicationService = applicationService;
     this.deviceService = deviceService;
+    this.networkInformation = networkInformation;
   }
 
   onApplicationStreamMessage(message) {
@@ -40,7 +42,7 @@ export class ServiceDetails {
   openApplicationStream() {
     if (!this.websocket) {
       this.websocket = new Websocket({
-        url: `ws://localhost:8080/networks/${NetworkInformation.selectedNetwork}/applications/${this.application.appEUI}/data`,
+        url: `ws://10.5.10.253:8080/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${this.application.appEUI}/stream`,
         onerror: (err) => { Log.error('WS Error', err); },
         onopen: (msg) => { Log.debug('WS Open: ', msg); },
         onclose: (msg) => { Log.debug('WS Close: ', msg); },
@@ -52,6 +54,7 @@ export class ServiceDetails {
   }
 
   closeApplicationStream() {
+    Log.debug('Closing WS');
     if (this.websocket) {
       this.websocket.close();
       this.websocket = null;

@@ -8,16 +8,18 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application service');
 
 export class ApplicationService {
-  static inject = [HttpClient];
+  static inject = [HttpClient, NetworkInformation];
 
   httpClient: HttpClient;
+  networkInformation: NetworkInformation;
 
-  constructor(httpClient: HttpClient) {
+  constructor(httpClient: HttpClient, networkInformation: NetworkInformation) {
     this.httpClient = httpClient;
+    this.networkInformation = networkInformation;
   }
 
   fetchApplications(): Promise<Application[]> {
-    return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications`)
+    return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications`)
       .then(data => data.content.applications)
       .then(content => {
         return content.map(Application.newFromDto);
@@ -25,7 +27,7 @@ export class ApplicationService {
   }
 
   fetchApplicationByEUI(applicationEui: String): Promise<Application> {
-    return this.httpClient.get(`/api/networks/${NetworkInformation.selectedNetwork}/applications/${applicationEui}`)
+    return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}`)
       .then(application => {
         Log.debug('ApplicationService: Fetching application', application);
         return Application.newFromDto(application);
@@ -34,7 +36,7 @@ export class ApplicationService {
 
   createNewApplication(application: Application): Promise<Application> {
     return this.httpClient.post(
-      `/api/networks/${NetworkInformation.selectedNetwork}/applications`,
+      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications`,
       Application.toDto(application)
     ).then(res => {
       Log.debug('Create success', res);
@@ -44,7 +46,7 @@ export class ApplicationService {
 
   updateApplication(application: Application): Promise<Application> {
     return this.httpClient.put(
-      `/api/networks/${NetworkInformation.selectedNetwork}/applications/${application.appEUI}`,
+      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${application.appEUI}`,
       Application.toDto(application)
     ).then(res => {
       Log.debug('Update success', res);
@@ -54,7 +56,7 @@ export class ApplicationService {
 
   deleteApplication(application: Application): Promise<void> {
     return this.httpClient.delete(
-      `/api/networks/${NetworkInformation.selectedNetwork}/applications/${application.appEUI}`
+      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${application.appEUI}`
     ).then(res => {
       Log.debug('Delete success!', res);
     });
