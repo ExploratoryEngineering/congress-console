@@ -10,6 +10,8 @@ export class Websocket {
   private lastGuardDogBark = 0;
   private guardDogIntervalId = 0;
 
+  private config;
+
   constructor({
     url = '',
     onmessage = (message: any) => { },
@@ -37,6 +39,8 @@ export class Websocket {
     this.socket.onopen = config.onopen;
     this.socket.onclose = config.onclose;
     this.socket.onerror = config.onerror;
+
+    this.config = config;
 
     if (!this.guardDogIntervalId) {
       this.initiateGuardDog();
@@ -68,7 +72,7 @@ export class Websocket {
       const newBark = (new Date()).getTime();
       if (newBark - this.lastGuardDogBark > (GUARD_DOG_INTERVAL + GUARD_DOG_INTERVAL / 2)) {
         Log.info('Reconnect due to guard dog');
-        setTimeout(function () {
+        setTimeout(() => {
           this.reconnect();
         }, APP_WAKE_TIME);
       }
@@ -85,5 +89,6 @@ export class Websocket {
   reconnect() {
     Log.info('Reconnecting websocket.');
     this.close();
+    this._connect(this.config);
   }
 }

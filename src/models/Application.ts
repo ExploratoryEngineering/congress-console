@@ -26,10 +26,10 @@ export class Application {
    */
   static newFromDto(dto): Application {
     return new Application({
-      appEUI: dto.AppEUI,
+      appEUI: dto.ApplicationEUI,
       appKey: dto.AppKey,
       name: dto.Name,
-      netEUI: dto.NetEUI,
+      netEUI: dto.NetworkEUI,
       ownerId: dto.OwnerID
     });
   }

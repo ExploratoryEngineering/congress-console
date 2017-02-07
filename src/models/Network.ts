@@ -7,14 +7,14 @@ export class Network {
   name: string;
 
   constructor({
-    NetEUI = '',
-    NetKey = Debug.getRandomNumber(),
-    NwkID = '',
+    NetworkEUI = '',
+    NetworkKey = Debug.getRandomNumber(),
+    NetID = '',
     Name = ''
   } = {}) {
-    this.netEui = NetEUI;
-    this.netKey = NetKey;
-    this.nwkId = NwkID;
+    this.netEui = NetworkEUI;
+    this.netKey = NetworkKey;
+    this.nwkId = NetID;
     this.name = Name;
   }
 }
