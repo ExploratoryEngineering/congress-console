@@ -1,3 +1,4 @@
+import { Network } from 'Models/Network';
 import { DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
@@ -59,11 +60,7 @@ export class Services {
     });
   }
 
-  activate() {
-    this.eventAggregator.subscribe('application:edit', (application) => {
-      this.editApplication(application);
-    });
-
+  fetchAndPopulateApplications() {
     return new Promise((res) => {
       this.applicationService.fetchApplications().then(applications => {
         this.availableApplications = applications;
@@ -73,5 +70,16 @@ export class Services {
         res();
       });
     });
+  }
+
+  activate() {
+    this.eventAggregator.subscribe('application:edit', (application) => {
+      this.editApplication(application);
+    });
+    this.eventAggregator.subscribe('network:selected', (network: Network) => {
+      this.fetchAndPopulateApplications();
+    });
+
+    return this.fetchAndPopulateApplications();
   }
 }
