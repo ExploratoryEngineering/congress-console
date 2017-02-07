@@ -15,7 +15,7 @@ export const routes = [
     title: 'Overview'
   },
   {
-    route: ['services/:applicationId/transactions'],
+    route: ['applications/:applicationId/applicationDevices'],
     name: 'application_devices',
     moduleId: './dashboard/applications/applicationDevices',
     nav: true,
@@ -23,18 +23,11 @@ export const routes = [
     title: 'Devices'
   },
   {
-    route: ['services/:applicationId/settings'],
-    name: 'service_settings',
+    route: ['applications/:applicationId/settings'],
+    name: 'application_settings',
     moduleId: './dashboard/services/serviceSettings',
     nav: true,
     href: '#/dashboard/services',
     title: 'Integration'
-  },
-  {
-    route: ['services/create'],
-    name: 'service_create',
-    moduleId: './dashboard/services/create',
-    nav: false,
-    title: 'Create new application'
   }
 ];
