@@ -1,0 +1,9 @@
+<template class="network-chooser">
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
+  <dropdown>
+    <dropdown-title><span class="network-chooser__title">${ networkInformation.selectedNetwork.name }</span><i class="material-icons network-chooser__triangle">arrow_drop_down</i></dropdown-title>
+    <dropdown-container><span repeat.for="network of networkInformation.availableNetworks" class="network-chooser__menu-item" click.trigger="selectNetwork(network)">${ network.name }</span></dropdown-container>
+  </dropdown>
+</template>

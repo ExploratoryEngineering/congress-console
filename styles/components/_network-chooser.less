@@ -1,0 +1,27 @@
+.network-chooser {
+  display: inline-block;
+  line-height: @grid-size * 4;
+
+  &__title {
+    background-color: darken(@color--blue, 10%);
+    border-radius: 2px;
+    color: @color--white;
+    font-weight: @font-weight--bold;
+    padding: @grid-size;
+    padding-right: @grid-size * 3;
+    position: relative;
+  }
+
+  &__triangle {
+    color: @color--white;
+    position: absolute;
+    right: 0;
+    top: @grid-size / 2;
+  }
+
+  &__menu-item {
+    cursor: pointer;
+    display: block;
+    padding: @grid-size / 2;
+  }
+}
