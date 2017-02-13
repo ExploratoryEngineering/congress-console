@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Network } from 'Models/Network';
 import { NetworkInformation } from 'Helpers/NetworkInformation';
@@ -13,6 +14,7 @@ export class NetworkChooser {
 
   selectNetwork(network: Network) {
     this.networkInformation.selectedNetwork = network;
+    Cookies.set('selectedNetworkEUI', network.netEui);
     this.eventAggregator.publish('network:selected', network);
   }
 }

@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { NetworkService } from 'Services/NetworkService';
 import { Network } from 'Models/Network';
 
@@ -12,9 +13,22 @@ export class NetworkInformation {
   }
 
   fetchNetworks(): Promise<any> {
+    let selectedNetworkEU = Cookies.get('selectedNetworkEUI');
+
     return this.networkService.fetchAllNetworks().then((networks) => {
       this.availableNetworks = networks;
-      this.selectedNetwork = networks[0];
+
+      if (selectedNetworkEU) {
+        let selectedNetwork = networks.find((network) => {
+          return network.netEui === selectedNetworkEU;
+        });
+
+        if (selectedNetwork) {
+          this.selectedNetwork = selectedNetwork;
+        }
+      } else {
+        this.selectedNetwork = networks[0];
+      }
     });
   }
 }
