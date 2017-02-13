@@ -22,6 +22,8 @@ export class Services {
   router: Router;
   eventAggregator: EventAggregator;
 
+  subscriptions: any = [];
+
   constructor(applicationService, dialogService, router, eventAggregator) {
     this.applicationService = applicationService;
     this.dialogService = dialogService;
@@ -73,13 +75,18 @@ export class Services {
   }
 
   activate() {
-    this.eventAggregator.subscribe('application:edit', (application) => {
+    this.subscriptions.push(this.eventAggregator.subscribe('application:edit', (application) => {
       this.editApplication(application);
-    });
-    this.eventAggregator.subscribe('network:selected', (network: Network) => {
+    }));
+    this.subscriptions.push(this.eventAggregator.subscribe('network:selected', (network: Network) => {
       this.fetchAndPopulateApplications();
-    });
+    }));
 
     return this.fetchAndPopulateApplications();
+  }
+
+  deactivate() {
+    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions = [];
   }
 }
