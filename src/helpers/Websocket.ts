@@ -14,7 +14,7 @@ export class Websocket {
 
   constructor({
     url = '',
-    onmessage = (message: any) => { },
+    onmessage = (message: WebsocketStatusMessage | WebsocketDeviceDataMessage) => { },
     onopen = (open: any) => { },
     onclose = (close: any) => { },
     onerror = (error: any) => { }
@@ -90,5 +90,33 @@ export class Websocket {
     Log.info('Reconnecting websocket.');
     this.close();
     this._connect(this.config);
+  }
+}
+
+type MessageType = 'SocketStatus' | 'DeviceData';
+
+export interface WebsocketMessage {
+  MessageType: MessageType,
+  MessageBody: any
+}
+
+export interface WebsocketStatusMessage extends WebsocketMessage {
+  MessageBody: {
+    KeepAlive: boolean
+  }
+}
+
+export interface WebsocketDeviceDataMessage extends WebsocketMessage {
+  MessageBody: {
+    AppEUI: string,
+    Data: string,
+    DataRate: string,
+    DevAddr: string,
+    DeviceEUI: string,
+    Frequency: number,
+    GatewayEUI: string,
+    RSSI: number,
+    SNR: number,
+    Timestamp: number
   }
 }
