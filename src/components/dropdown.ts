@@ -3,6 +3,8 @@ import { bindable } from 'aurelia-framework';
 export class Dropdown {
   @bindable
   active = false;
+  @bindable
+  dropdownPosition: string = 'above';
 
   dropdown;
   container;
