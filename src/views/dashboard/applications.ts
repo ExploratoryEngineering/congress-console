@@ -1,4 +1,3 @@
-import { Network } from 'Models/Network';
 import { DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
@@ -78,7 +77,7 @@ export class Services {
     this.subscriptions.push(this.eventAggregator.subscribe('application:edit', (application) => {
       this.editApplication(application);
     }));
-    this.subscriptions.push(this.eventAggregator.subscribe('network:selected', (network: Network) => {
+    this.subscriptions.push(this.eventAggregator.subscribe('network:selected', (network) => {
       this.fetchAndPopulateApplications();
     }));
 
