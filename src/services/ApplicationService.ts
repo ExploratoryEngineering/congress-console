@@ -26,12 +26,20 @@ export class ApplicationService {
       });
   }
 
-  fetchApplicationByEUI(applicationEui: String): Promise<Application> {
+  fetchApplicationByEUI(applicationEui: string): Promise<Application> {
     return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}`)
       .then(application => {
-        Log.debug('ApplicationService: Fetching application', application);
+        Log.debug('Fetching application', application);
         return Application.newFromDto(application);
       });
+  }
+
+  fetchApplicationDataByEUI(applicationEui: string, {limit = 50}: { limit?: number } = {}): Promise<MessageData[]> {
+    return this.httpClient.get(
+      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/data?limit=${limit}`
+    )
+      .then(data => data.content.Messages)
+      .then(data => data.reverse());
   }
 
   createNewApplication(application: Application): Promise<Application> {
@@ -61,6 +69,4 @@ export class ApplicationService {
       Log.debug('Delete success!', res);
     });
   }
-
-
 }
