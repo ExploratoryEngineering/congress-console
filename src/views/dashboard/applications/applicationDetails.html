@@ -3,13 +3,19 @@
   <require from="components/tab-navigation.html"></require>
   <require from="components/device-table.html"></require>
   <require from="components/nav-header.html"></require>
+  <require from="components/graph-chart"></require>
   <application-details-side-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router">
   </application-details-side-bar-menu>
   <main class="flex-element--grow">
     <nav-header heading="Application overview"></nav-header>
-    <div class="section">
-      <div class="card">
-        <div class="card__body">Test</div>
+    <div class="section application-details">
+      <div class="card application-details__graph">
+        <div class="card__header">
+          <h3 class="h3">Data</h3>
+        </div>
+        <div class="card__body card__body--no-padding">
+          <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+        </div>
       </div>
       <div class="card">
         <device-table devices.bind="devices" containerless></device-table>
