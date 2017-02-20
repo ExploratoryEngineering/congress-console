@@ -72,7 +72,7 @@ export class ServiceDetails {
       })
     ]).catch(err => {
       Log.error(err);
-      this.router.navigateToRoute('dashboard');
+      this.router.navigate('');
     });
   }
 }
