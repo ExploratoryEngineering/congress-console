@@ -29,7 +29,7 @@
     "watch": "npm run watch:dev",
     "watch:dev": "npm run build:dev -- --watch",
     "watch:dev:hmr": "npm run watch:dev -- --hot",
-    "watch:test": "npm run test -- --auto-watch --no-single-run --log-level debug",
+    "watch:test": "npm run test -- --auto-watch --no-single-run",
     "watch:prod": "npm run build:prod -- --watch",
     "build": "npm run build:dev",
     "prebuild:dev": "npm run clean:dist",
