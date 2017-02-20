@@ -54,13 +54,13 @@ export class ApplicationCard {
 
   dataInterval;
 
-  constructor(eventAggregator, private applicationService: ApplicationService, private graphCreator: GraphController) {
+  constructor(eventAggregator, private applicationService: ApplicationService, private graphController: GraphController) {
     this.eventAggregator = eventAggregator;
   }
 
   initiateChartData() {
     this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
-      this.chartData = this.graphCreator.getGraph(messageData, {
+      this.chartData = this.graphController.getGraph(messageData, {
         chartDataColors: ['rgba(255,255,255,.7)'],
         graphType: 'count-aggregated'
       });
