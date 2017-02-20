@@ -19,7 +19,7 @@ export class LoadingIndicator {
   @bindable loading = false;
 
   loadingChanged(isLoading) {
-    Log.info('IsLoading ', isLoading);
+    Log.debug('IsLoading ', isLoading);
     if (isLoading) {
       NProgress.start();
     } else {
