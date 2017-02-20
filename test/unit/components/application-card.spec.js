@@ -8,18 +8,36 @@ class EventAggregatorStub {
 class ApplicationStub {
 }
 
+class ApplicationServiceStub {
+  fetchApplicationDataByEUI() {
+    return Promise.resolve([]);
+  }
+}
+
+class GraphControllerStub {
+  getGraph() {
+    return {
+      dataSets: [],
+      labels: []
+    };
+  }
+}
+
 describe('ApplicationCard component', () => {
   let applicationCard;
 
   let eventAggregatorStub;
+  let applicationServiceStub;
   let applicationStub;
+  let graphControllerStub;
 
   beforeEach(() => {
     eventAggregatorStub = new EventAggregatorStub();
     applicationStub = new ApplicationStub();
+    applicationServiceStub = new ApplicationServiceStub();
+    graphControllerStub = new GraphControllerStub();
 
-    applicationCard = new ApplicationCard(eventAggregatorStub);
-
+    applicationCard = new ApplicationCard(eventAggregatorStub, applicationServiceStub, graphControllerStub);
     applicationCard.application = applicationStub;
 
     jasmine.clock().install();
@@ -34,59 +52,17 @@ describe('ApplicationCard component', () => {
     it('should initiate chartData upon bind', () => {
       expect(applicationCard.chartData).toBeFalsy();
 
+      spyOn(applicationCard, 'initiateChartData');
+
       applicationCard.bind();
 
-      expect(applicationCard.chartData).toBeTruthy();
-    });
-
-    it('should add dataInterval upon bind', () => {
-      applicationCard.bind();
-
-      expect(applicationCard.dataInterval).not.toBe('');
-    });
-
-    it('should clear dataInterval upon unbind', () => {
-      applicationCard.bind();
-      expect(applicationCard.dataInterval).toBeTruthy();
-
-      applicationCard.unbind();
-      expect(applicationCard.dataInterval).toBeFalsy();
+      expect(applicationCard.initiateChartData).toHaveBeenCalled();
     });
   });
 
   describe('Chart data', () => {
     it('should have no data upon initialization', () => {
       expect(applicationCard.chartData).toBeFalsy();
-    });
-
-    it('should append data to existing data sets', () => {
-      applicationCard.initiateChartData();
-
-      expect(applicationCard.chartData.datasets).toBeDefined();
-
-      // Clone array and check for length
-      const data = Array.from(applicationCard.chartData.datasets[0].data);
-      expect(data.length).toBeGreaterThan(0);
-
-      // Run datainterval
-      applicationCard.setDataOnInterval();
-      jasmine.clock().tick(5001);
-
-      // Check that the array does not equal clone
-      expect(applicationCard.chartData.datasets[0].data).not.toEqual(data);
-    });
-
-    it('should create data structure upon calling interval when no data', () => {
-      applicationCard.setDataOnInterval();
-      expect(applicationCard.chartData).toBeFalsy();
-
-      jasmine.clock().tick(applicationCard.UPDATE_INTERVAL - 50);
-
-      expect(applicationCard.chartData).toBeFalsy();
-
-      jasmine.clock().tick(100);
-
-      expect(applicationCard.chartData).toBeTruthy();
     });
   });
 
