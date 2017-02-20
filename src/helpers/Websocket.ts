@@ -107,16 +107,5 @@ export interface WebsocketStatusMessage extends WebsocketMessage {
 }
 
 export interface WebsocketDeviceDataMessage extends WebsocketMessage {
-  MessageBody: {
-    AppEUI: string,
-    Data: string,
-    DataRate: string,
-    DevAddr: string,
-    DeviceEUI: string,
-    Frequency: number,
-    GatewayEUI: string,
-    RSSI: number,
-    SNR: number,
-    Timestamp: number
-  }
+  MessageBody: MessageData
 }
