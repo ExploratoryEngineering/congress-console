@@ -10,7 +10,7 @@ const Log = LogBuilder.create('Device Dialog');
 const DeviceTypes = {
   ABP: 'abp',
   OTAA: 'otaa'
-}
+};
 
 export class CreateDeviceDialog {
   static inject = [DeviceService, DialogController];
@@ -49,7 +49,7 @@ export class CreateDeviceDialog {
         DevAddr: this.device.devAddr,
         AppSKey: this.device.appSKey,
         Type: this.selectedType,
-      }
+      };
       return abpDevice;
     }
   }

@@ -1,10 +1,10 @@
 import { LogManager } from 'aurelia-framework';
 
 interface Logger {
-  debug(...any);
-  warn(...any);
-  error(...any);
-  info(...any);
+  debug(...debugMessages: any[]);
+  warn(...warningMessages: any []);
+  error(...errorMessages: any[]);
+  info(...infoMessages: any[]);
 }
 
 export const LogBuilder = {

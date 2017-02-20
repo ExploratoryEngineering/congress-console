@@ -3,8 +3,8 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 type TransformationType = 'count' | 'CO2';
 
 interface Transformation {
-  type: TransformationType,
-  data?: any
+  type: TransformationType;
+  data?: any;
 }
 
 const Log = LogBuilder.create('Data Transformer');
@@ -18,6 +18,6 @@ export class DataTransformer {
         sensorTwoStatus: parseInt(message.Data.slice(4, 6), 16),
         sensorTwo: parseInt(message.Data.slice(6, 10), 16)
       }
-    }
+    };
   }
 }

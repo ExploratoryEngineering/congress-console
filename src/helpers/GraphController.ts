@@ -3,41 +3,41 @@ import { autoinject } from 'aurelia-framework';
 import { DataTransformer } from 'Helpers/DataTransformer';
 
 interface DataBucket {
-  label: any,
-  dataSets: MessageDataSet
+  label: any;
+  dataSets: MessageDataSet;
 }
 
 interface DataBucketSet {
-  [timestampLabel: string]: DataBucket
+  [timestampLabel: string]: DataBucket;
 }
 
 interface MessageDataSet {
-  [dataEUI: string]: MessageData[]
+  [dataEUI: string]: MessageData[];
 }
 
 export interface GraphData {
-  datasets: GraphDataSet[],
-  labels: any[],
-  graphConfig: GraphConfig,
-  graphMetaData: GraphMetaData,
-  messageData: MessageData[]
+  datasets: GraphDataSet[];
+  labels: any[];
+  graphConfig: GraphConfig;
+  graphMetaData: GraphMetaData;
+  messageData: MessageData[];
 }
 
 interface GraphDataSet {
-  label: string,
-  data: any[],
-  backgroundColor: string,
-  fill: boolean
+  label: string;
+  data: any[];
+  backgroundColor: string;
+  fill: boolean;
 }
 
 interface GraphMetaData {
-  dataBucketSet: DataBucketSet,
-  dataEUIs: string[]
+  dataBucketSet: DataBucketSet;
+  dataEUIs: string[];
 }
 
 interface GraphConfig {
-  graphType?: GraphType,
-  chartDataColors?: string[]
+  graphType?: GraphType;
+  chartDataColors?: string[];
 }
 
 type GraphType = 'count' | 'count-aggregated' | 'CO2';
@@ -76,7 +76,7 @@ const defaultColors = [
 export class GraphController {
   constructor(private dataTransformer: DataTransformer) { }
 
-  chartDataColors: string[] = []
+  chartDataColors: string[] = [];
 
 
   getGraph(messageData: MessageData[], { graphType = 'CO2', chartDataColors = defaultColors}: GraphConfig = {}): GraphData {
@@ -112,7 +112,7 @@ export class GraphController {
       },
       graphMetaData: graphMetaData,
       messageData: messageData
-    }
+    };
   };
 
   /**
@@ -158,7 +158,7 @@ export class GraphController {
    * Create GraphData based on the type 'count'
    */
   createCountGraphData(dataEUI: string, dataBucketSet: DataBucketSet) {
-    let countData: { data: Array<number | undefined> } = { data: [] }
+    let countData: { data: Array<number | undefined> } = { data: [] };
 
     Object.keys(dataBucketSet).forEach((label) => {
       let dataBucket = dataBucketSet[label];
@@ -295,7 +295,7 @@ export class GraphController {
           label: message.Timestamp * 1000,
           dataSets: {}
         };
-        dataBucketSet[message.Timestamp].dataSets[message.DeviceEUI] = [message]
+        dataBucketSet[message.Timestamp].dataSets[message.DeviceEUI] = [message];
       }
       // Add unique euis
       if (!dataEUIs.includes(message.DeviceEUI)) {

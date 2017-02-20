@@ -96,16 +96,16 @@ export class Websocket {
 type MessageType = 'SocketStatus' | 'DeviceData';
 
 export interface WebsocketMessage {
-  MessageType: MessageType,
-  MessageBody: any
+  MessageType: MessageType;
+  MessageBody: any;
 }
 
 export interface WebsocketStatusMessage extends WebsocketMessage {
   MessageBody: {
     KeepAlive: boolean
-  }
+  };
 }
 
 export interface WebsocketDeviceDataMessage extends WebsocketMessage {
-  MessageBody: MessageData
+  MessageBody: MessageData;
 }

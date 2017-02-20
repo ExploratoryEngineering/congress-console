@@ -8,19 +8,17 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Device service');
 
 interface NewDevice {
-  AppEui: string
+  AppEui: string;
 }
 
-export interface NewOTAADevice extends NewDevice {
-
-}
+export interface NewOTAADevice extends NewDevice { }
 
 export interface NewABPDevice extends NewDevice {
-  Type: string,
-  DevAddr: string,
-  AppSKey: string,
-  AppEui: string,
-  NwkSKey: string
+  Type: string;
+  DevAddr: string;
+  AppSKey: string;
+  AppEui: string;
+  NwkSKey: string;
 }
 
 export class DeviceService {
