@@ -6,6 +6,7 @@
     "EditorConfig.EditorConfig",
     "christian-kohler.path-intellisense",
     "behzad88.Aurelia",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "eg2.tslint"
   ]
 }
