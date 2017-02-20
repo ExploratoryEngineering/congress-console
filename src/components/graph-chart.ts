@@ -1,10 +1,13 @@
+import { LogBuilder } from 'Helpers/LogBuilder';
 import { bindable, bindingMode, containerless } from 'aurelia-framework';
 
 import Chart from 'chart.js';
 
+const Log = LogBuilder.create('Graph chart');
+
 @containerless
 export class GraphChart {
-  @bindable chartData = {};
+  @bindable chartData: any = {};
   @bindable chartOptions = {};
   @bindable chartType = 'line';
   @bindable({ defaultBindingMode: bindingMode.twoWay }) chart;
@@ -35,7 +38,9 @@ export class GraphChart {
     this.chart.destroy();
   }
 
-  chartDataChanged() {
+  chartDataChanged(newData) {
+    this.chart.data.datasets = newData.datasets;
+    this.chart.data.labels = newData.labels;
     this.chart.update();
   }
 
