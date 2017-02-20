@@ -31,7 +31,8 @@
       ]
     },
     "typeRoots": [
-      "./typings/globals"
+      "./typings/globals",
+      "./globalTypings"
     ]
   },
   "awesomeTypescriptLoaderOptions": {
