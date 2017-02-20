@@ -1,17 +1,23 @@
+import { GraphController } from 'Helpers/GraphController';
+import { LogBuilder } from 'Helpers/LogBuilder';
+import { Application } from 'Models/Application';
+import { ApplicationService } from 'Services/ApplicationService';
 import { bindable, containerless } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import Debug from 'Helpers/Debug';
 
+const Log = LogBuilder.create('Application-card');
+
 @containerless
 export class ApplicationCard {
-  static inject = [EventAggregator];
+  static inject = [EventAggregator, ApplicationService, GraphController];
 
   eventAggregator: EventAggregator;
 
   UPDATE_INTERVAL = 5000;
 
-  @bindable application;
+  @bindable application: Application;
 
   chartData;
   chartOptions = {
@@ -25,10 +31,18 @@ export class ApplicationCard {
     },
     scales: {
       yAxes: [{
-        display: false
+        display: false,
+        ticks: {
+          beginAtZero: true
+        }
       }],
       xAxes: [{
-        display: false
+        display: false,
+        type: 'time',
+        ticks: {
+          max: 8,
+          min: 0
+        }
       }]
     },
     tooltips: {
@@ -40,41 +54,17 @@ export class ApplicationCard {
 
   dataInterval;
 
-  constructor(eventAggregator) {
+  constructor(eventAggregator, private applicationService: ApplicationService, private graphCreator: GraphController) {
     this.eventAggregator = eventAggregator;
   }
 
   initiateChartData() {
-    const randData = Debug.getRandomArray(20, 10000000);
-
-    this.chartData = {
-      labels: randData,
-      datasets: [{
-        data: randData,
-        backgroundColor: 'rgba(255, 255, 255, .7)'
-      }
-      ]
-    };
-
-    this.setDataOnInterval();
-  }
-
-  setDataOnInterval() {
-    this.dataInterval = window.setInterval(() => {
-      const value = Debug.getRandomNumber(10000000);
-      const data = Object.assign({}, this.chartData);
-
-      if (data.datasets) {
-        data.datasets[0].data.splice(0, 1);
-        data.datasets[0].data.push(value);
-      } else {
-        data.datasets = [{
-          data: [value]
-        }];
-      }
-
-      this.chartData = data;
-    }, this.UPDATE_INTERVAL);
+    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
+      this.chartData = this.graphCreator.getGraph(messageData, {
+        chartDataColors: ['rgba(255,255,255,.7)'],
+        graphType: 'count-aggregated'
+      });
+    });
   }
 
   editApplication() {
