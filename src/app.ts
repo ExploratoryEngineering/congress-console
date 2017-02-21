@@ -8,13 +8,9 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create();
 
 export class App {
-  static inject = [Router];
-
-  router: Router;
-
-  constructor(router) {
-    this.router = router;
-  }
+  constructor(
+    private router: Router
+  ) { }
 
   configureRouter(config, router) {
     config.title = 'Telenor LORA';
@@ -29,7 +25,7 @@ class AuthorizeStep {
   run(navigationInstruction, next) {
     if (navigationInstruction.getAllInstructions().some(i => i.config.settings.auth)) {
       Log.debug('Auth protected route', navigationInstruction, !!UserInformation.isLoggedIn());
-      let isLoggedIn = !!UserInformation.isLoggedIn();// insert magic here;
+      let isLoggedIn = !!UserInformation.isLoggedIn(); // insert magic here;
       if (!isLoggedIn) {
         return next.cancel(new Redirect('login'));
       }

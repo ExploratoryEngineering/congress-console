@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 
@@ -12,28 +13,20 @@ import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
 
+@autoinject
 export class ServiceDetails {
-  static inject = [ApplicationService, DeviceService, DialogService, Router];
-
   application: Application;
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
 
-  router: Router;
-  applicationService: ApplicationService;
-  deviceService: DeviceService;
-  dialogService: DialogService;
-
   devices: Device[] = [];
 
-  constructor(applicationService, deviceService, dialogService, router) {
-    this.router = router;
-
-    this.applicationService = applicationService;
-    this.deviceService = deviceService;
-
-    this.dialogService = dialogService;
-  }
+  constructor(
+    private applicationService: ApplicationService,
+    private deviceService: DeviceService,
+    private dialogService: DialogService,
+    private router: Router
+  ) { }
 
   createNewDevice() {
     this.dialogService.open({

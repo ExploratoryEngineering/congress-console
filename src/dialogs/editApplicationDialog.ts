@@ -1,4 +1,4 @@
-import { useView } from 'aurelia-framework';
+import { useView, autoinject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 
 import { ApplicationService } from 'Services/ApplicationService';
@@ -9,21 +9,17 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application dialog');
 
 @useView('./applicationDialog.html')
+@autoinject
 export class EditApplicationDialog {
-  static inject = [ApplicationService, DialogController];
-
-  applicationService: ApplicationService;
-  dialogController: DialogController;
-
   application: Application = new Application();
 
   dialogHeader = 'Edit application';
   confirmButtonText = 'Update application';
 
-  constructor(applicationService, dialogController) {
-    this.applicationService = applicationService;
-    this.dialogController = dialogController;
-  }
+  constructor(
+    private applicationService: ApplicationService,
+    private dialogController: DialogController
+  ) { }
 
   submitApplication() {
     return this.applicationService.updateApplication(this.application).then(() => {

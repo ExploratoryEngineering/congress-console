@@ -1,15 +1,14 @@
+import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { UserInformation } from 'Helpers/UserInformation';
 
+@autoinject
 export class Login {
-  static inject = [Router];
-
   heading = 'Login for Self Service Portal';
-  router: Router;
 
-  constructor(router: Router) {
-    this.router = router;
-  }
+  constructor(
+    private router: Router
+  ) { }
 
   login() {
     UserInformation.setLoggedIn(true);

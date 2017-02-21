@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { Device } from 'Models/Device';
 import { HttpClient } from 'aurelia-http-client';
 
@@ -19,15 +20,12 @@ export interface NewABPDevice extends NewDevice {
   NwkSKey: string;
 }
 
+@autoinject
 export class DeviceService {
-  static inject = [HttpClient, NetworkInformation];
-  httpClient: HttpClient;
-  networkInformation: NetworkInformation;
-
-  constructor(httpClient, networkInformation) {
-    this.httpClient = httpClient;
-    this.networkInformation = networkInformation;
-  }
+  constructor(
+    private httpClient: HttpClient,
+    private networkInformation: NetworkInformation
+  ) { }
 
   fetchDevices(applicationEui: string): Promise<Device[]> {
     return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices`)

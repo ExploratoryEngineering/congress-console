@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { Network } from 'Models/Network';
 import { HttpClient } from 'aurelia-http-client';
 
@@ -5,13 +6,11 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Network service');
 
+@autoinject
 export class NetworkService {
-  static inject = [HttpClient];
-  httpClient: HttpClient;
-
-  constructor(httpClient) {
-    this.httpClient = httpClient;
-  }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   fetchAllNetworks(): Promise<Network[]> {
     return this.httpClient.get('/api/networks')

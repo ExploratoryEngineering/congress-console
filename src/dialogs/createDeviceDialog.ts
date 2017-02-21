@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 
 import { DeviceService, NewOTAADevice, NewABPDevice } from 'Services/DeviceService';
@@ -8,27 +9,24 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Device Dialog');
 
 const DeviceTypes = {
-  ABP: 'abp',
-  OTAA: 'otaa'
+  ABP: 'ABP',
+  OTAA: 'OTAA'
 };
 
+@autoinject
 export class CreateDeviceDialog {
-  static inject = [DeviceService, DialogController];
-
-  deviceService: DeviceService;
-  dialogController: DialogController;
-
   selectedType: string = DeviceTypes.OTAA;
 
   device: Device = new Device();
+  appEui: string;
 
-  constructor(deviceService, dialogController) {
-    this.deviceService = deviceService;
-    this.dialogController = dialogController;
-  }
+  constructor(
+    private deviceService: DeviceService,
+    private dialogController: DialogController
+  ) { }
 
   submitDevice() {
-    this.deviceService.createNewDevice(this.getNewDevice()).then((newDevice) => {
+    this.deviceService.createNewDevice(this.getNewDevice(), this.appEui).then((newDevice) => {
       this.dialogController.ok(newDevice);
     }).catch(error => {
       Log.error('Create device: Error occured', error);
@@ -37,14 +35,10 @@ export class CreateDeviceDialog {
 
   getNewDevice(): NewABPDevice | NewOTAADevice {
     if (this.selectedType === DeviceTypes.OTAA) {
-      let otaaDevice: NewOTAADevice = {
-        AppEui: this.device.appEui
-      };
-
+      let otaaDevice: NewOTAADevice = {};
       return otaaDevice;
     } else {
       let abpDevice: NewABPDevice = {
-        AppEui: this.device.appEui,
         NwkSKey: this.device.nwkSKey,
         DevAddr: this.device.devAddr,
         AppSKey: this.device.appSKey,
@@ -55,7 +49,7 @@ export class CreateDeviceDialog {
   }
 
   activate(args) {
-    this.device.appEui = args.appEUI;
-    Log.debug(this.device);
+    Log.debug('Activating with args:', args);
+    this.appEui = args.appEUI;
   }
 }

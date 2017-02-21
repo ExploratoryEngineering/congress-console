@@ -2,7 +2,7 @@ import { GraphController } from 'Helpers/GraphController';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { Application } from 'Models/Application';
 import { ApplicationService } from 'Services/ApplicationService';
-import { bindable, containerless } from 'aurelia-framework';
+import { bindable, containerless, autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import Debug from 'Helpers/Debug';
@@ -10,11 +10,8 @@ import Debug from 'Helpers/Debug';
 const Log = LogBuilder.create('Application-card');
 
 @containerless
+@autoinject
 export class ApplicationCard {
-  static inject = [EventAggregator, ApplicationService, GraphController];
-
-  eventAggregator: EventAggregator;
-
   UPDATE_INTERVAL = 5000;
 
   @bindable application: Application;
@@ -54,9 +51,11 @@ export class ApplicationCard {
 
   dataInterval;
 
-  constructor(eventAggregator, private applicationService: ApplicationService, private graphController: GraphController) {
-    this.eventAggregator = eventAggregator;
-  }
+  constructor(
+    private eventAggregator: EventAggregator,
+    private applicationService: ApplicationService,
+    private graphController: GraphController
+  ) { }
 
   initiateChartData() {
     this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {

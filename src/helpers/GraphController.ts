@@ -74,10 +74,11 @@ const defaultColors = [
 
 @autoinject()
 export class GraphController {
-  constructor(private dataTransformer: DataTransformer) { }
-
   chartDataColors: string[] = [];
 
+  constructor(
+    private dataTransformer: DataTransformer
+  ) { }
 
   getGraph(messageData: MessageData[], { graphType = 'CO2', chartDataColors = defaultColors}: GraphConfig = {}): GraphData {
     this.chartDataColors = chartDataColors;

@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import Cookies from 'js-cookie';
 import { NetworkService } from 'Services/NetworkService';
@@ -5,15 +6,14 @@ import { Network } from 'Models/Network';
 
 const Log = LogBuilder.create('Network Information');
 
+@autoinject
 export class NetworkInformation {
-  static inject = [NetworkService];
-
   availableNetworks: Network[] = [];
   selectedNetwork: Network;
 
-  constructor(private networkService: NetworkService) {
-    this.networkService = networkService;
-  }
+  constructor(
+    private networkService: NetworkService
+  ) { }
 
   fetchNetworks(): Promise<any> {
     let selectedNetworkEUI = Cookies.get('selectedNetworkEUI');

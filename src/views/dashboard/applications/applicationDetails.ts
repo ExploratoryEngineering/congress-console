@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
@@ -15,19 +16,11 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Application details');
 
+@autoinject
 export class ServiceDetails {
-  static inject = [ApplicationService, DeviceService, Router, NetworkInformation, EventAggregator, GraphController];
-
   application: Application;
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
-
-  router: Router;
-  applicationService: ApplicationService;
-  deviceService: DeviceService;
-  networkInformation: NetworkInformation;
-  eventAggregator: EventAggregator;
-  graphCreator: GraphController;
 
   messageData: MessageData[] = [];
   chartData: GraphData;
@@ -75,15 +68,14 @@ export class ServiceDetails {
 
   websocket: Websocket | null;
 
-  constructor(applicationService, deviceService, router, networkInformation: NetworkInformation, eventAggregator: EventAggregator, graphCreator: GraphController) {
-    this.router = router;
-
-    this.applicationService = applicationService;
-    this.deviceService = deviceService;
-    this.networkInformation = networkInformation;
-    this.eventAggregator = eventAggregator;
-    this.graphCreator = graphCreator;
-  }
+  constructor(
+    private applicationService: ApplicationService,
+    private deviceService: DeviceService,
+    private router: Router,
+    private networkInformation: NetworkInformation,
+    private eventAggregator: EventAggregator,
+    private graphController: GraphController
+  ) { }
 
   initiateChartData() {
     this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { limit: 50 }).then(messageData => {
@@ -93,15 +85,15 @@ export class ServiceDetails {
   }
 
   getChartData(messageData: MessageData[]) {
-    Log.debug(this.graphCreator.getGraph(messageData));
+    Log.debug(this.graphController.getGraph(messageData));
 
-    return this.graphCreator.getGraph(messageData, { graphType: 'count' });
+    return this.graphController.getGraph(messageData, { graphType: 'CO2' });
   }
 
   addChartData(wsMessage: WebsocketDeviceDataMessage) {
     Log.debug('Adding data');
     let messageData: MessageData = wsMessage.MessageBody;
-    this.chartData = this.graphCreator.addToGraph(messageData, this.chartData);
+    this.chartData = this.graphController.addToGraph(messageData, this.chartData);
   }
 
   onApplicationStreamMessage(message) {

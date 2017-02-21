@@ -1,16 +1,15 @@
 import Cookies from 'js-cookie';
+import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Network } from 'Models/Network';
 import { NetworkInformation } from 'Helpers/NetworkInformation';
 
-
+@autoinject
 export class NetworkChooser {
-  static inject = [NetworkInformation, EventAggregator];
-
-  constructor(private networkInformation: NetworkInformation, private eventAggregator: EventAggregator) {
-    this.networkInformation = networkInformation;
-    this.eventAggregator = eventAggregator;
-  }
+  constructor(
+    private networkInformation: NetworkInformation,
+    private eventAggregator: EventAggregator
+  ) { }
 
   selectNetwork(network: Network) {
     this.networkInformation.selectedNetwork = network;

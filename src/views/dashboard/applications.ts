@@ -1,3 +1,4 @@
+import { autoinject } from 'aurelia-framework';
 import { DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
@@ -13,23 +14,16 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Applications');
 
+@autoinject
 export class Services {
-  static inject = [ApplicationService, DialogService, Router, EventAggregator];
-
-  applicationService: ApplicationService;
-  dialogService: DialogService;
-  router: Router;
-  eventAggregator: EventAggregator;
-
   subscriptions: any = [];
 
-  constructor(applicationService, dialogService, router, eventAggregator) {
-    this.applicationService = applicationService;
-    this.dialogService = dialogService;
-
-    this.router = router;
-    this.eventAggregator = eventAggregator;
-  }
+  constructor(
+    private applicationService: ApplicationService,
+    private dialogService: DialogService,
+    private router: Router,
+    private eventAggregator: EventAggregator
+  ) { }
 
   availableApplications: Application[] = [];
 
