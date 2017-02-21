@@ -1,20 +1,39 @@
 import Debug from 'Helpers/Debug';
 
+interface NetworkDto {
+  Name: string;
+  NetID: number;
+  NetworkEUI: string;
+  NetworkKey: string;
+}
+
 export class Network {
   netEui: string;
-  netKey: number;
-  nwkId: string;
+  netKey: string;
+  nwkId: number;
   name: string;
 
   constructor({
-    NetworkEUI = '',
-    NetworkKey = Debug.getRandomNumber(),
-    NetID = '',
-    Name = ''
+    netEui = '',
+    netKey = '',
+    nwkId = Debug.getRandomNumber(),
+    name = ''
   } = {}) {
-    this.netEui = NetworkEUI;
-    this.netKey = NetworkKey;
-    this.nwkId = NetID;
-    this.name = Name;
+    this.netEui = netEui;
+    this.netKey = netKey;
+    this.nwkId = nwkId;
+    this.name = name;
+  }
+
+  /**
+ * Returns a new Network from a dto
+ */
+  static newFromDto(dto: NetworkDto): Network {
+    return new Network({
+      netEui: dto.NetworkEUI,
+      netKey: dto.NetworkKey,
+      nwkId: dto.NetID,
+      name: dto.Name
+    });
   }
 }

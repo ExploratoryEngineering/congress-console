@@ -1,73 +1,69 @@
 import Debug from 'Helpers/Debug';
 
+interface DeviceDto {
+  AppSKey: string;
+  DevAddr: string;
+  DeviceEUI: string;
+  DeviceType: string;
+  FCntDn: number;
+  FCntUp: number;
+  NwkSKey: string;
+  RelaxedCounter: boolean;
+}
+
 export class Device {
-  deviceEUI: string;
-  devAddr: string;
   appSKey: string;
-  nwkSKey: string;
-  appEui: string;
+  devAddr: string;
+  deviceEUI: string;
   deviceType: string;
   fCntUp: number;
   fCntDn: number;
+  nwkSKey: string;
   relaxedCounter: boolean;
-  devNonce: number;
-  devNonceHistory: any;
 
   constructor({
     deviceEUI = Debug.getRandomHexString(),
     devAddr = Debug.getRandomHexString(3, false),
     appSKey = Debug.getRandomHexString(16, false),
     nwkSKey = Debug.getRandomHexString(16, false),
-    appEUI = '',
     deviceType = 'ABP',
     fCntUp = 0,
     fCntDn = 0,
     relaxedCounter = true,
-    devNonce = 0,
-    devNonceHistory = null
   } = {}) {
     this.deviceEUI = deviceEUI;
     this.devAddr = devAddr;
     this.appSKey = appSKey;
     this.nwkSKey = nwkSKey;
-    this.appEui = appEUI;
     this.deviceType = deviceType;
     this.fCntUp = fCntUp;
     this.fCntDn = fCntDn;
     this.relaxedCounter = relaxedCounter;
-    this.devNonce = devNonce;
-    this.devNonceHistory = devNonceHistory;
   }
 
-  static newFromDto(device): Device {
+  static newFromDto(device: DeviceDto): Device {
     return new Device({
       deviceEUI: device.DeviceEUI,
       devAddr: device.DevAddr,
       appSKey: device.AppSKey,
       nwkSKey: device.NwkSKey,
-      appEUI: device.AppEUI,
       deviceType: device.DeviceType,
       fCntUp: device.FCntUp,
       fCntDn: device.FCntDn,
-      relaxedCounter: device.RelaxedCounter,
-      devNonce: device.DevNonce,
-      devNonceHistory: device.DevNonceHistory
+      relaxedCounter: device.RelaxedCounter
     });
   }
 
-  static toDto(device: Device) {
+  static toDto(device: Device): DeviceDto {
     return {
       DeviceEUI: device.deviceEUI,
       DevAddr: device.devAddr,
       AppSKey: device.appSKey,
       NwkSKey: device.nwkSKey,
-      AppEUI: device.appEui,
-      deviceType: device.deviceType,
+      DeviceType: device.deviceType,
       FCntUp: device.fCntUp,
       FCntDn: device.fCntDn,
-      RelaxedCounter: device.relaxedCounter,
-      DevNonce: device.devNonce,
-      DevNonceHistory: device.devNonceHistory
+      RelaxedCounter: device.relaxedCounter
     };
   }
 }
