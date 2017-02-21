@@ -28,6 +28,7 @@ export class ApplicationService {
 
   fetchApplicationByEUI(applicationEui: string): Promise<Application> {
     return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}`)
+      .then(data => data.content)
       .then(application => {
         Log.debug('Fetching application', application);
         return Application.newFromDto(application);
@@ -46,20 +47,22 @@ export class ApplicationService {
     return this.httpClient.post(
       `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications`,
       Application.toDto(application)
-    ).then(res => {
-      Log.debug('Create success', res);
-      return Application.newFromDto(res);
-    });
+    ).then(data => data.content)
+      .then(res => {
+        Log.debug('Create success', res);
+        return Application.newFromDto(res);
+      });
   }
 
   updateApplication(application: Application): Promise<Application> {
     return this.httpClient.put(
       `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${application.appEUI}`,
       Application.toDto(application)
-    ).then(res => {
-      Log.debug('Update success', res);
-      return Application.newFromDto(res);
-    });
+    ).then(data => data.content)
+      .then(res => {
+        Log.debug('Update success', res);
+        return Application.newFromDto(res);
+      });
   }
 
   deleteApplication(application: Application): Promise<void> {

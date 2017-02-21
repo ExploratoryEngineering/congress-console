@@ -1,4 +1,4 @@
-import { Network } from '../models/Network';
+import { Network } from 'Models/Network';
 import { HttpClient } from 'aurelia-http-client';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
@@ -17,34 +17,13 @@ export class NetworkService {
     return this.httpClient.get('/api/networks')
       .then(data => data.content.networks)
       .then(networks => {
-        return networks.map(network => new Network(network));
+        return networks.map(network => Network.newFromDto(network));
       });
   }
 
   fetchNetworkByEui(networkEui: string): Promise<Network> {
     return this.httpClient.get(`/api/networks/${networkEui}`)
-      .then(network => {
-        return new Network(network);
-      });
-  }
-
-  createNewNetwork(network: Network): Promise<Network> {
-    return new Promise((res) => {
-      res(network);
-    });
-  }
-
-  updateNetwork(network: Network): Promise<Network> {
-    return new Promise((res) => {
-      Log.debug('Updating network', network);
-      res(network);
-    });
-  }
-
-  deleteNetwork(network: Network): Promise<any> {
-    return new Promise((res) => {
-      Log.debug('Deleting network', network);
-      res();
-    });
+      .then(data => data.content.networks)
+      .then(network => Network.newFromDto(network));
   }
 }

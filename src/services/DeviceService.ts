@@ -8,7 +8,6 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Device service');
 
 interface NewDevice {
-  AppEui: string;
 }
 
 export interface NewOTAADevice extends NewDevice { }
@@ -17,7 +16,6 @@ export interface NewABPDevice extends NewDevice {
   Type: string;
   DevAddr: string;
   AppSKey: string;
-  AppEui: string;
   NwkSKey: string;
 }
 
@@ -42,21 +40,23 @@ export class DeviceService {
 
   fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
     return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}`)
+      .then(data => data.content.devices)
       .then(device => {
         Log.debug('Fetched device ', device);
         return Device.newFromDto(device);
       });
   }
 
-  createNewDevice(device: NewABPDevice | NewOTAADevice): Promise<Device> {
-    Log.debug('ClientService: Creating client', device);
+  createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
+    Log.debug('Creating device', device);
     return this.httpClient.post(
-      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${device.AppEui}/devices`,
+      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEui}/devices`,
       device
-    ).then(res => {
-      Log.debug('Created device ', res);
-      return Device.newFromDto(res);
-    });
+    ).then(data => data.content)
+      .then(newDevice => {
+        Log.debug('Created device ', newDevice);
+        return Device.newFromDto(newDevice);
+      });
   }
 
   updateDevice(device: Device): Promise<Device> {
