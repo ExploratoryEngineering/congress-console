@@ -10,6 +10,14 @@ class RouterStub {
     this.authStep = authorizeFunction;
   }
 
+  mapUnknownRoutes() {
+    return true;
+  }
+
+  getUnknownRoute() {
+    return '';
+  }
+
   map(routes) {
     this.routes = routes;
   }
