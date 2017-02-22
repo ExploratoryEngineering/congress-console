@@ -12,8 +12,22 @@ export class App {
     private router: Router
   ) { }
 
+  getUnknownRoute() {
+    return {
+      route: ['404'],
+      name: 'notFound',
+      moduleId: 'views/notFound',
+      nav: false,
+      title: '404 - Missing stuff',
+      settings: {
+        auth: false
+      }
+    };
+  }
+
   configureRouter(config, router) {
     config.title = 'Telenor LORA';
+    config.mapUnknownRoutes(this.getUnknownRoute());
     config.addAuthorizeStep(new AuthorizeStep());
     config.map(routes);
 
