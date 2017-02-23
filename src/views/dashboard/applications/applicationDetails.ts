@@ -18,7 +18,7 @@ const Log = LogBuilder.create('Application details');
 
 @autoinject
 export class ServiceDetails {
-  application: Application;
+  application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
 
