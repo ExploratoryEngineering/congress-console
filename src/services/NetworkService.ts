@@ -1,3 +1,4 @@
+import { ResponseHandler } from 'Helpers/ResponseHandler';
 import { autoinject } from 'aurelia-framework';
 import { Network } from 'Models/Network';
 import { HttpClient } from 'aurelia-http-client';
@@ -9,8 +10,18 @@ const Log = LogBuilder.create('Network service');
 @autoinject
 export class NetworkService {
   constructor(
-    private httpClient: HttpClient
-  ) { }
+    private httpClient: HttpClient,
+    private responseHandler: ResponseHandler
+  ) {
+    this.httpClient.configure((client) => {
+      client.withInterceptor({
+        responseError: (responseError) => {
+          this.responseHandler.handleResponse(responseError);
+          return responseError;
+        }
+      });
+    });
+  }
 
   fetchAllNetworks(): Promise<Network[]> {
     return this.httpClient.get('/api/networks')

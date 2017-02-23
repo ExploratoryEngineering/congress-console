@@ -1,3 +1,4 @@
+import { ResponseHandler } from 'Helpers/ResponseHandler';
 import { autoinject } from 'aurelia-framework';
 import { Device } from 'Models/Device';
 import { HttpClient } from 'aurelia-http-client';
@@ -24,8 +25,18 @@ export interface NewABPDevice extends NewDevice {
 export class DeviceService {
   constructor(
     private httpClient: HttpClient,
-    private networkInformation: NetworkInformation
-  ) { }
+    private networkInformation: NetworkInformation,
+    private responseHandler: ResponseHandler
+  ) {
+    this.httpClient.configure((client) => {
+      client.withInterceptor({
+        responseError: (responseError) => {
+          this.responseHandler.handleResponse(responseError);
+          return responseError;
+        }
+      });
+    });
+  }
 
   fetchDevices(applicationEui: string): Promise<Device[]> {
     return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices`)
