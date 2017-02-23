@@ -25,9 +25,9 @@ export const routes = [
   {
     route: ['applications/:applicationId/settings'],
     name: 'application_settings',
-    moduleId: './dashboard/services/serviceSettings',
+    moduleId: './dashboard/applications/applicationDevices',
     nav: true,
-    href: '#/dashboard/services',
+    href: '#/dashboard/applications',
     title: 'Integration'
   }
 ];
