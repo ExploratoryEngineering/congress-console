@@ -46,5 +46,15 @@ export let routes = [
     settings: {
       auth: true
     }
+  },
+  {
+    route: ['server-error'],
+    name: 'server-error',
+    moduleId: 'views/serverError',
+    nav: false,
+    title: 'Server issues - Stay calm',
+    settings: {
+      auth: false
+    }
   }
 ];
