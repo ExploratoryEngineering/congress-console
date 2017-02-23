@@ -22,6 +22,10 @@
   &__menu-item {
     cursor: pointer;
     display: block;
-    padding: @grid-size / 2;
+    padding: @grid-size / 2 @grid-size;
+
+    &:hover {
+      background-color: @color-grey-theme--dark;
+    }
   }
 }
