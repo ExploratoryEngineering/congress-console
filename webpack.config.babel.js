@@ -75,6 +75,7 @@ const coreBundles = {
 let config = generateConfig(
   {
     entry: {
+      'whatwg-fetch': 'whatwg-fetch',
       'app': ['./src/main' /* this is filled by the aurelia-webpack-plugin */],
       'aurelia-bootstrap': coreBundles.bootstrap,
       'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
