@@ -1,7 +1,7 @@
 export let routes = [
   {
     route: [''],
-    redirect: 'application-dashboard'
+    redirect: 'dashboard'
   },
   {
     route: ['welcome'],
@@ -28,8 +28,8 @@ export let routes = [
     }
   },
   {
-    route: ['application-dashboard'],
-    name: 'application-dashboard',
+    route: ['dashboard'],
+    name: 'dashboard',
     moduleId: 'views/application-dashboard',
     nav: true,
     title: 'Applications',
@@ -40,7 +40,7 @@ export let routes = [
   {
     route: ['gateway-dashboard'],
     name: 'gateway-dashboard',
-    moduleId: 'views/application-dashboard',
+    moduleId: 'views/dashboard',
     nav: true,
     title: 'Gateways',
     settings: {
