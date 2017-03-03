@@ -59,6 +59,13 @@ class ServiceUnavailableError extends ResponseError {
   }
 }
 
+class UnknownError extends ResponseError {
+  errorCode: 0;
+  constructor(content: any) {
+    super(content);
+  }
+}
+
 /**
  * Simple response handler class which converts to known models and acts on 401/500/502/503
  */
@@ -72,32 +79,43 @@ export class ResponseHandler {
     }
 
     switch (response.statusCode) {
+      case 0: {
+        this.navigateToServerError();
+        throw new UnknownError(response.content);
+      }
       case 400: {
         throw new BadRequestError(response.content);
       }
       case 401: {
-        this.router.navigate('login');
+        this.navigateToLogin();
         throw new UnauthorizedError(response.content);
       }
       case 404: {
+        Log.debug('returning on 404');
         throw new NotFoundError(response.content);
       }
       case 500: {
-        this.router.navigate('server-error');
+        this.navigateToServerError();
         throw new ServerErrorError(response.content);
       }
       case 502: {
-        this.router.navigate('server-error');
-        throw new BadGatewayError(response.content);
+        this.navigateToServerError();
+        return new BadGatewayError(response.content);
       }
       case 503: {
-        this.router.navigate('server-error');
-        throw new ServiceUnavailableError(response.content);
-      }
-      default: {
-        Log.error(`Received error which wasn't handled.`, response);
-        break;
+        this.navigateToServerError();
+        return new ServiceUnavailableError(response.content);
       }
     }
+  }
+
+  private navigateToLogin() {
+    Log.debug('Redirecting to login due to 401');
+    this.router.navigate('login');
+  }
+
+  private navigateToServerError() {
+    Log.debug('Redirecting to server-error page');
+    this.router.navigate('server-error');
   }
 }
