@@ -13,3 +13,12 @@ interface MessageData {
   "GatewayEUI": string,
   "DataRate": string
 }
+
+/**
+ * Input search parameters when getting data for either applications 
+ * or devices
+ */
+interface DataSearchParameters {
+  limit?: number;
+  since?: number;
+}
