@@ -78,15 +78,13 @@ export class ServiceDetails {
   ) { }
 
   initiateChartData() {
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { limit: 50 }).then(messageData => {
+    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
       this.messageData = messageData;
       this.chartData = this.getChartData(messageData);
     });
   }
 
   getChartData(messageData: MessageData[]) {
-    Log.debug(this.graphController.getGraph(messageData));
-
     return this.graphController.getGraph(messageData, { graphType: 'CO2' });
   }
 
@@ -112,7 +110,7 @@ export class ServiceDetails {
   openApplicationDataStream() {
     if (!this.websocket) {
       this.websocket = new Websocket({
-        url: `ws:/lora.localhost/ws/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${this.application.appEUI}/stream`,
+        url: `ws:/localhost:8080/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${this.application.appEUI}/stream`,
         onerror: (err) => { Log.error('WS Error', err); },
         onopen: (msg) => { Log.debug('WS Open: ', msg); },
         onclose: (msg) => { Log.debug('WS Close: ', msg); },
