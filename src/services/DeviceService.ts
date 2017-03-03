@@ -47,6 +47,27 @@ export class DeviceService {
       });
   }
 
+  /**
+   * Fetches device data
+   * @param {string} applicationEui Application EUI for the Device
+   * @param {string} deviceEui Device EUI for the Device
+   * @param {DataSearchParameters} searchParams Search parameters for getting data
+   */
+  fetchDeviceDataByEUI(
+    applicationEui: string,
+    deviceEui: string,
+    {
+      limit = 50,
+      since = moment().subtract(6, 'hours').format('X')
+    }: DataSearchParameters = {}): Promise<MessageData[]> {
+    return this.apiClient.http.get(
+      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`
+    )
+      .then(data => data.content.Messages)
+      .then(data => data.reverse());
+
+  }
+
   createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
     Log.debug('Creating device', device);
     return this.apiClient.http.post(
