@@ -11,12 +11,10 @@ export class Login {
   ) { }
 
   login() {
-    UserInformation.setLoggedIn(true);
-    this.router.navigate('application-dashboard');
+    document.location.href = 'http://localhost:8080/connect/login';
   }
 
   logout() {
-    UserInformation.setLoggedIn(false);
-    this.router.navigate('');
+    document.location.href = 'http://localhost:8080/connect/logout';
   }
 }
