@@ -21,8 +21,6 @@ export class NetworkInformation {
     return this.networkService.fetchAllNetworks().then((networks) => {
       this.availableNetworks = networks;
 
-      Log.debug(selectedNetworkEUI, networks);
-
       if (selectedNetworkEUI) {
         let selectedNetwork = networks.find((network) => {
           return network.netEui === selectedNetworkEUI;
