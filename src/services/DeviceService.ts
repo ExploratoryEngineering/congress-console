@@ -1,11 +1,12 @@
-import { ResponseHandler } from 'Helpers/ResponseHandler';
 import { autoinject } from 'aurelia-framework';
+
+import { ApiClient } from 'Helpers/ApiClient';
 import { Device } from 'Models/Device';
-import { HttpClient } from 'aurelia-http-client';
 
 import { NetworkInformation } from 'Helpers/NetworkInformation';
-
 import { LogBuilder } from 'Helpers/LogBuilder';
+
+import * as moment from 'moment';
 
 const Log = LogBuilder.create('Device service');
 
@@ -24,22 +25,12 @@ export interface NewABPDevice extends NewDevice {
 @autoinject
 export class DeviceService {
   constructor(
-    private httpClient: HttpClient,
-    private networkInformation: NetworkInformation,
-    private responseHandler: ResponseHandler
-  ) {
-    this.httpClient.configure((client) => {
-      client.withInterceptor({
-        responseError: (responseError) => {
-          this.responseHandler.handleResponse(responseError);
-          return responseError;
-        }
-      });
-    });
-  }
+    private apiClient: ApiClient,
+    private networkInformation: NetworkInformation
+  ) { }
 
   fetchDevices(applicationEui: string): Promise<Device[]> {
-    return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices`)
+    return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices`)
       .then(data => data.content.devices)
       .then(devices => {
         Log.debug('Fetched devices', devices);
@@ -48,7 +39,7 @@ export class DeviceService {
   }
 
   fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
-    return this.httpClient.get(`/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}`)
+    return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}`)
       .then(data => data.content.devices)
       .then(device => {
         Log.debug('Fetched device ', device);
@@ -58,8 +49,8 @@ export class DeviceService {
 
   createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
     Log.debug('Creating device', device);
-    return this.httpClient.post(
-      `/api/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEui}/devices`,
+    return this.apiClient.http.post(
+      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEui}/devices`,
       device
     ).then(data => data.content)
       .then(newDevice => {
