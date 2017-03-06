@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import '../styles/styles.less';
 
 import { LogManager } from 'aurelia-framework';
