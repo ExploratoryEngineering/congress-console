@@ -5,6 +5,8 @@ export class Dropdown {
   active = false;
   @bindable
   dropdownPosition: string = 'above';
+  @bindable
+  containerClass: string = '';
 
   dropdown;
   container;

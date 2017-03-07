@@ -4,7 +4,7 @@
       <slot name="dropdown-title">Fallback title</slot>
       <!--<span class="dropdown__caret material-icons">expand_more</span>-->
     </div>
-    <div ref="container" class="dropdown__container dropdown__container--${ dropdownPosition } ${active ? 'dropdown__container--visible' : ''}">
+    <div ref="container" class="dropdown__container dropdown__container--${ dropdownPosition } ${active ? 'dropdown__container--visible' : ''} ${ containerClass }">
       <slot name="dropdown-container">Fallback items</slot>
     </div>
   </div>
