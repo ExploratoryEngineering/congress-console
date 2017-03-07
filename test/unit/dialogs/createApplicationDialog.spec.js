@@ -8,7 +8,7 @@ class ApplicationServiceStub {
 }
 
 class DialogControllerStub {
-  ok() { }
+  ok() {}
 }
 
 class ApplicationStub {}

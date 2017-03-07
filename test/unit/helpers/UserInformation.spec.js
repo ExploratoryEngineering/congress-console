@@ -1,17 +1,36 @@
 import { UserInformation } from 'Helpers/UserInformation';
+import { UserProfile } from 'Models/UserProfile';
+
+class AuthServiceMock {
+  getUserProfile() {
+    return Promise.resolve(new UserProfile());
+  }
+}
 
 describe('The UserInformation helper', () => {
+  let mockedAuthService;
+  let userInformation;
+
   beforeEach(() => {
-    UserInformation.setLoggedIn(false);
+    mockedAuthService = new AuthServiceMock();
+    userInformation = new UserInformation(mockedAuthService);
   });
 
-  it('should return false on logged in if user is not logged in', () => {
-    expect(UserInformation.isLoggedIn()).toBe(false);
+  it('should reject the fetch user profile call if not logged in', (done) => {
+    delete userInformation.userProfile;
+
+    mockedAuthService.getUserProfile = () => {
+      return Promise.reject(new Error('Not logged in'));
+    };
+    userInformation.fetchUserProfile().catch(() => {
+      done();
+    });
   });
 
-  it('should return true on logged in if user is logged in', () => {
-    UserInformation.setLoggedIn(true);
-
-    expect(UserInformation.isLoggedIn()).toBe(true);
+  it('should return a user profile object on logged in', (done) => {
+    userInformation.fetchUserProfile().then(profile => {
+      expect(profile).toBeTruthy();
+      done();
+    });
   });
 });

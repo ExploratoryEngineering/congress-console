@@ -1,7 +1,9 @@
-import {App} from 'app';
-import { UserInformation } from 'Helpers/UserInformation';
+import { App } from 'app';
+import { UserProfile } from 'Models/UserProfile';
 
 class RouterStub {
+  constructor() {}
+
   configure(handler) {
     handler(this);
   }
@@ -23,13 +25,23 @@ class RouterStub {
   }
 }
 
+class UserInformationStub {
+  constructor() {}
+
+  fetchUserProfile() {
+    return Promise.resolve(new UserProfile());
+  }
+}
+
 describe('the App module', () => {
   let sut;
   let mockedRouter;
+  let mockedUserInformation;
 
   beforeEach(() => {
     mockedRouter = new RouterStub();
-    sut = new App();
+    mockedUserInformation = new UserInformationStub();
+    sut = new App(mockedRouter, mockedUserInformation);
     sut.configureRouter(mockedRouter, mockedRouter);
   });
 
@@ -84,19 +96,20 @@ describe('the App module', () => {
       }
     };
 
-    beforeEach(() => {
-      UserInformation.setLoggedIn(false);
-    });
+    it('should call cancel on nav if a route is authed and user is not logged in', (done) => {
+      mockedUserInformation.fetchUserProfile = () => {
+        return Promise.reject(new Error());
+      };
 
-    it('should call cancel on nav if a route is authed and user is not logged in', () => {
       let nextCb = {
         cancel: () => {}
       };
       spyOn(nextCb, 'cancel');
 
-      mockedRouter.authStep.run(navInstructionWithAuth, nextCb);
-
-      expect(nextCb.cancel).toHaveBeenCalled();
+      mockedRouter.authStep.run(navInstructionWithAuth, nextCb).then(() => {
+        expect(nextCb.cancel).toHaveBeenCalled();
+        done();
+      });
     });
 
     it('should call next on nav if a route is not authed and user is not logged in', () => {
@@ -106,21 +119,19 @@ describe('the App module', () => {
       spyOn(callback, 'next');
 
       mockedRouter.authStep.run(navInstructionWithoutAuth, callback.next);
-
       expect(callback.next).toHaveBeenCalled();
     });
 
-    it('should call next on nav if a route is auth and user is logged in', () => {
-      UserInformation.setLoggedIn(true);
-
+    it('should call next on nav if a route is auth and user is logged in', (done) => {
       let callback = {
-        next: () => {}
+        next: function() {}
       };
       spyOn(callback, 'next');
 
-      mockedRouter.authStep.run(navInstructionWithAuth, callback.next);
-
-      expect(callback.next).toHaveBeenCalled();
+      mockedRouter.authStep.run(navInstructionWithAuth, callback.next).then(() => {
+        expect(callback.next).toHaveBeenCalled();
+        done();
+      });
     });
   });
 });
