@@ -100,11 +100,11 @@ export class ResponseHandler {
       }
       case 502: {
         this.navigateToServerError();
-        return new BadGatewayError(response.content);
+        throw new BadGatewayError(response.content);
       }
       case 503: {
         this.navigateToServerError();
-        return new ServiceUnavailableError(response.content);
+        throw new ServiceUnavailableError(response.content);
       }
     }
   }
