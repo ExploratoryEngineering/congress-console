@@ -40,7 +40,7 @@ export let routes = [
   {
     route: ['gateway-dashboard'],
     name: 'gateway-dashboard',
-    moduleId: 'views/dashboard',
+    moduleId: 'views/application-dashboard',
     nav: true,
     title: 'Gateways',
     settings: {
