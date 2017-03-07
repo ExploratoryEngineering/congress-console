@@ -1,32 +1,37 @@
-import Cookies from 'js-cookie';
-
+import { autoinject } from 'aurelia-framework';
+import { UserProfile } from 'Models/UserProfile';
+import { AuthService } from 'Services/AuthService';
 import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('UserInformation');
 
+@autoinject
 export class UserInformation {
-  static LOGGED_IN_COOKIE_NAME = 'loggedIn';
-  static state = {
-    isLoggedIn: false
+  userProfile: UserProfile = {
+    connectId: '',
+    locale: 'en',
+    name: 'Name placeholder',
+    email: 'example@email.com',
+    verifiedEmail: true,
+    phone: '99999999',
+    verifiedPhone: false
   };
 
-  static isLoggedIn() {
-    Log.debug('Userinformation checking is loggedIn');
-    this.refreshLoggedIn();
-    return this.state.isLoggedIn;
-  }
+  constructor(
+    private authService: AuthService
+  ) { }
 
-  static refreshLoggedIn() {
-    this.state.isLoggedIn = !!Cookies.get(this.LOGGED_IN_COOKIE_NAME);
-  }
-
-  // Debug
-  static setLoggedIn(loggedIn) {
-    if (loggedIn) {
-      Cookies.set(this.LOGGED_IN_COOKIE_NAME, loggedIn);
-    } else {
-      Cookies.remove(this.LOGGED_IN_COOKIE_NAME);
+  fetchUserProfile(): Promise<UserProfile> {
+    if (this.userProfile) {
+      return Promise.resolve(this.userProfile);
     }
-    this.refreshLoggedIn();
+
+    return this.authService.getUserProfile().then(userProfile => {
+      this.userProfile = userProfile;
+      return this.userProfile;
+    }).catch(err => {
+      delete this.userProfile;
+      throw err;
+    });
   }
 }
