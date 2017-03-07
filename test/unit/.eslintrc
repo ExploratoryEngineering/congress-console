@@ -1,5 +1,6 @@
 {
   "rules": {
-    "no-var": 0
+    "no-var": 0,
+    "prefer-promise-reject-errors": 2
   }
 }
