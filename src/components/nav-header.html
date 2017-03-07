@@ -1,11 +1,12 @@
 <template class="top-header" bindable="heading">
   <require from="components/network-chooser"></require>
+  <require from="components/profile-dropdown"></require>
   <h1 class="top-header__header">
     ${ heading }
   </h1>
   <nav>
     <span class="top-header__icon material-icons">notifications</span>
-    <a route-href="route: login" class="top-header__icon material-icons">account_circle</a>
-    <network-chooser />
+    <profile-dropdown class="top-header__navigation-item"></profile-dropdown>
+    <network-chooser class="top-header__navigation-item"></network-chooser>
   </nav>
 </template>
