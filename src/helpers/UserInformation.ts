@@ -29,9 +29,6 @@ export class UserInformation {
     return this.authService.getUserProfile().then(userProfile => {
       this.userProfile = userProfile;
       return this.userProfile;
-    }).catch(err => {
-      delete this.userProfile;
-      throw err;
     });
   }
 }
