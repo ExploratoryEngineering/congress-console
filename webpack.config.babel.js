@@ -132,6 +132,10 @@ let config = generateConfig(
         {
           from: 'images/',
           to: 'images/'
+        },
+        {
+          from: 'config/',
+          to: 'config/'
         }
       ]
     })

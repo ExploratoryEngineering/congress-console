@@ -1,4 +1,6 @@
 import { autoinject } from 'aurelia-framework';
+import { AureliaConfiguration } from 'aurelia-configuration';
+
 import { Router } from 'aurelia-router';
 import { UserInformation } from 'Helpers/UserInformation';
 
@@ -7,14 +9,15 @@ export class Login {
   heading = 'Login for Self Service Portal';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private config: AureliaConfiguration
   ) { }
 
   login() {
-    document.location.href = 'http://localhost:8080/connect/login';
+    document.location.href = `${this.config.get('api.endpoint')}/connect/login`;
   }
 
   logout() {
-    document.location.href = 'http://localhost:8080/connect/logout';
+    document.location.href = `${this.config.get('api.endpoint')}/connect/logout`;
   }
 }

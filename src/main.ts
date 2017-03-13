@@ -9,11 +9,23 @@ Bluebird.config({ warnings: false });
 
 export async function configure(aurelia) {
   LogManager.addAppender(new ConsoleAppender());
-  LogManager.setLevel(LogManager.logLevel.debug);
 
   aurelia.use
     .standardConfiguration()
-    .plugin('aurelia-dialog');
+    .plugin('aurelia-dialog')
+    .plugin('aurelia-configuration', config => {
+      config.setEnvironments({
+        development: ['localhost', 'lora.localhost'],
+        staging: ['lora.engineering'],
+        production: ['lora.telenor.io']
+      });
+
+      if (config.is('production')) {
+        LogManager.setLevel(LogManager.logLevel.error);
+      } else {
+        LogManager.setLevel(LogManager.logLevel.debug);
+      }
+    });
 
   // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
   // aurelia.use.plugin('aurelia-html-import-template-loader')

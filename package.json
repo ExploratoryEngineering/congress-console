@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "aurelia-bootstrapper-webpack": "^1.1.0",
+    "aurelia-configuration": "^1.0.17",
     "aurelia-dialog": "^1.0.0-beta.3.0.1",
     "aurelia-event-aggregator": "^1.0.1",
     "aurelia-framework": "^1.1.0",

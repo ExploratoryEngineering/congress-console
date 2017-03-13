@@ -1,3 +1,4 @@
+import { AureliaConfiguration } from 'aurelia-configuration';
 import { autoinject } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
 import { EventAggregator } from 'aurelia-event-aggregator';
@@ -74,7 +75,8 @@ export class ServiceDetails {
     private router: Router,
     private networkInformation: NetworkInformation,
     private eventAggregator: EventAggregator,
-    private graphController: GraphController
+    private graphController: GraphController,
+    private config: AureliaConfiguration
   ) { }
 
   initiateChartData() {
@@ -110,7 +112,7 @@ export class ServiceDetails {
   openApplicationDataStream() {
     if (!this.websocket) {
       this.websocket = new Websocket({
-        url: `ws:/localhost:8080/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${this.application.appEUI}/stream`,
+        url: `${this.config.get('api.wsEndpoint')}/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${this.application.appEUI}/stream`,
         onerror: (err) => { Log.error('WS Error', err); },
         onopen: (msg) => { Log.debug('WS Open: ', msg); },
         onclose: (msg) => { Log.debug('WS Close: ', msg); },

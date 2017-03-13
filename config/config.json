@@ -1,0 +1,26 @@
+{
+  "name": "LoRaAAS",
+  "version": "1.0",
+  "api": {
+    "endpoint": "http://localhost:8080",
+    "wsEndpoint": "ws://localhost:8080"
+  },
+  "development": {
+    "api": {
+      "endpoint": "https://api.lora.telenor.io",
+      "wsEndpoint": "wss://api.lora.telenor.io"
+    }
+  },
+  "staging": {
+    "api": {
+      "endpoint": "https://api.lora.telenor.io",
+      "wsEndpoint": "wss://api.lora.telenor.io"
+    }
+  },
+  "production": {
+    "api": {
+      "endpoint": "https://api.lora.telenor.io",
+      "wsEndpoint": "wss://api.lora.telenor.io"
+    }
+  }
+}

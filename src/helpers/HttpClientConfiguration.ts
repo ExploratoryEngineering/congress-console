@@ -1,19 +1,21 @@
-import { LogBuilder } from './LogBuilder';
+import { AureliaConfiguration } from 'aurelia-configuration';
 import { autoinject } from 'aurelia-framework';
+
 import { ResponseHandler } from 'Helpers/ResponseHandler';
 
+import { LogBuilder } from './LogBuilder';
 const Log = LogBuilder.create('Http client config');
 
 @autoinject
 export class HttpClientConfiguration {
   constructor(
-    private responseHandler: ResponseHandler
+    private responseHandler: ResponseHandler,
+    private config: AureliaConfiguration
   ) { }
 
   apiEndpointConfiguration() {
     return (client) => {
-      Log.info('Init httpClientConfig');
-      client.withBaseUrl('http://localhost:8080');
+      client.withBaseUrl(this.config.get('api.endpoint'));
       client.withCredentials(true);
       client.withInterceptor({
         responseError: (responseError) => {
