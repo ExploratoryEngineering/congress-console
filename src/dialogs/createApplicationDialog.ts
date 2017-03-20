@@ -5,6 +5,7 @@ import { ApplicationService } from 'Services/ApplicationService';
 import { Application } from 'Models/Application';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
+import { BadRequestError } from 'Helpers/ResponseHandler';
 
 const Log = LogBuilder.create('Application dialog');
 
@@ -25,7 +26,12 @@ export class CreateApplicationDialog {
     return this.applicationService.createNewApplication(this.application).then(() => {
       this.dialogController.ok();
     }).catch(error => {
-      Log.error('Create application: Error occured', error);
+      if (error instanceof BadRequestError) {
+        Log.debug('400', error);
+      } else {
+        Log.error('Create device: Error occured', error);
+        this.dialogController.cancel();
+      }
     });
   }
 }

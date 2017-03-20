@@ -1,3 +1,4 @@
+import { BadRequestError } from 'Helpers/ResponseHandler';
 import { autoinject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 
@@ -29,7 +30,12 @@ export class CreateDeviceDialog {
     this.deviceService.createNewDevice(this.getNewDevice(), this.appEui).then((newDevice) => {
       this.dialogController.ok(newDevice);
     }).catch(error => {
-      Log.error('Create device: Error occured', error);
+      if (error instanceof BadRequestError) {
+        Log.debug('400', error);
+      } else {
+        Log.error('Create device: Error occured', error);
+        this.dialogController.cancel();
+      }
     });
   }
 

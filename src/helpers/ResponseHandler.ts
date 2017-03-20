@@ -14,7 +14,7 @@ class ResponseError {
   }
 }
 
-class BadRequestError extends ResponseError {
+export class BadRequestError extends ResponseError {
   errorCode: 400;
 
   constructor(content: any) {
