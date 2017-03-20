@@ -8,13 +8,17 @@
   </application-details-side-bar-menu>
   <main class="flex-element--grow">
     <nav-header heading="Application overview"></nav-header>
-    <div class="section application-details">
-      <div class="card application-details__graph">
+    <div class="section">
+      <div class="card application-details-card">
         <div class="card__header">
           <h3 class="h3">Data</h3>
         </div>
-        <div class="card__body card__body--no-padding">
+        <div class="card__body card__body--no-padding application-details-card__graph" if.bind="hasMessageData">
           <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+        </div>
+        <div class="card__body no-graph-data" if.bind="!hasMessageData">
+          <i class="material-icons no-graph-data__icon">insert_chart</i>
+          <h2>No data to graph</h2>
         </div>
       </div>
       <div class="card">

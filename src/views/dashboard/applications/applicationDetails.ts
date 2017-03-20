@@ -22,8 +22,8 @@ export class ServiceDetails {
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
+  hasMessageData: boolean = false;
 
-  messageData: MessageData[] = [];
   chartData: GraphData;
   chartOptions = {
     maintainAspectRatio: false,
@@ -81,7 +81,8 @@ export class ServiceDetails {
 
   initiateChartData() {
     this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
-      this.messageData = messageData;
+      Log.debug('Checking messageData', messageData);
+      this.hasMessageData = messageData.length > 0;
       this.chartData = this.getChartData(messageData);
     });
   }
