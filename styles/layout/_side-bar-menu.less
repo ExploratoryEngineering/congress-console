@@ -13,8 +13,8 @@
 .side-bar {
   background-color: @side-bar-background-color;
   border-right: solid 1px @side-bar-border-color;
-  min-width: @grid-size*25;
   transition: width 0.5s @animation-cubic-bezier-1;
+  width: @grid-size*25;
 
   &__wrapper {
     display: flex;
@@ -77,6 +77,6 @@
     margin-top: auto;
     padding: 0 @grid-size * 8 @grid-size * 4;
     text-align: center;
-    width: 200px;
+    width: 100%;
   }
 }
