@@ -81,7 +81,6 @@ export class ServiceDetails {
 
   initiateChartData() {
     this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
-      Log.debug('Checking messageData', messageData);
       this.hasMessageData = messageData.length > 0;
       this.chartData = this.getChartData(messageData);
     });
