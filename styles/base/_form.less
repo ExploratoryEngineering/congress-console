@@ -47,13 +47,9 @@
     flex: 1;
   }
 
-  &__icon {
-
-  }
-
   &__input {
     background-color: @form-element-background-color;
-    border: none;
+    border: 0;
     border-bottom: solid 1px @color-grey-theme--darkest;
     box-shadow: none;
     color: @form-color;
@@ -66,6 +62,7 @@
 
     &:focus {
       color: @form-color-active;
+
       ~ .form-group__label {
         color: @form-color-active;
         font-size: @form-label-font-size;
@@ -104,8 +101,8 @@
       background-color: @form-element-underline-color;
       bottom: 0;
       content: '';
-      left: 45%;
       height: 2px;
+      left: 45%;
       position: absolute;
       transition: @form-element-transition;
       visibility: hidden;

@@ -1,0 +1,20 @@
+{
+  "fileExtensions": [
+    ".less"
+  ],
+  "excludedFiles": [
+    "_responsive.less"
+  ],
+  "decimalZero": "none",
+  "importPath": {
+    "enabled": false
+  },
+  "maxCharPerLine": 120,
+  "qualifyingElement": {
+    "allowWithAttribute": true,
+    "allowWithClass": true
+  },
+  "zeroUnit": {
+    "style": "no_unit"
+  }
+}

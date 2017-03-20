@@ -38,7 +38,6 @@
     transition: background 0.5s @animation-cubic-bezier-1;
 
     &:before {
-      transition: width 0.5s @animation-cubic-bezier-1;
       background-color: transparent;
       content: '';
       display: block;
@@ -46,6 +45,7 @@
       left: 0;
       position: absolute;
       top: 0;
+      transition: width 0.5s @animation-cubic-bezier-1;
       width: 2px;
     }
 
@@ -58,7 +58,7 @@
 
       &:before {
         background-color: @side-bar-menu-entry-selected-border-color;
-        width: @grid-size/2;
+        width: @grid-size / 2;
       }
 
       &:hover,

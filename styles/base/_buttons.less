@@ -1,3 +1,5 @@
+// lesshint universalSelector: false
+
 // Generic button setup
 @button-padding: @grid-size @grid-size*3;
 @button-font-size: @font-size--14;
@@ -72,8 +74,8 @@
 
   &[disabled],
   &--disabled {
-    border-color: transparent;
     background: @button-primary-disabled-background-color;
+    border-color: transparent;
     color: @button-primary-disabled-color;
     opacity: 0.3;
   }
@@ -97,8 +99,8 @@
     }
 
     &[disabled] {
-      border-color: transparent;
       background: @button-primary-disabled-background-color;
+      border-color: transparent;
       color: @button-primary-disabled-color;
       opacity: 0.3;
     }
@@ -124,8 +126,8 @@
     }
 
     &[disabled] {
-      border-color: @button-flat-disabled-border-color;
       background: @button-flat-disabled-background-color;
+      border-color: @button-flat-disabled-border-color;
       color: @button-flat-disabled-color;
       filter: alpha(opacity=30);
       opacity: 0.3;
@@ -133,8 +135,8 @@
   }
 
   &--raised {
-    transition: @button-raised-transition;
     box-shadow: @button-raised-box-shadow;
+    transition: @button-raised-transition;
 
     &:hover,
     &:focus,
@@ -148,8 +150,8 @@
   }
 
   &--floating {
-    box-shadow: @button-floating-box-shadow;
     border-radius: 100%;
+    box-shadow: @button-floating-box-shadow;
     font-size: 17px;
     height: @grid-size*6;
     line-height: (@grid-size*6)-2;
