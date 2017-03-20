@@ -14,10 +14,10 @@
       </h2>
     </div>
     <div class="side-bar__separator"></div>
-    <dropdown>
+    <dropdown disabled.bind="selectableapplications.length === 0">
       <dropdown-title>
         <div class="application-dropdown">
-          <h2 class="application-dropdown__header-text">${application.name}</h2>
+          <h2 class="application-dropdown__title" title="${application.name}">${application.name}<span if.bind="selectableapplications.length > 0" class="material-icons application-dropdown__triangle">arrow_drop_down</span></h2>
         </div>
       </dropdown-title>
       <dropdown-container>

@@ -2,8 +2,9 @@
   <require from="components/dropdown"></require>
   <require from="components/dropdown-title"></require>
   <require from="components/dropdown-container"></require>
-  <dropdown dropdown-position='below'>
-    <dropdown-title><span class="network-chooser__title">${ networkInformation.selectedNetwork.name }</span><i class="material-icons network-chooser__triangle">arrow_drop_down</i></dropdown-title>
+  <dropdown disabled.bind="networkInformation.availableNetworks === 0" dropdown-position='below'>
+    <dropdown-title><span class="network-chooser__title">${ networkInformation.selectedNetwork.name }</span><span if.bind="networkInformation.availableNetworks.length > 0"
+        class="material-icons network-chooser__triangle">arrow_drop_down</span></dropdown-title>
     <dropdown-container><span repeat.for="network of networkInformation.availableNetworks" class="network-chooser__menu-item" click.trigger="selectNetwork(network)">${ network.name }</span></dropdown-container>
   </dropdown>
 </template>

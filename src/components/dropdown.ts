@@ -7,6 +7,8 @@ export class Dropdown {
   dropdownPosition: string = 'above';
   @bindable
   containerClass: string = '';
+  @bindable
+  disabled: boolean = false;
 
   dropdown;
   container;
@@ -31,7 +33,11 @@ export class Dropdown {
   }
 
   toggleDropdown() {
-    this.active = !this.active;
+    if (this.disabled) {
+      this.active = false;
+    } else {
+      this.active = !this.active;
+    }
   }
 
   attached() {
