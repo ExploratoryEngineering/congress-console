@@ -1,5 +1,6 @@
 import { autoinject } from 'aurelia-framework';
 import { Redirect, Router } from 'aurelia-router';
+import { BindingSignaler } from 'aurelia-templating-resources';
 
 import { routes } from './appRoutes';
 import { UserInformation } from 'Helpers/UserInformation';
@@ -12,8 +13,11 @@ const Log = LogBuilder.create();
 export class App {
   constructor(
     private router: Router,
-    private userInformation: UserInformation
-  ) { }
+    private userInformation: UserInformation,
+    private signaler: BindingSignaler
+  ) {
+    setInterval(() => { this.signaler.signal('updateTime'); }, 10000);
+  }
 
   getUnknownRoute() {
     return {
