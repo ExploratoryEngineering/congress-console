@@ -105,7 +105,7 @@ export class ServiceDetails {
       let deviceMessage: WebsocketDeviceDataMessage = wsMessage;
 
       this.addChartData(deviceMessage);
-      this.eventAggregator.publish('deviceDataMessage', deviceMessage);
+      this.eventAggregator.publish('deviceDataMessage', deviceMessage.MessageBody);
     }
   }
 
