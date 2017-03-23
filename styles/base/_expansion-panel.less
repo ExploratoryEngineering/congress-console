@@ -5,19 +5,16 @@
   box-shadow: @expansion-panel-box-shadow;
   margin: 0;
   max-height: @grid-size * 8;
-  transition: 
-    background 0.5s @animation-cubic-bezier-1,
-    max-height 0.5s @animation-cubic-bezier-1,
-    margin 0.5s @animation-cubic-bezier-1;
-  
+  transition: background 0.5s @animation-cubic-bezier-1, max-height 0.5s @animation-cubic-bezier-1, margin 0.5s @animation-cubic-bezier-1;
+
   &:active {
     background-color: @color--google-grey-200;
   }
 
   &--expanded {
     margin: @grid-size * 2 0;
-    max-height: 300px;
-    
+    max-height: 350px;
+
     &:active {
       background-color: @color--white;
     }
@@ -26,14 +23,14 @@
   &__header {
     display: flex;
     height: @grid-size * 8;
-    line-height: @grid-size * 8; 
-    padding: 0 @grid-size * 3;    
+    line-height: @grid-size * 8;
+    padding: 0 @grid-size * 3;
   }
 
   &__title {
     font-size: @font-size--15;
     margin-right: @grid-size * 2;
-    width: 250px;
+    width: 200px;
   }
 
   &__subtitle {
@@ -70,19 +67,19 @@
     border-top: 1px solid @color--google-grey-200;
     display: flex;
     justify-content: flex-end;
-    padding: @grid-size * 2 @grid-size @grid-size * 2 @grid-size * 3; 
+    padding: @grid-size * 2 @grid-size @grid-size * 2 @grid-size * 3;
   }
 
   &__primary-button {
     color: @color--blue;
-  }
 
-  &__primary-button:hover {
-    background-color: rgba(12, 12, 12, 0.07);
-    color: @color--blue;
-  }
+    &:hover {
+      background-color: rgba(12, 12, 12, 0.07);
+      color: @color--blue;
+    }
 
-  &__primary-button:active {
-    background-color: rgba(12, 12, 12, 0.1);
+    &:active {
+      background-color: rgba(12, 12, 12, 0.1);
+    }
   }
 }
