@@ -20,5 +20,5 @@ interface MessageData {
  */
 interface DataSearchParameters {
   limit?: number;
-  since?: number;
+  since?: string;
 }
