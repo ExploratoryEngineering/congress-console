@@ -1,0 +1,28 @@
+<template>
+  <require from="components/expansion-panel-device-data-info.html"></require>
+  <require from="valueConverters/deviceName"></require>
+  <require from="components/expansion-panel-device-info.html"></require>
+  <div class="device-expansion-panel expansion-panel ${ active ? 'expansion-panel--expanded' : '' }">
+    <div class="expansion-panel__header" click.delegate="toggle()">
+      <span class="expansion-panel__title">${ device.deviceEUI | deviceName }</span>
+      <span class="expansion-panel__subtitle">${ device.deviceType }</span>
+      <span class="expansion-panel__chevron"><div class="material-icons">${ active ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }</div></span>
+    </div>
+    <div if.bind="active" class="expansion-panel__body">
+      <div class="expansion-panel__body-section">
+        <expansion-panel-device-info device.bind="device"></expansion-panel-device-info>
+      </div>
+      <div class="expansion-panel__body-section">
+        <div if.bind="lastDeviceData">
+          <expansion-panel-device-data-info devicedata.bind="lastDeviceData"></expansion-panel-device-data-info>
+        </div>
+        <div class="device-expansion-panel__section" if.bind="!lastDeviceData">
+          The device has not received data lately
+        </div>
+      </div>
+    </div>
+    <div if.bind="active" class="expansion-panel__footer">
+      <button class="button button--flat expansion-panel__primary-button">Provision device</button>
+    </div>
+  </div>
+</template>
