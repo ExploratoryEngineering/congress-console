@@ -33,18 +33,20 @@ describe('CreateApplication dialog', () => {
     createApplicationDialog.application = applicationStub;
   });
 
-  it('should send the current application to applicationService when submitting application', () => {
+  it('should send the current application to applicationService when submitting application', (done) => {
     spyOn(applicationServiceStub, 'createNewApplication').and.callThrough();
 
     createApplicationDialog.submitApplication();
 
     expect(applicationServiceStub.createNewApplication).toHaveBeenCalledWith(applicationStub);
+
+    done();
   });
 
   it('should call ok for dialog upon successful save of application', (done) => {
     spyOn(dialogControllerStub, 'ok');
 
-    createApplicationDialog.submitApplication().then(() => {
+    createApplicationDialog.submitApplication().finally(() => {
       expect(dialogControllerStub.ok).toHaveBeenCalled();
       done();
     });
@@ -57,7 +59,7 @@ describe('CreateApplication dialog', () => {
     };
 
 
-    createApplicationDialog.submitApplication().then(() => {
+    createApplicationDialog.submitApplication().finally(() => {
       expect(dialogControllerStub.ok).not.toHaveBeenCalled();
       done();
     });
