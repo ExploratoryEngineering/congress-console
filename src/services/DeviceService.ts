@@ -24,6 +24,12 @@ export interface NewABPDevice extends NewDevice {
 
 @autoinject
 export class DeviceService {
+  SINCE = {
+    DAWN_OF_TIME: '0',
+    SIX_HOURS_AGO: moment().subtract(6, 'hours').format('X'),
+    ONE_HOUR_AGO: moment().subtract(1, 'hours').format('X')
+  };
+
   constructor(
     private apiClient: ApiClient,
     private networkInformation: NetworkInformation
