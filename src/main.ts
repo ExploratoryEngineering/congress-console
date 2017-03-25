@@ -37,7 +37,10 @@ export async function configure(aurelia) {
     const splash = document.getElementsByClassName('splash-container')[0];
     splash.className += ' splash-container--fade-out';
     setTimeout(() => {
-      splash.remove();
+      const parent = splash.parentElement;
+      if (parent) {
+        parent.removeChild(splash);
+      }
     }, 450);
   });
 
