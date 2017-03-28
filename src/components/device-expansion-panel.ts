@@ -26,9 +26,8 @@ export class DeviceExpansionPanel {
 
   bind() {
     this.subscriptions.push(this.eventAggregator.subscribe('deviceDataMessage', (messageData: MessageData) => {
-      Log.debug('I got data!', messageData);
       if (this.device.deviceEUI === messageData.DeviceEUI) {
-        Log.debug('And it matched!');
+        Log.debug('Got messageData. Updating to be lastDeviceData', messageData);
         this.lastDeviceData = messageData;
       }
     }));
@@ -55,8 +54,9 @@ export class DeviceExpansionPanel {
   }
 
   toggle() {
-    Log.debug('Toggled device', this.lastDeviceData);
+    Log.debug('Toggled device', this.device);
     if (!this.lastDeviceData) {
+      Log.debug('Device did not have lastDeviceData. Fetching...');
       this.fetchLastMessageData();
     }
     this.active = !this.active;
