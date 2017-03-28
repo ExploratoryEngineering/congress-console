@@ -15,12 +15,12 @@
           <h4 class="h4 h4--colored">Data for ${application.name} the <span class="application-card-dropdown">last six hours</span> with the parser
             <span class="application-card-dropdown">CO2</span></h4>
         </div>
-        <div class="card__body application-details-card__graph" if.bind="hasMessageData">
+        <div class="card__body application-details-card__graph">
           <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
-        </div>
-        <div class="card__body no-graph-data" if.bind="!hasMessageData">
-          <i class="material-icons no-graph-data__icon">insert_chart</i>
-          <h2>No data to graph</h2>
+          <div class="no-graph-data" if.bind="!hasMessageData">
+            <i class="material-icons no-graph-data__icon">insert_chart</i>
+            <h2>No data to graph</h2>
+          </div>
         </div>
       </div>
       <device-expansion-panel repeat.for="device of devices" device.bind="device" appeui.bind="application.appEUI"></device-expansion-panel>
