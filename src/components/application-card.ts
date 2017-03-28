@@ -1,3 +1,4 @@
+import { Time } from 'Helpers/Time';
 import { GraphController } from 'Helpers/GraphController';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { Application } from 'Models/Application';
@@ -36,9 +37,11 @@ export class ApplicationCard {
       xAxes: [{
         display: false,
         type: 'time',
-        ticks: {
-          max: 8,
-          min: 0
+        barThickness: 2,
+        time: {
+          min: Time.ONE_HOUR_AGO,
+          max: Time.NOW,
+          unit: 'hour'
         }
       }]
     },
@@ -58,7 +61,7 @@ export class ApplicationCard {
   ) { }
 
   initiateChartData() {
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
+    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: Time.ONE_HOUR_AGO.format('X') }).then(messageData => {
       this.chartData = this.graphController.getGraph(messageData, {
         chartDataColors: ['rgba(255,255,255,.7)'],
         graphType: 'count-aggregated'

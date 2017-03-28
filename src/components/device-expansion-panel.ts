@@ -1,3 +1,4 @@
+import { Time } from 'Helpers/Time';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { DeviceService } from 'Services/DeviceService';
@@ -43,7 +44,7 @@ export class DeviceExpansionPanel {
       this.device.deviceEUI,
       {
         limit: 1,
-        since: this.deviceService.SINCE.DAWN_OF_TIME
+        since: Time.DAWN_OF_TIME
       }
     ).then(messages => {
       if (messages.length > 0) {

@@ -1,3 +1,4 @@
+import { Time } from 'Helpers/Time';
 import { autoinject } from 'aurelia-framework';
 
 import { ApiClient } from 'Helpers/ApiClient';
@@ -5,8 +6,6 @@ import { Device } from 'Models/Device';
 
 import { NetworkInformation } from 'Helpers/NetworkInformation';
 import { LogBuilder } from 'Helpers/LogBuilder';
-
-import * as moment from 'moment';
 
 const Log = LogBuilder.create('Device service');
 
@@ -24,11 +23,6 @@ export interface NewABPDevice extends NewDevice {
 
 @autoinject
 export class DeviceService {
-  SINCE = {
-    DAWN_OF_TIME: '0',
-    SIX_HOURS_AGO: moment().subtract(6, 'hours').format('X'),
-    ONE_HOUR_AGO: moment().subtract(1, 'hours').format('X')
-  };
 
   constructor(
     private apiClient: ApiClient,
@@ -64,7 +58,7 @@ export class DeviceService {
     deviceEui: string,
     {
       limit = 50,
-      since = moment().subtract(6, 'hours').format('X')
+      since = Time.SIX_HOURS_AGO.format('X')
     }: DataSearchParameters = {}): Promise<MessageData[]> {
     return this.apiClient.http.get(
       `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`
