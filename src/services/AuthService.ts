@@ -9,7 +9,7 @@ export class AuthService {
   ) { }
 
   getUserProfile(): Promise<UserProfile> {
-    return this.apiClient.http.get('http://lora.localhost/api/connect/profile')
+    return this.apiClient.http.get('/connect/profile')
       .then(data => UserProfile.newFromDto(data.content));
   }
 }
