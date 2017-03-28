@@ -4,9 +4,6 @@
       <a click.trigger="login()" if.bind="!userInformation.state.isLoggedIn">
         <img class="login-view__login-button" src="/images/connect_button.png" alt="Log in with CONNECT" />
       </a>
-      <button click.trigger="logout()" if.bind="userInformation.state.isLoggedIn" class="button button--flat">
-        Logout
-      </button>
     </div>
   </div>
 </template>
