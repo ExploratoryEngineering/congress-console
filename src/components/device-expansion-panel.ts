@@ -5,6 +5,9 @@ import { DeviceService } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
 import { bindable, autoinject, containerless } from 'aurelia-framework';
 
+import { DialogService } from 'aurelia-dialog';
+import { ProvisionDeviceDialog } from 'Dialogs/provisionDeviceDialog';
+
 const Log = LogBuilder.create('Device-expansion-panel');
 
 @autoinject
@@ -22,6 +25,7 @@ export class DeviceExpansionPanel {
 
   constructor(
     private deviceService: DeviceService,
+    private dialogService: DialogService,
     private eventAggregator: EventAggregator
   ) { }
 
@@ -39,6 +43,7 @@ export class DeviceExpansionPanel {
   }
 
   fetchLastMessageData() {
+    this.deviceService.fetchSourceForDevice(this.appeui, this.device.deviceEUI);
     return this.deviceService.fetchDeviceDataByEUI(
       this.appeui,
       this.device.deviceEUI,
@@ -61,5 +66,16 @@ export class DeviceExpansionPanel {
       this.fetchLastMessageData();
     }
     this.active = !this.active;
+  }
+
+  provisionDevice() {
+    Log.debug('User wants to provision device', this.device);
+    this.dialogService.open({
+      viewModel: ProvisionDeviceDialog,
+      model: {
+        appEUI: this.appeui,
+        device: this.device
+      }
+    });
   }
 }
