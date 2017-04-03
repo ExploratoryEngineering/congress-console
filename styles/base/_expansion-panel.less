@@ -5,6 +5,7 @@
   box-shadow: @expansion-panel-box-shadow;
   margin: 0;
   max-height: @grid-size * 8;
+  overflow: hidden;
   transition: background 0.5s @animation-cubic-bezier-1, max-height 0.5s @animation-cubic-bezier-1, margin 0.5s @animation-cubic-bezier-1;
 
   &:active {
@@ -13,7 +14,7 @@
 
   &--expanded {
     margin: @grid-size * 2 0;
-    max-height: 350px;
+    max-height: 700px;
 
     &:active {
       background-color: @color--white;
@@ -21,6 +22,7 @@
   }
 
   &__header {
+    cursor: pointer;
     display: flex;
     height: @grid-size * 8;
     line-height: @grid-size * 8;
@@ -41,7 +43,6 @@
   &__chevron {
     align-self: flex-end;
     color: @font-color-opacity--black-38;
-    cursor: pointer;
     line-height: 50px;
     width: @grid-size * 3;
   }
