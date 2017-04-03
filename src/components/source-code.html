@@ -1,0 +1,15 @@
+<template>
+  <div class="code">
+    <div class="code__header code__header--colored">
+      <div class="code__icon code__icon--colored">
+        <i class="material-icons">code</i>
+      </div>
+      <h3 class="h3 h3--colored code__heading">${ headerText }</h3>
+      <div class="code__action-icons code__action-icons--colored" click.delegate="copySource()">
+        <i class="material-icons">content_copy</i>
+      </div>
+    </div>
+    <pre class="code__content">${ source }</pre>
+    <textarea class="code__content-offscreen-field" ref="sourceTextField" value="${ source }"></textarea>
+  </div>
+</template>
