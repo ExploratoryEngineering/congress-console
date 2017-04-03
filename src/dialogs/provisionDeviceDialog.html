@@ -1,0 +1,16 @@
+<template>
+  <require from="components/source-code"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">Provision your device</h2>
+      </div>
+      <div class="flex-container__body">
+        <source-code source.bind="source"></source-code>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--primary" type="submit" click.trigger="dialogController.ok()">Close dialog</button>
+      </div>
+    </div>
+  </div>
+</template>
