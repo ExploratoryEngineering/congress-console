@@ -47,6 +47,14 @@ export class DeviceService {
       });
   }
 
+  fetchSourceForDevice(applicationEui: string, deviceEui: string): Promise<string> {
+    return this.apiClient.http
+      .createRequest(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}/source`)
+      .asGet()
+      .withResponseType('text')
+      .send().then(data => data.response);
+  }
+
   /**
    * Fetches device data
    * @param {string} applicationEui Application EUI for the Device
