@@ -87,10 +87,6 @@ export class ResponseHandler {
     }
 
     switch (response.statusCode) {
-      case 0: {
-        this.navigateToServerError();
-        throw new UnknownError(response.content);
-      }
       case 400: {
         throw new BadRequestError(response.content);
       }
@@ -116,6 +112,10 @@ export class ResponseHandler {
       case 503: {
         this.navigateToServerError();
         throw new ServiceUnavailableError(response.content);
+      }
+      default: {
+        this.navigateToServerError();
+        throw new UnknownError(response.content);
       }
     }
   }
