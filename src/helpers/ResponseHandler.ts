@@ -38,6 +38,14 @@ class NotFoundError extends ResponseError {
   }
 }
 
+class MethodNotSupported extends ResponseError {
+  errorCode: 405;
+
+  constructor(content: any) {
+    super(content);
+  }
+}
+
 class ServerErrorError extends ResponseError {
   errorCode: 500;
   constructor(content: any) {
@@ -93,6 +101,9 @@ export class ResponseHandler {
       case 404: {
         Log.debug('returning on 404');
         throw new NotFoundError(response.content);
+      }
+      case 405: {
+        throw new MethodNotSupported(response.content);
       }
       case 500: {
         this.navigateToServerError();
