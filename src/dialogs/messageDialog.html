@@ -1,0 +1,16 @@
+<template>
+  <div class="modal modal--small modal--transparent">
+    <div class="message-dialog">
+      <div class="message-dialog__header">
+        <h2 class="h2 message-dial__header-text">${messageHeader}</h2>
+      </div>
+      <div class="message-dialog__content">
+        ${message}
+      </div>
+      <div class="message-dialog__actions">
+        <button if.bind="cancelButtonText" class="button button--flat message-dialog__button" click.delegate="dialogController.cancel()">${cancelButtonText}</button>
+        <button if.bind="confirmButtonText" class="button button--flat message-dialog__button" type="submit" click.delegate="dialogController.ok()">${confirmButtonText}</button>
+      </div>
+    </div>
+  </div>
+</template>
