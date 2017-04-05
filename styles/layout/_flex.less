@@ -18,16 +18,20 @@
     border-bottom: solid 1px @flex-container-header-border-color;
     color: @flex-container-header-color;
     padding: @grid-size*4;
+
+    &--compact {
+      padding: @grid-size*2;
+    }
   }
 
   &__body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
     padding: @grid-size*4;
 
     &--centered {
       align-items: center;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
       justify-content: center;
     }
 
