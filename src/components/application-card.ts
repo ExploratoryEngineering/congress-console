@@ -73,6 +73,10 @@ export class ApplicationCard {
     this.eventAggregator.publish('application:edit', this.application);
   }
 
+  deleteApplication() {
+    this.eventAggregator.publish('application:delete', this.application);
+  }
+
   unbind() {
     clearInterval(this.dataInterval);
     this.dataInterval = null;
