@@ -9,6 +9,7 @@ import { Application } from 'Models/Application';
 
 import { CreateApplicationDialog } from 'Dialogs/createApplicationDialog';
 import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
+import { MessageDialog } from 'Dialogs/messageDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -55,6 +56,27 @@ export class Services {
     });
   }
 
+  deleteApplication(application: Application) {
+    this.dialogService.open({
+      viewModel: MessageDialog,
+      model: {
+        messageHeader: `Delete ${application.name}?`,
+        message: `Note: Before you delete the application you must first delete all devices connected to the application.`,
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel'
+      }
+    }).then(response => {
+      if (!response.wasCancelled) {
+        Log.debug('Deleting application');
+        this.applicationService.deleteApplication(application).then(() => {
+          this.availableApplications = this.availableApplications.filter(app => app.appEUI !== application.appEUI);
+        });
+      } else {
+        Log.debug('Did not delete application');
+      }
+    });
+  }
+
   fetchAndPopulateApplications() {
     return new Promise((res) => {
       this.applicationService.fetchApplications().then(applications => {
@@ -70,6 +92,9 @@ export class Services {
   activate() {
     this.subscriptions.push(this.eventAggregator.subscribe('application:edit', (application) => {
       this.editApplication(application);
+    }));
+    this.subscriptions.push(this.eventAggregator.subscribe('application:delete', (application) => {
+      this.deleteApplication(application);
     }));
     this.subscriptions.push(this.eventAggregator.subscribe('network:selected', (network) => {
       this.fetchAndPopulateApplications();
