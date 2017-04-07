@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.2.0...v0.2.1) (2017-04-07)
+
+
+### Bug Fixes
+
+* **device-expansion-panel:** remove uneeded call to device source ([0dba7c1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/0dba7c1))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.1.0...v0.2.0) (2017-04-07)
 
