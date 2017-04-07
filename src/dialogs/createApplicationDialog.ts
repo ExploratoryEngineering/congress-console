@@ -23,8 +23,8 @@ export class CreateApplicationDialog {
   ) { }
 
   submitApplication() {
-    return this.applicationService.createNewApplication(this.application).then(() => {
-      this.dialogController.ok();
+    return this.applicationService.createNewApplication(this.application).then((application) => {
+      this.dialogController.ok(application);
     }).catch(error => {
       if (error instanceof BadRequestError) {
         Log.debug('400', error);

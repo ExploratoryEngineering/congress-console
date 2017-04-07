@@ -31,9 +31,7 @@ export class Services {
   createNewApplication() {
     this.dialogService.open({ viewModel: CreateApplicationDialog }).then(response => {
       if (!response.wasCancelled) {
-        this.applicationService.fetchApplications().then(applications => {
-          this.availableApplications = applications;
-        });
+        this.availableApplications.push(response.output);
       }
     });
   }
