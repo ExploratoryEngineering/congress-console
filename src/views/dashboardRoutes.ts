@@ -15,7 +15,7 @@ export const routes = [
     title: 'Overview'
   },
   {
-    route: ['applications/:applicationId/applicationDevices'],
+    route: ['applications/:applicationId/devices'],
     name: 'application_devices',
     moduleId: './dashboard/applications/applicationDevices',
     nav: true,
