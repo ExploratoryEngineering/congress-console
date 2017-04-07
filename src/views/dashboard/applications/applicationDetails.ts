@@ -87,7 +87,7 @@ export class ServiceDetails {
   }
 
   getChartData(messageData: MessageData[]) {
-    return this.graphController.getGraph(messageData, { graphType: 'CO2' });
+    return this.graphController.getGraph(messageData, { graphType: 'rssi' });
   }
 
   addChartData(wsMessage: WebsocketDeviceDataMessage) {
