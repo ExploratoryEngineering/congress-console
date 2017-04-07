@@ -40,7 +40,7 @@ interface GraphConfig {
   chartDataColors?: string[];
 }
 
-type GraphType = 'count' | 'count-aggregated' | 'CO2';
+type GraphType = 'count' | 'count-aggregated' | 'CO2' | 'rssi';
 
 const Log = LogBuilder.create('Graph controller');
 
@@ -89,7 +89,7 @@ export class GraphController {
     private dataTransformer: DataTransformer
   ) { }
 
-  getGraph(messageData: MessageData[], { graphType = 'CO2', chartDataColors = defaultColors}: GraphConfig = {}): GraphData {
+  getGraph(messageData: MessageData[], { graphType = 'CO2', chartDataColors = defaultColors }: GraphConfig = {}): GraphData {
     this.chartDataColors = chartDataColors;
     let graphMetaData = this.createGraphMetaData(messageData);
 
@@ -105,6 +105,10 @@ export class GraphController {
       }
       case 'count-aggregated': {
         graphDataSets = graphDataSets.concat(this.createCountAggregatedGraphDataSet(graphMetaData));
+        break;
+      }
+      case 'rssi': {
+        graphDataSets = graphDataSets.concat(this.createRssiGraphDataSet(graphMetaData));
         break;
       }
       default: {
@@ -212,10 +216,44 @@ export class GraphController {
   }
 
   /**
-   * Create GraphData based on the type 'count'
+   * Creates an RSSI graph dataset
+   * @param graphMetaData GraphMetaData to be used for creation of the dataset
    */
-  createCountAggregatedGraphData(dataEUI: string, dataBucketSet: DataBucketSet) {
+  createRssiGraphDataSet(graphMetaData: GraphMetaData): GraphDataSet[] {
+    let rssiGraphDataSet: GraphDataSet[] = [];
 
+    graphMetaData.dataEUIs.forEach((uid, idx) => {
+      let countGraphData = this.createRssiGraphData(uid, graphMetaData.dataBucketSet);
+
+      rssiGraphDataSet = rssiGraphDataSet.concat([{
+        label: `${mapper[uid] ? mapper[uid] : uid} - RSSI`,
+        fill: false,
+        data: countGraphData.data,
+        backgroundColor: this.getColorByIndex(idx)
+      }]);
+    });
+
+    return rssiGraphDataSet;
+  }
+  /**
+   * Create rssi graph data to be used in a data set
+   * @param dataEUI EUI of the dataset
+   * @param dataBucketSet The bucket set for the EUI
+   */
+  createRssiGraphData(dataEUI: string, dataBucketSet: DataBucketSet) {
+    let countData: { data: Array<number | undefined> } = { data: [] };
+
+    Object.keys(dataBucketSet).forEach((label) => {
+      let dataBucket = dataBucketSet[label];
+
+      if (dataBucket.dataSets[dataEUI]) {
+        countData.data.push(dataBucket.dataSets[dataEUI][0].RSSI);
+      } else {
+        countData.data.push(undefined);
+      }
+    });
+
+    return countData;
   }
 
   /**
