@@ -43,7 +43,6 @@ export class DeviceExpansionPanel {
   }
 
   fetchLastMessageData() {
-    this.deviceService.fetchSourceForDevice(this.appeui, this.device.deviceEUI);
     return this.deviceService.fetchDeviceDataByEUI(
       this.appeui,
       this.device.deviceEUI,
