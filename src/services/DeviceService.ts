@@ -95,10 +95,16 @@ export class DeviceService {
     });
   }
 
-  deleteDevice(device: Device): Promise<any> {
-    return new Promise((res) => {
-      Log.debug('Deleting device', device);
-      res();
+  /**
+   * Deletes given device under given application EUI
+   * @param appEUI The application EUI for which the device resides
+   * @param device The device object to be deleted
+   */
+  deleteDevice(appEUI: string, device: Device): Promise<any> {
+    return this.apiClient.http.delete(
+      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEUI}/devices/${device.deviceEUI}`
+    ).then(res => {
+      Log.debug('Delete success!', res);
     });
   }
 }
