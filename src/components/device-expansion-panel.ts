@@ -68,6 +68,11 @@ export class DeviceExpansionPanel {
     this.active = !this.active;
   }
 
+  deleteDevice() {
+    Log.debug('User wants to delete device', this.device);
+    this.eventAggregator.publish('device:delete', this.device);
+  }
+
   provisionDevice() {
     Log.debug('User wants to provision device', this.device);
     this.dialogService.open({
