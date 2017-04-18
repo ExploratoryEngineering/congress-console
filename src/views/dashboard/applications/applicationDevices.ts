@@ -61,7 +61,7 @@ export class ServiceDetails {
           this.devices = this.devices.filter(dev => dev.deviceEUI !== device.deviceEUI);
         });
       } else {
-        Log.debug('Did not delete application');
+        Log.debug('Did not delete device');
       }
     });
   }
