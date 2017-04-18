@@ -1,0 +1,39 @@
+<template>
+  <require from="components/text-input.html"></require>
+  <require from="components/textarea-input.html"></require>
+  <require from="components/select-input.html"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">Create a new application token for "${ application.name }".</h2>
+      </div>
+      <div class="flex-container__body flex-container__body--centered">
+        <form class="form" submit.delegate="createToken()">
+          <text-input value.two-way="token.name" name="token-name" label="Name" floatinglabel="true"></text-input>
+          <label class="radio-group">
+              <div class="radio-group__input">
+                <input type="radio" value="readonly" checked.bind="selectedAccessLevel" name="token-type" />
+              </div>
+              <div class="radio-group__input-text">
+                <h4 class="h4">Read only</h4>
+                <span>Allows for the token to access all application data, but NOT alter state or add devices</span>
+              </div>
+            </label>
+          <label class="radio-group">
+              <div class="radio-group__input">
+                <input type="radio" value="fullaccess" checked.bind="selectedAccessLevel" name="token-type"/>
+              </div>
+              <div class="radio-group__input-text">
+                <h4 class="h4">Full access</h4>
+                <span>Allows for the token to access all application data, alter state and add devices</span>
+              </div>
+            </label>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.delegate="createToken()">Create token</button>
+      </div>
+    </div>
+  </div>
+</template>
