@@ -8,15 +8,11 @@
   overflow: hidden;
   transition: background 0.5s @animation-cubic-bezier-1, max-height 0.5s @animation-cubic-bezier-1, margin 0.5s @animation-cubic-bezier-1;
 
-  &:active {
-    background-color: @color--google-grey-200;
-  }
-
   &--expanded {
     margin: @grid-size * 2 0;
     max-height: 700px;
 
-    &:active {
+    .expansion-panel__header:focus {
       background-color: @color--white;
     }
   }
@@ -26,7 +22,12 @@
     display: flex;
     height: @grid-size * 8;
     line-height: @grid-size * 8;
+    outline: none;
     padding: 0 @grid-size * 3;
+
+    &:focus {
+      background-color: @color--google-grey-200;
+    }
   }
 
   &__title {
