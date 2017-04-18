@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.2.1...v0.3.0) (2017-04-18)
+
+
+### Bug Fixes
+
+* **expansion-panel:** make panel selectable and correct focus on active panel ([85e0add](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/85e0add))
+
+
+### Features
+
+* **applicationDevices:** add header to devices ([b276798](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/b276798))
+* **applicationIntegration:** add route to integrations and connect components ([5155392](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/5155392))
+* **card:** add transparent card functionality ([9151a8c](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/9151a8c))
+* **createTokenDialog:** add dialog for creating tokens ([f7d9bfd](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/f7d9bfd))
+* **token:** add model for Token ([0ae1ce4](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/0ae1ce4))
+* **token-table:** add table for listing and interacting with tokens ([c6738f1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/c6738f1))
+* **tokenService:** add service to interact with tokens ([503387d](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/503387d))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.2.0...v0.2.1) (2017-04-07)
 
