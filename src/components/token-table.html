@@ -1,0 +1,23 @@
+<template bindable="tokens">
+  <require from="components/token-action-items"></require>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="table__head-data">Name</th>
+        <th class="table__head-data">Key</th>
+        <th class="table__head-data">Rights</th>
+        <th class="table__head-data"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="token of tokens">
+        <td class="table__data"></td>
+        <td class="table__data">${ token.token }</td>
+        <td class="table__data">${ token.write ? 'Full access' : 'Read only' }</td>
+        <td class="table__data table__data--align-right">
+          <token-action-items token.bind="token"></token-action-items>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>

@@ -1,0 +1,11 @@
+<template>
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
+  <dropdown>
+    <dropdown-title><a class="material-icons">more_vert</a></dropdown-title>
+    <dropdown-container>
+      <div class="dropdown__menu-item" click.delegate="deleteToken(token)">Delete</div>
+    </dropdown-container>
+  </dropdown>
+</template>
