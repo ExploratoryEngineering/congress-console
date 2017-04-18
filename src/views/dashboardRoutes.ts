@@ -23,11 +23,11 @@ export const routes = [
     title: 'Devices'
   },
   {
-    route: ['applications/:applicationId/settings'],
-    name: 'application_settings',
-    moduleId: './dashboard/applications/applicationDevices',
+    route: ['applications/:applicationId/integrations'],
+    name: 'application_integrations',
+    moduleId: './dashboard/applications/applicationIntegrations',
     nav: true,
     href: '#/dashboard/applications',
-    title: 'Integration'
+    title: 'Integrations'
   }
 ];
