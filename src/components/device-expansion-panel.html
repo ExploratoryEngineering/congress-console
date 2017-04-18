@@ -3,7 +3,7 @@
   <require from="valueConverters/deviceName"></require>
   <require from="components/expansion-panel-device-info.html"></require>
   <div class="device-expansion-panel expansion-panel ${ active ? 'expansion-panel--expanded' : '' }">
-    <div class="expansion-panel__header" click.delegate="toggle()">
+    <div class="expansion-panel__header" click.delegate="toggle()" tabindex="0">
       <span class="expansion-panel__title">${ device.deviceEUI | deviceName }</span>
       <span class="expansion-panel__subtitle">${ device.deviceType }</span>
       <span class="expansion-panel__chevron"><div class="material-icons">${ active ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }</div></span>
