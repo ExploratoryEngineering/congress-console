@@ -1,5 +1,3 @@
-import Debug from 'Helpers/Debug';
-
 interface DeviceDto {
   AppSKey: string;
   DevAddr: string;
@@ -22,10 +20,10 @@ export class Device {
   relaxedCounter: boolean;
 
   constructor({
-    deviceEUI = Debug.getRandomHexString(),
-    devAddr = Debug.getRandomHexString(3, false),
-    appSKey = Debug.getRandomHexString(16, false),
-    nwkSKey = Debug.getRandomHexString(16, false),
+    deviceEUI = '',
+    devAddr = '',
+    appSKey = '',
+    nwkSKey = '',
     deviceType = 'ABP',
     fCntUp = 0,
     fCntDn = 0,
