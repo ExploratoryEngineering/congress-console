@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.4.0...v0.4.1) (2017-04-19)
+
+
+### Bug Fixes
+
+* **createDevice:** use DeviceType instead of Type towards backend ([f5055fa](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/f5055fa))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.3.0...v0.4.0) (2017-04-19)
 
