@@ -1,39 +1,67 @@
 <template>
   <require from="components/text-input.html"></require>
-  <require from="components/textarea-input.html"></require>
-  <require from="components/select-input.html"></require>
+  <require from="components/source-code"></require>
   <div class="modal">
     <div class="flex-container">
       <div class="flex-container__header">
         <h2>Create your new device</h2>
       </div>
       <div class="flex-container__body flex-container__body--centered">
-        <form class="form" submit.delegate="submitDevice()">
+        <div class="tab-navigation">
+          <div class="tab-navigation__tabs">
+            <a click.trigger="goToStep(1)" class="tab-navigation__tab ${ step === 1 ? 'tab-navigation__tab--selected' : ''} ${ step === 3 ? 'tab-navigation__tab--disabled' : '' }">
+              1. Choose device type
+            </a>
+            <a click.trigger="goToStep(2)" class="tab-navigation__tab ${ step === 2 ? 'tab-navigation__tab--selected' : ''} ${ step === 3 ? 'tab-navigation__tab--disabled' : '' }">
+              2. Device configuration
+            </a>
+            <a class="tab-navigation__tab ${ step === 3 ? 'tab-navigation__tab--selected' : 'tab-navigation__tab--disabled'}">
+              3. Provision
+            </a>
+          </div>
+        </div>
+        <form class="form" if.bind="step === 1" submit.delegate="next()">
           <div class="form-group">
             <label class="radio-group">
               <div class="radio-group__input">
-                <input type="radio" value="otaa" checked.bind="selectedType" name="device-type" />
+                <input type="radio" value="OTAA" checked.bind="selectedType" name="device-type" />
               </div>
               <div class="radio-group__input-text">
-                <h3>OTAA</h3>
+                <h4 class="h4">OTAA</h4>
                 <span>Over The Air Activation - The simplest way of adding a device to the LoRa network</span>
               </div>
             </label>
             <label class="radio-group">
               <div class="radio-group__input">
-                <input type="radio" value="abp" checked.bind="selectedType" name="device-type"/>
+                <input type="radio" value="ABP" checked.bind="selectedType" name="device-type"/>
               </div>
               <div class="radio-group__input-text">
-                <h3>ABP</h3>
+                <h4 class="h4">ABP</h4>
                 <span>Activation By Personalization - The not so simplest way of adding a device to the LoRa network</span>
               </div>
             </label>
           </div>
         </form>
+        <form class="form" if.bind="step === 2" submit.delegate="next()">
+          <text-input value.two-way="deviceName" name="device-name" label="Device name (Optional)" floatinglabel="true"></text-input>
+          <div if.bind="isAbp" class="form-field">
+            <text-input value.two-way="device.devAddr" name="device-dev-addr" label="Dev Address (Required)" floatinglabel="true"></text-input>
+            <text-input value.two-way="device.appSKey" name="device-app-s-key" label="Application S key (Required)" floatinglabel="true"></text-input>
+            <text-input value.two-way="device.nwkSKey" name="device-network-s-key" label="Network S key (Required)" floatinglabel="true"></text-input>
+          </div>
+        </form>
+        <div if.bind="step === 3" class="section">
+          <h2 class="h2">Your device was successfully created</h2>
+          <p>
+            Below you'll find the source needed to correctly provision your device. When you close this window, your device will be available
+            in the device list.
+          </p>
+          <source-code source.bind="source"></source-code>
+        </div>
       </div>
       <div class="flex-container__footer">
-        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
-        <button class="button button--primary" type="submit" click.delegate="submitDevice()">Create new device</button>
+        <button class="button button--flat" if.bind="step !== 3" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.delegate="next()">${ nextText }</button>
       </div>
     </div>
   </div>
