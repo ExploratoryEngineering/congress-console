@@ -19,6 +19,10 @@
     color: @table-head-color;
     padding: @grid-size*2 @grid-size*4;
     text-align: left;
+
+    &--action-column {
+      width: @grid-size*8;
+    }
   }
 
   tr > &__data {
@@ -30,6 +34,10 @@
 
     &--align-right {
       text-align: right;
+    }
+
+    &--action-column {
+      width: @grid-size*8;
     }
   }
 
