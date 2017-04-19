@@ -3,7 +3,7 @@
     <div class="dropdown__title ${ disabled ? 'dropdown__title--disabled' : ''}" click.delegate="toggleDropdown()">
       <slot name="dropdown-title">Fallback title</slot>
     </div>
-    <div ref="container" class="dropdown__container dropdown__container--${ dropdownPosition } ${active ? 'dropdown__container--visible' : ''} ${ containerClass }">
+    <div ref="container" class="dropdown__container dropdown__container--${ dropdownPosition } ${active ? 'dropdown__container--visible' : ''} ${ containerClasses }">
       <slot name="dropdown-container">Fallback items</slot>
     </div>
   </div>
