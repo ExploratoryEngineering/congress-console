@@ -31,12 +31,11 @@
   width: 300px;
 
   &__header {
-    display: inline-block;
+    line-height: @grid-size * 3.5;
     margin: 0 auto 0 0;
-
-    &--right {
-      float: right;
-    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__statistics-text {
