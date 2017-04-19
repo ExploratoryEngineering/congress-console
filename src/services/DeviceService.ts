@@ -15,7 +15,7 @@ interface NewDevice {
 export interface NewOTAADevice extends NewDevice { }
 
 export interface NewABPDevice extends NewDevice {
-  Type: string;
+  DeviceType: string;
   DevAddr: string;
   AppSKey: string;
   NwkSKey: string;

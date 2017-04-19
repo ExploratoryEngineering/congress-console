@@ -64,7 +64,7 @@ export class CreateDeviceDialog {
         NwkSKey: this.device.nwkSKey,
         DevAddr: this.device.devAddr,
         AppSKey: this.device.appSKey,
-        Type: this.selectedType,
+        DeviceType: this.selectedType,
       };
       return abpDevice;
     }
