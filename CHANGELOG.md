@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.3.0...v0.4.0) (2017-04-19)
+
+
+### Bug Fixes
+
+* **application-card:** use correct class for header ([30f857d](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/30f857d))
+* **profile-dropdown:** use correct class binding ([f539677](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/f539677))
+* **side-bar-menu:** align padding with rest of design ([36e3ac3](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/36e3ac3))
+
+
+### Features
+
+* **action-dropdowns:** add transform class where it fits ([fa0340a](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/fa0340a))
+* **application-card:** add ellipsis on header ([ba65314](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/ba65314))
+* **card:** add inline modifier ([53e4e16](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/53e4e16))
+* **createDeviceDialog:** new flow for creating device along with source fetching ([34d3ad8](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/34d3ad8))
+* **dropdown:** add scale animation if transform class is applied ([68b5d8f](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/68b5d8f))
+* **tab-navigation:** add equal tab width and disabled modifier ([6dda9e9](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/6dda9e9))
+* **table:** add action column class ([d0f97e8](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/d0f97e8))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.2.1...v0.3.0) (2017-04-18)
 
