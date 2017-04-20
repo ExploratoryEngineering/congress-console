@@ -12,6 +12,14 @@
     margin: @grid-size * 2 0;
     max-height: 700px;
 
+    &:first-of-type {
+      margin: 0 0 @grid-size * 2 0;
+    }
+
+    &:last-of-type {
+      margin: @grid-size * 2 0 0 0;
+    }
+
     .expansion-panel__header:focus {
       background-color: @color--white;
     }
