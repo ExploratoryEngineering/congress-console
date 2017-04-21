@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.4.1...v0.5.0) (2017-04-21)
+
+
+### Bug Fixes
+
+* **device-info:** correctly write frame for instead of f abrev ([db327a0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/db327a0))
+* **expansion-panel:** fix special case for first and last el ([4479c17](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/4479c17))
+
+
+### Features
+
+* **code-line:** add new component for simple code lines ([233fb74](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/233fb74))
+* **token-expansion-panel:** add component for token panel ([df51a26](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/df51a26))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.4.0...v0.4.1) (2017-04-19)
 
