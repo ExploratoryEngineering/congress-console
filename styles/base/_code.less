@@ -56,3 +56,40 @@
     position: fixed;
   }
 }
+
+.code-line {
+  background-color: @color--google-grey-200;
+  display: inline-flex;
+
+  &__content {
+    flex-grow: 1;
+    line-height: @grid-size * 5;
+    padding: 0 @grid-size * 2;
+  }
+
+  &__icon {
+    color: @font-color-secondary;
+    font-size: @grid-size * 4.5;
+    padding-left: @grid-size * 1.5;
+    padding-right: @grid-size * 1.5;
+    text-align: center;
+    user-select: none;
+
+    &--clickable {
+      cursor: pointer;
+    }
+
+    &--colored {
+      background-color: @color--blue;
+      color: @font-color-secondary--colored;
+
+      &:hover {
+        background-color: darken(@color--blue, 5%);
+        color: @font-color-primary--colored;
+      }
+      &:active {
+        background-color: darken(@color--blue, 10%);
+      }
+    }
+  }
+}
