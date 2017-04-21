@@ -1,18 +1,18 @@
 <template>
   <require from="components/application-details-side-bar-menu.html"></require>
   <require from="components/nav-header.html"></require>
-  <require from="components/token-table.html"></require>
+  <require from="components/token-expansion-panel"></require>
   <application-details-side-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router">
   </application-details-side-bar-menu>
   <main class="flex-element--grow">
     <nav-header heading="Application integrations"></nav-header>
     <div class="section">
-      <div class="card">
+      <div class="card card--transparent">
         <div class="card__header card__header--colored">
           <h4 class="h4 h4--colored">Available application tokens</h4>
         </div>
         <div class="card__body card__body--no-padding">
-          <token-table tokens.bind="tokens"></token-table>
+          <token-expansion-panel repeat.for="token of tokens" token.bind="token"></token-expansion-panel>
         </div>
       </div>
     </div>
