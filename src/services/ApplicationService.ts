@@ -4,9 +4,9 @@ import { ApiClient } from 'Helpers/ApiClient';
 import { Application } from 'Models/Application';
 import { NetworkInformation } from 'Helpers/NetworkInformation';
 
-import * as moment from 'moment';
-
 import { LogBuilder } from 'Helpers/LogBuilder';
+import { Time } from 'Helpers/Time';
+
 const Log = LogBuilder.create('Application service');
 
 @autoinject
@@ -19,8 +19,8 @@ export class ApplicationService {
   fetchApplications(): Promise<Application[]> {
     return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications`)
       .then(data => data.content.applications)
-      .then(content => {
-        return content.map(Application.newFromDto);
+      .then(applications => {
+        return applications.map(Application.newFromDto);
       });
   }
 
@@ -37,13 +37,13 @@ export class ApplicationService {
     applicationEui: string,
     {
       limit = 100,
-      since = this.getDefaultSince()
+      since = Time.SIX_HOURS_AGO.format('X')
     }: DataSearchParameters = {}): Promise<MessageData[]> {
     return this.apiClient.http.get(
       `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/data?limit=${limit}&since=${since}`
     )
       .then(data => data.content.Messages)
-      .then(data => data.reverse());
+      .then(messages => messages.reverse());
   }
 
   createNewApplication(application: Application): Promise<Application> {
@@ -74,12 +74,5 @@ export class ApplicationService {
     ).then(res => {
       Log.debug('Delete success!', res);
     });
-  }
-
-  /**
-   * Returns the default since to be used in data queries as UNIX timestamp
-   */
-  private getDefaultSince(): string {
-    return moment().subtract(24, 'hours').format('X');
   }
 }
