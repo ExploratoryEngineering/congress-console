@@ -29,8 +29,10 @@ export class DeviceService {
     private networkInformation: NetworkInformation
   ) { }
 
-  fetchDevices(applicationEui: string): Promise<Device[]> {
-    return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices`)
+  async fetchDevices(applicationEui: string): Promise<Device[]> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
+    return this.apiClient.http.get(`/networks/${netEui}/applications/${applicationEui}/devices`)
       .then(data => data.content.devices)
       .then(devices => {
         Log.debug('Fetched devices', devices);
@@ -38,8 +40,10 @@ export class DeviceService {
       });
   }
 
-  fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
-    return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}`)
+  async fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
+    return this.apiClient.http.get(`/networks/${netEui}/applications/${applicationEui}/devices/${deviceEui}`)
       .then(data => data.content.devices)
       .then(device => {
         Log.debug('Fetched device ', device);
@@ -47,9 +51,11 @@ export class DeviceService {
       });
   }
 
-  fetchSourceForDevice(applicationEui: string, deviceEui: string): Promise<string> {
+  async fetchSourceForDevice(applicationEui: string, deviceEui: string): Promise<string> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http
-      .createRequest(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}/source`)
+      .createRequest(`/networks/${netEui}/applications/${applicationEui}/devices/${deviceEui}/source`)
       .asGet()
       .withResponseType('text')
       .send().then(data => data.response);
@@ -61,25 +67,29 @@ export class DeviceService {
    * @param {string} deviceEui Device EUI for the Device
    * @param {DataSearchParameters} searchParams Search parameters for getting data
    */
-  fetchDeviceDataByEUI(
+  async fetchDeviceDataByEUI(
     applicationEui: string,
     deviceEui: string,
     {
       limit = 50,
       since = Time.SIX_HOURS_AGO.format('X')
     }: DataSearchParameters = {}): Promise<MessageData[]> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.get(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`
+      `/networks/${netEui}/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`
     )
       .then(data => data.content.Messages)
       .then(data => data.reverse());
 
   }
 
-  createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
+  async createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
     Log.debug('Creating device', device);
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.post(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEui}/devices`,
+      `/networks/${netEui}/applications/${appEui}/devices`,
       device
     ).then(data => data.content)
       .then(newDevice => {
@@ -88,11 +98,11 @@ export class DeviceService {
       });
   }
 
-  updateDevice(device: Device): Promise<Device> {
-    return new Promise((res) => {
-      Log.debug('Updating device', device);
-      res(device);
-    });
+  async updateDevice(device: Device): Promise<Device> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
+    Log.debug('Updating device', device);
+    return Promise.resolve(device);
   }
 
   /**
@@ -100,9 +110,11 @@ export class DeviceService {
    * @param appEUI The application EUI for which the device resides
    * @param device The device object to be deleted
    */
-  deleteDevice(appEUI: string, device: Device): Promise<any> {
+  async deleteDevice(appEUI: string, device: Device): Promise<any> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.delete(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEUI}/devices/${device.deviceEUI}`
+      `/networks/${netEui}/applications/${appEUI}/devices/${device.deviceEUI}`
     ).then(res => {
       Log.debug('Delete success!', res);
     });

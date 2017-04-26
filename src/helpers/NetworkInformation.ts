@@ -15,7 +15,16 @@ export class NetworkInformation {
     private networkService: NetworkService
   ) { }
 
-  fetchNetworks(): Promise<any> {
+  async fetchSelectedNetwork(): Promise<Network> {
+    if (this.selectedNetwork) {
+      return Promise.resolve(this.selectedNetwork);
+    } else {
+      await this.fetchNetworksAndSelectNetwork();
+      return Promise.resolve(this.selectedNetwork);
+    }
+  }
+
+  fetchNetworksAndSelectNetwork(): Promise<any> {
     let selectedNetworkEUI = Cookies.get('selectedNetworkEUI');
 
     return this.networkService.fetchAllNetworks().then((networks) => {

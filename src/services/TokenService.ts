@@ -14,7 +14,9 @@ export class TokenService {
     private networkInformation: NetworkInformation
   ) { }
 
-  fetchTokensForApplication(appEuid: string): Promise<Token[]> {
+  async fetchTokensForApplication(appEuid: string): Promise<Token[]> {
+    let appResourcePath = await this.resourcePathForApplication(appEuid);
+
     return this.apiClient.http.get(`/tokens`)
       .then(data => data.content.tokens)
       .then(tokens => {
@@ -23,7 +25,7 @@ export class TokenService {
       .then(tokens => {
         Log.debug('Fetched tokens', tokens);
         return tokens.filter(token => {
-          return token.resource === this.resourcePathForApplication(appEuid);
+          return token.resource === appResourcePath;
         });
       });
   }
@@ -44,7 +46,9 @@ export class TokenService {
       });
   }
 
-  resourcePathForApplication(appEui: string): string {
-    return `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${appEui}`;
+  async resourcePathForApplication(appEui: string): Promise<string> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
+    return `/networks/${netEui}/applications/${appEui}`;
   }
 }

@@ -16,16 +16,20 @@ export class ApplicationService {
     private networkInformation: NetworkInformation
   ) { }
 
-  fetchApplications(): Promise<Application[]> {
-    return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications`)
+  async fetchApplications(): Promise<Application[]> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
+    return this.apiClient.http.get(`/networks/${netEui}/applications`)
       .then(data => data.content.applications)
       .then(applications => {
         return applications.map(Application.newFromDto);
       });
   }
 
-  fetchApplicationByEUI(applicationEui: string): Promise<Application> {
-    return this.apiClient.http.get(`/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}`)
+  async fetchApplicationByEUI(applicationEui: string): Promise<Application> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
+    return this.apiClient.http.get(`/networks/${netEui}/applications/${applicationEui}`)
       .then(data => data.content)
       .then(application => {
         Log.debug('Fetching application', application);
@@ -33,22 +37,26 @@ export class ApplicationService {
       });
   }
 
-  fetchApplicationDataByEUI(
+  async fetchApplicationDataByEUI(
     applicationEui: string,
     {
       limit = 100,
       since = Time.SIX_HOURS_AGO.format('X')
     }: DataSearchParameters = {}): Promise<MessageData[]> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.get(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${applicationEui}/data?limit=${limit}&since=${since}`
+      `/networks/${netEui}/applications/${applicationEui}/data?limit=${limit}&since=${since}`
     )
       .then(data => data.content.Messages)
       .then(messages => messages.reverse());
   }
 
-  createNewApplication(application: Application): Promise<Application> {
+  async createNewApplication(application: Application): Promise<Application> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.post(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications`,
+      `/networks/${netEui}/applications`,
       Application.toDto(application)
     ).then(data => data.content)
       .then(res => {
@@ -57,9 +65,11 @@ export class ApplicationService {
       });
   }
 
-  updateApplication(application: Application): Promise<Application> {
+  async updateApplication(application: Application): Promise<Application> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.put(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${application.appEUI}`,
+      `/networks/${netEui}/applications/${application.appEUI}`,
       Application.toDto(application)
     ).then(data => data.content)
       .then(res => {
@@ -68,9 +78,11 @@ export class ApplicationService {
       });
   }
 
-  deleteApplication(application: Application): Promise<void> {
+  async deleteApplication(application: Application): Promise<void> {
+    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
+
     return this.apiClient.http.delete(
-      `/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${application.appEUI}`
+      `/networks/${netEui}/applications/${application.appEUI}`
     ).then(res => {
       Log.debug('Delete success!', res);
     });
