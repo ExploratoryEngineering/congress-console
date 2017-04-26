@@ -8,12 +8,12 @@ export class GatewayService {
     private apiClient: ApiClient
   ) { }
 
-  getGateways(): Promise<Gateway[]> {
+  fetchGateways(): Promise<Gateway[]> {
     return this.apiClient.http.get('/gateways')
       .then(data => data.content.gateways);
   }
 
-  createGateWay(gateway: Gateway): Promise<Gateway> {
+  createGateway(gateway: Gateway): Promise<Gateway> {
     return this.apiClient.http.post(
       '/gateways',
       Gateway.toDto(gateway)
@@ -21,5 +21,11 @@ export class GatewayService {
       .then(res => {
         return Gateway.newFromDto(res);
       });
+  }
+
+  deleteGateway(gateway: Gateway) {
+    return this.apiClient.http.delete(
+      `/gateways/${gateway.gatewayEUI}`
+    );
   }
 }
