@@ -14,7 +14,7 @@ export class SortValueConverter {
         if (typeof aProp === 'number' && typeof bProp === 'number') {
           return (a - b) * factor;
         }
-        Log.warn('Tried to sort values which wasnt same type', a, typeof a, b, typeof b);
+        Log.warn(`Tried to sort property ${propertyName} which wasnt same type`, aProp, typeof aProp, bProp, typeof bProp);
         return 0;
       });
   }
