@@ -10,7 +10,8 @@ export class GatewayService {
 
   fetchGateways(): Promise<Gateway[]> {
     return this.apiClient.http.get('/gateways')
-      .then(data => data.content.gateways);
+      .then(data => data.content.gateways)
+      .then(gateways => gateways.map(Gateway.newFromDto));
   }
 
   createGateway(gateway: Gateway): Promise<Gateway> {
