@@ -19,9 +19,4 @@ export class Dashboard {
 
     this.router = router;
   }
-
-  activate() {
-    Log.debug('Activate');
-    return this.networkInformation.fetchNetworks();
-  }
 }
