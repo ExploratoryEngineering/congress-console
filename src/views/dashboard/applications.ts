@@ -1,7 +1,7 @@
 import { autoinject } from 'aurelia-framework';
 import { DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 
 import { ApplicationService } from 'Services/ApplicationService';
 
@@ -17,7 +17,7 @@ const Log = LogBuilder.create('Applications');
 
 @autoinject
 export class Services {
-  subscriptions: any = [];
+  subscriptions: Subscription[] = [];
 
   constructor(
     private applicationService: ApplicationService,
