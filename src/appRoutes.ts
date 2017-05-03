@@ -11,16 +11,6 @@ export let routes = [
     title: 'Login'
   },
   {
-    route: ['overview'],
-    name: 'overview',
-    moduleId: 'views/application-dashboard',
-    nav: true,
-    title: 'Overview',
-    settings: {
-      auth: true
-    }
-  },
-  {
     route: ['dashboard'],
     name: 'dashboard',
     moduleId: 'views/application-dashboard',
