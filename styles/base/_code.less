@@ -60,11 +60,14 @@
 .code-line {
   background-color: @color--google-grey-200;
   display: inline-flex;
+  max-width: 100%;
 
   &__content {
     flex-grow: 1;
     line-height: @grid-size * 5;
+    overflow: auto;
     padding: 0 @grid-size * 2;
+    white-space: nowrap;
   }
 
   &__icon {
