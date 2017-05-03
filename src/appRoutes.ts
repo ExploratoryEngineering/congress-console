@@ -4,13 +4,6 @@ export let routes = [
     redirect: 'dashboard'
   },
   {
-    route: ['welcome'],
-    name: 'welcome',
-    moduleId: 'views/welcome',
-    nav: false,
-    title: 'Welcome'
-  },
-  {
     route: ['login'],
     name: 'login',
     moduleId: 'views/login',
