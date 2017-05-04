@@ -1,15 +1,13 @@
 import '../styles/styles.less';
 
-import { LogManager } from 'aurelia-framework';
+import { LogManager, Aurelia } from 'aurelia-framework';
 import { ConsoleAppender } from 'aurelia-logging-console';
 
 // Promise polyfill
 import * as Bluebird from 'bluebird';
 Bluebird.config({ warnings: false });
 
-export async function configure(aurelia) {
-  LogManager.addAppender(new ConsoleAppender());
-
+export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .plugin('aurelia-dialog')
@@ -20,6 +18,7 @@ export async function configure(aurelia) {
         production: ['lora.telenor.io']
       });
 
+      LogManager.addAppender(new ConsoleAppender());
       if (config.is('production')) {
         LogManager.setLevel(LogManager.logLevel.error);
       } else {
