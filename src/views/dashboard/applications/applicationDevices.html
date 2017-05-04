@@ -1,24 +1,19 @@
 <template>
-  <require from="components/application-details-side-bar-menu.html"></require>
-  <require from="components/tab-navigation.html"></require>
-  <require from="components/device-table.html"></require>
+  <require from="components/application-nav-bar-menu.html"></require>
   <require from="components/nav-header.html"></require>
   <require from="components/device-expansion-panel"></require>
-  <application-details-side-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router">
-  </application-details-side-bar-menu>
-  <main class="flex-element--grow">
-    <nav-header heading="Application devices"></nav-header>
-    <div class="section">
-      <div class="card card--transparent">
-        <div class="card__header card__header--colored">
-          <h4 class="h4 h4--colored">Your devices</h4>
-        </div>
-        <div class="card__body card__body--no-padding">
-          <device-expansion-panel repeat.for="device of devices" device.bind="device" appeui.bind="application.appEUI"></device-expansion-panel>
-        </div>
+  <nav-header heading="Application devices"></nav-header>
+  <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
+  <div class="section">
+    <div class="card card--transparent">
+      <div class="card__header card__header--colored">
+        <h4 class="h4 h4--colored">Your devices</h4>
+      </div>
+      <div class="card__body card__body--no-padding">
+        <device-expansion-panel repeat.for="device of devices" device.bind="device" appeui.bind="application.appEUI"></device-expansion-panel>
       </div>
     </div>
-    <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewDevice()"><i
-      class="material-icons">add</i></button>
-  </main>
+  </div>
+  <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewDevice()"><i
+    class="material-icons">add</i></button>
 </template>

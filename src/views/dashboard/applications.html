@@ -1,15 +1,11 @@
 <template>
   <require from="components/nav-header.html"></require>
   <require from="components/application-card"></require>
-  <require from="components/side-bar-menu.html"></require>
   <require from="valueConverters/sort"></require>
-  <side-bar-menu router.bind="router.parent"></side-bar-menu>
-  <main class="main-content">
-    <nav-header heading="Your applications"></nav-header>
-    <section class="section">
-      <application-card repeat.for="application of availableApplications | sort:'name':'asc'" application.bind="application"></application-card>
-    </section>
-    <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewApplication()"><i
-      class="material-icons">add</i></button>
-  </main>
+  <nav-header heading="Your applications"></nav-header>
+  <section class="section">
+    <application-card repeat.for="application of availableApplications | sort:'name':'asc'" application.bind="application"></application-card>
+  </section>
+  <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewApplication()"><i
+    class="material-icons">add</i></button>
 </template>
