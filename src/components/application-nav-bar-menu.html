@@ -1,0 +1,7 @@
+<template class="application-header" bindable="application, selectableapplications, router">
+  <require from="components/application-chooser.html"></require>
+  <application-chooser class="application-header__application-chooser" style="width: 250px;" router.bind="router" selectable-applications.bind="selectableapplications" selected-application.bind="application"></application-chooser>
+  <nav>
+    <a repeat.for="row of router.navigation" class="application-header__nav-item ${row.isActive ? 'application-header__nav-item--selected' : ''}" route-href="route.bind: row.config.name; params.bind: { applicationId: application.appEUI }">${row.title}</a>
+  </nav>
+</template>

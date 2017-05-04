@@ -1,0 +1,35 @@
+@application-header-background-color: #fafafa;
+@application-header-border-color: #e5e5e5;
+@application-header-color: @font-color-secondary;
+@application-header-font-weight: @font-weight--medium;
+
+@application-header-menu-entry-selected-color: @color--blue;
+
+.application-header {
+  background-color: @application-header-background-color;
+  border-bottom: solid 1px @application-header-border-color;
+  display: flex;
+  line-height: 50px;
+  padding: 0 @grid-size * 2;
+
+  &__application-chooser {
+    width: 250px;
+  }
+
+  &__nav-item {
+    color: @application-header-color;
+    display: inline-block;
+    font-weight: @application-header-font-weight;
+    margin-left: @grid-size * 3;
+
+    &--selected {
+      color: @application-header-menu-entry-selected-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: @application-header-menu-entry-selected-color;
+      }
+    }
+  }
+}
