@@ -31,9 +31,7 @@ export class Services {
   createNewApplication() {
     this.dialogService.open({ viewModel: CreateApplicationDialog }).then(response => {
       if (!response.wasCancelled) {
-        response.closeResult.then(result => {
-          this.availableApplications.push(result.output);
-        });
+        this.availableApplications.push(response.output);
       }
     });
   }
