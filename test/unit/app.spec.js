@@ -54,15 +54,24 @@ describe('the App module', () => {
       expect(sut.router.title).toBeTruthy();
     });
 
-    it('should have a welcome route', () => {
+    it('should have a application dashboard route', () => {
       expect(sut.router.routes).toContain(
         {
-          route: ['welcome'],
-          name: 'welcome',
-          moduleId: 'views/welcome',
-          nav: false,
-          title: 'Welcome'
+          route: [ 'dashboard' ],
+          name: 'dashboard',
+          moduleId: 'views/application-dashboard',
+          nav: true,
+          title: 'Applications',
+          settings: {
+            auth: true
+          }
         }
+      );
+    });
+
+    it('should contain a base redirect route', () => {
+      expect(sut.router.routes).toContain(
+        { route: [ '' ], redirect: 'dashboard' }
       );
     });
   });
