@@ -5,15 +5,13 @@
   <aside class="side-bar__wrapper">
     <div class="sub-header">
       <h2 class="sub-header__header-text">
-        Telenor LORA <span class="sub-header__header-logo"><propeller /></span>
+        <a href="/#">Telenor LORA <span class="sub-header__header-logo"><propeller /></a></span>
       </h2>
     </div>
     <nav class="side-bar__content-container">
       <a repeat.for="row of router.navigation" class="side-bar__menu-entry ${row.isActive ? 'side-bar__menu-entry--selected' : ''}"
         route-href="route.bind: row.config.name;">${row.title}</a>
     </nav>
-    <div class="side-bar__separator"></div>
-    <generic-side-bar-nav containerless></generic-side-bar-nav>
     <div class="side-bar__footer">
       <raven containerless></raven>
     </div>
