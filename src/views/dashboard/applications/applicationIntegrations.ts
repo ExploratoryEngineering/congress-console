@@ -41,9 +41,7 @@ export class ServiceDetails {
     }).then(response => {
       if (!response.wasCancelled) {
         Log.debug('Data from created token', response);
-        response.closeResult.then(result => {
-          this.tokens.push(result.output);
-        });
+        this.tokens.push(response.output);
       }
     });
   }
