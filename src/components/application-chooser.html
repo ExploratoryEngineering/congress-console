@@ -1,0 +1,18 @@
+<template bindable="selectedApplication, selectableApplications, router">
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
+  <dropdown dropdown-position="below" disabled.bind="selectableApplications.length === 0">
+    <dropdown-title>
+      <div class="application-dropdown">
+        <h2 class="application-dropdown__title" title="${application.name}">${selectedApplication.name}<span if.bind="selectableApplications.length > 0" class="material-icons application-dropdown__triangle">arrow_drop_down</span></h2>
+      </div>
+    </dropdown-title>
+    <dropdown-container>
+      <nav>
+        <a route-href="route.bind: router.currentInstruction.config.name; params.bind: { applicationId: selectableApplication.appEUI }"
+          class="application-dropdown__menu-item" repeat.for="selectableApplication of selectableApplications">${selectableApplication.name}</a>
+      </nav>
+    </dropdown-container>
+  </dropdown>
+</template
