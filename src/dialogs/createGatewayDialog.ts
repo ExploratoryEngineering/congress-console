@@ -7,7 +7,7 @@ import { Gateway } from 'Models/Gateway';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { BadRequestError } from 'Helpers/ResponseHandler';
 
-const Log = LogBuilder.create('Gateway dialog');
+const Log = LogBuilder.create('Create gateway dialog');
 
 @useView('./gatewayDialog.html')
 @autoinject
