@@ -1,0 +1,19 @@
+@gateway-card-background-color: @color--blue;
+@gateway-card-color: @color--white;
+
+.gateway-card {
+  background-color: @gateway-card-background-color;
+  color: @gateway-card-color;
+  display: inline-block;
+  height: 160px;
+  margin-right: 20px;
+  width: 300px;
+
+  &__heading {
+    line-height: @grid-size * 3.5;
+    margin: 0 auto 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

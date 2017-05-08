@@ -1,0 +1,20 @@
+<template bindable="gateway">
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
+  <div class="card gateway-card">
+    <div class="card__header">
+      <h2 class="gateway-card__heading">${gateway.gatewayEUI}</h2>
+      <dropdown container-classes="dropdown__container--transform-top-right">
+        <dropdown-title><span class="material-icons">more_vert</span></dropdown-title>
+        <dropdown-container>
+          <div class="dropdown__menu-item" click.delegate="editGateway()">Edit</div>
+          <div class="dropdown__menu-item" click.delegate="deleteGateway()">Delete</div>
+        </dropdown-container>
+      </dropdown>
+    </div>
+    <div class="card__body">
+      IP: ${ gateway.ip }
+    </div>
+  </div>
+</template>

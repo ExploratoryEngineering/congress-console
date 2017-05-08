@@ -1,6 +1,7 @@
 <template>
   <require from="components/nav-header.html"></require>
   <require from="components/gateway-map"></require>
+  <require from="components/gateway-card"></require>
   <main class="main-content">
     <nav-header heading="Available gateways"></nav-header>
     <section class="section">
@@ -9,6 +10,7 @@
           <gateway-map gateways.bind="gateways"></gateway-overview>
         </div>
       </div>
+      <gateway-card repeat.for="gateway of gateways" gateway.bind="gateway"></gateway-card>
     </section>
     <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewGateway()"><i
       class="material-icons">add</i></button>
