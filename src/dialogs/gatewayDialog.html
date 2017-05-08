@@ -1,0 +1,24 @@
+<template>
+  <require from="components/text-input.html"></require>
+  <require from="components/textarea-input.html"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">${dialogHeader}</h2>
+      </div>
+      <div class="flex-container__body flex-container__body--centered">
+        <form class="form" submit.delegate="submitGateway()">
+          <text-input value.two-way="gateway.name" name="gateway-name" label="Name" floatinglabel="true"></text-input>
+          <text-input value.two-way="gateway.ip" name="gateway-ip" label="IP (Required)" floatinglabel="true"></text-input>
+          <text-input value.two-way="gateway.gatewayEUI" name="gateway-eui" label="Gateway EUI (Required)" floatinglabel="true"></text-input>
+          <textarea-input value.two-way="gateway.description" name="gateway-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
+          Strict IP: <input type="checkbox" checked.bind="gateway.strictip" />
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.delegate="submitGateway()">${confirmButtonText}</button>
+      </div>
+    </div>
+  </div>
+</template>
