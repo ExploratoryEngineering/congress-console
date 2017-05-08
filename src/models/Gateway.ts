@@ -21,8 +21,8 @@ export class Gateway {
     altitude = 0,
     gatewayEUI = Debug.getRandomHexString(),
     ip = '',
-    latitude = Debug.getRandomNumber(),
-    longitude = Debug.getRandomNumber(),
+    latitude = 0,
+    longitude = 0,
     strictip = false
   } = {}) {
     this.altitude = altitude;
