@@ -20,7 +20,18 @@ export class CreateGatewayDialog {
   constructor(
     private gatewayService: GatewayService,
     private dialogController: DialogController
-  ) { }
+  ) {
+    Log.debug('Asking for current position');
+    navigator.geolocation.getCurrentPosition(this.setCurrentPosition, (err) => {
+      Log.warn('Could not get position for user', err);
+    });
+  }
+
+  private setCurrentPosition(position: Position) {
+    this.gateway.latitude = position.coords.latitude;
+    this.gateway.longitude = position.coords.longitude;
+    this.gateway.altitude = position.coords.altitude ? position.coords.altitude : 0;
+  }
 
   submitGateway() {
     return this.gatewayService.createNewGateway(this.gateway).then((gateway) => {
