@@ -24,6 +24,16 @@ export class GatewayService {
       });
   }
 
+  editGateway(gateway: Gateway): Promise<Gateway> {
+    return this.apiClient.http.put(
+      `/gateways/${gateway.gatewayEUI}`,
+      Gateway.toDto(gateway)
+    ).then(data => data.content)
+      .then(res => {
+        return Gateway.newFromDto(res);
+      });
+  }
+
   deleteGateway(gateway: Gateway) {
     return this.apiClient.http.delete(
       `/gateways/${gateway.gatewayEUI}`

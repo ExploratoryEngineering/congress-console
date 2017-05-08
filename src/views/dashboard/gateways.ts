@@ -8,6 +8,7 @@ import { Gateway } from 'Models/Gateway';
 
 import { MessageDialog } from 'Dialogs/messageDialog';
 import { CreateGatewayDialog } from 'Dialogs/createGatewayDialog';
+import { EditGatewayDialog } from 'Dialogs/editGatewayDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -37,13 +38,28 @@ export class Services {
 
   editGateway(gateway) {
     let gatewayUntouched = Object.assign({}, gateway);
+    Log.debug('Editing gateway', gateway);
+
+    this.dialogService.open({
+      viewModel: EditGatewayDialog,
+      model: {
+        application: gatewayUntouched
+      }
+    }).then(response => {
+      Log.debug('Edit application', response);
+      if (!response.wasCancelled) {
+        this.fetchAndPopulateGateways();
+      }
+    });
   }
 
   deleteGateway(gateway: Gateway) {
+    Log.debug('Deleting gateway', gateway);
     this.dialogService.open({
       viewModel: MessageDialog,
       model: {
-        messageHeader: `Delete gateway ${gateway.gatewayEUI}?`,
+        messageHeader: `Delete gateway?`,
+        message: `Are you sure you want to delete gateway with EUI ${gateway.gatewayEUI}. This can NOT be reversed.`,
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel'
       }
