@@ -19,11 +19,11 @@ export class Gateway {
 
   constructor({
     altitude = 0,
-    gatewayEUI = Debug.getRandomHexString(),
+    gatewayEUI = '',
     ip = '',
     latitude = 0,
     longitude = 0,
-    strictip = false
+    strictip = true
   } = {}) {
     this.altitude = altitude;
     this.gatewayEUI = gatewayEUI;
@@ -49,8 +49,8 @@ export class Gateway {
       Altitude: gateway.altitude,
       GatewayEUI: gateway.gatewayEUI,
       IP: gateway.ip,
-      Latitude: gateway.latitude,
-      Longitude: gateway.longitude,
+      Latitude: parseFloat(String(gateway.latitude)),
+      Longitude: parseFloat(String(gateway.longitude)),
       StrictIP: gateway.strictip
     };
   }
