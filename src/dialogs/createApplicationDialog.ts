@@ -29,7 +29,7 @@ export class CreateApplicationDialog {
       if (error instanceof BadRequestError) {
         Log.debug('400', error);
       } else {
-        Log.error('Create device: Error occured', error);
+        Log.error('Create application: Error occured', error);
         this.dialogController.cancel();
       }
     });
