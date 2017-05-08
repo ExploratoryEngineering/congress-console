@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.5.0...v0.6.0) (2017-05-08)
+
+
+### Bug Fixes
+
+* **app:** close open tag ([5268303](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/5268303))
+* **app.spec:** change tests according to route changes ([141ecba](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/141ecba))
+* **gatewayService:** correctly transform from dto to domain object ([a1aeb59](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/a1aeb59))
+* **package.json:** lock version of modal due to breaking changes ([9ef92fd](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/9ef92fd))
+* **text-fields:** fix where a number 0 could indicate no content ([3e21055](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3e21055))
+
+
+### Features
+
+* **application-chooser:** new component for choosing applications ([986bcd4](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/986bcd4))
+* **application-nav-bar-menu:** new component for app horizontal nav ([7f4acda](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/7f4acda))
+* **codeline:** overflow and maxwidth of 100% ([be33fe2](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/be33fe2))
+* **createGatewayDialog:** allow for current position when creating gateway ([547c037](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/547c037))
+* **e2e:** use headless chrome as e2e tester ([92ec0d9](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/92ec0d9))
+* **expansion-panel:** allow for column based body ([025b69f](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/025b69f))
+* **gateway-card:** add gateway-card to gateway view ([aae8b33](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/aae8b33))
+* **gatewaydialog:** add dialog for gateways ([6445510](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/6445510))
+* **gatewaymap:** add new component for gateway maps ([10bc691](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/10bc691))
+* **gateways:** add edit functionality ([73fc76e](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/73fc76e))
+* **gateways:** add new route for gateways ([70ecbe6](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/70ecbe6))
+* **headless chrome:** add headless chrome as default test-runner ([c78edf8](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/c78edf8))
+* **nav:** rework navigation and use subnav for applications ([73e9543](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/73e9543))
+* **scrollbar:** add custom scrollbar for webkit ([eb1e558](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/eb1e558))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.4.1...v0.5.0) (2017-04-21)
 
