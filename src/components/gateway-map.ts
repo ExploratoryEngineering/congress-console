@@ -2,7 +2,7 @@ import { computedFrom } from 'aurelia-binding';
 import { Gateway } from 'Models/Gateway';
 import { bindable } from 'aurelia-framework';
 
-interface GatewayMapMarkers {
+interface GatewayMapMarker {
   longitude: number;
   latitude: number;
 }
@@ -11,23 +11,20 @@ export class GatewayMap {
   @bindable gateways: Gateway[] = [];
   @bindable search: string = '';
 
-  positions = [{
-    longitude: 10.437812,
-    latitude: 63.421531
-  }, {
-    longitude: 10.432240,
-    latitude: 63.422348
-  }];
-
   @computedFrom('gateways', 'search')
-  get gatewayMarkers(): GatewayMapMarkers[] {
-    return this.getFilteredGateways().map((gw, idx) => {
-      return {
-        longitude: this.positions[idx % this.positions.length].longitude,
-        latitude: this.positions[idx % this.positions.length].latitude,
-        title: `Gateway EUI: ${gw.gatewayEUI}`
-      };
-    });
+  get gatewayMarkers(): GatewayMapMarker[] {
+    let markers: GatewayMapMarker[] = [];
+
+    return this.getFilteredGateways().reduce((filteredMarkers, gw) => {
+      if (this.isGatewayValid(gw)) {
+        filteredMarkers.push({
+          longitude: gw.longitude,
+          latitude: gw.latitude
+        });
+      }
+
+      return filteredMarkers;
+    }, markers);
   }
 
   getFilteredGateways(): Gateway[] {
@@ -45,5 +42,7 @@ export class GatewayMap {
     }, filteredGateways);
   }
 
-
+  private isGatewayValid(gateway: Gateway): boolean {
+    return gateway.longitude !== 0 || gateway.latitude !== 0;
+  }
 }
