@@ -17,14 +17,14 @@ export class Gateway {
   longitude: number;
   strictip: boolean;
 
-  constructor(
-    altitude = Debug.getRandomNumber(100),
-    gatewayEUI = Debug.getRandomHexString(3, false),
-    ip = '127.0.0.1',
+  constructor({
+    altitude = 0,
+    gatewayEUI = Debug.getRandomHexString(),
+    ip = '',
     latitude = Debug.getRandomNumber(),
     longitude = Debug.getRandomNumber(),
     strictip = false
-  ) {
+  } = {}) {
     this.altitude = altitude;
     this.gatewayEUI = gatewayEUI;
     this.ip = ip;
@@ -33,8 +33,15 @@ export class Gateway {
     this.strictip = strictip;
   }
 
-  static newFromDto(device: GatewayDto): Gateway {
-    return new Gateway();
+  static newFromDto(gw: GatewayDto): Gateway {
+    return new Gateway({
+      altitude: gw.Altitude,
+      latitude: gw.Latitude,
+      longitude: gw.Longitude,
+      ip: gw.IP,
+      strictip: gw.StrictIP,
+      gatewayEUI: gw.GatewayEUI
+    });
   }
 
   static toDto(gateway: Gateway): GatewayDto {

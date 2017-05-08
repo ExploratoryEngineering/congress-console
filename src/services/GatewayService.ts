@@ -14,7 +14,7 @@ export class GatewayService {
       .then(gateways => gateways.map(Gateway.newFromDto));
   }
 
-  createGateway(gateway: Gateway): Promise<Gateway> {
+  createNewGateway(gateway: Gateway): Promise<Gateway> {
     return this.apiClient.http.post(
       '/gateways',
       Gateway.toDto(gateway)

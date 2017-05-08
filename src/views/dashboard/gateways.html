@@ -1,0 +1,16 @@
+<template>
+  <require from="components/nav-header.html"></require>
+  <require from="components/gateway-map"></require>
+  <main class="main-content">
+    <nav-header heading="Available gateways"></nav-header>
+    <section class="section">
+      <div class="card">
+        <div class="card__body card__body--no-padding">
+          <gateway-map gateways.bind="gateways"></gateway-overview>
+        </div>
+      </div>
+    </section>
+    <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewGateway()"><i
+      class="material-icons">add</i></button>
+  </main>
+</template>
