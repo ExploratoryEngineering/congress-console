@@ -24,11 +24,12 @@
       <div class="splash__logo">
         <img src="images/telenorlogo.svg" alt="telenorlogo" />
       </div>
+    </div>
   </div>
-</div>
-<% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
+  <% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
 </body>
+
 </html>
