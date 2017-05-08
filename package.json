@@ -60,6 +60,7 @@
     "aurelia-dialog": "1.0.0-beta.3.0.1",
     "aurelia-event-aggregator": "^1.0.1",
     "aurelia-framework": "^1.1.0",
+    "aurelia-google-maps": "^1.0.21",
     "aurelia-history-browser": "^1.0.0",
     "aurelia-http-client": "^1.0.4",
     "aurelia-loader-webpack": "^2.1.0",

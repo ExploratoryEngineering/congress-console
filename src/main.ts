@@ -11,6 +11,13 @@ export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .plugin('aurelia-dialog')
+    .plugin('aurelia-google-maps', config => {
+      config.options({
+        apiKey: 'AIzaSyBfrbnOsPYJwccsvXrIkBHs7bUIYp8EaF0',
+        apiLibraries: 'drawing,geometry',
+        options: { panControl: true, panControlOptions: { position: 9 } }
+      });
+    })
     .plugin('aurelia-configuration', config => {
       config.setEnvironments({
         development: ['localhost', 'lora.localhost'],
