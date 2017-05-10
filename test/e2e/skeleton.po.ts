@@ -1,3 +1,5 @@
+import { browser } from 'aurelia-protractor-plugin/protractor';
+
 export class PageObjectSkeleton {
 
   constructor() { }

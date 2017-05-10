@@ -30,7 +30,11 @@
         "src/dialogs/*"
       ]
     },
+    "types": [
+      "jasmine"
+    ],
     "typeRoots": [
+      "./node-modules/@types/",
       "./typings/globals",
       "./globalTypings"
     ]

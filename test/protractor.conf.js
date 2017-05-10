@@ -3,7 +3,7 @@ exports.config = {
 
   // use `npm run e2e`
   specs: [
-    'e2e/**/*.js'
+    'e2e/**/*.spec.ts'
   ],
   exclude: [],
 
@@ -28,8 +28,7 @@ exports.config = {
   },
 
   onPrepare: function() {
-    process.env.BABEL_ENV = 'e2e';
-    require('babel-register')();
+    require('ts-node').register({ compilerOptions: { module: 'commonjs' }, disableWarnings: true, fast: true });
   },
 
   plugins: [{
