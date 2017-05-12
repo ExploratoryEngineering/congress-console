@@ -1,4 +1,3 @@
-import { NetworkInformation } from 'Helpers/NetworkInformation';
 import { AureliaConfiguration } from 'aurelia-configuration';
 import { bindable, autoinject, containerless } from 'aurelia-framework';
 import { LogBuilder } from 'Helpers/LogBuilder';
@@ -17,7 +16,6 @@ export class TokenExpansionPanel {
 
   constructor(
     private eventAggregator: EventAggregator,
-    private networkInformation: NetworkInformation,
     private config: AureliaConfiguration
   ) { }
 

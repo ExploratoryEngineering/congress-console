@@ -11,7 +11,6 @@ import { DeviceService } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
 import { Application } from 'Models/Application';
 
-import { NetworkInformation } from 'Helpers/NetworkInformation';
 import { Websocket, WebsocketDeviceDataMessage, WebsocketStatusMessage, WebsocketMessage } from 'Helpers/Websocket';
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -73,7 +72,6 @@ export class ServiceDetails {
     private applicationService: ApplicationService,
     private deviceService: DeviceService,
     private router: Router,
-    private networkInformation: NetworkInformation,
     private eventAggregator: EventAggregator,
     private graphController: GraphController,
     private config: AureliaConfiguration
@@ -112,7 +110,7 @@ export class ServiceDetails {
   openApplicationDataStream() {
     if (!this.websocket) {
       this.websocket = new Websocket({
-        url: `${this.config.get('api.wsEndpoint')}/networks/${this.networkInformation.selectedNetwork.netEui}/applications/${this.application.appEUI}/stream`,
+        url: `${this.config.get('api.wsEndpoint')}/applications/${this.application.appEUI}/stream`,
         onerror: (err) => { Log.error('WS Error', err); },
         onopen: (msg) => { Log.debug('WS Open: ', msg); },
         onclose: (msg) => { Log.debug('WS Close: ', msg); },

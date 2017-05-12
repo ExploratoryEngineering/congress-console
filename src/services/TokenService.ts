@@ -1,5 +1,4 @@
 import { ApiClient } from 'Helpers/ApiClient';
-import { NetworkInformation } from 'Helpers/NetworkInformation';
 import { autoinject } from 'aurelia-framework';
 
 import { Token } from 'Models/Token';
@@ -11,7 +10,6 @@ const Log = LogBuilder.create('Token service');
 export class TokenService {
   constructor(
     private apiClient: ApiClient,
-    private networkInformation: NetworkInformation
   ) { }
 
   async fetchTokensForApplication(appEuid: string): Promise<Token[]> {
@@ -47,8 +45,6 @@ export class TokenService {
   }
 
   async resourcePathForApplication(appEui: string): Promise<string> {
-    const { netEui } = await this.networkInformation.fetchSelectedNetwork();
-
-    return `/networks/${netEui}/applications/${appEui}`;
+    return `/applications/${appEui}`;
   }
 }
