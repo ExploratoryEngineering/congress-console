@@ -25,6 +25,10 @@ class RouterStub {
   }
 }
 
+class SignalerStub {
+  signal() {}
+}
+
 class UserInformationStub {
   constructor() {}
 
@@ -37,11 +41,14 @@ describe('the App module', () => {
   let sut;
   let mockedRouter;
   let mockedUserInformation;
+  let mockedSignaler;
 
   beforeEach(() => {
+    jasmine.clock().install();
     mockedRouter = new RouterStub();
     mockedUserInformation = new UserInformationStub();
-    sut = new App(mockedRouter, mockedUserInformation);
+    mockedSignaler = new SignalerStub();
+    sut = new App(mockedRouter, mockedUserInformation, mockedSignaler);
     sut.configureRouter(mockedRouter, mockedRouter);
   });
 
@@ -52,6 +59,13 @@ describe('the App module', () => {
 
     it('configures the router title', () => {
       expect(sut.router.title).toBeTruthy();
+    });
+
+    it('should signal the signaler with updateTime', () => {
+      spyOn(mockedSignaler, 'signal');
+      expect(mockedSignaler.signal).not.toHaveBeenCalled();
+      jasmine.clock().tick(sut.UPDATE_TIME_INTERVAL_MS);
+      expect(mockedSignaler.signal).toHaveBeenCalledWith('updateTime');
     });
 
     it('should have a application dashboard route', () => {
@@ -142,5 +156,8 @@ describe('the App module', () => {
         done();
       });
     });
+  });
+  afterEach(() => {
+    jasmine.clock().uninstall();
   });
 });

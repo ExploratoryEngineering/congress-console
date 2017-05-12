@@ -11,12 +11,14 @@ const Log = LogBuilder.create();
 
 @autoinject
 export class App {
+  UPDATE_TIME_INTERVAL_MS: number = 10000;
+
   constructor(
     private router: Router,
     private userInformation: UserInformation,
     private signaler: BindingSignaler
   ) {
-    setInterval(() => { this.signaler.signal('updateTime'); }, 10000);
+    setInterval(() => { this.signaler.signal('updateTime'); }, this.UPDATE_TIME_INTERVAL_MS);
   }
 
   getUnknownRoute() {
