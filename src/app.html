@@ -1,7 +1,9 @@
 <template>
   <require from="components/loading-indicator"></require>
+  <require from="components/snackbar"></require>
   <require from="components/side-bar-menu.html"></require>
   <loading-indicator loading.bind="router.isNavigating"></loading-indicator>
+  <snackbar></snackbar>
   <div class="page-content">
     <side-bar-menu router.bind="router"></side-bar-menu>
     <router-view containerless></router-view>
