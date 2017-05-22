@@ -31,6 +31,9 @@ export class Services {
   createNewApplication() {
     this.dialogService.open({ viewModel: CreateApplicationDialog }).then(response => {
       if (!response.wasCancelled) {
+        this.eventAggregator.publish('global:message', {
+          body: 'Application created'
+        });
         this.availableApplications.push(response.output);
       }
     });
@@ -47,6 +50,9 @@ export class Services {
     }).then(response => {
       Log.debug('Edit application', response);
       if (!response.wasCancelled) {
+        this.eventAggregator.publish('global:message', {
+          body: 'Application updated'
+        });
         this.applicationService.fetchApplications().then(applications => {
           this.availableApplications = applications;
         });
@@ -67,6 +73,9 @@ export class Services {
       if (!response.wasCancelled) {
         Log.debug('Deleting application');
         this.applicationService.deleteApplication(application).then(() => {
+          this.eventAggregator.publish('global:message', {
+            body: 'Application deleted'
+          });
           this.availableApplications = this.availableApplications.filter(app => app.appEUI !== application.appEUI);
         });
       } else {
