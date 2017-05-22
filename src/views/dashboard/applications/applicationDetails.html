@@ -1,6 +1,6 @@
 <template>
   <require from="components/application-nav-bar-menu.html"></require>
-  <require from="components/device-expansion-panel"></require>
+  <require from="components/device-table.html"></require>
   <require from="components/nav-header.html"></require>
   <require from="components/graph-chart"></require>
   <nav-header heading="Application overview"></nav-header>
@@ -19,6 +19,13 @@
         </div>
       </div>
     </div>
-    <device-expansion-panel repeat.for="device of devices" device.bind="device" appeui.bind="application.appEUI"></device-expansion-panel>
+    <div class="card" if.bind="devices.length">
+      <div class="card__header card__header--colored">
+        <h4 class="h4">Your devices</h4>
+      </div>
+      <div class="card__body card__body--no-padding">
+        <device-table devices.bind="devices"></device-table>
+      </div>
+    </div>
   </div>
 </template>
