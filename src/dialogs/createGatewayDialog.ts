@@ -22,7 +22,7 @@ export class CreateGatewayDialog {
     private dialogController: DialogController
   ) {
     Log.debug('Asking for current position');
-    navigator.geolocation.getCurrentPosition(this.setCurrentPosition, (err) => {
+    navigator.geolocation.getCurrentPosition((positionCallback) => this.setCurrentPosition(positionCallback), (err) => {
       Log.warn('Could not get position for user', err);
     });
   }
