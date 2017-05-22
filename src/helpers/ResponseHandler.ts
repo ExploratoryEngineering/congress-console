@@ -1,3 +1,4 @@
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import { autoinject } from 'aurelia-framework';
 import { LogBuilder } from 'Helpers/LogBuilder';
@@ -79,7 +80,10 @@ class UnknownError extends ResponseError {
  */
 @autoinject
 export class ResponseHandler {
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private eventAggregator: EventAggregator
+  ) { }
 
   handleResponse(response: HttpResponseMessage) {
     if (response.isSuccess) {
@@ -99,6 +103,7 @@ export class ResponseHandler {
         throw new NotFoundError(response.content);
       }
       case 405: {
+        this.eventAggregator.publish('global:message', { body: 'Feature not implemented... yet!' });
         throw new MethodNotSupported(response.content);
       }
       case 500: {
