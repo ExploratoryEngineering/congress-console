@@ -38,6 +38,9 @@ export class ServiceDetails {
       model: { appEUI: this.application.appEUI }
     }).then(response => {
       if (!response.wasCancelled) {
+        this.eventAggregator.publish('global:message', {
+          body: 'Device created'
+        });
         this.deviceService.fetchDevices(this.application.appEUI).then((devices) => {
           this.devices = devices;
         });
@@ -58,6 +61,9 @@ export class ServiceDetails {
       if (!response.wasCancelled) {
         Log.debug('Deleting device');
         this.deviceService.deleteDevice(this.application.appEUI, device).then(() => {
+          this.eventAggregator.publish('global:message', {
+            body: 'Device deleted'
+          });
           this.devices = this.devices.filter(dev => dev.deviceEUI !== device.deviceEUI);
         });
       } else {
