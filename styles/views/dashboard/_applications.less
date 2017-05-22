@@ -14,6 +14,51 @@
   padding: @grid-size*4;
 }
 
+.applications-separator {
+  display: block;
+  margin-bottom: @grid-size * 2;
+  width: 100%;
+
+  &__title {
+    color: @font-color-opacity--black-38;
+    font-size: @font-size--15;
+    font-weight: @font-weight--medium;
+  }
+}
+
+.applications-divider {
+  background-color: @font-color-dividers;
+  display: block;
+  height: 1px;
+  margin: @grid-size * 2 0;
+  width: 100%;
+}
+
+.no-applications-found {
+  align-items: center;
+  bottom: 0;
+  color: @font-color-disabled;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &__icon {
+    font-size: 128px;
+  }
+
+  &__link {
+    color: #4285f4;
+
+    &:hover {
+      color: #4285f4;
+    }
+  }
+}
+
 .application-card-dropdown {
     background-color: darken(@color--blue, 10%);
     border-radius: 2px;

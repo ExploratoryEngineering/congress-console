@@ -2,8 +2,15 @@
   <require from="components/nav-header.html"></require>
   <require from="components/application-card"></require>
   <require from="valueConverters/sort"></require>
-  <nav-header heading="Your applications"></nav-header>
-  <section class="section">
+  <nav-header heading="Applications"></nav-header>
+  <div class="no-applications-found" if.bind="!availableApplications.length">
+    <i class="material-icons no-applications-found__icon">library_add</i>
+    <h2 class="h2">No applications found. <a class="no-applications-found__link" click.trigger="createNewApplication()">Create one?</a></h2>
+  </div>
+  <section class="section" if.bind="availableApplications.length">
+    <div class="applications-separator">
+      <div class="applications-separator__title">Your applications</div>
+    </div>
     <application-card repeat.for="application of availableApplications | sort:'name':'asc'" application.bind="application"></application-card>
   </section>
   <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewApplication()"><i
