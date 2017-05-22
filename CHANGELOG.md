@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.8.0...v0.9.0) (2017-05-22)
+
+
+### Bug Fixes
+
+* **createGatewayDialog:** correctly scope setPositionCallback ([3c64621](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3c64621))
+
+
+### Features
+
+* **applicationDevices:** add toasts when working with devices ([f1f48fc](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/f1f48fc))
+* **applications:** add no applications found view ([b14d254](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/b14d254))
+* **applications:** add toasts when working with applications ([5634a7a](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/5634a7a))
+* **gateways:** add toasts when working with gateways ([c91667b](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/c91667b))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.7.0...v0.8.0) (2017-05-12)
 
