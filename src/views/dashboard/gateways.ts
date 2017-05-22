@@ -31,6 +31,9 @@ export class Services {
     Log.debug('Create new gateway');
     this.dialogService.open({ viewModel: CreateGatewayDialog }).then(response => {
       if (!response.wasCancelled) {
+        this.eventAggregator.publish('global:message', {
+          body: 'Gateway created'
+        });
         this.gateways.push(response.output);
       }
     });
@@ -48,6 +51,9 @@ export class Services {
     }).then(response => {
       Log.debug('Edit application', response);
       if (!response.wasCancelled) {
+        this.eventAggregator.publish('global:message', {
+          body: 'Gateway updated'
+        });
         this.fetchAndPopulateGateways();
       }
     });
@@ -67,6 +73,9 @@ export class Services {
       if (!response.wasCancelled) {
         Log.debug('Deleting gateway');
         this.gatewayService.deleteGateway(gateway).then(() => {
+          this.eventAggregator.publish('global:message', {
+            body: 'Gateway deleted'
+          });
           this.gateways = this.gateways.filter(gw => gw.gatewayEUI !== gateway.gatewayEUI);
         });
       } else {
