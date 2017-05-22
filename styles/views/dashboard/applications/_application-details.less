@@ -7,8 +7,8 @@
   align-items: center;
   background-color: @color--white;
   bottom: 0;
-  color: @font-color-disabled;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   left: 0;
   position: absolute;
@@ -16,6 +16,12 @@
   top: 0;
 
   &__icon {
+    color: @font-color-disabled;
     font-size: 128px;
+  }
+
+  &__heading {
+    color: @font-color-disabled;
+    font-weight: @font-weight--medium;
   }
 }
