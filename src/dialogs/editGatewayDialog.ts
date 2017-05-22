@@ -34,4 +34,8 @@ export class EditGatewayDialog {
       }
     });
   }
+
+  activate(params) {
+    this.gateway = params.gateway;
+  }
 }

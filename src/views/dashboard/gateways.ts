@@ -46,7 +46,7 @@ export class Services {
     this.dialogService.open({
       viewModel: EditGatewayDialog,
       model: {
-        application: gatewayUntouched
+        gateway: gatewayUntouched
       }
     }).then(response => {
       Log.debug('Edit application', response);
