@@ -2,16 +2,11 @@
 @service-card-color: @font-color-primary--colored;
 @service-card-color-secondary: @font-color-secondary--colored;
 
-.application {
-  display: inline-block;
-}
-
 .applications-container {
   align-items: flex-start;
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
-  padding: @grid-size*4;
 }
 
 .applications-separator {
@@ -75,6 +70,23 @@
   margin-right: 20px;
   width: 300px;
 
+  &:hover,
+  &:active,
+  &:focus {
+    color: @service-card-color;
+  }
+
+  &--create-new {
+    background-color: @color--white;
+    color: @font-color-disabled;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @font-color-disabled;
+    }
+  }
+
   &__header {
     color: @service-card-color;
     line-height: @grid-size * 3.5;
@@ -89,6 +101,14 @@
     float: right;
     font-size: 20px;
     font-weight: @font-weight--light;
+  }
+
+  &__create-new-body {
+    align-items: center;
+  }
+
+  &__create-new-icon {
+    font-size: @grid-size * 8;
   }
 
   &__graph {

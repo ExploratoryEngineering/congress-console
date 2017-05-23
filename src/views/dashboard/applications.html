@@ -3,16 +3,20 @@
   <require from="components/application-card"></require>
   <require from="valueConverters/sort"></require>
   <nav-header heading="Applications"></nav-header>
-  <div class="no-applications-found" if.bind="!availableApplications.length">
-    <i class="material-icons no-applications-found__icon">library_add</i>
-    <h2 class="h2">No applications found. <a class="no-applications-found__link" click.trigger="createNewApplication()">Create one?</a></h2>
-  </div>
   <section class="section" if.bind="availableApplications.length">
     <div class="applications-separator">
       <div class="applications-separator__title">Your applications</div>
     </div>
-    <application-card repeat.for="application of availableApplications | sort:'name':'asc'" application.bind="application"></application-card>
+    <div class="applications-container">
+      <application-card repeat.for="application of availableApplications | sort:'name':'asc'" application.bind="application"></application-card>
+      <a class="card card--selectable application-card application-card--create-new" click.trigger="createNewApplication()" tabindex="0">
+        <div class="card__header">
+          <h3 class="h3">Create new application</h3>
+        </div>
+        <div class="card__body card__body--no-padding application-card__create-new-body">
+          <i class="material-icons application-card__create-new-icon">add</i>
+        </div>
+      </a>
+    </div>
   </section>
-  <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewApplication()"><i
-    class="material-icons">add</i></button>
 </template>
