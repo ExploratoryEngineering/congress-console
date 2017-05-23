@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.9.0...v0.10.0) (2017-05-23)
+
+
+### Bug Fixes
+
+* **application-dropdown:** fix correct indenting and weight for dropdown ([ab9e668](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/ab9e668))
+* **card:** fix active and focus states for selectable cards ([e3ccfa7](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e3ccfa7))
+* **code:** propagate correct color on colored headers ([e0818dc](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e0818dc))
+* **editGatewayDialog:** fix propagating gateway from ancestor ([1b2ee43](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/1b2ee43))
+
+
+### Features
+
+* **applications:** remove fab in favor of inline add application ([01bc25b](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/01bc25b))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.8.0...v0.9.0) (2017-05-22)
 
