@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.10.0...v0.11.0) (2017-05-24)
+
+
+### Bug Fixes
+
+* **applications:** always show application container ([0ffdb23](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/0ffdb23))
+
+
+### Features
+
+* **text-input:** make autocomplete optional ([e21efcc](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e21efcc))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.9.0...v0.10.0) (2017-05-23)
 
