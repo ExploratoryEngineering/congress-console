@@ -41,9 +41,7 @@ export class ServiceDetails {
         this.eventAggregator.publish('global:message', {
           body: 'Device created'
         });
-        this.deviceService.fetchDevices(this.application.appEUI).then((devices) => {
-          this.devices = devices;
-        });
+        this.devices.push(response.output);
       }
     });
   }
