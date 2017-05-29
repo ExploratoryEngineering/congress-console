@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.0"></a>
+# [0.12.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.11.0...v0.12.0) (2017-05-29)
+
+
+### Bug Fixes
+
+* **gateway-map:** center map on word capital if no markers ([eb61268](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/eb61268)), closes [#58](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/issues/58)
+
+
+### Features
+
+* **action buttons:** remove fab, use more explicit buttons ([313ff1f](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/313ff1f))
+* **card:** add simple no-data component for card ([bcfeb54](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/bcfeb54))
+* **userinformation:** will now use the backend to fetch profile info ([915a3a5](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/915a3a5))
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.10.0...v0.11.0) (2017-05-24)
 
