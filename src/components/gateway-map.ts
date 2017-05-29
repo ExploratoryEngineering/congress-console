@@ -13,33 +13,16 @@ export class GatewayMap {
 
   @computedFrom('gateways', 'search')
   get gatewayMarkers(): GatewayMapMarker[] {
-    let markers: GatewayMapMarker[] = [];
-
-    return this.getFilteredGateways().reduce((filteredMarkers, gw) => {
-      if (this.isGatewayValid(gw)) {
-        filteredMarkers.push({
-          longitude: gw.longitude,
-          latitude: gw.latitude
-        });
-      }
-
-      return filteredMarkers;
-    }, markers);
+    return this.getFilteredGateways().filter(this.isGatewayValid);
   }
 
   getFilteredGateways(): Gateway[] {
     if (this.search === '') {
       return this.gateways;
     }
-
-    let filteredGateways: Gateway[] = [];
-
-    return this.gateways.reduce((gws, gw) => {
-      if (gw.gatewayEUI.includes(this.search)) {
-        gws.push(gw);
-      }
-      return gws;
-    }, filteredGateways);
+    return this.gateways.filter((gw) => {
+      return gw.gatewayEUI.includes(this.search);
+    });
   }
 
   private isGatewayValid(gateway: Gateway): boolean {
