@@ -11,6 +11,9 @@ export class GatewayMap {
   @bindable gateways: Gateway[] = [];
   @bindable search: string = '';
 
+  latitude = 63.422064;
+  longitude = 10.438485;
+
   @computedFrom('gateways', 'search')
   get gatewayMarkers(): GatewayMapMarker[] {
     return this.getFilteredGateways().filter(this.isGatewayValid);
