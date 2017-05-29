@@ -7,15 +7,7 @@ const Log = LogBuilder.create('UserInformation');
 
 @autoinject
 export class UserInformation {
-  userProfile: UserProfile = {
-    connectId: '',
-    locale: 'en',
-    name: 'Name placeholder',
-    email: 'example@email.com',
-    verifiedEmail: true,
-    phone: '99999999',
-    verifiedPhone: false
-  };
+  userProfile: UserProfile;
 
   constructor(
     private authService: AuthService
