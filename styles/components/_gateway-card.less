@@ -1,13 +1,31 @@
 @gateway-card-background-color: @color--blue;
 @gateway-card-color: @color--white;
 
+.gateway-container {
+  align-items: flex-start;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
 .gateway-card {
   background-color: @gateway-card-background-color;
   color: @gateway-card-color;
-  display: inline-block;
+  display: flex;
   height: 160px;
   margin-right: 20px;
   width: 300px;
+
+  &--create-new {
+    background-color: @color--white;
+    color: @font-color-disabled;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @font-color-disabled;
+    }
+  }
 
   &__heading {
     line-height: @grid-size * 3.5;
@@ -15,5 +33,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &__create-new-body {
+    align-items: center;
   }
 }

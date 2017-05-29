@@ -10,9 +10,17 @@
           <gateway-map gateways.bind="gateways"></gateway-overview>
         </div>
       </div>
-      <gateway-card repeat.for="gateway of gateways" gateway.bind="gateway"></gateway-card>
+      <div class="gateway-container">
+        <gateway-card repeat.for="gateway of gateways" gateway.bind="gateway"></gateway-card>
+        <a class="card card--selectable gateway-card gateway-card--create-new" click.trigger="createNewGateway()">
+          <div class="card__header">
+            <h3 class="h3">Add new gateway</h3>
+          </div>
+          <div class="card__body card__body--no-padding gateway-card__create-new-body">
+            <i class="material-icons application-card__create-new-icon">add</i>
+          </div>
+        </a>
+      </div>
     </section>
-    <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewGateway()"><i
-      class="material-icons">add</i></button>
   </main>
 </template>

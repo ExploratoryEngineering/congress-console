@@ -5,15 +5,22 @@
   <nav-header heading="Application devices"></nav-header>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
-    <div class="card card--transparent">
+    <div class="application-devices-card card ${ devices.length === 0 ? '' : 'card--transparent'}">
       <div class="card__header card__header--colored">
-        <h4 class="h4">Your devices</h4>
+        <h4 class="h4 card-header-heading">Your devices</h4>
+        <div class="card-header-actions">
+          <button click.trigger="createNewDevice()" class="card-header-actions__action">Add device</button>
+        </div>
       </div>
-      <div class="card__body card__body--no-padding">
+      <div class="card__body card__body--no-padding" if.bind="devices.length > 0">
         <device-expansion-panel repeat.for="device of devices" device.bind="device" appeui.bind="application.appEUI"></device-expansion-panel>
+      </div>
+      <div class="card__body" if.bind="devices.length === 0">
+        <div class="no-data-card-body">
+          <i class="no-data-card-body__icon material-icons">settings</i>
+          <div class="no-data-card-body__heading h2">No devices found. Create one?</div>
+        </div>
       </div>
     </div>
   </div>
-  <button class="button button--primary button--floating button-position--absolute-bottom-right" click.trigger="createNewDevice()"><i
-    class="material-icons">add</i></button>
 </template>
