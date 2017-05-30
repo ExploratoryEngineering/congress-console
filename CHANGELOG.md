@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.0"></a>
+# [0.13.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.12.0...v0.13.0) (2017-05-30)
+
+
+### Features
+
+* **device:** add tags for device ([0a23ba6](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/0a23ba6))
+* **TagHelper:** add TagHelper for easy handling of tags ([3024a8f](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3024a8f))
+* **tagName:** add valueConverter for name tag ([2394dea](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/2394dea))
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.11.0...v0.12.0) (2017-05-29)
 
