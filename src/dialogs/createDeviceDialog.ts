@@ -57,7 +57,11 @@ export class CreateDeviceDialog {
 
   getNewDevice(): NewABPDevice | NewOTAADevice {
     if (this.selectedType === DeviceTypes.OTAA) {
-      let otaaDevice: NewOTAADevice = {};
+      let otaaDevice: NewOTAADevice = {
+        DeviceType: this.selectedType,
+        Tags: this.device.tags
+      };
+
       return otaaDevice;
     } else {
       let abpDevice: NewABPDevice = {
@@ -65,7 +69,9 @@ export class CreateDeviceDialog {
         DevAddr: this.device.devAddr,
         AppSKey: this.device.appSKey,
         DeviceType: this.selectedType,
+        Tags: this.device.tags
       };
+
       return abpDevice;
     }
   }

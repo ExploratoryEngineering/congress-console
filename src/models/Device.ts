@@ -7,6 +7,7 @@ interface DeviceDto {
   FCntUp: number;
   NwkSKey: string;
   RelaxedCounter: boolean;
+  Tags: { [tagName: string]: string };
 }
 
 export class Device {
@@ -18,6 +19,7 @@ export class Device {
   fCntDn: number;
   nwkSKey: string;
   relaxedCounter: boolean;
+  tags: { [tagName: string]: string };
 
   constructor({
     deviceEUI = '',
@@ -28,6 +30,7 @@ export class Device {
     fCntUp = 0,
     fCntDn = 0,
     relaxedCounter = true,
+    tags = {}
   } = {}) {
     this.deviceEUI = deviceEUI;
     this.devAddr = devAddr;
@@ -37,6 +40,7 @@ export class Device {
     this.fCntUp = fCntUp;
     this.fCntDn = fCntDn;
     this.relaxedCounter = relaxedCounter;
+    this.tags = tags;
   }
 
   static newFromDto(device: DeviceDto): Device {
@@ -48,7 +52,8 @@ export class Device {
       deviceType: device.DeviceType,
       fCntUp: device.FCntUp,
       fCntDn: device.FCntDn,
-      relaxedCounter: device.RelaxedCounter
+      relaxedCounter: device.RelaxedCounter,
+      tags: device.Tags
     });
   }
 
@@ -61,7 +66,8 @@ export class Device {
       DeviceType: device.deviceType,
       FCntUp: device.fCntUp,
       FCntDn: device.fCntDn,
-      RelaxedCounter: device.relaxedCounter
+      RelaxedCounter: device.relaxedCounter,
+      Tags: device.tags
     };
   }
 }

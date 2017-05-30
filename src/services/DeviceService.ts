@@ -9,6 +9,8 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Device service');
 
 interface NewDevice {
+  DeviceType: string;
+  Tags: { [tagName: string]: string };
 }
 
 export interface NewOTAADevice extends NewDevice { }

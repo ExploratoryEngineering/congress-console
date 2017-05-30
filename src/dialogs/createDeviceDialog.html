@@ -43,7 +43,7 @@
           </div>
         </form>
         <form class="form" if.bind="step === 2" submit.delegate="next()">
-          <text-input value.two-way="deviceName" name="device-name" label="Device name (Optional)" floatinglabel="true"></text-input>
+          <text-input value.two-way="device.tags.name" name="device-name" label="Device name (Optional)" floatinglabel="true"></text-input>
           <div if.bind="isAbp" class="form-field">
             <text-input value.two-way="device.devAddr" name="device-dev-addr" label="Dev Address (Required)" floatinglabel="true"></text-input>
             <text-input value.two-way="device.appSKey" name="device-app-s-key" label="Application Session key (Required)" floatinglabel="true"></text-input>
