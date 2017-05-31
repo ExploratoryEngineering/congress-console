@@ -9,7 +9,8 @@
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="submitApplication()">
           <text-input value.two-way="application.name" name="application-name" label="Name" floatinglabel="true"></text-input>
-          <textarea-input value.two-way="application.description" name="application-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
+          <textarea-input value.two-way="application.tags.description" name="application-description" label="Description (Optional)"
+            floatinglabel="true"></textarea-input>
         </form>
       </div>
       <div class="flex-container__footer">

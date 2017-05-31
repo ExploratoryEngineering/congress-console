@@ -3,7 +3,9 @@
   <require from="components/dropdown"></require>
   <require from="components/dropdown-title"></require>
   <require from="components/dropdown-container"></require>
-  <a route-href="route: application_details; params.bind: { applicationId: application.appEUI }" class="card card--selectable application-card">
+  <require from="valueConverters/tagDescription"></require>
+  <a route-href="route: application_details; params.bind: { applicationId: application.appEUI }" class="card card--selectable application-card"
+    title="${ application | tagDescription }">
     <div class="card__header">
       <h3 class="h3 application-card__header">${application.name}</h3>
       <dropdown container-classes="dropdown__container--transform-top-right">
