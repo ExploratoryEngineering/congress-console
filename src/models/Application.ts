@@ -5,6 +5,7 @@ interface ApplicationDto {
   AppKey: string;
   Name: string;
   NetworkEUI: string;
+  Tags: { [tagName: string]: string };
 }
 
 export class Application {
@@ -12,17 +13,20 @@ export class Application {
   appKey: string;
   name: string;
   netEUI: string;
+  tags: { [tagName: string]: string };
 
   constructor({
     appEUI = Debug.getRandomHexString(),
     appKey = Debug.getRandomHexString(16, false),
     name = '',
     netEUI = '',
+    tags = {}
   } = {}) {
     this.appEUI = appEUI;
     this.appKey = appKey;
     this.name = name;
     this.netEUI = netEUI;
+    this.tags = tags;
   }
 
   /**
@@ -34,6 +38,7 @@ export class Application {
       appKey: dto.AppKey,
       name: dto.Name,
       netEUI: dto.NetworkEUI,
+      tags: dto.Tags,
     });
   }
 
@@ -45,7 +50,8 @@ export class Application {
       ApplicationEUI: application.appEUI,
       AppKey: application.appKey,
       Name: application.name,
-      NetworkEUI: application.netEUI
+      NetworkEUI: application.netEUI,
+      Tags: application.tags,
     };
   }
 }
