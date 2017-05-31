@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.1"></a>
+## [0.13.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.13.0...v0.13.1) (2017-05-31)
+
+
+### Bug Fixes
+
+* **card-header:** equal sizing for action buttons in header ([30b5f95](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/30b5f95))
+
+
+### Features
+
+* **application:** use tag for description prop ([bc0430e](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/bc0430e))
+* **tagDescription:** add valueconverter for tag entities with description ([17f3766](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/17f3766))
+
+
+
 <a name="0.13.0"></a>
 # [0.13.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.12.0...v0.13.0) (2017-05-30)
 
