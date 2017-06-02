@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.0"></a>
+# [0.14.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.13.1...v0.14.0) (2017-06-02)
+
+
+### Features
+
+* **gateway:** add tags functionality for name and description ([5f3bd43](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/5f3bd43))
+* **login:** add disclaimer for cookie use and data privacy ([66dbaf0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/66dbaf0))
+* **token:** add name and tag functionality ([226662c](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/226662c))
+
+
+
 <a name="0.13.1"></a>
 ## [0.13.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.13.0...v0.13.1) (2017-05-31)
 
