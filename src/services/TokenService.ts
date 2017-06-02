@@ -44,7 +44,7 @@ export class TokenService {
       });
   }
 
-  async resourcePathForApplication(appEui: string): Promise<string> {
+  resourcePathForApplication(appEui: string): string {
     return `/applications/${appEui}`;
   }
 }

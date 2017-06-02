@@ -27,8 +27,8 @@ export class CreateTokenDialog {
     });
   }
 
-  async createToken() {
-    this.token.resource = await this.tokenService.resourcePathForApplication(this.application.appEUI);
+  createToken() {
+    this.token.resource = this.tokenService.resourcePathForApplication(this.application.appEUI);
     this.token.write = AccessLevels[this.selectedAccessLevel];
 
     this.tokenService.createToken(this.token).then(token => {
