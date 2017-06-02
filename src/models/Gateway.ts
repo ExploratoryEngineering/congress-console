@@ -7,6 +7,7 @@ interface GatewayDto {
   Latitude: number;
   Longitude: number;
   StrictIP: boolean;
+  Tags: { [tagName: string]: string };
 }
 
 export class Gateway {
@@ -16,6 +17,7 @@ export class Gateway {
   latitude: number;
   longitude: number;
   strictip: boolean;
+  tags: { [tagName: string]: string };
 
   constructor({
     altitude = 0,
@@ -23,7 +25,8 @@ export class Gateway {
     ip = '',
     latitude = 0,
     longitude = 0,
-    strictip = true
+    strictip = true,
+    tags = {}
   } = {}) {
     this.altitude = altitude;
     this.gatewayEUI = gatewayEUI;
@@ -31,6 +34,7 @@ export class Gateway {
     this.latitude = latitude;
     this.longitude = longitude;
     this.strictip = strictip;
+    this.tags = tags;
   }
 
   static newFromDto(gw: GatewayDto): Gateway {
@@ -40,7 +44,8 @@ export class Gateway {
       longitude: gw.Longitude,
       ip: gw.IP,
       strictip: gw.StrictIP,
-      gatewayEUI: gw.GatewayEUI
+      gatewayEUI: gw.GatewayEUI,
+      tags: gw.Tags
     });
   }
 
@@ -51,7 +56,8 @@ export class Gateway {
       IP: gateway.ip,
       Latitude: parseFloat(String(gateway.latitude)),
       Longitude: parseFloat(String(gateway.longitude)),
-      StrictIP: gateway.strictip
+      StrictIP: gateway.strictip,
+      Tags: gateway.tags
     };
   }
 }
