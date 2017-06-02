@@ -1,8 +1,9 @@
 <template>
   <require from="components/code-line"></require>
+  <require from="valueConverters/tagName"></require>
   <div class="device-expansion-panel expansion-panel ${ active ? 'expansion-panel--expanded' : '' }">
     <div class="expansion-panel__header" click.delegate="toggle()" tabindex="0">
-      <span class="expansion-panel__title">Unnamed</span>
+      <span class="expansion-panel__title">${ token | tagName }</span>
       <span class="expansion-panel__subtitle">${ token.write ? 'Full access' : 'Read only' }</span>
       <span class="expansion-panel__chevron"><div class="material-icons">${ active ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }</div></span>
     </div>
@@ -10,8 +11,8 @@
       <h4 class="h4">Your integration token</h4>
       <p>This token is used as your way of interacting directly with the API of Telenor LoRa.</p>
       <code-line icon="vpn_key" code.bind="token.token"></code-line>
-      <p>To interact with your application you need to provide the networkEUI and applicationEUI which can be found in the
-        examples below.</p>
+      <p>To interact with your application you need to provide the networkEUI and applicationEUI which can be found in the examples
+        below.</p>
       <h4 class="h4">Examples</h4>
       <p>Curl example for fetching devices for application by using your application token</p>
       <code-line icon="code" code.bind="curlGetDevices()"></code-line>

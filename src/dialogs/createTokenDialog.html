@@ -9,7 +9,7 @@
       </div>
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="createToken()">
-          <text-input value.two-way="token.name" name="token-name" label="Name" floatinglabel="true"></text-input>
+          <text-input value.two-way="token.tags.name" name="token-name" label="Name" floatinglabel="true"></text-input>
           <label class="radio-group">
               <div class="radio-group__input">
                 <input type="radio" value="readonly" checked.bind="selectedAccessLevel" name="token-type" />
