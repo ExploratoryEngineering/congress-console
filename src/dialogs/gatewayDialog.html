@@ -8,10 +8,10 @@
       </div>
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="submitGateway()">
-          <text-input value.two-way="gateway.name" name="gateway-name" label="Name" floatinglabel="true"></text-input>
+          <text-input value.two-way="gateway.tags.name" name="gateway-name" label="Name" floatinglabel="true"></text-input>
           <text-input value.two-way="gateway.ip" name="gateway-ip" label="IP (Required)" floatinglabel="true"></text-input>
           <text-input value.two-way="gateway.gatewayEUI" name="gateway-eui" label="Gateway EUI (Required)" floatinglabel="true"></text-input>
-          <textarea-input value.two-way="gateway.description" name="gateway-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
+          <textarea-input value.two-way="gateway.tags.description" name="gateway-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
           <text-input value.two-way="gateway.longitude" name="gateway-longitude" label="Gateway longitude (Optional)" floatinglabel="true"></text-input>
           <text-input value.two-way="gateway.latitude" name="gateway-latitude" label="Gateway latitude (Optional)" floatinglabel="true"></text-input>
           Strict IP: <input type="checkbox" checked.bind="gateway.strictip" />
