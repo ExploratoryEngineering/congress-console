@@ -31,6 +31,7 @@
     "server:dev": "cross-env NODE_ENV=development npm run webpack-dev-server -- --inline --progress --profile --watch",
     "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod": "npm run build:prod && http-server dist --cors -p 9000 --silent",
+    "start": "npm run server:dev",
     "test": "npm run test:unit && npm run test:lint && npm run test:retire && npm run e2e",
     "test:unit": "del-cli \"test/coverage\" && cross-env BABEL_ENV=node NODE_ENV=test ./node_modules/karma/bin/karma start test/karma.conf.js",
     "test:eslint": "./node_modules/eslint/bin/eslint.js src test/e2e test/unit",
