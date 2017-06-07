@@ -1,6 +1,5 @@
-import { App } from 'app';
+import { App } from './app';
 import { PLATFORM } from 'aurelia-framework';
-
 
 import { UserProfile } from 'Models/UserProfile';
 
