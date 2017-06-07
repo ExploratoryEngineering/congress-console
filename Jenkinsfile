@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Testing project') {
       steps {
-        sh 'npm run test:unit'
+        sh 'npm run test:jest'
         sh 'npm run test:lesshint'
         sh 'npm run test:tslint'
         sh 'npm run test:retire'
