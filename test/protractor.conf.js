@@ -1,9 +1,12 @@
+const port = 19876;
+
 exports.config = {
-  baseUrl: 'http://localhost:19876/',
+  baseUrl: `http://localhost:${port}/`,
+  port: port,
 
   // use `npm run e2e`
   specs: [
-    'e2e/**/*.spec.ts'
+    'e2e/**/*.e2e.ts'
   ],
   exclude: [],
 
