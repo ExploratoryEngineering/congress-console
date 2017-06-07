@@ -38,7 +38,7 @@ export class ServiceDetails {
     this.dialogService.open({
       viewModel: CreateTokenDialog,
       model: { application: this.application }
-    }).then(response => {
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         Log.debug('Data from created token', response);
         this.tokens.push(response.output);
@@ -57,7 +57,7 @@ export class ServiceDetails {
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel'
       }
-    }).then(response => {
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         Log.debug('Deleting device');
         this.tokenService.deleteToken(tokenToBeDeleted).then(() => {

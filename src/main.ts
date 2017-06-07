@@ -1,6 +1,7 @@
+/// <reference types="aurelia-loader-webpack/src/webpack-hot-interface"/>
 import '../styles/styles.less';
 
-import { LogManager, Aurelia } from 'aurelia-framework';
+import { LogManager, Aurelia, PLATFORM } from 'aurelia-framework';
 import { ConsoleAppender } from 'aurelia-logging-console';
 
 // Promise polyfill
@@ -10,15 +11,15 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .plugin('aurelia-dialog')
-    .plugin('aurelia-google-maps', config => {
+    .plugin(PLATFORM.moduleName('aurelia-dialog'))
+    .plugin(PLATFORM.moduleName('aurelia-google-maps'), config => {
       config.options({
         apiKey: 'AIzaSyBfrbnOsPYJwccsvXrIkBHs7bUIYp8EaF0',
         apiLibraries: 'drawing,geometry',
         options: { panControl: true, panControlOptions: { position: 9 } }
       });
     })
-    .plugin('aurelia-configuration', config => {
+    .plugin(PLATFORM.moduleName('aurelia-configuration'), config => {
       config.setEnvironments({
         development: ['localhost', 'lora.localhost'],
         staging: ['lora.engineering'],
@@ -37,7 +38,7 @@ export async function configure(aurelia: Aurelia) {
   // aurelia.use.plugin('aurelia-html-import-template-loader')
 
   await aurelia.start();
-  aurelia.setRoot('app');
+  aurelia.setRoot(PLATFORM.moduleName('app'));
 
   document.addEventListener('aurelia-composed', () => {
     const splash = document.getElementsByClassName('splash-container')[0];

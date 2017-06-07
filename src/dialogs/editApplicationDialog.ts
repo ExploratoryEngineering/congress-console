@@ -1,4 +1,4 @@
-import { useView, autoinject } from 'aurelia-framework';
+import { useView, autoinject, PLATFORM } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 
 import { ApplicationService } from 'Services/ApplicationService';
@@ -8,7 +8,7 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Application dialog');
 
-@useView('./applicationDialog.html')
+@useView(PLATFORM.moduleName('dialogs/applicationDialog.html'))
 @autoinject
 export class EditApplicationDialog {
   application: Application = new Application();

@@ -36,7 +36,7 @@ export class ServiceDetails {
     this.dialogService.open({
       viewModel: CreateDeviceDialog,
       model: { appEUI: this.application.appEUI }
-    }).then(response => {
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
           body: 'Device created'
@@ -55,7 +55,7 @@ export class ServiceDetails {
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel'
       }
-    }).then(response => {
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         Log.debug('Deleting device');
         this.deviceService.deleteDevice(this.application.appEUI, device).then(() => {

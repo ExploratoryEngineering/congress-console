@@ -1,3 +1,5 @@
+import { PLATFORM } from 'aurelia-framework';
+
 export let routes = [
   {
     route: [''],
@@ -6,14 +8,14 @@ export let routes = [
   {
     route: ['login'],
     name: 'login',
-    moduleId: 'views/login',
+    moduleId: PLATFORM.moduleName('views/login'),
     nav: false,
     title: 'Login'
   },
   {
     route: ['dashboard'],
     name: 'dashboard',
-    moduleId: 'views/application-dashboard',
+    moduleId: PLATFORM.moduleName('views/application-dashboard'),
     nav: true,
     title: 'Applications',
     settings: {
@@ -23,7 +25,7 @@ export let routes = [
   {
     route: ['gateway-dashboard'],
     name: 'gateway-dashboard',
-    moduleId: 'views/dashboard/gateways',
+    moduleId: PLATFORM.moduleName('views/dashboard/gateways'),
     nav: true,
     title: 'Gateways',
     settings: {
@@ -33,7 +35,7 @@ export let routes = [
   {
     route: ['server-error'],
     name: 'server-error',
-    moduleId: 'views/serverError',
+    moduleId: PLATFORM.moduleName('views/serverError'),
     nav: false,
     title: 'Server issues - Stay calm',
     settings: {

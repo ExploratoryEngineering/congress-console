@@ -29,7 +29,7 @@ export class Services {
   availableApplications: Application[] = [];
 
   createNewApplication() {
-    this.dialogService.open({ viewModel: CreateApplicationDialog }).then(response => {
+    this.dialogService.open({ viewModel: CreateApplicationDialog }).whenClosed(response => {
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
           body: 'Application created'
@@ -47,7 +47,7 @@ export class Services {
       model: {
         application: applicationUntouched
       }
-    }).then(response => {
+    }).whenClosed(response => {
       Log.debug('Edit application', response);
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
@@ -69,7 +69,7 @@ export class Services {
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel'
       }
-    }).then(response => {
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         Log.debug('Deleting application');
         this.applicationService.deleteApplication(application).then(() => {

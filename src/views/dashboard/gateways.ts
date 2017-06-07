@@ -29,7 +29,7 @@ export class Services {
 
   createNewGateway() {
     Log.debug('Create new gateway');
-    this.dialogService.open({ viewModel: CreateGatewayDialog }).then(response => {
+    this.dialogService.open({ viewModel: CreateGatewayDialog }).whenClosed(response => {
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
           body: 'Gateway created'
@@ -48,7 +48,7 @@ export class Services {
       model: {
         gateway: gatewayUntouched
       }
-    }).then(response => {
+    }).whenClosed(response => {
       Log.debug('Edit application', response);
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
@@ -69,7 +69,7 @@ export class Services {
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel'
       }
-    }).then(response => {
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         Log.debug('Deleting gateway');
         this.gatewayService.deleteGateway(gateway).then(() => {

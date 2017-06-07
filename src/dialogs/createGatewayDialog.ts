@@ -1,4 +1,4 @@
-import { useView, autoinject } from 'aurelia-framework';
+import { useView, autoinject, PLATFORM } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 
 import { GatewayService } from 'Services/GatewayService';
@@ -9,7 +9,7 @@ import { BadRequestError } from 'Helpers/ResponseHandler';
 
 const Log = LogBuilder.create('Create gateway dialog');
 
-@useView('./gatewayDialog.html')
+@useView(PLATFORM.moduleName('dialogs/gatewayDialog.html'))
 @autoinject
 export class CreateGatewayDialog {
   gateway: Gateway = new Gateway();
