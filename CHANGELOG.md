@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.1"></a>
+## [0.15.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.15.0...v0.15.1) (2017-06-07)
+
+
+### Bug Fixes
+
+* **gatewayDialog:** correct order of latitude and longitude ([4ac20de](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/4ac20de))
+
+
+### Features
+
+* **gravatar:** add gravatar avatar for email in connectId ([50d4557](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/50d4557))
+
+
+
 <a name="0.15.0"></a>
 # [0.15.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.14.0...v0.15.0) (2017-06-07)
 
