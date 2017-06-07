@@ -7,13 +7,19 @@ class AuthServiceMock {
   }
 }
 
+class GravatarServiceMock {
+  getImageSrcByEmail() { }
+}
+
 describe('The UserInformation helper', () => {
   let mockedAuthService;
+  let mockedGravatarService;
   let userInformation;
 
   beforeEach(() => {
     mockedAuthService = new AuthServiceMock();
-    userInformation = new UserInformation(mockedAuthService);
+    mockedGravatarService = new GravatarServiceMock();
+    userInformation = new UserInformation(mockedAuthService, mockedGravatarService);
   });
 
   it('should reject the fetch user profile call if not logged in', (done) => {

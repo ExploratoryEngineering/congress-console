@@ -8,7 +8,8 @@
     <dropdown-title><span class="top-header__icon material-icons">account_circle</span></dropdown-title>
     <dropdown-container>
       <div class="avatar-container">
-        <div class="avatar-container__avatar"></div>
+        <img class="avatar-container__avatar" if.bind="userInformation.gravatarSrc" src.bind="userInformation.gravatarSrc" alt="avatar"
+        />
       </div>
       <div class="profile-username">
         <span class="profile-username__name-label">Signed in as</span>
