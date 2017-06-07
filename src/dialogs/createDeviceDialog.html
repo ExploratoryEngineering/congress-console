@@ -9,15 +9,17 @@
       <div class="flex-container__body flex-container__body--centered">
         <div class="tab-navigation">
           <div class="tab-navigation__tabs">
-            <a click.trigger="goToStep(1)" class="tab-navigation__tab ${ step === 1 ? 'tab-navigation__tab--selected' : ''} ${ step === 3 ? 'tab-navigation__tab--disabled' : '' }">
+            <button click.trigger="goToStep(1)" class="tab-navigation__tab ${ step === 1 ? 'tab-navigation__tab--selected' : ''} ${ step === 3 ? 'tab-navigation__tab--disabled' : '' }"
+              disabled.bind="step === 3">
               1. Choose device type
-            </a>
-            <a click.trigger="goToStep(2)" class="tab-navigation__tab ${ step === 2 ? 'tab-navigation__tab--selected' : ''} ${ step === 3 ? 'tab-navigation__tab--disabled' : '' }">
+            </button>
+            <button click.trigger="goToStep(2)" class="tab-navigation__tab ${ step === 2 ? 'tab-navigation__tab--selected' : ''} ${ step === 3 ? 'tab-navigation__tab--disabled' : '' }"
+              disabled.bind="step === 3">
               2. Device configuration
-            </a>
-            <a class="tab-navigation__tab ${ step === 3 ? 'tab-navigation__tab--selected' : 'tab-navigation__tab--disabled'}">
+            </button>
+            <button class="tab-navigation__tab ${ step === 3 ? 'tab-navigation__tab--selected' : 'tab-navigation__tab--disabled'}" disabled.bind="step !== 3">
               3. Provision
-            </a>
+            </button>
           </div>
         </div>
         <form class="form" if.bind="step === 1" submit.delegate="next()">
