@@ -1,8 +1,14 @@
 import { App } from 'app';
+import { PLATFORM } from 'aurelia-framework';
+
+
 import { UserProfile } from 'Models/UserProfile';
 
 class RouterStub {
-  constructor() {}
+  authStep;
+  routes;
+
+  constructor() { }
 
   configure(handler) {
     handler(this);
@@ -26,16 +32,18 @@ class RouterStub {
 }
 
 class SignalerStub {
-  signal() {}
+  signal() { }
 }
 
 class UserInformationStub {
-  constructor() {}
+  constructor() { }
 
   fetchUserProfile() {
     return Promise.resolve(new UserProfile());
   }
 }
+
+jest.useFakeTimers();
 
 describe('the App module', () => {
   let sut;
@@ -44,7 +52,6 @@ describe('the App module', () => {
   let mockedSignaler;
 
   beforeEach(() => {
-    jasmine.clock().install();
     mockedRouter = new RouterStub();
     mockedUserInformation = new UserInformationStub();
     mockedSignaler = new SignalerStub();
@@ -64,29 +71,25 @@ describe('the App module', () => {
     it('should signal the signaler with updateTime', () => {
       spyOn(mockedSignaler, 'signal');
       expect(mockedSignaler.signal).not.toHaveBeenCalled();
-      jasmine.clock().tick(sut.UPDATE_TIME_INTERVAL_MS);
+      jest.runTimersToTime(sut.UPDATE_TIME_INTERVAL_MS);
       expect(mockedSignaler.signal).toHaveBeenCalledWith('updateTime');
     });
 
     it('should have a application dashboard route', () => {
-      expect(sut.router.routes).toContain(
-        {
-          route: [ 'dashboard' ],
-          name: 'dashboard',
-          moduleId: 'views/application-dashboard',
-          nav: true,
-          title: 'Applications',
-          settings: {
-            auth: true
-          }
+      expect(sut.router.routes).toContainEqual({
+        route: ['dashboard'],
+        name: 'dashboard',
+        moduleId: 'views/application-dashboard',
+        nav: true,
+        title: 'Applications',
+        settings: {
+          auth: true
         }
-      );
+      });
     });
 
     it('should contain a base redirect route', () => {
-      expect(sut.router.routes).toContain(
-        { route: [ '' ], redirect: 'dashboard' }
-      );
+      expect(sut.router.routes).toContainEqual({ route: [''], redirect: 'dashboard' });
     });
   });
 
@@ -125,7 +128,7 @@ describe('the App module', () => {
       };
 
       let nextCb = {
-        cancel: () => {}
+        cancel: () => { }
       };
       spyOn(nextCb, 'cancel');
 
@@ -137,7 +140,7 @@ describe('the App module', () => {
 
     it('should call next on nav if a route is not authed and user is not logged in', () => {
       let callback = {
-        next: () => {}
+        next: () => { }
       };
       spyOn(callback, 'next');
 
@@ -147,7 +150,7 @@ describe('the App module', () => {
 
     it('should call next on nav if a route is auth and user is logged in', (done) => {
       let callback = {
-        next: function() {}
+        next: function () { }
       };
       spyOn(callback, 'next');
 
@@ -156,8 +159,5 @@ describe('the App module', () => {
         done();
       });
     });
-  });
-  afterEach(() => {
-    jasmine.clock().uninstall();
   });
 });

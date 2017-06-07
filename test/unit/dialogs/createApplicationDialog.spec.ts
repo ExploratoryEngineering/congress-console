@@ -8,11 +8,11 @@ class ApplicationServiceStub {
 }
 
 class DialogControllerStub {
-  ok() {}
-  cancel() {}
+  ok() { }
+  cancel() { }
 }
 
-class ApplicationStub {}
+class ApplicationStub { }
 
 describe('CreateApplication dialog', () => {
   let applicationServiceStub;
@@ -47,7 +47,7 @@ describe('CreateApplication dialog', () => {
   it('should call ok for dialog upon successful save of application', (done) => {
     spyOn(dialogControllerStub, 'ok');
 
-    createApplicationDialog.submitApplication().finally(() => {
+    createApplicationDialog.submitApplication().then(() => {
       expect(dialogControllerStub.ok).toHaveBeenCalled();
       done();
     });
@@ -60,7 +60,7 @@ describe('CreateApplication dialog', () => {
     };
 
 
-    createApplicationDialog.submitApplication().finally(() => {
+    createApplicationDialog.submitApplication().then(() => {
       expect(dialogControllerStub.ok).not.toHaveBeenCalled();
       done();
     });

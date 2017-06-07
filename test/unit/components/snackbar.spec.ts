@@ -1,16 +1,17 @@
 import { Snackbar } from 'Components/snackbar';
 
 class EventAggregatorStub {
-  subscribe() {}
-  publish() {}
+  subscribe() { }
+  publish() { }
 }
+
+jest.useFakeTimers();
 
 describe('Snackbar component', () => {
   let snackbar;
   let eventAggregatorStub;
 
   beforeEach(() => {
-    jasmine.clock().install();
     eventAggregatorStub = new EventAggregatorStub();
     snackbar = new Snackbar(eventAggregatorStub);
   });
@@ -22,7 +23,7 @@ describe('Snackbar component', () => {
   });
 
   it('should unsubscribe to old subs upon unbind', () => {
-    let testSubscription = { dispose: () => {} };
+    let testSubscription = { dispose: () => { } };
     spyOn(testSubscription, 'dispose');
 
     snackbar.subscriptions.push(testSubscription);
@@ -62,7 +63,7 @@ describe('Snackbar component', () => {
   });
 
   it('should correctly set deactivation timeout for message', () => {
-    let cb = { spy: () => {} };
+    let cb = { spy: () => { } };
     let timeout = 500;
     spyOn(cb, 'spy');
 
@@ -72,17 +73,12 @@ describe('Snackbar component', () => {
     expect(snackbar.isActive).toBe(true);
     expect(snackbar.message).toBe('test');
 
-    jasmine.clock().tick(timeout - 250);
+    jest.runTimersToTime(timeout - 250);
 
     expect(snackbar.isActive).toBe(false);
 
-    jasmine.clock().tick(250);
+    jest.runTimersToTime(timeout - 250);
     expect(snackbar.message).toBe('');
     expect(cb.spy).toHaveBeenCalled();
-  });
-
-
-  afterEach(() => {
-    jasmine.clock().uninstall();
   });
 });

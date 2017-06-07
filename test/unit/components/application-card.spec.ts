@@ -39,13 +39,10 @@ describe('ApplicationCard component', () => {
 
     applicationCard = new ApplicationCard(eventAggregatorStub, applicationServiceStub, graphControllerStub);
     applicationCard.application = applicationStub;
-
-    jasmine.clock().install();
   });
 
   afterEach(() => {
     applicationCard.unbind();
-    jasmine.clock().uninstall();
   });
 
   describe('Binding behaviour', () => {
