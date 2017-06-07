@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.0"></a>
+# [0.15.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.14.0...v0.15.0) (2017-06-07)
+
+
+### Features
+
+* **index.ejs:** add templated index instead of static ([12d3051](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/12d3051))
+* **moment:** reduce package by 100kb by excluding locales ([d5f1130](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/d5f1130))
+* **package-lock:** add npm5 package-lock ([6f99028](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/6f99028))
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.13.1...v0.14.0) (2017-06-02)
 
