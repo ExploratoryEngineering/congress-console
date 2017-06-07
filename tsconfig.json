@@ -1,46 +1,35 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es5",
     "module": "es2015",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictNullChecks": true,
     "moduleResolution": "node",
-    "sourceMap": true,
     "allowJs": true,
+    "sourceRoot": "src",
+    "baseUrl": "src",
+    "compileOnSave": false,
     "lib": [
       "es2017",
       "dom"
     ],
     "paths": {
       "Services/*": [
-        "src/services/*"
+        "services/*"
       ],
       "Helpers/*": [
-        "src/helpers/*"
+        "helpers/*"
       ],
       "Models/*": [
-        "src/models/*"
+        "models/*"
       ],
       "Components/*": [
-        "src/components/*"
+        "components/*"
       ],
       "Dialogs/*": [
-        "src/dialogs/*"
+        "dialogs/*"
       ]
-    },
-    "types": [
-      "jasmine"
-    ],
-    "typeRoots": [
-      "./node-modules/@types/",
-      "./typings/globals",
-      "./globalTypings"
-    ]
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true
+    }
   },
   "exclude": [
     "node_modules",
