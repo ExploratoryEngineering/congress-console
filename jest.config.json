@@ -1,12 +1,9 @@
 {
   "rootDir": ".",
+  "verbose": true,
   "modulePaths": [
     "<rootDir>/src",
     "<rootDir>/node_modules"
-  ],
-  "roots": [
-    "<rootDir>/src",
-    "<rootDir>/test/unit"
   ],
   "moduleFileExtensions": [
     "js",
@@ -16,11 +13,10 @@
   "transform": {
     "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
-  "testRegex": "\\.spec\\.(ts|js)x?$",
+  "testRegex": "\\.spec\\.(ts|js)$",
   "setupFiles": [
     "<rootDir>/test/jest-pretest.ts"
   ],
-  "testEnvironment": "node",
   "moduleNameMapper": {
     "aurelia-(.*)": "<rootDir>/node_modules/$1",
     "Helpers/(.*)": "helpers/$1",
