@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.2"></a>
+## [0.15.2](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.15.1...v0.15.2) (2017-06-08)
+
+
+### Bug Fixes
+
+* **jest config:** fix correct coverage on source files ([04dcebf](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/04dcebf))
+
+
+### Features
+
+* **profiledropdown:** add link to MyPage. Fixes #45 ([aa2c04a](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/aa2c04a)), closes [#45](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/issues/45)
+* **webpack:** add sourcemaps to test ([e4111df](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e4111df))
+
+
+
 <a name="0.15.1"></a>
 ## [0.15.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.15.0...v0.15.1) (2017-06-07)
 
