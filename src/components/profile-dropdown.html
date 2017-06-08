@@ -15,6 +15,7 @@
         <span class="profile-username__name-label">Signed in as</span>
         <span class="profile-username__name" title="${ userInformation.userProfile.email }">${ userInformation.userProfile.email }</span>
       </div>
+      <a class="profile-dropdown__menu-item" target="_blank" rel="noopener noreferrer" href.bind="myPageUrl">My page</a>
       <a class="profile-dropdown__menu-item" click.trigger="logOut()">Logout</a>
     </dropdown-container>
   </dropdown>

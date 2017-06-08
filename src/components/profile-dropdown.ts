@@ -6,6 +6,7 @@ import { autoinject } from 'aurelia-framework';
 @autoinject
 export class ProfileDropdown {
   userInformation: UserInformation;
+  myPageUrl: string;
 
   constructor(
     private router: Router,
@@ -13,6 +14,7 @@ export class ProfileDropdown {
     userInformation: UserInformation
   ) {
     this.userInformation = userInformation;
+    this.myPageUrl = this.config.get('myConnectUrl');
   }
 
   logOut() {
