@@ -1,4 +1,9 @@
 {
+  "globals": {
+    "__TS_CONFIG__": {
+      "module": "commonjs"
+    }
+  },
   "rootDir": ".",
   "verbose": true,
   "modulePaths": [
@@ -10,6 +15,10 @@
     "json",
     "ts"
   ],
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
   "transform": {
     "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
@@ -19,12 +28,14 @@
   ],
   "moduleNameMapper": {
     "aurelia-(.*)": "<rootDir>/node_modules/$1",
+    "\\.(css|less)$": "<rootDir>/test/mock/styleMock.js",
     "Helpers/(.*)": "helpers/$1",
     "Components/(.*)": "components/$1",
     "Services/(.*)": "services/$1",
     "Dialogs/(.*)": "dialogs/$1",
     "Models/(.*)": "models/$1"
   },
+  "testEnvironment": "jsdom",
   "collectCoverage": true,
   "collectCoverageFrom": [
     "src/**/*.{js,ts}",
