@@ -21,12 +21,18 @@ const nodeModulesDir = path.resolve(__dirname, 'node_modules');
 const baseUrl = '/';
 
 const lessLoaderConfig = [{
-  loader: 'css-loader' // translates CSS into CommonJS
+  loader: 'css-loader', // translates CSS into CommonJS
+  options: {
+    sourceMap: true
+  }
 }, {
   loader: 'postcss-loader', // adding needed prefixer for older browsers
   options: { plugins: () => [autoprefixer({ browsers: ['last 2 versions'] })]}
 }, {
-  loader: 'less-loader' // compiles Less to CSS
+  loader: 'less-loader', // compiles Less to CSS
+  options: {
+    sourceMap: true
+  }
 }];
 
 module.exports = ({production, server, extractCss, coverage} = {}) => ({
