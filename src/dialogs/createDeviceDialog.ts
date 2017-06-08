@@ -59,6 +59,7 @@ export class CreateDeviceDialog {
     if (this.selectedType === DeviceTypes.OTAA) {
       let otaaDevice: NewOTAADevice = {
         DeviceType: this.selectedType,
+        RelaxedCounter: this.device.relaxedCounter,
         Tags: this.device.tags
       };
 
@@ -69,6 +70,7 @@ export class CreateDeviceDialog {
         DevAddr: this.device.devAddr,
         AppSKey: this.device.appSKey,
         DeviceType: this.selectedType,
+        RelaxedCounter: this.device.relaxedCounter,
         Tags: this.device.tags
       };
 

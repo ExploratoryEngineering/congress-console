@@ -10,6 +10,7 @@ const Log = LogBuilder.create('Device service');
 
 interface NewDevice {
   DeviceType: string;
+  RelaxedCounter: boolean;
   Tags: { [tagName: string]: string };
 }
 
