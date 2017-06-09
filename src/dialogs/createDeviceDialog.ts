@@ -24,6 +24,8 @@ export class CreateDeviceDialog {
   step: number = 1;
   source: string = '';
 
+  formError: string;
+
   constructor(
     private deviceService: DeviceService,
     private dialogController: DialogController
@@ -40,6 +42,7 @@ export class CreateDeviceDialog {
       .catch(error => {
         if (error instanceof BadRequestError) {
           Log.debug('400', error);
+          this.formError = error.content;
         } else {
           Log.error('Create device: Error occured', error);
           this.dialogController.cancel();

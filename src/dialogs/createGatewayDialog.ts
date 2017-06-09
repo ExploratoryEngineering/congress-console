@@ -16,6 +16,7 @@ export class CreateGatewayDialog {
 
   dialogHeader = 'Create your new gateway';
   confirmButtonText = 'Create new gateway';
+  formError: string;
 
   constructor(
     private gatewayService: GatewayService,
@@ -38,7 +39,8 @@ export class CreateGatewayDialog {
       this.dialogController.ok(gateway);
     }).catch(error => {
       if (error instanceof BadRequestError) {
-        Log.debug('400', error);
+        Log.warn('400', error);
+        this.formError = error.content;
       } else {
         Log.error('Create gateway: Error occured', error);
         this.dialogController.cancel();

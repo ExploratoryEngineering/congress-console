@@ -17,6 +17,8 @@ export class CreateApplicationDialog {
   dialogHeader = 'Create your new application';
   confirmButtonText = 'Create new application';
 
+  formError: string;
+
   constructor(
     private applicationService: ApplicationService,
     private dialogController: DialogController
@@ -28,6 +30,7 @@ export class CreateApplicationDialog {
     }).catch(error => {
       if (error instanceof BadRequestError) {
         Log.debug('400', error);
+        this.formError = error.content;
       } else {
         Log.error('Create application: Error occured', error);
         this.dialogController.cancel();
