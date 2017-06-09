@@ -31,7 +31,7 @@ class UnauthorizedError extends ResponseError {
   }
 }
 
-class NotFoundError extends ResponseError {
+export class NotFoundError extends ResponseError {
   errorCode: 404;
 
   constructor(content: any) {
@@ -41,6 +41,14 @@ class NotFoundError extends ResponseError {
 
 class MethodNotSupported extends ResponseError {
   errorCode: 405;
+
+  constructor(content: any) {
+    super(content);
+  }
+}
+
+export class Conflict extends ResponseError {
+  errorCode: 409;
 
   constructor(content: any) {
     super(content);
@@ -105,6 +113,10 @@ export class ResponseHandler {
       case 405: {
         this.eventAggregator.publish('global:message', { body: 'Feature not implemented... yet!' });
         throw new MethodNotSupported(response.content);
+      }
+      case 409: {
+        Log.debug('returning on 409');
+        throw new Conflict(response.content);
       }
       case 500: {
         this.navigateToServerError();
