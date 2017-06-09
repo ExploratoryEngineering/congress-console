@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.1"></a>
+## [0.16.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.16.0...v0.16.1) (2017-06-09)
+
+
+### Features
+
+* **responseHandler:** add handler for 409 ([e6a333b](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e6a333b))
+
+
+
 <a name="0.16.0"></a>
 # [0.16.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.15.3...v0.16.0) (2017-06-09)
 
