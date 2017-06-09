@@ -12,6 +12,7 @@ import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
 import { MessageDialog } from 'Dialogs/messageDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
+import { Conflict } from 'Helpers/ResponseHandler';
 
 const Log = LogBuilder.create('Applications');
 
@@ -77,6 +78,11 @@ export class Services {
             body: 'Application deleted'
           });
           this.availableApplications = this.availableApplications.filter(app => app.appEUI !== application.appEUI);
+        }).catch((error) => {
+          if (error instanceof Conflict) {
+            Log.debug('409', error);
+            this.eventAggregator.publish('global:message', { body: 'Could not delete application due to existing devices.', timeout: 5000 });
+          }
         });
       } else {
         Log.debug('Did not delete application');
