@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.0"></a>
+# [0.16.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.15.3...v0.16.0) (2017-06-09)
+
+
+### Bug Fixes
+
+* **expansion-panel-device-info:** correct names of variables ([242bf44](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/242bf44))
+
+
+### Features
+
+* **colors:** add colors according to design spec ([28a9e29](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/28a9e29))
+* **error handling:** add error handling on modals ([b80b793](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/b80b793))
+* **text-input:** make maxlength editable for textinput ([979b4c7](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/979b4c7))
+
+
+
 <a name="0.15.3"></a>
 ## [0.15.3](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.15.2...v0.15.3) (2017-06-08)
 
