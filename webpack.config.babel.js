@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const webpack  = require('webpack');
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const { optimize: { CommonsChunkPlugin }, ProvidePlugin } = require('webpack');
@@ -103,7 +102,6 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
     new ProvidePlugin({
       'Promise': 'bluebird'
     }),
-    new HardSourceWebpackPlugin(),
     new TsConfigPathsPlugin(),
     new CheckerPlugin(),
     new HtmlWebpackPlugin({
