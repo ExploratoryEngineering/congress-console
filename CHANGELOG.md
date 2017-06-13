@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.2"></a>
+## [0.16.2](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.16.1...v0.16.2) (2017-06-13)
+
+
+### Bug Fixes
+
+* **createGatewayDialog:** correctly handle 409 ([3ed2398](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3ed2398))
+
+
+### Features
+
+* **hard-source-webpack:** add caching layer for development ([e848444](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e848444))
+
+
+
 <a name="0.16.1"></a>
 ## [0.16.1](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.16.0...v0.16.1) (2017-06-09)
 
