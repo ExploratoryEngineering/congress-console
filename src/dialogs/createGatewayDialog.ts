@@ -5,7 +5,7 @@ import { GatewayService } from 'Services/GatewayService';
 import { Gateway } from 'Models/Gateway';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
-import { BadRequestError } from 'Helpers/ResponseHandler';
+import { BadRequestError, Conflict } from 'Helpers/ResponseHandler';
 
 const Log = LogBuilder.create('Create gateway dialog');
 
@@ -38,8 +38,8 @@ export class CreateGatewayDialog {
     return this.gatewayService.createNewGateway(this.gateway).then((gateway) => {
       this.dialogController.ok(gateway);
     }).catch(error => {
-      if (error instanceof BadRequestError) {
-        Log.warn('400', error);
+      if (error instanceof BadRequestError || error instanceof Conflict) {
+        Log.warn(`${error.errorCode}`, error);
         this.formError = error.content;
       } else {
         Log.error('Create gateway: Error occured', error);
