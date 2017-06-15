@@ -22,3 +22,26 @@ interface DataSearchParameters {
   limit?: number;
   since?: string;
 }
+
+/**
+ * Tag implementation for applicatoin
+ */
+interface Tag {
+  key: string;
+  value: string;
+}
+
+/**
+ * Tagobject exisisting on tagentities
+ */
+interface TagObject {
+  [tagName: string]: string;
+}
+
+
+/**
+ * An entity which contains a tag field with TagObject
+ */
+interface TagEntity {
+  tags: TagObject;
+}

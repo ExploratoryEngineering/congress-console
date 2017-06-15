@@ -10,7 +10,7 @@ interface DeviceDto {
   Tags: { [tagName: string]: string };
 }
 
-export class Device {
+export class Device implements TagEntity {
   appSKey: string;
   devAddr: string;
   deviceEUI: string;

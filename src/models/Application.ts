@@ -8,7 +8,7 @@ interface ApplicationDto {
   Tags: { [tagName: string]: string };
 }
 
-export class Application {
+export class Application implements TagEntity {
   appEUI: string;
   appKey: string;
   name: string;

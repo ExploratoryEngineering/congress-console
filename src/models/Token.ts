@@ -5,7 +5,7 @@ interface TokenDto {
   Tags: { [tagName: string]: string };
 }
 
-export class Token {
+export class Token implements TagEntity {
   token: string;
   write: boolean;
   resource: string;

@@ -10,7 +10,7 @@ interface GatewayDto {
   Tags: { [tagName: string]: string };
 }
 
-export class Gateway {
+export class Gateway implements TagEntity {
   altitude: number;
   gatewayEUI: string;
   ip: string;
