@@ -24,7 +24,7 @@ interface DataSearchParameters {
 }
 
 /**
- * Tag implementation for applicatoin
+ * Tag implementation for application
  */
 interface Tag {
   key: string;
@@ -32,7 +32,7 @@ interface Tag {
 }
 
 /**
- * Tagobject exisisting on tagentities
+ * Tagobject exisisting on TagEntities
  */
 interface TagObject {
   [tagName: string]: string;
