@@ -1,11 +1,11 @@
 import Debug from 'Helpers/Debug';
 
 interface ApplicationDto {
-  ApplicationEUI: string;
-  AppKey: string;
-  Name: string;
-  NetworkEUI: string;
-  Tags: { [tagName: string]: string };
+  applicationEUI: string;
+  appKey: string;
+  name: string;
+  networkEUI: string;
+  tags: { [tagName: string]: string };
 }
 
 export class Application implements TagEntity {
@@ -34,11 +34,11 @@ export class Application implements TagEntity {
    */
   static newFromDto(dto: ApplicationDto): Application {
     return new Application({
-      appEUI: dto.ApplicationEUI,
-      appKey: dto.AppKey,
-      name: dto.Name,
-      netEUI: dto.NetworkEUI,
-      tags: dto.Tags,
+      appEUI: dto.applicationEUI,
+      appKey: dto.appKey,
+      name: dto.name,
+      netEUI: dto.networkEUI,
+      tags: dto.tags,
     });
   }
 
@@ -47,11 +47,11 @@ export class Application implements TagEntity {
    */
   static toDto(application: Application): ApplicationDto {
     return {
-      ApplicationEUI: application.appEUI,
-      AppKey: application.appKey,
-      Name: application.name,
-      NetworkEUI: application.netEUI,
-      Tags: application.tags,
+      applicationEUI: application.appEUI,
+      appKey: application.appKey,
+      name: application.name,
+      networkEUI: application.netEUI,
+      tags: application.tags,
     };
   }
 }

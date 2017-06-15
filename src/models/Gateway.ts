@@ -1,13 +1,13 @@
 import Debug from 'Helpers/Debug';
 
 interface GatewayDto {
-  Altitude: number;
-  GatewayEUI: string;
-  IP: string;
-  Latitude: number;
-  Longitude: number;
-  StrictIP: boolean;
-  Tags: { [tagName: string]: string };
+  altitude: number;
+  gatewayEUI: string;
+  ip: string;
+  latitude: number;
+  longitude: number;
+  strictIP: boolean;
+  tags: { [tagName: string]: string };
 }
 
 export class Gateway implements TagEntity {
@@ -39,25 +39,25 @@ export class Gateway implements TagEntity {
 
   static newFromDto(gw: GatewayDto): Gateway {
     return new Gateway({
-      altitude: gw.Altitude,
-      latitude: gw.Latitude,
-      longitude: gw.Longitude,
-      ip: gw.IP,
-      strictip: gw.StrictIP,
-      gatewayEUI: gw.GatewayEUI,
-      tags: gw.Tags
+      altitude: gw.altitude,
+      latitude: gw.latitude,
+      longitude: gw.longitude,
+      ip: gw.ip,
+      strictip: gw.strictIP,
+      gatewayEUI: gw.gatewayEUI,
+      tags: gw.tags
     });
   }
 
   static toDto(gateway: Gateway): GatewayDto {
     return {
-      Altitude: gateway.altitude,
-      GatewayEUI: gateway.gatewayEUI,
-      IP: gateway.ip,
-      Latitude: parseFloat(String(gateway.latitude)),
-      Longitude: parseFloat(String(gateway.longitude)),
-      StrictIP: gateway.strictip,
-      Tags: gateway.tags
+      altitude: gateway.altitude,
+      gatewayEUI: gateway.gatewayEUI,
+      ip: gateway.ip,
+      latitude: parseFloat(String(gateway.latitude)),
+      longitude: parseFloat(String(gateway.longitude)),
+      strictIP: gateway.strictip,
+      tags: gateway.tags
     };
   }
 }

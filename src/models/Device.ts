@@ -1,13 +1,13 @@
 interface DeviceDto {
-  AppSKey: string;
-  DevAddr: string;
-  DeviceEUI: string;
-  DeviceType: string;
-  FCntDn: number;
-  FCntUp: number;
-  NwkSKey: string;
-  RelaxedCounter: boolean;
-  Tags: { [tagName: string]: string };
+  appSKey: string;
+  devAddr: string;
+  deviceEUI: string;
+  deviceType: string;
+  fCntDn: number;
+  fCntUp: number;
+  nwkSKey: string;
+  relaxedCounter: boolean;
+  tags: { [tagName: string]: string };
 }
 
 export class Device implements TagEntity {
@@ -45,29 +45,29 @@ export class Device implements TagEntity {
 
   static newFromDto(device: DeviceDto): Device {
     return new Device({
-      deviceEUI: device.DeviceEUI,
-      devAddr: device.DevAddr,
-      appSKey: device.AppSKey,
-      nwkSKey: device.NwkSKey,
-      deviceType: device.DeviceType,
-      fCntUp: device.FCntUp,
-      fCntDn: device.FCntDn,
-      relaxedCounter: device.RelaxedCounter,
-      tags: device.Tags
+      deviceEUI: device.deviceEUI,
+      devAddr: device.devAddr,
+      appSKey: device.appSKey,
+      nwkSKey: device.nwkSKey,
+      deviceType: device.deviceType,
+      fCntUp: device.fCntUp,
+      fCntDn: device.fCntDn,
+      relaxedCounter: device.relaxedCounter,
+      tags: device.tags
     });
   }
 
   static toDto(device: Device): DeviceDto {
     return {
-      DeviceEUI: device.deviceEUI,
-      DevAddr: device.devAddr,
-      AppSKey: device.appSKey,
-      NwkSKey: device.nwkSKey,
-      DeviceType: device.deviceType,
-      FCntUp: device.fCntUp,
-      FCntDn: device.fCntDn,
-      RelaxedCounter: device.relaxedCounter,
-      Tags: device.tags
+      deviceEUI: device.deviceEUI,
+      devAddr: device.devAddr,
+      appSKey: device.appSKey,
+      nwkSKey: device.nwkSKey,
+      deviceType: device.deviceType,
+      fCntUp: device.fCntUp,
+      fCntDn: device.fCntDn,
+      relaxedCounter: device.relaxedCounter,
+      tags: device.tags
     };
   }
 }

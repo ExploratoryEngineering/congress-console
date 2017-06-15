@@ -40,7 +40,7 @@ export class ApplicationService {
     return this.apiClient.http.get(
       `/applications/${applicationEui}/data?limit=${limit}&since=${since}`
     )
-      .then(data => data.content.Messages)
+      .then(data => data.content.messages)
       .then(messages => messages.reverse());
   }
 

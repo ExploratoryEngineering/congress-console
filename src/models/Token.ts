@@ -1,8 +1,8 @@
 interface TokenDto {
-  Token: string;
-  Write: boolean;
-  Resource: string;
-  Tags: { [tagName: string]: string };
+  token: string;
+  write: boolean;
+  resource: string;
+  tags: { [tagName: string]: string };
 }
 
 export class Token implements TagEntity {
@@ -25,19 +25,19 @@ export class Token implements TagEntity {
 
   static newFromDto(token: TokenDto): Token {
     return new Token({
-      token: token.Token,
-      write: token.Write,
-      resource: token.Resource,
-      tags: token.Tags
+      token: token.token,
+      write: token.write,
+      resource: token.resource,
+      tags: token.tags
     });
   }
 
   static toDto(token: Token): TokenDto {
     return {
-      Token: token.token,
-      Write: token.write,
-      Resource: token.resource,
-      Tags: token.tags
+      token: token.token,
+      write: token.write,
+      resource: token.resource,
+      tags: token.tags
     };
   }
 }
