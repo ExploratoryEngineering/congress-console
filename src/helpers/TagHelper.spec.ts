@@ -2,7 +2,7 @@ import { TagHelper } from 'Helpers/TagHelper';
 
 
 describe('The tag helper', () => {
-  let tagHelper;
+  let tagHelper: TagHelper;
 
   beforeEach(() => {
     tagHelper = new TagHelper();
@@ -79,6 +79,77 @@ describe('The tag helper', () => {
       };
 
       expect(tagHelper.getEntityDescription(entityWithoutTagDescriptionAndNoFallback, 'nonExistantFallback')).toBe(tagHelper.TAG_DESCRIPTION_FALLBACK_VALUE);
+    });
+  });
+
+  describe('parsing string to Tag', () => {
+    it('should correctly parse a semicolon separated string to tag', () => {
+      expect(tagHelper.parseStringToTag('tagKey:tagValue')).toEqual({
+        key: 'tagKey',
+        value: 'tagValue'
+      });
+    });
+
+    it('should allow for spaces in tag key', () => {
+      expect(JSON.stringify(tagHelper.parseStringToTag('testing space in key:tagValue'))).toBe(JSON.stringify({
+        key: 'testing space in key',
+        value: 'tagValue'
+      }));
+    });
+
+    it('should allow for spaces in tag value', () => {
+      expect(JSON.stringify(tagHelper.parseStringToTag('tagKey:testing with space in tagValue'))).toBe(JSON.stringify({
+        key: 'tagKey',
+        value: 'testing with space in tagValue'
+      }));
+    });
+  });
+
+  describe('parse Tag to string', () => {
+    it('should correctly parse a Tag to string format', () => {
+      let tag: Tag = { key: 'tagKey', value: 'tagValue' };
+      const tagString = tagHelper.parseTagToString(tag);
+
+      expect(tagString).toEqual('tagKey:tagValue');
+    });
+  });
+
+  describe('get tags from object', () => {
+    it('should return an empty array if no tags in object', () => {
+      let tagObject: TagObject = {};
+      const tags: Tag[] = tagHelper.getTagsFromObject(tagObject);
+
+      expect(tags.length).toBe(0);
+    });
+
+    it('should correctly return a single tag from object', () => {
+      let tagObject: TagObject = {
+        test: 'test'
+      };
+      const tags: Tag[] = tagHelper.getTagsFromObject(tagObject);
+
+      expect(tags.length).toBe(1);
+      expect(tags).toContainEqual({
+        key: 'test',
+        value: 'test'
+      });
+    });
+
+    it('should correctly return multiple tags from object', () => {
+      let tagObject: TagObject = {
+        test: 'test',
+        test2: 'test2'
+      };
+      const tags: Tag[] = tagHelper.getTagsFromObject(tagObject);
+      expect(tags.length).toBe(2);
+      expect(tags).toContainEqual({
+        key: 'test',
+        value: 'test'
+      });
+      expect(tags).toContainEqual({
+        key: 'test2',
+        value: 'test2'
+      });
     });
   });
 });
