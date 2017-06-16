@@ -21,6 +21,7 @@ export class CreateDeviceDialog {
 
   appEui: string;
   device: Device = new Device();
+  createdDevice: Device;
   step: number = 1;
   source: string = '';
 
@@ -37,7 +38,7 @@ export class CreateDeviceDialog {
     Log.debug('New device is', this.device, this.getNewDevice());
     return this.deviceService.createNewDevice(this.getNewDevice(), this.appEui)
       .then(device => {
-        this.device = device;
+        this.createdDevice = device;
       })
       .catch(error => {
         if (error instanceof BadRequestError) {
@@ -52,7 +53,7 @@ export class CreateDeviceDialog {
 
   fetchSource() {
     return this.deviceService
-      .fetchSourceForDevice(this.appEui, this.device.deviceEUI)
+      .fetchSourceForDevice(this.appEui, this.createdDevice.deviceEUI)
       .then(source => {
         this.source = source;
       });
@@ -118,7 +119,7 @@ export class CreateDeviceDialog {
           this.step = 3;
         });
     } else if (this.isStep(3)) {
-      this.dialogController.ok(this.device);
+      this.dialogController.ok(this.createdDevice);
     }
   }
 
