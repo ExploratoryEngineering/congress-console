@@ -56,6 +56,23 @@ export class DeviceService {
       .send().then(data => data.response);
   }
 
+  getTagsForDevice(applicationEui: string, deviceEui: string): Promise<TagObject> {
+    return this.apiClient.http.get(`/applications/${applicationEui}/devices/${deviceEui}/tags`)
+      .then(data => data.content);
+  }
+
+  addTagToDevice(applicationEui: string, deviceEui: string, tag: Tag): Promise<TagObject> {
+    let tagObject = {};
+    tagObject[tag.key] = tag.value;
+
+    return this.apiClient.http.post(`/applications/${applicationEui}/devices/${deviceEui}/tags`, tagObject)
+      .then(data => data.content);
+  }
+
+  deleteTagFromDevice(applicationEui: string, deviceEui: string, tag: Tag): Promise<any> {
+    return this.apiClient.http.delete(`/applications/${applicationEui}/devides/${deviceEui}/tags/${tag.key}`);
+  }
+
   /**
    * Fetches device data
    * @param {string} applicationEui Application EUI for the Device
