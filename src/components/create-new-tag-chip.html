@@ -5,8 +5,8 @@
     <form class="chip-form" show.bind="editing" submit.trigger="submitTag">
       <input class="chip-form__input" placeholder="Tag key" value.bind="tag.key" />:<input class="chip-form__input" placeholder="Tag value"
         value.bind="tag.value" />
+      <button type="button" click.delegate="toggleEditing()" class="material-icons chip__action-icon">cancel</button>
+      <button type="submit" click.delegate="submitTag()" class="material-icons chip__action-icon">check_circle</button>
     </form>
-    <button show.bind="editing" type="button" click.delegate="toggleEditing()" class="material-icons chip__action-icon">cancel</button>
-    <button show.bind="editing" type="submit" click.delegate="submitTag()" class="material-icons chip__action-icon">check_circle</button>
   </div>
 </template>
