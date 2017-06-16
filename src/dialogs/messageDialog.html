@@ -8,8 +8,9 @@
         ${message}
       </div>
       <div class="message-dialog__actions">
-        <button if.bind="cancelButtonText" class="button button--flat message-dialog__button" click.delegate="dialogController.cancel()">${cancelButtonText}</button>
-        <button if.bind="confirmButtonText" class="button button--flat message-dialog__button" type="submit" click.delegate="dialogController.ok()">${confirmButtonText}</button>
+        <button show.bind="cancelButtonText" attach-focus="true" class=" button button--flat message-dialog__button" click.delegate="dialogController.cancel()">${cancelButtonText}</button>
+        <button show.bind="confirmButtonText" attach-focus="true" class="button button--flat message-dialog__button" type="submit"
+          click.delegate="dialogController.ok()">${confirmButtonText}</button>
       </div>
     </div>
   </div>
