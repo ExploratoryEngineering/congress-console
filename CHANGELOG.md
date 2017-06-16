@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.0"></a>
+# [0.18.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.16.1...v0.18.0) (2017-06-16)
+
+
+### Bug Fixes
+
+* **createDeviceDialog:** ensure that we use a new object on return ([88970c4](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/88970c4))
+* **createGatewayDialog:** correctly handle 409 ([3ed2398](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3ed2398))
+
+
+### Features
+
+* **applicationDevice:** add handlers for tag manipulation ([b35c42b](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/b35c42b))
+* **chip:** add styles for chip component ([e3537af](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e3537af))
+* **create-new-tag-chip:** chip component for creating new tags ([9fb751f](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/9fb751f))
+* **device-expansion-panel:** add tag listing and editing ([5083219](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/5083219))
+* **deviceService:** add tag endpoints to device ([3b38705](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3b38705))
+* **edit-tag-chip:** chip component for editing tags ([38e9a79](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/38e9a79))
+* **hard-source-webpack:** add caching layer for development ([e848444](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/e848444))
+* **messageDialog:** add autofocus on messageDialog popup ([36ba243](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/36ba243))
+* **tag valueConverter:** add simple value converter for tag ([40b3050](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/40b3050))
+* **tag-chip-list:** add simple component for chip listing and editing ([3b826da](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3b826da))
+* **tag-chip-list-simple:** add componentent with non editable list of tags ([3ce589f](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/3ce589f))
+* **tagHelper:** add utility functions for TagObject to TagHelper ([9100f1c](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/9100f1c))
+* **tagList valueConverter:** simple valueConverter for tagObject to tagList ([2eed6f9](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/commits/2eed6f9))
+
+
+
 <a name="0.17.0"></a>
 # [0.17.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.16.1...v0.17.0) (2017-06-15)
 
