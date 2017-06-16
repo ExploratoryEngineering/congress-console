@@ -1,7 +1,6 @@
-import { TagEntity } from 'Helpers/TagHelper';
-export interface TagEntity {
-  tags: { [tagName: string]: string };
-}
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('TagHelper');
 
 export class TagHelper {
   TAG_NAME_KEY = 'name';
@@ -52,5 +51,46 @@ export class TagHelper {
         return fallback;
       }
     }
+  }
+
+  /**
+   * Utility function to create an array of Tags from a TagObject
+   * @param tagObject TabObject to be tranformed
+   */
+  getTagsFromObject(tagObject: TagObject): Tag[] {
+    return Object.keys(tagObject).map(key => {
+      return {
+        key: key,
+        value: tagObject[key]
+      };
+    });
+  }
+
+  /**
+   * Parse a string to a tag
+   * @param tagString String to be parsed to tag
+   */
+  parseStringToTag(tagString: string): Tag {
+    let pieces = tagString.split(':');
+
+    let key = pieces.splice(0, 1)[0];
+    let value = pieces.join(':');
+
+    Log.debug('Parsing string', tagString, key, value);
+
+    return {
+      key: key,
+      value: value
+    };
+  }
+
+  /**
+   * Parses a tag object to string
+   * @param tag Tag to be parsed as string
+   */
+  parseTagToString(tag: Tag) {
+    Log.debug('Parsing tag', tag);
+
+    return `${tag.key}:${tag.value}`;
   }
 }
