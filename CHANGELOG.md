@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.16.1...v0.18.1) (2017-06-19)
+
+
+### Bug Fixes
+
+* **createDeviceDialog:** ensure that we use a new object on return ([75c4de7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/75c4de7))
+* **createGatewayDialog:** correctly handle 409 ([3ed2398](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3ed2398))
+
+
+### Features
+
+* **applicationDevice:** add handlers for tag manipulation ([159e2a3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/159e2a3))
+* **chip:** add styles for chip component ([a01536a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a01536a))
+* **create-new-tag-chip:** chip component for creating new tags ([f360adf](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f360adf))
+* **device-expansion-panel:** add tag listing and editing ([bb0cccf](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/bb0cccf))
+* **deviceService:** add tag endpoints to device ([ebacb87](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ebacb87))
+* **edit-tag-chip:** chip component for editing tags ([c39f2ca](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/c39f2ca))
+* **hard-source-webpack:** add caching layer for development ([e848444](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/e848444))
+* **messageDialog:** add autofocus on messageDialog popup ([9a44c4c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9a44c4c))
+* **tag valueConverter:** add simple value converter for tag ([98a1948](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/98a1948))
+* **tag-chip-list:** add simple component for chip listing and editing ([39fdf77](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/39fdf77))
+* **tag-chip-list-simple:** add componentent with non editable list of tags ([c3d41a6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/c3d41a6))
+* **tagHelper:** add utility functions for TagObject to TagHelper ([19df21e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/19df21e))
+* **tagList valueConverter:** simple valueConverter for tagObject to tagList ([b1f8386](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b1f8386))
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://ghe.telenordigital.com/per-kristian-kummermo/lora.exploratory.engineering/compare/v0.16.1...v0.18.0) (2017-06-16)
 
