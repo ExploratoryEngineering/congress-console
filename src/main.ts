@@ -1,5 +1,5 @@
 /// <reference types="aurelia-loader-webpack/src/webpack-hot-interface"/>
-import '../styles/styles.less';
+import '../styles/styles.scss';
 
 import { LogManager, Aurelia, PLATFORM } from 'aurelia-framework';
 import { ConsoleAppender } from 'aurelia-logging-console';

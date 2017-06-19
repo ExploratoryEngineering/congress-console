@@ -1,0 +1,10 @@
+$body-background-color: $color--google-grey-200;
+
+.body {
+  @include roboto;
+
+  background-color: $body-background-color;
+  color: $font-color-primary;
+  font-size: $font-size-default;
+  height: 100%;
+}

@@ -1,0 +1,110 @@
+$card-background-color: $color--white;
+$card-color: inherit;
+$card-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+
+$card-selectable-transition: box-shadow .15s ease-out;
+$card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
+
+.card {
+  background-color: $card-background-color;
+  border-radius: 2px;
+  box-shadow: $card-box-shadow;
+  color: $card-color;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $grid-size * 3;
+  position: relative;
+
+  &--inline {
+    display: inline-flex;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &__header {
+    display: flex;
+    padding: $grid-size * 2;
+
+    &--no-padding {
+      padding: 0;
+    }
+
+    &--colored {
+      background-color: $color--blue;
+      color: $color--white;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: $grid-size * 2;
+    position: relative;
+
+    &--no-padding {
+      padding: 0;
+    }
+  }
+
+  &--selectable {
+    transition: $card-selectable-transition;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: $card-selectable-hover-box-shadow;
+    }
+  }
+}
+
+.no-data-card-body {
+  align-items: center;
+  background-color: $color--white;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &__icon {
+    color: $font-color-disabled;
+    font-size: 128px;
+  }
+
+  &__heading {
+    color: $font-color-disabled;
+    font-weight: $font-weight--medium;
+  }
+}
+
+.card-header-heading {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+}
+
+.card-header-actions {
+  align-self: flex-end;
+  flex-shrink: 1;
+  font-size: $font-size--14;
+
+  &__action {
+    background-color: darken($color--blue, 10%);
+    border: 0;
+    border-radius: 2px;
+    color: $color--white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 600;
+    padding: $grid-size;
+    position: relative;
+  }
+}

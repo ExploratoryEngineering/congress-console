@@ -1,0 +1,189 @@
+// lesshint universalSelector: false
+
+// Generic button setup
+$button-padding: $grid-size $grid-size * 3;
+$button-font-size: $font-size--14;
+$button-font-weight: $font-weight--medium;
+
+// Primary button setup
+$button-primary-color: $font-color-primary--colored;
+$button-primary-background-color: $color--blue;
+$button-primary-border-color: $color--blue;
+
+$button-primary-hover-color: $font-color-primary--colored;
+$button-primary-hover-background-color: darken($button-primary-background-color, $opacity-12);
+$button-primary-hover-border-color: darken($button-primary-background-color, $opacity-12);
+
+$button-primary-active-color: $font-color-primary--colored;
+$button-primary-active-background-color: darken($button-primary-hover-background-color, $opacity-12);
+$button-primary-active-border-color: darken($button-primary-hover-background-color, $opacity-12);
+
+$button-primary-disabled-color: $font-color-disabled--colored;
+$button-primary-disabled-background-color: rgba(0, 0, 0, .15);
+$button-primary-disabled-border-color: transparent;
+
+// Flat button setup
+$button-flat-color: $font-color-primary;
+$button-flat-background-color: transparent;
+$button-flat-border-color: transparent;
+
+$button-flat-hover-color: inherit;
+$button-flat-hover-background-color: rgba(12, 12, 12, .07);
+$button-flat-hover-border-color: transparent;
+
+$button-flat-active-color: $font-color-primary--colored;
+$button-flat-active-background-color: rgba(12, 12, 12, .25);
+$button-flat-active-border-color: transparent;
+
+$button-flat-disabled-color: #313534;
+$button-flat-disabled-background-color: rgba(0, 0, 0, .15);
+$button-flat-disabled-border-color: transparent;
+
+// Raised button setup
+$button-raised-transition: box-shadow .15s ease-out;
+$button-raised-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+$button-raised-hover-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .38);
+
+// Floating button setup
+$button-floating-transition: box-shadow .15s ease-out;
+$button-floating-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+$button-floating-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
+
+.button {
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $button-font-size;
+  font-weight: $button-font-weight;
+  margin-bottom: 0;
+  padding: $button-padding;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  @include roboto;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &[disabled],
+  &--disabled {
+    background: $button-primary-disabled-background-color;
+    border-color: transparent;
+    color: $button-primary-disabled-color;
+    opacity: .3;
+  }
+
+  &--primary {
+    background-color: $button-primary-background-color;
+    border-color: $button-primary-border-color;
+    color: $button-primary-color;
+
+    &:hover,
+    &:focus {
+      background-color: $button-primary-hover-background-color;
+      border-color: $button-primary-hover-border-color;
+      color: $button-primary-hover-color;
+    }
+
+    &:active {
+      background-color: $button-primary-active-background-color;
+      border-color: $button-primary-active-border-color;
+      color: $button-primary-active-color;
+    }
+
+    &[disabled] {
+      background: $button-primary-disabled-background-color;
+      border-color: transparent;
+      color: $button-primary-disabled-color;
+      opacity: .3;
+    }
+  }
+
+  &--flat {
+    background-color: $button-flat-background-color;
+    border-color: $button-flat-border-color;
+    color: $button-flat-color;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+      background-color: $button-flat-hover-background-color;
+      border-color: $button-flat-hover-border-color;
+      box-shadow: none;
+    }
+
+    &:active {
+      background-color: $button-flat-active-background-color;
+      border-color: $button-flat-active-border-color;
+      color: $button-flat-active-color;
+    }
+
+    &[disabled] {
+      background: $button-flat-disabled-background-color;
+      border-color: $button-flat-disabled-border-color;
+      color: $button-flat-disabled-color;
+      filter: alpha(opacity=30);
+      opacity: .3;
+    }
+  }
+
+  &--raised {
+    box-shadow: $button-raised-box-shadow;
+    transition: $button-raised-transition;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: $button-raised-hover-box-shadow;
+    }
+
+    &[disabled] {
+      box-shadow: none;
+    }
+  }
+
+  &--floating {
+    border-radius: 100%;
+    box-shadow: $button-floating-box-shadow;
+    font-size: 17px;
+    height: $grid-size * 6;
+    line-height: ($grid-size * 6) - 2;
+    padding: 0;
+    transition: $button-floating-transition;
+    width: $grid-size * 6;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: $button-floating-hover-box-shadow;
+    }
+
+    &[disabled] {
+      box-shadow: none;
+    }
+
+    // Should probably find a better way than this
+    & > * {
+      line-height: inherit;
+    }
+  }
+}
+
+.button-position {
+  &--absolute-bottom-right {
+    bottom: 40px;
+    position: absolute;
+    right: 30px;
+  }
+}
+
+.button-group {
+  padding: $grid-size * 2;
+}

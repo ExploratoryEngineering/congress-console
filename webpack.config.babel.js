@@ -20,7 +20,7 @@ const srcDir = path.resolve(__dirname, 'src');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
 const baseUrl = '/';
 
-const lessLoaderConfig = [{
+const sassLoaderConfig = [{
   loader: 'css-loader', // translates CSS into CommonJS
   options: {
     sourceMap: true
@@ -29,7 +29,7 @@ const lessLoaderConfig = [{
   loader: 'postcss-loader', // adding needed prefixer for older browsers
   options: { plugins: () => [autoprefixer({ browsers: ['last 2 versions'] })]}
 }, {
-  loader: 'less-loader', // compiles Less to CSS
+  loader: 'sass-loader', // compiles Less to CSS
   options: {
     sourceMap: true
   }
@@ -66,18 +66,18 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
   module: {
     rules: [
       {
-        test: /\.(less|css)$/i,
+        test: /\.(scss|css)$/i,
         issuer: [{ test: /\.html$/i }],
         // CSS required in templates cannot be extracted safely
         // because Aurelia would try to require it again in runtime
-        use: lessLoaderConfig
+        use: sassLoaderConfig
       }, {
-        test: /\.(less|css)$/,
+        test: /\.(scss|css)$/,
         issuer: [{ not: [{ test: /\.html$/i }] }],
         use: extractCss ? ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: lessLoaderConfig
-        }) : ['style-loader', ...lessLoaderConfig]
+          use: sassLoaderConfig
+        }) : ['style-loader', ...sassLoaderConfig]
       },
       { test: /\.html$/i, loader: 'html-loader' },
       { test: /\.ts$/i, loader: 'awesome-typescript-loader', exclude: nodeModulesDir },

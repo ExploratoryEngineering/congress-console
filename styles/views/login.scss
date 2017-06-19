@@ -1,0 +1,23 @@
+.login-view {
+  &__login-button {
+    width: 400px;
+  }
+}
+
+.login-disclaimer {
+  color: $font-color-secondary;
+  display: inline-block;
+  font-size: $font-size--14;
+  margin-top: $grid-size * 2;
+  width: 400px;
+
+  &__link {
+    color: $color--blue;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color--blue;
+    }
+  }
+}

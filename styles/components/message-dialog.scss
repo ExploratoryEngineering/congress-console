@@ -1,0 +1,35 @@
+$message-dialog-box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .38);
+
+.message-dialog {
+  background-color: $color--white;
+  box-shadow: $message-dialog-box-shadow;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 360px;
+
+  &__header {
+    padding: $grid-size * 3 $grid-size * 3 $grid-size * 2.5 $grid-size * 3;
+  }
+
+  &__content {
+    color: $font-color-secondary;
+    flex-grow: 1;
+    padding: 0 $grid-size * 3 $grid-size * 3 $grid-size * 3;
+  }
+
+  &__actions {
+    height: $grid-size * 6.5;
+    padding: $grid-size;
+    text-align: right;
+  }
+
+  &__header-text {
+    font-size: $font-size--20;
+    line-height: $grid-size * 3.5;
+  }
+
+  &__button {
+    color: $color--blue;
+  }
+}

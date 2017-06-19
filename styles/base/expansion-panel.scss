@@ -1,0 +1,99 @@
+$expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+
+.expansion-panel {
+  background-color: $color--white;
+  box-shadow: $expansion-panel-box-shadow;
+  margin: 0;
+  max-height: $grid-size * 8;
+  overflow: hidden;
+  transition: background .5s $animation-cubic-bezier-1, max-height .5s $animation-cubic-bezier-1, margin .5s $animation-cubic-bezier-1;
+
+  &--expanded {
+    margin: $grid-size * 2 0;
+    max-height: 700px;
+
+    &:first-of-type {
+      margin: 0 0 $grid-size * 2 0;
+    }
+
+    &:last-of-type {
+      margin: $grid-size * 2 0 0 0;
+    }
+
+    .expansion-panel__header:focus {
+      background-color: $color--white;
+    }
+  }
+
+  &__header {
+    cursor: pointer;
+    display: flex;
+    height: $grid-size * 8;
+    line-height: $grid-size * 8;
+    outline: none;
+    padding: 0 $grid-size * 3;
+
+    &:active {
+      background-color: $color--google-grey-200;
+    }
+  }
+
+  &__title {
+    font-size: $font-size--15;
+    margin-right: $grid-size * 2;
+    width: 200px;
+  }
+
+  &__subtitle {
+    color: $font-color-secondary;
+    flex-grow: 1;
+  }
+
+  &__chevron {
+    align-self: flex-end;
+    color: $font-color-opacity--black-38;
+    line-height: 50px;
+    width: $grid-size * 3;
+  }
+
+  &__body {
+    display: block;
+    padding: 0 $grid-size * 3 $grid-size * 2;
+
+    @include desktop {
+      display: flex;
+    }
+
+    &--column {
+      flex-direction: column;
+    }
+  }
+
+  &__body-section {
+    width: 100%;
+
+    @include desktop() {
+      width: 50%;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid $color--google-grey-200;
+    display: flex;
+    justify-content: flex-end;
+    padding: $grid-size * 2 $grid-size $grid-size * 2 $grid-size * 3;
+  }
+
+  &__primary-button {
+    color: $color--blue;
+
+    &:hover {
+      background-color: rgba(12, 12, 12, 0.07);
+      color: $color--blue;
+    }
+
+    &:active {
+      background-color: rgba(12, 12, 12, 0.1);
+    }
+  }
+}

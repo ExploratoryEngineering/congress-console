@@ -1,0 +1,37 @@
+$modal-background-color: $color-grey-theme--light;
+
+.modal {
+  background-color: $modal-background-color;
+  display: flex;
+  left: 15%;
+  max-height: 80%;
+  max-width: 100%;
+  min-height: 400px;
+  min-width: 600px;
+  position: absolute;
+  right: 15%;
+  top: 10%;
+
+  &--small {
+    left: 30%;
+    max-height: 340px;
+    min-height: 0;
+    min-width: 0;
+    right: 30%;
+    top: 25%;
+  }
+
+  &--transparent {
+    background-color: transparent;
+  }
+}
+
+// Overlay component configuration
+ux-dialog-overlay {
+  background-color: rgba(0, 0, 0, $opacity-100);
+  transition: background-color .5s $animation-cubic-bezier-1;
+
+  &.active {
+    background-color: rgba(0, 0, 0, $opacity-54);
+  }
+}

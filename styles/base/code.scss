@@ -1,0 +1,100 @@
+.code {
+  background-color: $color--google-grey-200;
+  position: relative;
+
+  &__header {
+    background-color: $color--white;
+    display: flex;
+    height: $grid-size * 6;
+    line-height: $grid-size * 6;
+
+    &--colored {
+      background-color: $color--blue;
+      color: $color--white;
+    }
+  }
+
+  &__heading {
+    flex-grow: 1;
+  }
+
+  &__icon {
+    color: $font-color-secondary;
+    font-size: $grid-size * 4.5;
+    margin-left: $grid-size * 2;
+    margin-right: $grid-size * 2;
+    text-align: center;
+
+    &--colored {
+      color: $font-color-secondary--colored;
+    }
+  }
+
+  &__action-icons {
+    align-self: flex-end;
+    color: $font-color-primary;
+    cursor: pointer;
+    font-size: $grid-size * 4;
+    padding: 0 $grid-size * 2;
+
+    &--colored {
+      background-color: transparent;
+      color: $font-color-primary--colored;
+
+      &:hover {
+        background-color: $font-color-opacity--white-12;
+      }
+    }
+  }
+
+  &__content {
+    overflow: scroll;
+    padding: 0 $grid-size * 2;
+  }
+
+  &__content-offscreen-field {
+    left: 99999px;
+    position: fixed;
+  }
+}
+
+.code-line {
+  background-color: $color--google-grey-200;
+  display: inline-flex;
+  max-width: 100%;
+
+  &__content {
+    flex-grow: 1;
+    line-height: $grid-size * 5;
+    overflow: auto;
+    padding: 0 $grid-size * 2;
+    white-space: nowrap;
+  }
+
+  &__icon {
+    color: $font-color-secondary;
+    font-size: $grid-size * 4.5;
+    padding-left: $grid-size * 1.5;
+    padding-right: $grid-size * 1.5;
+    text-align: center;
+    user-select: none;
+
+    &--clickable {
+      cursor: pointer;
+    }
+
+    &--colored {
+      background-color: $color--blue;
+      color: $font-color-secondary--colored;
+
+      &:hover {
+        background-color: darken($color--blue, 5%);
+        color: $font-color-primary--colored;
+      }
+
+      &:active {
+        background-color: darken($color--blue, 10%);
+      }
+    }
+  }
+}

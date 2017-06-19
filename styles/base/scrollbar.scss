@@ -1,0 +1,14 @@
+$scrollbar-thumb-color: rgba(0, 0, 0, .15);
+$scrollbar-track-color: rgba(0, 0, 0, .1);
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $scrollbar-thumb-color;
+}
+
+::-webkit-scrollbar-track {
+  background: $scrollbar-track-color;
+}

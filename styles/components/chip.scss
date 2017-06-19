@@ -1,0 +1,51 @@
+.chip {
+  align-items: center;
+  background-color: $color--google-grey-200;
+  border-radius: 20px;
+  color: $font-color-opacity--black-87;
+  display: inline-flex;
+  font-size: $font-size--13;
+  height: $grid-size * 3.5;
+  line-height: $grid-size * 4;
+  margin-left: $grid-size;
+  min-width: 35px;
+  padding: 0 12px;
+  width: auto;
+
+  &--has-action {
+    padding-right: 0;
+  }
+
+  &__action-icon {
+    background: none;
+    border: 0;
+    border-radius: 100%;
+    color: $font-color-opacity--black-38;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 16px;
+    margin: 0 4px;;
+    padding: 0;
+
+    &:hover {
+      color: $font-color-opacity--black-54;
+    }
+  }
+}
+
+.chip-form {
+  display: flex;
+
+  &__input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid 1px $color-grey-theme--darkest;
+    margin: $grid-size / 2;
+    outline: 0;
+    width: 75px;
+
+    &:focus {
+      border-bottom: solid 1px $color--blue;
+    };
+  }
+}
