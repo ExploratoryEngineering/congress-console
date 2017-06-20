@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.4"></a>
+## [0.18.4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.3...v0.18.4) (2017-06-20)
+
+
+### Bug Fixes
+
+* **device-expansion-panel:** use correct camelCase for template ([5ae883a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5ae883a))
+
+
+### Features
+
+* **gateway-card:** add gatewayEUI to card, ref #75 ([a5a2848](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a5a2848))
+
+
+
 <a name="0.18.3"></a>
 ## [0.18.3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.2...v0.18.3) (2017-06-20)
 
