@@ -18,7 +18,7 @@
       <div class="card__body" if.bind="devices.length === 0">
         <div class="no-data-card-body">
           <i class="no-data-card-body__icon material-icons">settings</i>
-          <div class="no-data-card-body__heading h2">No devices found. Create one?</div>
+          <div class="no-data-card-body__heading h2">No devices found. <a class="no-data-card-body__link link" click.delegate="createNewDevice()">Create one?</a></div>
         </div>
       </div>
     </div>

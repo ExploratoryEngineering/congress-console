@@ -18,7 +18,7 @@
       <div class="card__body" if.bind="tokens.length === 0">
         <div class="no-data-card-body">
           <i class="no-data-card-body__icon material-icons">settings</i>
-          <div class="no-data-card-body__heading h2">No tokens found. Create one?</div>
+          <div class="no-data-card-body__heading h2">No tokens found. <a class="no-data-card-body__link link" click.delegate="createNewToken()">Create one?</a></div>
         </div>
       </div>
     </div>

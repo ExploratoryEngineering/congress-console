@@ -82,6 +82,17 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     color: $font-color-disabled;
     font-weight: $font-weight--medium;
   }
+
+  &__link {
+    color: $color--blue;
+    font-weight: $font-weight--regular;
+
+    &:hover,
+    &:active,
+    &:visited {
+      color: $color--blue;
+    }
+  }
 }
 
 .card-header-heading {
