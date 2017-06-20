@@ -30,6 +30,6 @@ export const routes = [
     moduleId: PLATFORM.moduleName('./dashboard/applications/applicationIntegrations'),
     nav: true,
     href: '#/dashboard/applications',
-    title: 'Integrations'
+    title: 'API Keys'
   }
 ];
