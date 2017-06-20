@@ -2,14 +2,14 @@
   <require from="valueConverters/timeAgo"></require>
   <div class="device-expansion-panel__section">
     <span class="device-expansion-panel__section-header">Last sent data:</span>
-    <span class="device-expansion-panel__section-data">${ devicedata.Timestamp | timeAgo & signal:'updateTime' }</span>
+    <span class="device-expansion-panel__section-data">${ devicedata.timestamp | timeAgo & signal:'updateTime' }</span>
   </div>
   <div class="device-expansion-panel__section">
     <span class="device-expansion-panel__section-header">Gateway EUI:</span>
-    <span class="device-expansion-panel__section-data">${ devicedata.GatewayEUI || 'Unknown' }</span>
+    <span class="device-expansion-panel__section-data">${ devicedata.gatewayEUI || 'Unknown' }</span>
   </div>
   <div class="device-expansion-panel__section">
     <span class="device-expansion-panel__section-header">RSSI:</span>
-    <span class="device-expansion-panel__section-data">${ devicedata.RSSI || 'Unknown' }</span>
+    <span class="device-expansion-panel__section-data">${ devicedata.rssi || 'Unknown' }</span>
   </div>
 </template>
