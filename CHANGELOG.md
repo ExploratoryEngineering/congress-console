@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.3"></a>
+## [0.18.3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.2...v0.18.3) (2017-06-20)
+
+
+### Bug Fixes
+
+* **opacity:** fix correct values for opacities ([7e8b3dc](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/7e8b3dc))
+
+
+### Features
+
+* **application-nav-bar-menu:** add dividers for application dropdown. Fixes #79 ([d9d4a6d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/d9d4a6d)), closes [#79](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/79)
+* **creationLinks:** add links to no data found for devices and tokens. Fixes #76 ([4644de0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/4644de0)), closes [#76](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/76)
+
+
+
 <a name="0.18.2"></a>
 ## [0.18.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.1...v0.18.2) (2017-06-20)
 
