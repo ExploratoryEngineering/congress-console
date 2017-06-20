@@ -10,9 +10,11 @@ $application-header-menu-entry-selected-color: $color--blue;
   border-bottom: solid 1px $application-header-border-color;
   display: flex;
   line-height: 50px;
-  padding: 0 $grid-size * 2;
+  padding: 0 $grid-size * 4;
 
   &__application-chooser {
+    border-left: solid 1px $font-color-dividers;
+    border-right: solid 1px $font-color-dividers;
     width: 250px;
   }
 
