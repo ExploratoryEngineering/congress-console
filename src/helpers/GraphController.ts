@@ -247,7 +247,7 @@ export class GraphController {
       let dataBucket = dataBucketSet[label];
 
       if (dataBucket.dataSets[dataEUI]) {
-        countData.data.push(dataBucket.dataSets[dataEUI][0].RSSI);
+        countData.data.push(dataBucket.dataSets[dataEUI][0].rssi);
       } else {
         countData.data.push(undefined);
       }
@@ -336,18 +336,18 @@ export class GraphController {
 
     messageData.forEach((message) => {
       // Add data bucket set
-      if (dataBucketSet[message.Timestamp]) {
-        dataBucketSet[message.Timestamp].dataSets[message.DeviceEUI] = [message];
+      if (dataBucketSet[message.timestamp]) {
+        dataBucketSet[message.timestamp].dataSets[message.deviceEUI] = [message];
       } else {
-        dataBucketSet[message.Timestamp] = {
-          label: message.Timestamp * 1000,
+        dataBucketSet[message.timestamp] = {
+          label: message.timestamp * 1000,
           dataSets: {}
         };
-        dataBucketSet[message.Timestamp].dataSets[message.DeviceEUI] = [message];
+        dataBucketSet[message.timestamp].dataSets[message.deviceEUI] = [message];
       }
       // Add unique euis
-      if (!dataEUIs.includes(message.DeviceEUI)) {
-        dataEUIs.push(message.DeviceEUI);
+      if (!dataEUIs.includes(message.deviceEUI)) {
+        dataEUIs.push(message.deviceEUI);
       }
     });
 

@@ -31,7 +31,7 @@ export class DeviceExpansionPanel {
 
   bind() {
     this.subscriptions.push(this.eventAggregator.subscribe('deviceDataMessage', (messageData: MessageData) => {
-      if (this.device.deviceEUI === messageData.DeviceEUI) {
+      if (this.device.deviceEUI === messageData.deviceEUI) {
         Log.debug('Got messageData. Updating to be lastDeviceData', messageData);
         this.lastDeviceData = messageData;
       }
