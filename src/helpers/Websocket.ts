@@ -93,19 +93,18 @@ export class Websocket {
   }
 }
 
-type MessageType = 'SocketStatus' | 'DeviceData';
+type MessageType = 'Error' | 'DeviceData' | 'KeepAlive';
 
 export interface WebsocketMessage {
-  MessageType: MessageType;
-  MessageBody: any;
+  type: MessageType;
+  message: string;
+  data: MessageData;
 }
 
 export interface WebsocketStatusMessage extends WebsocketMessage {
-  MessageBody: {
-    KeepAlive: boolean
-  };
+  message: string;
 }
 
 export interface WebsocketDeviceDataMessage extends WebsocketMessage {
-  MessageBody: MessageData;
+  data: MessageData;
 }

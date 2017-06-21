@@ -94,7 +94,7 @@ export class ServiceDetails {
 
   addChartData(wsMessage: WebsocketDeviceDataMessage) {
     Log.debug('Adding data');
-    let messageData: MessageData = wsMessage.MessageBody;
+    let messageData: MessageData = wsMessage.data;
     this.chartData = this.graphController.addToGraph(messageData, this.chartData);
   }
 
@@ -105,13 +105,13 @@ export class ServiceDetails {
   onApplicationStreamMessage(message) {
     let wsMessage: WebsocketMessage = JSON.parse(message.data);
 
-    if (wsMessage.MessageType === 'SocketStatus') {
+    if (wsMessage.type === 'KeepAlive') {
       let statusMessage: WebsocketStatusMessage = wsMessage;
-    } else if (wsMessage.MessageType === 'DeviceData') {
+    } else if (wsMessage.type === 'DeviceData') {
       let deviceMessage: WebsocketDeviceDataMessage = wsMessage;
 
       this.addChartData(deviceMessage);
-      this.eventAggregator.publish('deviceDataMessage', deviceMessage.MessageBody);
+      this.eventAggregator.publish('deviceDataMessage', deviceMessage.data);
     }
   }
 
