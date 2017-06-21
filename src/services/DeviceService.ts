@@ -70,7 +70,7 @@ export class DeviceService {
   }
 
   deleteTagFromDevice(applicationEui: string, deviceEui: string, tag: Tag): Promise<any> {
-    return this.apiClient.http.delete(`/applications/${applicationEui}/devides/${deviceEui}/tags/${tag.key}`);
+    return this.apiClient.http.delete(`/applications/${applicationEui}/devices/${deviceEui}/tags/${tag.key}`);
   }
 
   /**

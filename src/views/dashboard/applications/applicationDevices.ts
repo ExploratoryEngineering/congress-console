@@ -73,7 +73,7 @@ export class ServiceDetails {
 
   addTag(device: Device, tag: Tag) {
     return this.deviceService.addTagToDevice(this.application.appEUI, device.deviceEUI, tag).then((tagObject) => {
-      device.tags = Object.assign(device.tags, JSON.parse('' + tagObject));
+      device.tags = Object.assign(device.tags, tagObject);
       this.replaceDevice(device);
       this.eventAggregator.publish('global:message', { body: 'Tag created' });
     }).catch(error => {
