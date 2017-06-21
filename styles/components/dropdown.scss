@@ -30,7 +30,7 @@ $dropdown-menu-item-font-size: $font-size--12;
     opacity: 0;
     position: absolute;
     top: 15%;
-    transition: all 0.25s $animation-cubic-bezier-1;
+    transition: all .25s $animation-cubic-bezier-1;
     visibility: hidden;
     z-index: 1;
 
@@ -63,7 +63,7 @@ $dropdown-menu-item-font-size: $font-size--12;
   &__menu-item {
     cursor: pointer;
     display: block;
-    padding: $grid-size $grid-size*2;
+    padding: $grid-size $grid-size * 2;
     text-align: left;
 
     &:hover {
