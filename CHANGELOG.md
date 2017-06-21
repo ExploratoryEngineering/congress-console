@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.5"></a>
+## [0.18.5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.4...v0.18.5) (2017-06-21)
+
+
+### Features
+
+* **range-chooser:** add dropdown component with time ranges ([6add61d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6add61d))
+* **range-chooser:** add range chooser to application details ([126f59f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/126f59f))
+
+
+
 <a name="0.18.4"></a>
 ## [0.18.4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.3...v0.18.4) (2017-06-20)
 
