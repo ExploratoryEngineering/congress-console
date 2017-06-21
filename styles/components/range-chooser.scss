@@ -1,0 +1,51 @@
+.range-chooser {
+  display: inline-block;
+
+  &__title {
+    background-color: darken($color--blue, 10%);
+    border-radius: 2px;
+    color: $color--white;
+    display: inline-block;
+    font-size: $font-size--14;
+    min-width: 120px;
+    padding: $grid-size;
+    position: relative;
+  }
+
+  &__heading {
+    display: inline-block;
+    font-weight: $font-weight--bold;
+    margin: 0 18px;
+  }
+
+  &__icon {
+    display: inline-block;
+    font-size: $font-size--15;
+    position: absolute;
+    right: $grid-size;
+    top: $grid-size;
+
+    &--left {
+      left: $grid-size;
+      right: auto;
+    }
+  }
+
+  &__container {
+    border: 0;
+  }
+
+  &__menu-item {
+    background-color: $color--blue;
+    color: $color--white;
+    display: inline-block;
+    padding: $grid-size;
+    width: 100%;
+
+    &:hover,
+    &:active {
+      background-color: darken($color--blue, 10%);
+      color: $color--white;
+    }
+  }
+}
