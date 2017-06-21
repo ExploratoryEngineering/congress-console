@@ -3,13 +3,18 @@
   <require from="components/device-table.html"></require>
   <require from="components/nav-header.html"></require>
   <require from="components/graph-chart"></require>
+  <require from="components/range-chooser"></require>
+
   <nav-header heading="Application overview"></nav-header>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section flex-element--grow">
     <div class="card application-details-card">
       <div class="card__header card__header--colored">
-        <h4 class="h4">Data for ${application.name} the <span class="application-card-dropdown">last six hours</span> with the parser
-          <span class="application-card-dropdown">RSSI</span></h4>
+        <h4 class="h4 card-header-heading">RSSI for devices in ${application.name} with range
+        </h4>
+        <div class="card-header-actions">
+          <range-chooser selected-range.bind="selectedRange"></range-chooser>
+        </div>
       </div>
       <div class="card__body application-details-card__graph">
         <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>

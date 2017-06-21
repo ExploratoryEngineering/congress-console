@@ -1,5 +1,6 @@
+import { Range } from 'Helpers/Range';
 import { AureliaConfiguration } from 'aurelia-configuration';
-import { autoinject } from 'aurelia-framework';
+import { autoinject, bindable } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
@@ -64,6 +65,9 @@ export class ServiceDetails {
   chartType = 'line';
   chart;
 
+  @bindable
+  selectedRange: Range = Range.LAST_SIX_HOURS;
+
   devices: Device[] = [];
 
   websocket: Websocket | null;
@@ -78,7 +82,7 @@ export class ServiceDetails {
   ) { }
 
   initiateChartData() {
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI).then(messageData => {
+    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: this.selectedRange.value }).then(messageData => {
       this.hasMessageData = messageData.length > 0;
       this.chartData = this.getChartData(messageData);
     });
@@ -92,6 +96,10 @@ export class ServiceDetails {
     Log.debug('Adding data');
     let messageData: MessageData = wsMessage.MessageBody;
     this.chartData = this.graphController.addToGraph(messageData, this.chartData);
+  }
+
+  selectedRangeChanged() {
+    this.initiateChartData();
   }
 
   onApplicationStreamMessage(message) {
