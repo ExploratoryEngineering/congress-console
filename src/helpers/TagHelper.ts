@@ -76,8 +76,6 @@ export class TagHelper {
     let key = pieces.splice(0, 1)[0];
     let value = pieces.join(':');
 
-    Log.debug('Parsing string', tagString, key, value);
-
     return {
       key: key,
       value: value
@@ -89,8 +87,6 @@ export class TagHelper {
    * @param tag Tag to be parsed as string
    */
   parseTagToString(tag: Tag) {
-    Log.debug('Parsing tag', tag);
-
     return `${tag.key}:${tag.value}`;
   }
 }
