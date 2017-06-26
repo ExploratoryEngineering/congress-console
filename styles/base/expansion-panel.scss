@@ -20,8 +20,14 @@ $expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
       margin: $grid-size * 2 0 0 0;
     }
 
-    .expansion-panel__header:focus {
-      background-color: $color--white;
+    &:only-of-type {
+      margin: 0;
+    }
+
+    .expansion-panel__header {
+      :focus {
+        background-color: $color--white;
+      }
     }
   }
 
