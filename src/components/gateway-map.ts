@@ -1,3 +1,4 @@
+import { TagHelper } from 'Helpers/TagHelper';
 import { computedFrom } from 'aurelia-binding';
 import { Gateway } from 'Models/Gateway';
 import { bindable } from 'aurelia-framework';
@@ -5,7 +6,10 @@ import { bindable } from 'aurelia-framework';
 interface GatewayMapMarker {
   longitude: number;
   latitude: number;
+  title: string;
 }
+
+const th = new TagHelper();
 
 export class GatewayMap {
   @bindable gateways: Gateway[] = [];
@@ -16,7 +20,13 @@ export class GatewayMap {
 
   @computedFrom('gateways', 'search')
   get gatewayMarkers(): GatewayMapMarker[] {
-    return this.getFilteredGateways().filter(this.isGatewayValid);
+    return this.getFilteredGateways().filter(this.isGatewayValid).map(gw => {
+      return {
+        latitude: gw.latitude,
+        longitude: gw.longitude,
+        title: th.getEntityName(gw, 'gatewayEUI')
+      };
+    });
   }
 
   getFilteredGateways(): Gateway[] {
