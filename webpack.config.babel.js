@@ -49,7 +49,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
   },
   entry: {
     app: ['aurelia-bootstrapper'],
-    vendor: ['bluebird']
+    vendor: ['bluebird', 'chart.js', 'moment']
   },
   output: {
     path: outDir,
@@ -98,7 +98,9 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
     ]
   },
   plugins: [
-    new AureliaPlugin(),
+    new AureliaPlugin({
+      features: { svg: false, unparser: false, polyfills: 'es2015' }
+    }),
     new ProvidePlugin({
       'Promise': 'bluebird'
     }),
@@ -135,7 +137,8 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
       allChunks: true
     })),
     ...when(production, new CommonsChunkPlugin({
-      name: 'common'
+      name: 'common',
+      minSize: 50
     }))
   ]
 });
