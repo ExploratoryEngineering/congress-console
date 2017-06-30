@@ -12,6 +12,7 @@
     "clean:dist": "del-cli dist",
     "clean:install": "npm install",
     "clean:start": "npm start",
+    "commitmsg": "validate-commit-msg",
     "deploy:pi": "npm run build:prod && ./scripts/deployToPi.sh",
     "deploy:staging": "npm run test && npm run build:prod && ./scripts/deployToStaging.sh",
     "e2e": "concurrently --success first --kill-others \"npm run e2e:start-when-ready\" \"cross-env npm run e2e:start-server\"",
@@ -101,6 +102,7 @@
     "file-loader": "0.11.1",
     "html-webpack-plugin": "2.28.0",
     "http-server": "0.10.0",
+    "husky": "^0.14.1",
     "istanbul-instrumenter-loader": "2.0.0",
     "jasmine-core": "2.6.1",
     "jest": "20.0.0",
@@ -125,6 +127,7 @@
     "tslint": "^4.4.2",
     "typescript": "2.3.2",
     "url-loader": "0.5.8",
+    "validate-commit-msg": "^2.12.2",
     "wait-on": "2.0.2",
     "webpack": "^2.6.1",
     "webpack-dev-server": "2.4.5"
