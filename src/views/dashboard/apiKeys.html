@@ -1,0 +1,27 @@
+<template>
+  <require from="components/nav-header.html"></require>
+  <require from="components/token-expansion-panel"></require>
+  <main class="main-content">
+    <nav-header heading="API keys"></nav-header>
+    <div class="section">
+      <div class="application-integrations-card card ${ tokens.length === 0 ? '' : 'card--transparent'}">
+        <div class="card__header card__header--colored">
+          <h4 class="h4 card-header-heading">Available API keys</h4>
+          <div class="card-header-actions">
+            <button click.trigger="createNewToken()" class="card-header-actions__action">New API key</button>
+          </div>
+        </div>
+        <div class="card__body card__body--no-padding" if.bind="tokens.length > 0">
+          <token-expansion-panel repeat.for="token of tokens" applications.bind="applications" token.bind="token"></token-expansion-panel>
+        </div>
+        <div class="card__body" if.bind="tokens.length === 0">
+          <div class="no-data-card-body">
+            <i class="no-data-card-body__icon material-icons">settings</i>
+            <div class="no-data-card-body__heading h2">No API keys found. <a class="no-data-card-body__link link" click.delegate="createNewToken()">Create one?</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+</template>
