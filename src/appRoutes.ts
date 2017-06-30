@@ -33,6 +33,16 @@ export let routes = [
     }
   },
   {
+    route: ['api-keys'],
+    name: 'api-keys',
+    moduleId: PLATFORM.moduleName('views/dashboard/apiKeys'),
+    nav: true,
+    title: 'API keys',
+    settings: {
+      auth: true
+    }
+  },
+  {
     route: ['server-error'],
     name: 'server-error',
     moduleId: PLATFORM.moduleName('views/serverError'),
