@@ -12,8 +12,16 @@ export class TokenService {
     private apiClient: ApiClient,
   ) { }
 
-  async fetchTokensForApplication(appEuid: string): Promise<Token[]> {
-    let appResourcePath = await this.resourcePathForApplication(appEuid);
+  fetchTokens(): Promise<Token[]> {
+    return this.apiClient.http.get(`/tokens`)
+      .then(data => data.content.tokens)
+      .then(tokens => {
+        return tokens.map(Token.newFromDto);
+      });
+  }
+
+  fetchTokensForApplication(appEui: string): Promise<Token[]> {
+    let appResourcePath = `/applicatoins/${appEui}`;
 
     return this.apiClient.http.get(`/tokens`)
       .then(data => data.content.tokens)
@@ -42,9 +50,5 @@ export class TokenService {
       .then(() => {
         Log.debug('Delete successful');
       });
-  }
-
-  resourcePathForApplication(appEui: string): string {
-    return `/applications/${appEui}`;
   }
 }
