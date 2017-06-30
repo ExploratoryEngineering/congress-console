@@ -40,7 +40,7 @@ export class TokenExpansionPanel {
   @computedFrom('token', 'applications', 'gateways')
   get description() {
     if (tokenHelper.isTokenDangling(this.token, { applications: this.applications, gateways: this.gateways })) {
-      return 'This resource is not connected to any resource. It can safely be deleted.';
+      return 'The API key is not connected to any resource. It can safely be deleted.';
     }
     return tokenHelper.getDescription(this.token);
   }
