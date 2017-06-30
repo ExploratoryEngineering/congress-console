@@ -1,6 +1,6 @@
 import { autoinject } from 'aurelia-framework';
 import { LogBuilder } from 'Helpers/LogBuilder';
-import { routes } from './dashboardRoutes';
+import { routes } from './applicationDashboardRoutes';
 import { Router } from 'aurelia-router';
 
 const Log = LogBuilder.create('Application dashboard');
