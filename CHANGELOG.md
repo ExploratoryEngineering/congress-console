@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.0"></a>
+# [0.19.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.6...v0.19.0) (2017-06-30)
+
+
+### Bug Fixes
+
+* **expansion-panel:** fix margin issue with single element ([9bc3fb7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9bc3fb7))
+* **token-expansion-panel:** fix text for dangling API key ([a04abfa](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a04abfa))
+
+
+### Features
+
+* **apiKeys:** new multilevel api keys viewmodel ([df0eae5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/df0eae5))
+* **applicationIntegrations:** remove token management and add integration info ([d2f29eb](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/d2f29eb))
+* **appRoutes:** add apiKeys to top level nav ([8c855c7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8c855c7))
+* **creatTokenDialog:** new dialog with multilevel support ([fdfbbb9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fdfbbb9))
+* **form:** add select styling for input component ([dfcfdc3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/dfcfdc3))
+* **gatewaymap:** add title for gw in map ([d469b9c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/d469b9c))
+* **token-expansion-panel:** add dynamic curl commands based on token ([eb60a21](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/eb60a21))
+* **tokenHelper:** add tokenHelper with token utility functions ([a401583](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a401583))
+
+
+### Performance Improvements
+
+* **webpack:** add vendor chunk and tweak Aurelia imports ([a34f5ca](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a34f5ca))
+
+
+
 <a name="0.18.6"></a>
 ## [0.18.6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.5...v0.18.6) (2017-06-21)
 
