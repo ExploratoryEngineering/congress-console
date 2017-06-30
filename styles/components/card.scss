@@ -114,7 +114,7 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     cursor: pointer;
     display: inline-block;
     font-size: inherit;
-    font-weight: 600;
+    font-weight: $font-weight--bold;
     padding: $grid-size;
     position: relative;
   }
