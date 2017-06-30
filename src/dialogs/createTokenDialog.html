@@ -1,38 +1,55 @@
 <template>
   <require from="components/text-input.html"></require>
   <require from="components/textarea-input.html"></require>
-  <require from="components/select-input.html"></require>
+  <require from="valueConverters/tagName"></require>
   <div class="modal">
     <div class="flex-container">
       <div class="flex-container__header">
-        <h2 class="h2">Create a new application token for "${ application.name }".</h2>
+        <h2 class="h2">Create a new API key</h2>
       </div>
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="createToken()">
           <text-input value.two-way="token.tags.name" name="token-name" label="Name" floatinglabel="true"></text-input>
+          <div class="form-group">
+            <h4 class="h4">Access level</h4>
+            <span>Restrict access level for API key by only letting it access certain parts of your data</span>
+            <select class="form-group__select" value.bind="selectedResourceAccess">
+              <option value="all" selected>All</option>
+              <option value="applications">All applications</option>
+              <option value="specific_application">One specific application</option>
+              <option value="gateways">All gateways</option>
+              <option value="specific_gateway">One specific gateway</option>
+            </select>
+            <select if.bind="selectedResourceAccess === 'specific_application'" value.bind="selectedApplication" class="form-group__select">
+              <option repeat.for="application of applications" value="${application.appEUI}">${ application.name || application.appEUI }</option>
+            </select>
+            <select if.bind="selectedResourceAccess === 'specific_gateway'" value.bind="selectedGateway" class="form-group__select">
+              <option repeat.for="gateway of gateways" value="${gateway.gatewayEUI}">${ gateway | tagName:'gatewayEUI'}</option>
+            </select>
+          </div>
           <label class="radio-group">
-              <div class="radio-group__input">
-                <input type="radio" value="readonly" checked.bind="selectedAccessLevel" name="token-type" />
-              </div>
-              <div class="radio-group__input-text">
-                <h4 class="h4">Read only</h4>
-                <span>Allows for the token to access all application data, but NOT alter state or add devices</span>
-              </div>
-            </label>
+            <div class="radio-group__input">
+              <input type="radio" value="readonly" checked.bind="selectedAccessLevel" name="token-type" />
+            </div>
+            <div class="radio-group__input-text">
+              <h4 class="h4">Read only</h4>
+              <span>Allows for the API key to access all data, but NOT alter state or add data</span>
+            </div>
+          </label>
           <label class="radio-group">
-              <div class="radio-group__input">
-                <input type="radio" value="fullaccess" checked.bind="selectedAccessLevel" name="token-type"/>
-              </div>
-              <div class="radio-group__input-text">
-                <h4 class="h4">Full access</h4>
-                <span>Allows for the token to access all application data, alter state and add devices</span>
-              </div>
-            </label>
+            <div class="radio-group__input">
+              <input type="radio" value="fullaccess" checked.bind="selectedAccessLevel" name="token-type"/>
+            </div>
+            <div class="radio-group__input-text">
+              <h4 class="h4">Full access</h4>
+              <span>Allows for the token to access all API key, alter state and add data</span>
+            </div>
+          </label>
         </form>
       </div>
       <div class="flex-container__footer">
         <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
-        <button class="button button--primary" type="submit" click.delegate="createToken()">Create token</button>
+        <button class="button button--primary" type="submit" click.delegate="createToken()">Create API key</button>
       </div>
     </div>
   </div>
