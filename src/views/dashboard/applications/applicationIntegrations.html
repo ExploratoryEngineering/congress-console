@@ -1,26 +1,22 @@
 <template>
   <require from="components/application-nav-bar-menu.html"></require>
   <require from="components/nav-header.html"></require>
-  <require from="components/token-expansion-panel"></require>
   <nav-header heading="Application integrations"></nav-header>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
-  <div class="section">
-    <div class="application-integrations-card card ${ tokens.length === 0 ? '' : 'card--transparent'}">
+  <section class="section">
+    <div class="card">
       <div class="card__header card__header--colored">
-        <h4 class="h4 card-header-heading">Available application tokens</h4>
-        <div class="card-header-actions">
-          <button click.trigger="createNewToken()" class="card-header-actions__action">New token</button>
-        </div>
+        <h4 class="h4 card-header-heading">Available integrations</h4>
       </div>
-      <div class="card__body card__body--no-padding" if.bind="tokens.length > 0">
-        <token-expansion-panel repeat.for="token of tokens" token.bind="token"></token-expansion-panel>
-      </div>
-      <div class="card__body" if.bind="tokens.length === 0">
-        <div class="no-data-card-body">
-          <i class="no-data-card-body__icon material-icons">settings</i>
-          <div class="no-data-card-body__heading h2">No tokens found. <a class="no-data-card-body__link link" click.delegate="createNewToken()">Create one?</a></div>
-        </div>
+      <div class="card__body">
+        <section>
+          <h5 class="h5">Websockets</h5>
+          You can use your API key to access the websocket endpoint for your application. It will provide a continuous stream of data
+          from the devices connected to your application.
+
+          <h5>MQTT (Coming soon)</h5>
+        </section>
       </div>
     </div>
-  </div>
+  </section>
 </template>
