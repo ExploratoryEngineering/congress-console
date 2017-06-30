@@ -44,7 +44,7 @@
     "watch": "npm run watch:dev",
     "watch:dev": "npm run build:dev -- --watch",
     "watch:dev:hmr": "npm run watch:dev -- --hot",
-    "watch:test:unit": "npm run test:unit -- --auto-watch --no-single-run",
+    "watch:test:jest": "npm run test:jest -- --watch --collectCoverage=false",
     "watch:prod": "npm run build:prod -- --watch",
     "webdriver:update": "cross-env webdriver-manager update",
     "webdriver:start": "cross-env webdriver-manager start",
