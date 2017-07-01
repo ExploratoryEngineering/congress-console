@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.20.0"></a>
+# [0.20.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.19.0...v0.20.0) (2017-07-01)
+
+
+### Bug Fixes
+
+* **font-weight:** add correct font weights and use consistent weight ([6ebe2dd](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6ebe2dd))
+
+
+### Performance Improvements
+
+* **webpack3:** move to webpack3 with 20% less bundle size ([b2a5466](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b2a5466))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.18.6...v0.19.0) (2017-06-30)
 
