@@ -127,7 +127,7 @@ export class GraphController {
       graphMetaData: graphMetaData,
       messageData: messageData
     };
-  };
+  }
 
   /**
    * Convenience method to add data to an existing GraphData object

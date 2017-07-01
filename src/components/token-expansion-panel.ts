@@ -117,7 +117,7 @@ export class TokenExpansionPanel {
   }
 
   curlGetApplicationData() {
-    return `curl 
+    return `curl
     -XGET ${this.config.get('api.endpoint')}${this.token.resource}/data
     -HX-API-Token:${this.token.token}
     `;
