@@ -6,7 +6,7 @@ class RouterStub {
 
 describe('Not found view', () => {
   let routerStub;
-  let notFoundView;
+  let notFoundView: NotFound;
 
   beforeEach(() => {
     routerStub = new RouterStub();
