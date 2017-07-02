@@ -9,5 +9,5 @@ npm-debug.log*
 /release
 /test/coverage
 /test/coverage-jest
-
+test-report.xml
 .idea
