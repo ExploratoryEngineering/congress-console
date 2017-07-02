@@ -7,16 +7,26 @@ import { Promise } from 'bluebird';
 
 const Log = LogBuilder.create('Response handler');
 
-class ResponseError {
+interface ResponseHandlerObject {
+  isSuccess: boolean;
+  statusCode: number;
   content: any;
+}
+
+class ResponseError extends Error {
+  content: any;
+  message: string = 'Generic response error';
 
   constructor(content: any) {
+    // super(errorType);
+    super();
     this.content = content;
   }
 }
 
 export class BadRequestError extends ResponseError {
-  errorCode: 400;
+  errorCode = 400;
+  message = 'Bad request';
 
   constructor(content: any) {
     super(content);
@@ -24,7 +34,17 @@ export class BadRequestError extends ResponseError {
 }
 
 class UnauthorizedError extends ResponseError {
-  errorCode: 401;
+  errorCode = 401;
+  message = 'Unauthorized';
+
+  constructor(content: any) {
+    super(content);
+  }
+}
+
+class ForbiddenError extends ResponseError {
+  errorCode = 403;
+  message = 'Forbidden';
 
   constructor(content: any) {
     super(content);
@@ -32,7 +52,8 @@ class UnauthorizedError extends ResponseError {
 }
 
 export class NotFoundError extends ResponseError {
-  errorCode: 404;
+  errorCode = 404;
+  message = 'Not found';
 
   constructor(content: any) {
     super(content);
@@ -40,7 +61,8 @@ export class NotFoundError extends ResponseError {
 }
 
 class MethodNotSupported extends ResponseError {
-  errorCode: 405;
+  errorCode = 405;
+  message = 'Not supported';
 
   constructor(content: any) {
     super(content);
@@ -48,7 +70,8 @@ class MethodNotSupported extends ResponseError {
 }
 
 export class Conflict extends ResponseError {
-  errorCode: 409;
+  errorCode = 409;
+  message = 'Conflict';
 
   constructor(content: any) {
     super(content);
@@ -56,28 +79,36 @@ export class Conflict extends ResponseError {
 }
 
 class ServerErrorError extends ResponseError {
-  errorCode: 500;
+  errorCode = 500;
+  message = 'Server error';
+
   constructor(content: any) {
     super(content);
   }
 }
 
 class BadGatewayError extends ResponseError {
-  errorCode: 502;
+  errorCode = 502;
+  message = 'Bad gateway';
+
   constructor(content: any) {
     super(content);
   }
 }
 
 class ServiceUnavailableError extends ResponseError {
-  errorCode: 503;
+  errorCode = 503;
+  message = 'Service unavailable';
+
   constructor(content: any) {
     super(content);
   }
 }
 
 class UnknownError extends ResponseError {
-  errorCode: 0;
+  errorCode = 0;
+  message = 'Unknown error';
+
   constructor(content: any) {
     super(content);
   }
@@ -93,7 +124,7 @@ export class ResponseHandler {
     private eventAggregator: EventAggregator
   ) { }
 
-  handleResponse(response: HttpResponseMessage) {
+  handleResponse(response: ResponseHandlerObject) {
     if (response.isSuccess) {
       return;
     }
@@ -105,6 +136,9 @@ export class ResponseHandler {
       case 401: {
         this.navigateToLogin();
         throw new UnauthorizedError(response.content);
+      }
+      case 403: {
+        throw new ForbiddenError(response.content);
       }
       case 404: {
         Log.debug('returning on 404');
