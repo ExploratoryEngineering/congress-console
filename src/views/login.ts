@@ -12,10 +12,18 @@ export class Login {
   ) { }
 
   login() {
-    document.location.href = `${this.config.get('api.endpoint')}/connect/login`;
+    document.location.href = this.getLoginUrl();
   }
 
   logout() {
-    document.location.href = `${this.config.get('api.endpoint')}/connect/logout`;
+    document.location.href = this.getLogoutUrl();
+  }
+
+  getLoginUrl(): string {
+    return `${this.config.get('api.endpoint')}/connect/login`;
+  }
+
+  getLogoutUrl(): string {
+    return `${this.config.get('api.endpoint')}/connect/logout`;
   }
 }
