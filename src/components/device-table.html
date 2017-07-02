@@ -1,5 +1,5 @@
 <template bindable="devices">
-  <require from="valueConverters/deviceName"></require>
+  <require from="valueConverters/tagName"></require>
   <table class="table">
     <thead>
       <tr>
@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <tr repeat.for="device of devices">
-        <td class="table__data">${ device.deviceEUI | deviceName }</td>
+        <td class="table__data">${ device | tagName }</td>
         <td class="table__data">${ device.devAddr }</td>
         <td class="table__data">${ device.appSKey }</td>
         <td class="table__data">${ device.deviceType }</td>
