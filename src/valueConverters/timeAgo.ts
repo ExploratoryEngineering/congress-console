@@ -1,7 +1,15 @@
 import * as moment from 'moment';
 
+const INVALID_DATE = 'Invalid date';
+
 export class TimeAgoValueConverter {
   toView(value) {
-    return moment(value, 'X').fromNow();
+    let date = moment(value, 'X');
+
+    if (date.isValid()) {
+      return date.fromNow();
+    } else {
+      return INVALID_DATE;
+    }
   }
 }
