@@ -6,8 +6,6 @@ import { UserInformation } from 'Helpers/UserInformation';
 
 @autoinject
 export class Login {
-  heading = 'Login for Self Service Portal';
-
   constructor(
     private router: Router,
     private config: AureliaConfiguration
