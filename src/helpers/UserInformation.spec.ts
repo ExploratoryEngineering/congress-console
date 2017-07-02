@@ -1,9 +1,13 @@
 import { UserInformation } from 'Helpers/UserInformation';
 import { UserProfile } from 'Models/UserProfile';
 
+const TEST_EMAIL = 'testemail@example.com';
+
 class AuthServiceMock {
   getUserProfile() {
-    return Promise.resolve(new UserProfile());
+    return Promise.resolve(new UserProfile({
+      email: TEST_EMAIL
+    }));
   }
 }
 
@@ -36,6 +40,15 @@ describe('The UserInformation helper', () => {
   it('should return a user profile object on logged in', (done) => {
     userInformation.fetchUserProfile().then(profile => {
       expect(profile).toBeTruthy();
+      done();
+    });
+  });
+
+  it('should generate a gravatar src based on email when loading new profile object', (done) => {
+    let getImageSpy = spyOn(mockedGravatarService, 'getImageSrcByEmail');
+
+    userInformation.fetchUserProfile().then(profile => {
+      expect(getImageSpy).toHaveBeenCalledWith(TEST_EMAIL);
       done();
     });
   });
