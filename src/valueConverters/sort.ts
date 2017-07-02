@@ -2,7 +2,7 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('sort');
 
 export class SortValueConverter {
-  toView(array, propertyName, direction) {
+  toView(array, propertyName: string, direction: string = 'asc') {
     let factor = direction === 'asc' ? 1 : -1;
     return array
       .slice(0)
@@ -12,7 +12,7 @@ export class SortValueConverter {
           return aProp.localeCompare(bProp) * factor;
         }
         if (typeof aProp === 'number' && typeof bProp === 'number') {
-          return (a - b) * factor;
+          return (aProp - bProp) * factor;
         }
         Log.warn(`Tried to sort property ${propertyName} which wasnt same type`, aProp, typeof aProp, bProp, typeof bProp);
         return 0;
