@@ -4,7 +4,6 @@ import { Router } from 'aurelia-router';
 @autoinject
 export class NotFound {
   constructor(private router: Router) {
-
   }
 
   navigateBack() {
