@@ -32,6 +32,7 @@ pipeline {
         reportFiles: 'index.html',
         reportName: "LCov Report"
       ])
+      junit 'test-report.xml'
     }
   }
 }

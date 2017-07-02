@@ -50,5 +50,6 @@
     "text",
     "html"
   ],
-  "mapCoverage": true
+  "mapCoverage": true,
+  "testResultsProcessor": "./node_modules/jest-junit-reporter"
 }
