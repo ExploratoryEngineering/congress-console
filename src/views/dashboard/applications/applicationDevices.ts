@@ -1,4 +1,4 @@
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
@@ -21,7 +21,7 @@ export class ServiceDetails {
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
-  subscriptions: any[] = [];
+  subscriptions: Subscription[] = [];
 
   devices: Device[] = [];
 

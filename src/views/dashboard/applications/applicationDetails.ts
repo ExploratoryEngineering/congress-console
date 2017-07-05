@@ -1,8 +1,9 @@
 import { Range } from 'Helpers/Range';
+import { DialogService } from 'aurelia-dialog';
 import { AureliaConfiguration } from 'aurelia-configuration';
 import { autoinject, bindable } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import * as moment from 'moment';
 
@@ -11,6 +12,8 @@ import { DeviceService } from 'Services/DeviceService';
 
 import { Device } from 'Models/Device';
 import { Application } from 'Models/Application';
+
+import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
 
 import { Websocket, WebsocketDeviceDataMessage, WebsocketStatusMessage, WebsocketMessage } from 'Helpers/Websocket';
 import { LogBuilder } from 'Helpers/LogBuilder';
@@ -23,6 +26,7 @@ export class ServiceDetails {
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
   hasMessageData: boolean = false;
+  subscriptions: Subscription[] = [];
 
   chartData: GraphData;
   chartOptions = {
@@ -77,6 +81,7 @@ export class ServiceDetails {
     private deviceService: DeviceService,
     private router: Router,
     private eventAggregator: EventAggregator,
+    private dialogService: DialogService,
     private graphController: GraphController,
     private config: AureliaConfiguration
   ) { }
@@ -100,6 +105,22 @@ export class ServiceDetails {
 
   selectedRangeChanged() {
     this.initiateChartData();
+  }
+
+  editApplication(application: Application) {
+    let applicationUntouched = Object.assign({}, application);
+
+    this.dialogService.open({
+      viewModel: EditApplicationDialog,
+      model: {
+        application: applicationUntouched
+      }
+    }).whenClosed(response => {
+      Log.debug('Edit application', response);
+      if (!response.wasCancelled) {
+        this.application = response.output;
+      }
+    });
   }
 
   onApplicationStreamMessage(message) {
@@ -160,6 +181,9 @@ export class ServiceDetails {
         this.devices = devices;
       })
     ]).then(() => {
+      this.subscriptions.push(this.eventAggregator.subscribe('application:edit', (application: Application) => {
+        this.editApplication(application);
+      }));
       this.initiateChartData();
       this.openApplicationDataStream();
     }).catch(err => {
@@ -169,6 +193,8 @@ export class ServiceDetails {
   }
 
   deactivate() {
+    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions = [];
     this.closeApplicationStream();
   }
 }
