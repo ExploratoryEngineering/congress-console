@@ -1,6 +1,8 @@
-.application-details-card {
+.application-data-details-card {
+  flex-grow: 1;
   height: 460px;
   user-select: none;
+  max-width: calc(75% - 16px);
 }
 
 .no-graph-data {
