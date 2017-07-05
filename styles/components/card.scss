@@ -24,6 +24,10 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     box-shadow: none;
   }
 
+  &--full-width {
+    width: 100%;
+  }
+
   &__header {
     display: flex;
     padding: $grid-size * 2;
@@ -99,12 +103,17 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
   align-items: center;
   display: flex;
   flex-grow: 1;
+  line-height: $grid-size * 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-header-actions {
   align-self: flex-end;
   flex-shrink: 1;
   font-size: $font-size--14;
+  margin-left: $grid-size;
 
   &__action {
     background-color: darken($color--blue, 10%);
