@@ -2,9 +2,22 @@ $flex-container-header-color: $font-color-primary;
 $flex-container-header-border-color: $color-grey-theme--dark;
 
 .flex-element {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
   &--grow {
     flex-grow: 1;
     overflow: auto;
+  }
+
+  &__item {
+    display: flex;
+    flex-grow: 1;
+
+    &--full-width {
+      width: 100%;
+    }
   }
 }
 
