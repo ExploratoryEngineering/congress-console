@@ -23,6 +23,15 @@ $sub-header-menu-item-hover-background-color: $color-grey-theme--dark;
     }
   }
 
+  &__header-link {
+    color: $sub-header-color;
+
+    &:focus,
+    &:hover {
+      color: $sub-header-color;
+    }
+  }
+
   &__header-logo {
     position: absolute;
     right: $grid-size / 2;
