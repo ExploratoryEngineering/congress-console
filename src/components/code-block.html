@@ -1,0 +1,12 @@
+<template bindable="code, icon, heading">
+  <require from="components/code-block.scss"></require>
+  <div class="code-block">
+    <div class="code-block__header">
+      <div class="code-block__icon"><i if.bind="icon" class="material-icons">${ icon }</i></div>
+      <h4 class="h4 code-block__heading">${heading}</h4>
+      <div class="code-block__icon code-block__icon--colored code-block__icon--clickable" click.delegate="copySource()"><i class="material-icons">content_copy</i></div>
+    </div>
+    <pre class="code-block__content">${ code }</pre>
+  </div>
+  <input class="code__content-offscreen-field" ref="codeTextField" value.bind="code" />
+</template>
