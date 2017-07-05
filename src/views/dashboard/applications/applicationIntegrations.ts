@@ -1,16 +1,9 @@
-import { DialogService } from 'aurelia-dialog';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { computedFrom } from 'aurelia-binding';
 import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 
-import { TokenService } from 'Services/TokenService';
 import { ApplicationService } from 'Services/ApplicationService';
-
 import { Application } from 'Models/Application';
-import { Token } from 'Models/Token';
-
-import { MessageDialog } from 'Dialogs/messageDialog';
-import { CreateTokenDialog } from 'Dialogs/createTokenDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
@@ -21,16 +14,25 @@ export class ServiceDetails {
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
 
-  tokens: Token[];
-  subscriptions: any[] = [];
-
   constructor(
     private applicationService: ApplicationService,
-    private tokenService: TokenService,
-    private eventAggregator: EventAggregator,
-    private dialogService: DialogService,
     private router: Router
   ) { }
+
+  @computedFrom('application')
+  get wstaCodeExample() {
+    return `wsta -I
+    wss://api.lora.telenor.io/applications/${this.application.appEUI}/stream
+    -H X-API-Token:YOUR-API-TOKEN`;
+  }
+
+  @computedFrom('application')
+  get wstaCodeExampleWithJqPipe() {
+    return `wsta -I
+    wss://api.lora.telenor.io/applications/${this.application.appEUI}/stream
+    -H X-API-Token:YOUR-API-TOKEN
+    | jq  .type`;
+  }
 
   activate(args) {
     return Promise.all([
