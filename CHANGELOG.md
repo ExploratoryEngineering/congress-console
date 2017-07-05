@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.21.0"></a>
+# [0.21.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.20.0...v0.21.0) (2017-07-05)
+
+
+### Bug Fixes
+
+* **apikeys:** correctly propagate gateways to viewmodel ([fbbc8f7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fbbc8f7))
+* **sort:** fix bug where number sorting was ignored ([0106b5e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0106b5e))
+
+
+### Features
+
+* **accessability:** correctly add lang attribute ([7921e9a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/7921e9a))
+* **application-details-card:** add new component for app details ([8f7dc93](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8f7dc93))
+* **applicationDevices:** add application-details-card to view ([6a86572](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6a86572))
+* **applicationIntegration:** add more information and examples for websockets ([41abee4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/41abee4))
+* **CI:** add junit reports for CI ([9db7182](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9db7182))
+* **code-block:** add new component for code-block ([2a1bbc9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2a1bbc9))
+* **junit-report:** add junit report for Jenkins CI ([f8fa05a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f8fa05a))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.19.0...v0.20.0) (2017-07-01)
 
