@@ -25,7 +25,7 @@ export class EditApplicationDialog {
     return this.applicationService.updateApplication(this.application).then(() => {
       this.dialogController.ok(this.application);
     }).catch(error => {
-      Log.error('Create application: Error occured', error);
+      Log.error('Edit application: Error occured', error);
     });
   }
 
