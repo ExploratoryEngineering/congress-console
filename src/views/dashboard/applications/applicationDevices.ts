@@ -12,7 +12,7 @@ import { Device } from 'Models/Device';
 import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
 import { MessageDialog } from 'Dialogs/messageDialog';
 
-import { Conflict } from 'Helpers/ResponseHandler';
+import { Conflict, BadRequestError } from 'Helpers/ResponseHandler';
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
 
@@ -79,6 +79,8 @@ export class ServiceDetails {
     }).catch(error => {
       if (error instanceof Conflict) {
         this.eventAggregator.publish('global:message', { body: `Tag with key "${tag.key}" already exists.` });
+      } else if (error instanceof BadRequestError) {
+        this.eventAggregator.publish('global:message', { body: error.content });
       }
     });
   }
