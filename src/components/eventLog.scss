@@ -1,0 +1,17 @@
+@import 'styles/variables/grid';
+@import 'styles/variables/colors';
+
+.event-log {
+  width: 100%;
+
+  &__entry {
+    background-color: $color--google-grey-200;
+    display: inline-flex;
+    line-height: $grid-size * 5;
+    margin: 0 0 $grid-size / 2 0;
+    overflow: auto;
+    padding: 0 $grid-size;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
