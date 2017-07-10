@@ -24,6 +24,7 @@ export class EditTagChip {
   model: TagEntity;
   @bindable
   namespace: string = '';
+  form: HTMLFormElement;
 
   constructor(
     private eventAggregator: EventAggregator
@@ -38,14 +39,14 @@ export class EditTagChip {
   }
 
   submitTag() {
-    try {
-      this.eventAggregator.publish(`${this.namespace}:tag:edit`, {
-        model: this.model,
-        tag: this.tag
-      });
-    } catch (err) {
-      this.eventAggregator.publish('global:message', { body: err, timeout: 5000 });
+    if (!this.form.checkValidity()) {
+      return this.eventAggregator.publish('global:message', { body: 'Invalid characters in tag value' });
     }
+
+    this.eventAggregator.publish(`${this.namespace}:tag:edit`, {
+      model: this.model,
+      tag: this.tag
+    });
   }
 
   deleteTag() {

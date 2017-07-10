@@ -22,6 +22,7 @@ export class CreateNewTagChip {
   namespace: string = '';
 
   inputElement: HTMLInputElement;
+  form: HTMLFormElement;
 
   constructor(
     private eventAggregator: EventAggregator
@@ -41,10 +42,9 @@ export class CreateNewTagChip {
   }
 
   submitTag() {
-    Log.debug('Event emitting', {
-      model: this.model,
-      tag: this.tag
-    });
+    if (!this.form.checkValidity()) {
+      return this.eventAggregator.publish('global:message', { body: 'Invalid characters in tag name and/or value' });
+    }
     this.eventAggregator.publish(`${this.namespace}:tag:new`, {
       model: this.model,
       tag: this.tag

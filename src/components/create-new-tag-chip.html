@@ -2,9 +2,9 @@
   <div class="chip chip--has-action" click.delegate="chipClicked($event)">
     <span if.bind="!editing" click.delegate="toggleEditing()" class="chip__text">New tag</span><button if.bind="!editing"
       click.delegate="toggleEditing()" class="material-icons chip__action-icon">add_circle</button>
-    <form class="chip-form" show.bind="editing" submit.trigger="submitTag">
-      <input class="chip-form__input" placeholder="Tag key" value.bind="tag.key" />:<input class="chip-form__input" placeholder="Tag value"
-        value.bind="tag.value" />
+    <form class="chip-form" ref="form" show.bind="editing" submit.trigger="submitTag">
+      <input class="chip-form__input" required pattern="^[a-zA-Z0-9_+\-:;]+$" placeholder="Tag key" value.bind="tag.key" />:<input
+        class="chip-form__input" required pattern="^[a-zA-Z0-9_+\-:;]+$" placeholder="Tag value" value.bind="tag.value" />
       <button type="button" click.delegate="toggleEditing()" class="material-icons chip__action-icon">cancel</button>
       <button type="submit" click.delegate="submitTag()" class="material-icons chip__action-icon">check_circle</button>
     </form>
