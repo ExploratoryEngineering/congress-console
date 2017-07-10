@@ -8,7 +8,7 @@
     "justification": "Only used in selenium test-drives"
   },
   {
-    "component": "jquery-ui-autocomplete",
-    "justification": "Only used in selenium test-drives"
+    "component": "brace-expansion",
+    "justification": "only used in fsevents and used in dev-dependencies"
   }
 ]
