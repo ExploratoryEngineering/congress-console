@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.0"></a>
+# [0.22.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.21.0...v0.22.0) (2017-07-10)
+
+
+### Bug Fixes
+
+* **dropdown:** add nobreak for long menu entries ([5279141](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5279141))
+* **responseHandler:** correctly extend base class Error ([872db0f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/872db0f))
+
+
+### Features
+
+* **device-tags:** add frontend validation for tag name/values ([5d92bc2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5d92bc2))
+* **eventLog:** add component eventLog ([fb8ee13](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fb8ee13))
+* **eventLogDialog:** add dialog for eventLog ([407fcb6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/407fcb6))
+* **flex:** add default flex and add scroll modifier ([90bb5ea](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/90bb5ea))
+* **gateways:** add eventLog for gateway view ([b818ae7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b818ae7))
+
+
+
 <a name="0.21.0"></a>
 # [0.21.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.20.0...v0.21.0) (2017-07-05)
 
