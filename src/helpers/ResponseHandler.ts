@@ -13,16 +13,19 @@ interface ResponseHandlerObject {
   content: any;
 }
 
-class ResponseError extends Error {
+export class ResponseError {
   content: any;
   message: string = 'Generic response error';
+  stack: string;
+  name: string;
 
   constructor(content: any) {
-    // super(errorType);
-    super();
+    this.stack = (new Error()).stack;
     this.content = content;
+    this.name = this.constructor.name;
   }
 }
+ResponseError.prototype = Object.create(Error.prototype);
 
 export class BadRequestError extends ResponseError {
   errorCode = 400;

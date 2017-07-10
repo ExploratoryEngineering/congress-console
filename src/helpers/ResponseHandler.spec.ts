@@ -1,4 +1,4 @@
-import { ResponseHandler, BadRequestError } from './ResponseHandler';
+import { ResponseHandler, BadRequestError, Conflict, ResponseError, NotFoundError } from './ResponseHandler';
 
 class RouterStub {
   navigate() { }
@@ -232,6 +232,60 @@ describe('Response handler', () => {
         () => responseHandler.handleResponse(customResponse)
       ).toThrow('Not supported');
       expect(publishSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe('instanciation', () => {
+    it('should correctly throw instance of Error', () => {
+      let customResponse = {
+        isSuccess: false,
+        statusCode: 400,
+        content: ''
+      };
+      try {
+        responseHandler.handleResponse(customResponse);
+      } catch (e) {
+        expect(e instanceof Error).toBe(true);
+      }
+    });
+
+    it('should correctly throw instance of ResponseError', () => {
+      let customResponse = {
+        isSuccess: false,
+        statusCode: 400,
+        content: ''
+      };
+      try {
+        responseHandler.handleResponse(customResponse);
+      } catch (e) {
+        expect(e instanceof ResponseError).toBe(true);
+      }
+    });
+
+    it('should correctly throw instance of NotFoundError', () => {
+      let customResponse = {
+        isSuccess: false,
+        statusCode: 404,
+        content: ''
+      };
+      try {
+        responseHandler.handleResponse(customResponse);
+      } catch (e) {
+        expect(e instanceof NotFoundError).toBe(true);
+      }
+    });
+
+    it('should correctly throw instance of Conflict', () => {
+      let customResponse = {
+        isSuccess: false,
+        statusCode: 409,
+        content: ''
+      };
+      try {
+        responseHandler.handleResponse(customResponse);
+      } catch (e) {
+        expect(e instanceof Conflict).toBe(true);
+      }
     });
   });
 });
