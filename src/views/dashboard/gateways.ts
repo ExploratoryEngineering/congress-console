@@ -9,6 +9,7 @@ import { Gateway } from 'Models/Gateway';
 import { MessageDialog } from 'Dialogs/messageDialog';
 import { CreateGatewayDialog } from 'Dialogs/createGatewayDialog';
 import { EditGatewayDialog } from 'Dialogs/editGatewayDialog';
+import { EventLogDialog } from 'Dialogs/eventLogDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -84,6 +85,15 @@ export class Services {
     });
   }
 
+  showEventLogForGateway(gateway: Gateway) {
+    this.dialogService.open({
+      viewModel: EventLogDialog,
+      model: {
+        eventLogStreamEndpoint: `/gateways/${gateway.gatewayEUI}/stream`
+      }
+    });
+  }
+
   fetchAndPopulateGateways() {
     return new Promise((res) => {
       this.gatewayService.fetchGateways().then(gateways => {
@@ -102,6 +112,9 @@ export class Services {
     }));
     this.subscriptions.push(this.eventAggregator.subscribe('gateway:delete', (gateway) => {
       this.deleteGateway(gateway);
+    }));
+    this.subscriptions.push(this.eventAggregator.subscribe('gateway:eventLog', (gateway) => {
+      this.showEventLogForGateway(gateway);
     }));
 
     return this.fetchAndPopulateGateways();

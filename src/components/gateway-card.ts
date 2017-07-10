@@ -23,4 +23,8 @@ export class GatewayCard {
   deleteGateway() {
     this.eventAggregator.publish('gateway:delete', this.gateway);
   }
+
+  showEventLog() {
+    this.eventAggregator.publish('gateway:eventLog', this.gateway);
+  }
 }
