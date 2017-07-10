@@ -65,6 +65,7 @@ $dropdown-menu-item-font-size: $font-size--12;
     display: block;
     padding: $grid-size $grid-size * 2;
     text-align: left;
+    white-space: nowrap;
 
     &:hover {
       background-color: $dropdown-menu-item-hover-background-color;
