@@ -11,12 +11,12 @@ $button-primary-background-color: $color--blue;
 $button-primary-border-color: $color--blue;
 
 $button-primary-hover-color: $font-color-primary--colored;
-$button-primary-hover-background-color: darken($button-primary-background-color, $opacity-12);
-$button-primary-hover-border-color: darken($button-primary-background-color, $opacity-12);
+$button-primary-hover-background-color: darken($button-primary-background-color, 12%);
+$button-primary-hover-border-color: darken($button-primary-background-color, 12%);
 
 $button-primary-active-color: $font-color-primary--colored;
-$button-primary-active-background-color: darken($button-primary-hover-background-color, $opacity-12);
-$button-primary-active-border-color: darken($button-primary-hover-background-color, $opacity-12);
+$button-primary-active-background-color: darken($button-primary-hover-background-color, 12%);
+$button-primary-active-border-color: darken($button-primary-hover-background-color, 12%);
 
 $button-primary-disabled-color: $font-color-disabled--colored;
 $button-primary-disabled-background-color: rgba(0, 0, 0, .15);
