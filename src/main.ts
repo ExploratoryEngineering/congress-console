@@ -11,7 +11,11 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .plugin(PLATFORM.moduleName('aurelia-dialog'))
+    .plugin(PLATFORM.moduleName('aurelia-dialog'), (config) => {
+      config.useDefaults();
+      config.settings.keyboard = true;
+      config.settings.overlayDismiss = true;
+    })
     .plugin(PLATFORM.moduleName('aurelia-google-maps'), config => {
       config.options({
         apiKey: 'AIzaSyBfrbnOsPYJwccsvXrIkBHs7bUIYp8EaF0',
