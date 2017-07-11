@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.1"></a>
+## [0.22.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.22.0...v0.22.1) (2017-07-11)
+
+
+### Bug Fixes
+
+* **buttons:** use explicit percent for darken ([8bd6881](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8bd6881))
+* **createDeviceDialog:** add correct heading class ([87529f9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/87529f9))
+
+
+### Features
+
+* **dialog:** add dialog options for keyboard nav ([e5677b9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/e5677b9))
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.21.0...v0.22.0) (2017-07-10)
 
