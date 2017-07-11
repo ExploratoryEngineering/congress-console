@@ -31,7 +31,8 @@ export class EventLog {
       url: this.aureliaConfiguration.get('api.wsEndpoint') + this.eventLogStreamEndpoint,
       onmessage: (message) => { this.onMessage(message); },
       onopen: () => { this.websocketData.push('Connected to endpoint, awaiting data'); },
-      onerror: () => { this.websocketData.push('There was an error connecting to the endpoint'); }
+      onerror: () => { this.websocketData.push('There was an error connecting to the endpoint'); },
+      onclose: () => { this.websocketData.push('Websocket was closed'); }
     });
 
   }
