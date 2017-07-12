@@ -109,17 +109,18 @@ export class CreateDeviceDialog {
     }
   }
 
-  next() {
+  next(): Promise<any> {
     if (this.isStep(1)) {
       this.step = 2;
+      return Promise.resolve();
     } else if (this.isStep(2)) {
-      this.submitDevice()
+      return this.submitDevice()
         .then(() => this.fetchSource())
         .then(() => {
           this.step = 3;
         });
     } else if (this.isStep(3)) {
-      this.dialogController.ok(this.createdDevice);
+      return this.dialogController.ok(this.createdDevice);
     }
   }
 
