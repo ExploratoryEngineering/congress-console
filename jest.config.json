@@ -4,12 +4,7 @@
       "tsConfigFile": "tsconfig.json"
     }
   },
-  "rootDir": ".",
   "verbose": false,
-  "modulePaths": [
-    "<rootDir>/src",
-    "<rootDir>/node_modules"
-  ],
   "moduleFileExtensions": [
     "js",
     "json",
@@ -35,13 +30,14 @@
     "Dialogs/(.*)": "dialogs/$1",
     "Models/(.*)": "models/$1"
   },
-  "testEnvironment": "jsdom",
+  "testEnvironment": "node",
   "collectCoverage": true,
   "collectCoverageFrom": [
-    "src/**/*.{js,ts}",
+    "**/*.{js,ts}",
     "!**/*.spec.{js,ts}",
-    "!**/node_modules/**",
-    "!**/test/**"
+    "!**/*.{d.ts}",
+    "!**/webpack.config.babel.js",
+    "!**/{test,dist,node_modules}/**"
   ],
   "coverageDirectory": "<rootDir>/test/coverage-jest",
   "coverageReporters": [
