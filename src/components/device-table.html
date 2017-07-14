@@ -3,9 +3,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="table__head-data">EUI</th>
+        <th class="table__head-data">Name</th>
         <th class="table__head-data">Dev address</th>
-        <th class="table__head-data">App key</th>
+        <th class="table__head-data">Device EUI</th>
         <th class="table__head-data">Type</th>
       </tr>
     </thead>
@@ -13,7 +13,7 @@
       <tr repeat.for="device of devices">
         <td class="table__data">${ device | tagName }</td>
         <td class="table__data">${ device.devAddr }</td>
-        <td class="table__data">${ device.appSKey }</td>
+        <td class="table__data">${ device.deviceEUI }</td>
         <td class="table__data">${ device.deviceType }</td>
       </tr>
     </tbody>
