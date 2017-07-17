@@ -47,7 +47,7 @@ export class DeviceService {
 
   fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
     return this.apiClient.http.get(`/applications/${applicationEui}/devices/${deviceEui}`)
-      .then(data => data.content.devices)
+      .then(data => data.content)
       .then(device => {
         Log.debug('Fetched device ', device);
         return Device.newFromDto(device);
