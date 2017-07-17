@@ -23,6 +23,12 @@ export interface NewABPDevice extends NewDevice {
   NwkSKey: string;
 }
 
+export interface NewMessageData {
+  data: string;
+  port: number;
+  ack?: boolean;
+}
+
 @autoinject
 export class DeviceService {
 
@@ -92,6 +98,13 @@ export class DeviceService {
       .then(data => data.content.messages)
       .then(data => data.reverse());
 
+  }
+
+  async sendMessageToDevice(applicationEui: string, deviceEui: string, messageData: NewMessageData): Promise<NewMessageData> {
+    return this.apiClient.http.post(
+      `/applications/${applicationEui}/devices/${deviceEui}/message`,
+      messageData
+    ).then(data => data.content);
   }
 
   async createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
