@@ -7,6 +7,9 @@ const th = new TagHelper();
  */
 export class TagNameValueConverter {
   toView(entity: TagEntity, fallbackKey: string) {
+    if (!entity) {
+      return '';
+    }
     return th.getEntityName(entity, fallbackKey);
   }
 }
