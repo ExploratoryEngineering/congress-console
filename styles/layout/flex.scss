@@ -60,6 +60,13 @@ $flex-container-header-border-color: $color-grey-theme--dark;
 
   &__footer {
     align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
     padding: $grid-size*4;
+    width: 100%;
+
+    &--align-left {
+      justify-content: flex-start;
+    }
   }
 }
