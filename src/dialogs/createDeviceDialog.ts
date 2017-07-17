@@ -62,7 +62,7 @@ export class CreateDeviceDialog {
   getNewDevice(): NewABPDevice | NewOTAADevice {
     if (this.selectedType === DeviceTypes.OTAA) {
       let otaaDevice: NewOTAADevice = {
-        DeviceType: this.selectedType,
+        DeviceType: 'OTAA',
         RelaxedCounter: this.device.relaxedCounter,
         Tags: this.device.tags
       };
@@ -70,10 +70,10 @@ export class CreateDeviceDialog {
       return otaaDevice;
     } else {
       let abpDevice: NewABPDevice = {
-        NwkSKey: this.device.nwkSKey,
+        DeviceType: 'ABP',
+        NwkSKey: this.device.nwkSKey.padStart(32, '0'),
         DevAddr: this.device.devAddr,
-        AppSKey: this.device.appSKey,
-        DeviceType: this.selectedType,
+        AppSKey: this.device.appSKey.padStart(32, '0'),
         RelaxedCounter: this.device.relaxedCounter,
         Tags: this.device.tags
       };

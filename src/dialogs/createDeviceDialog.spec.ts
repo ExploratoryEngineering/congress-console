@@ -1,6 +1,7 @@
 import { BadRequestError } from 'Helpers/ResponseHandler';
 import { Device } from 'Models/Device';
 import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
+import { NewABPDevice } from 'Services/DeviceService';
 
 class DeviceServiceStub {
   createNewDevice() {
@@ -171,6 +172,22 @@ describe('Create device dialog', () => {
         expect(createDeviceDialog.createdDevice).toBe(device);
         done();
       });
+    });
+
+    it('should automagically pad network session key and application session key on ABP device creation', () => {
+      createDeviceDialog.selectedType = 'ABP';
+
+      createDeviceDialog.device.appSKey = '123';
+      createDeviceDialog.device.nwkSKey = '456';
+
+      const newDevice = createDeviceDialog.getNewDevice();
+
+      if (newDevice.DeviceType === 'ABP') {
+        expect(newDevice.AppSKey).toBe('00000000000000000000000000000123');
+        expect(newDevice.NwkSKey).toBe('00000000000000000000000000000456');
+      } else {
+        fail('The device is not a type of ABP');
+      }
     });
   });
 });

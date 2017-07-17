@@ -14,10 +14,12 @@ interface NewDevice {
   Tags: { [tagName: string]: string };
 }
 
-export interface NewOTAADevice extends NewDevice { }
+export interface NewOTAADevice extends NewDevice {
+  DeviceType: 'OTAA';
+}
 
 export interface NewABPDevice extends NewDevice {
-  DeviceType: string;
+  DeviceType: 'ABP';
   DevAddr: string;
   AppSKey: string;
   NwkSKey: string;
