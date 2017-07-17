@@ -1,6 +1,5 @@
 import { Range } from 'Helpers/Range';
 import { DialogService } from 'aurelia-dialog';
-import { AureliaConfiguration } from 'aurelia-configuration';
 import { autoinject, bindable } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
@@ -15,7 +14,8 @@ import { Application } from 'Models/Application';
 
 import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
 
-import { Websocket, WebsocketDeviceDataMessage, WebsocketStatusMessage, WebsocketMessage } from 'Helpers/Websocket';
+import { ApplicationStream } from 'Helpers/ApplicationStream';
+import { WebsocketDeviceDataMessage } from 'Helpers/Websocket';
 import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Application details');
@@ -74,8 +74,6 @@ export class ServiceDetails {
 
   devices: Device[] = [];
 
-  websocket: Websocket | null;
-
   constructor(
     private applicationService: ApplicationService,
     private deviceService: DeviceService,
@@ -83,7 +81,7 @@ export class ServiceDetails {
     private eventAggregator: EventAggregator,
     private dialogService: DialogService,
     private graphController: GraphController,
-    private config: AureliaConfiguration
+    private applicationStream: ApplicationStream
   ) { }
 
   initiateChartData() {
@@ -123,41 +121,6 @@ export class ServiceDetails {
     });
   }
 
-  onApplicationStreamMessage(message) {
-    let wsMessage: WebsocketMessage = JSON.parse(message.data);
-
-    if (wsMessage.type === 'KeepAlive') {
-      let statusMessage: WebsocketStatusMessage = wsMessage;
-    } else if (wsMessage.type === 'DeviceData') {
-      let deviceMessage: WebsocketDeviceDataMessage = wsMessage;
-
-      this.addChartData(deviceMessage);
-      this.eventAggregator.publish('deviceDataMessage', deviceMessage.data);
-    }
-  }
-
-  openApplicationDataStream() {
-    if (!this.websocket) {
-      this.websocket = new Websocket({
-        url: `${this.config.get('api.wsEndpoint')}/applications/${this.application.appEUI}/stream`,
-        onerror: (err) => { Log.error('WS Error', err); },
-        onopen: (msg) => { Log.debug('WS Open: ', msg); },
-        onclose: (msg) => { Log.debug('WS Close: ', msg); },
-        onmessage: (msg) => { this.onApplicationStreamMessage(msg); }
-      });
-    } else {
-      this.websocket.reconnect();
-    }
-  }
-
-  closeApplicationStream() {
-    Log.debug('Closing WS');
-    if (this.websocket) {
-      this.websocket.close();
-      this.websocket = null;
-    }
-  }
-
   activate(args) {
     return Promise.all([
       this.applicationService.fetchApplications().then((applications) => {
@@ -184,8 +147,11 @@ export class ServiceDetails {
       this.subscriptions.push(this.eventAggregator.subscribe('application:edit', (application: Application) => {
         this.editApplication(application);
       }));
+      this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: WebsocketDeviceDataMessage) => {
+        this.addChartData(deviceData);
+      }));
       this.initiateChartData();
-      this.openApplicationDataStream();
+      this.applicationStream.openApplicationDataStream(this.application.appEUI);
     }).catch(err => {
       Log.error(err);
       this.router.navigate('');
@@ -195,6 +161,6 @@ export class ServiceDetails {
   deactivate() {
     this.subscriptions.forEach(subscription => subscription.dispose());
     this.subscriptions = [];
-    this.closeApplicationStream();
+    this.applicationStream.closeApplicationStream();
   }
 }
