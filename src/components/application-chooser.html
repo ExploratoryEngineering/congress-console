@@ -2,7 +2,7 @@
   <require from="components/dropdown"></require>
   <require from="components/dropdown-title"></require>
   <require from="components/dropdown-container"></require>
-  <dropdown dropdown-position="below" disabled.bind="selectableApplications.length === 0">
+  <dropdown disabled.bind="selectableApplications.length === 0">
     <dropdown-title>
       <div class="application-dropdown">
         <h3 class="h3 application-dropdown__title" title="${application.name}">${selectedApplication.name}<span if.bind="selectableApplications.length > 0" class="material-icons application-dropdown__triangle">arrow_drop_down</span></h3>
