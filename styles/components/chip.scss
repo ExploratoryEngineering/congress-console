@@ -12,6 +12,10 @@
   padding: 0 12px;
   width: auto;
 
+  &:first-child {
+    margin-left: 0;
+  }
+
   &--has-action {
     padding-right: 0;
   }
