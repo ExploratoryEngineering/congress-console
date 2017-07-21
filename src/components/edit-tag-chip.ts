@@ -47,6 +47,7 @@ export class EditTagChip {
       model: this.model,
       tag: this.tag
     });
+    this.editing = false;
   }
 
   deleteTag() {
