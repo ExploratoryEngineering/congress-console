@@ -6,7 +6,7 @@
 
   &__entry {
     background-color: $color--google-grey-200;
-    display: inline-flex;
+    display: block;
     line-height: $grid-size * 5;
     margin: 0 0 $grid-size / 2 0;
     overflow: auto;
