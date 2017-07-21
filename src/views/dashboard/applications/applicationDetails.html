@@ -5,35 +5,41 @@
   <require from="components/graph-chart"></require>
   <require from="components/range-chooser"></require>
   <require from="components/application-details-card"></require>
-
+  <require from="valueConverters/take"></require>
   <nav-header heading="Application overview"></nav-header>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
-    <div class="flex-element">
-      <application-details-card application.bind="application"></application-details-card>
-      <div class="card application-data-details-card">
-        <div class="card__header card__header--colored">
-          <h4 class="h4 card-header-heading">RSSI for devices in ${application.name}</h4>
-          <div class="card-header-actions">
-            <range-chooser selected-range.bind="selectedRange"></range-chooser>
+    <div class="grid__row">
+      <div class="grid__item grid__item--3">
+        <application-details-card application.bind="application"></application-details-card>
+      </div>
+      <div class="grid__item grid__item--9">
+        <div class="card application-data-details-card">
+          <div class="card__header card__header--colored">
+            <h4 class="h4 card-header-heading">RSSI for devices in ${application.name}</h4>
+            <div class="card-header-actions">
+              <range-chooser selected-range.bind="selectedRange"></range-chooser>
+            </div>
           </div>
-        </div>
-        <div class="card__body">
-          <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
-          <div class="no-graph-data" if.bind="!hasMessageData">
-            <i class="material-icons no-graph-data__icon">insert_chart</i>
-            <h2 class="h2 no-graph-data__heading">No data to graph</h2>
+          <div class="card__body">
+            <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+            <div class="no-graph-data" if.bind="!hasMessageData">
+              <i class="material-icons no-graph-data__icon">insert_chart</i>
+              <h2 class="h2 no-graph-data__heading">No data to graph</h2>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex-element">
-      <div class="card card--full-width" if.bind="devices.length">
-        <div class="card__header card__header--colored">
-          <h4 class="h4">Your devices</h4>
-        </div>
-        <div class="card__body card__body--no-padding">
-          <device-table devices.bind="devices"></device-table>
+    <div class="grid__row">
+      <div class="grid__item grid__item--12">
+        <div class="card card--full-width" if.bind="devices.length">
+          <div class="card__header card__header--colored">
+            <h4 class="h4">Your last 10 devices</h4>
+          </div>
+          <div class="card__body card__body--no-padding">
+            <device-table devices.bind="devices | take:10" application-eui.bind="application.appEUI"></device-table>
+          </div>
         </div>
       </div>
     </div>
