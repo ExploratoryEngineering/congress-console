@@ -14,11 +14,9 @@
         <div class="card__body card__body--no-padding" if.bind="tokens.length > 0">
           <token-expansion-panel repeat.for="token of tokens" applications.bind="applications" gateways.bind="gateways" token.bind="token"></token-expansion-panel>
         </div>
-        <div class="card__body" if.bind="tokens.length === 0">
-          <div class="no-data-card-body">
-            <i class="no-data-card-body__icon material-icons">settings</i>
-            <div class="no-data-card-body__heading h2">No API keys found. <a class="no-data-card-body__link link" click.delegate="createNewToken()">Create one?</a></div>
-          </div>
+        <div class="card__body no-data-card-body" if.bind="tokens.length === 0">
+          <i class="no-data-card-body__icon material-icons">settings</i>
+          <div class="no-data-card-body__heading h2">No API keys found. <a class="no-data-card-body__link link" click.delegate="createNewToken()">Create one?</a></div>
         </div>
       </div>
     </div>
