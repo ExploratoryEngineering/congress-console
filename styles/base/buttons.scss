@@ -23,7 +23,7 @@ $button-primary-disabled-background-color: rgba(0, 0, 0, .15);
 $button-primary-disabled-border-color: transparent;
 
 // Flat button setup
-$button-flat-color: $font-color-primary;
+$button-flat-color: $color--blue;
 $button-flat-background-color: transparent;
 $button-flat-border-color: transparent;
 
@@ -31,8 +31,8 @@ $button-flat-hover-color: inherit;
 $button-flat-hover-background-color: rgba(12, 12, 12, .07);
 $button-flat-hover-border-color: transparent;
 
-$button-flat-active-color: $font-color-primary--colored;
-$button-flat-active-background-color: rgba(12, 12, 12, .25);
+$button-flat-active-color: darken($color--blue, 5%);
+$button-flat-active-background-color: darken($button-flat-hover-background-color, 5%);
 $button-flat-active-border-color: transparent;
 
 $button-flat-disabled-color: #313534;

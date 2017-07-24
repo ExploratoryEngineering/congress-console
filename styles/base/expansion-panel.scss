@@ -89,17 +89,4 @@ $expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
     justify-content: flex-end;
     padding: $grid-size * 2 $grid-size $grid-size * 2 $grid-size * 3;
   }
-
-  &__primary-button {
-    color: $color--blue;
-
-    &:hover {
-      background-color: rgba(12, 12, 12, 0.07);
-      color: $color--blue;
-    }
-
-    &:active {
-      background-color: rgba(12, 12, 12, 0.1);
-    }
-  }
 }
