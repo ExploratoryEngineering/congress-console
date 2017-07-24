@@ -1,11 +1,11 @@
 $table-background-color: transparent;
 
 $table-head-color: $font-color-secondary;
-$table-head-font-size: $font-size--14;
+$table-head-font-size: $font-size--12;
 $table-head-font-weight: $font-weight--medium;
 $table-head-border: 2px solid rgba(189, 193, 193, .2);
 
-$table-data-color: $font-color-secondary;
+$table-data-color: $font-color-primary;
 $table-data-font-size: $font-size--13;
 $table-data-font-weight: $font-weight--regular;
 $table-data-border: 1px solid rgba(189, 193, 193, .2);
@@ -21,7 +21,8 @@ $table-data-row-hover-background-color: rgba(229, 230, 230, .25);
     color: $table-head-color;
     font-size: $table-head-font-size;
     font-weight: $table-head-font-weight;
-    padding: $grid-size * 2 $grid-size * 4;
+    height: $grid-size * 6;
+    padding: 0 $grid-size * 3;
     text-align: left;
 
     &--action-column {
@@ -34,7 +35,8 @@ $table-data-row-hover-background-color: rgba(229, 230, 230, .25);
     color: $table-data-color;
     font-size: $table-data-font-size;
     font-weight: $table-data-font-weight;
-    padding: $grid-size * 2 $grid-size * 4;
+    height: $grid-size * 6;
+    padding: 0 $grid-size * 3;
 
     &--align-right {
       text-align: right;
