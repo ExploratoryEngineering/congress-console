@@ -43,6 +43,7 @@ $table-data-row-hover-background-color: rgba(229, 230, 230, .25);
     }
 
     &--action-column {
+      color: $font-color-secondary;
       width: $grid-size * 8;
     }
   }
