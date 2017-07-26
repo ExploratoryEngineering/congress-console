@@ -152,4 +152,47 @@ describe('The tag helper', () => {
       });
     });
   });
+  describe('regex', () => {
+    let regex: RegExp;
+    beforeAll(() => {
+      regex = tagHelper.getTagRegEx();
+    });
+    it('should correctly accept lower case letters', () => {
+      expect(regex.test('abc')).toBe(true);
+    });
+    it('should correctly accept upper case letters', () => {
+      expect(regex.test('ABC')).toBe(true);
+    });
+    it('should correctly accept numbers', () => {
+      expect(regex.test('123')).toBe(true);
+    });
+    it('should correctly accept underscore', () => {
+      expect(regex.test('_')).toBe(true);
+    });
+    it('should correctly accept plus sign', () => {
+      expect(regex.test('+')).toBe(true);
+    });
+    it('should correctly accept minus sign', () => {
+      expect(regex.test('-')).toBe(true);
+    });
+    it('should correctly accept punctuation', () => {
+      expect(regex.test('.')).toBe(true);
+    });
+    it('should correctly accept comma', () => {
+      expect(regex.test(',')).toBe(true);
+    });
+    it('should correctly accept colon', () => {
+      expect(regex.test(':')).toBe(true);
+    });
+    it('should correctly accept semi colon', () => {
+      expect(regex.test(';')).toBe(true);
+    });
+    it('should accept spaces in tag', () => {
+      expect(regex.test('test space')).toBe(true);
+    });
+
+    it('should correctly not accept UTF-8', () => {
+      expect(regex.test('æøå')).toBe(false);
+    });
+  });
 });

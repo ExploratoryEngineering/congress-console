@@ -24,6 +24,8 @@ export class CreateNewTagChip {
   inputElement: HTMLInputElement;
   form: HTMLFormElement;
 
+  tagPattern = th.getTagRegEx();
+
   constructor(
     private eventAggregator: EventAggregator
   ) { }
@@ -42,7 +44,7 @@ export class CreateNewTagChip {
   }
 
   submitTag() {
-    if (!this.form.checkValidity()) {
+    if (!this.form.checkValidity() || !this.tagPattern.test(this.tag.key) || !this.tagPattern.test(this.tag.value)) {
       return this.eventAggregator.publish('global:message', { body: 'Invalid characters in tag name and/or value' });
     }
     this.eventAggregator.publish(`${this.namespace}:tag:new`, {

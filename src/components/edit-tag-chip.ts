@@ -6,11 +6,6 @@ import { autoinject, bindable, bindingMode } from 'aurelia-framework';
 const th = new TagHelper();
 const Log = LogBuilder.create('Edit tag chip');
 
-interface Tag {
-  name: string;
-  key: string;
-}
-
 @autoinject
 export class EditTagChip {
   editing: boolean = false;
@@ -18,13 +13,15 @@ export class EditTagChip {
   @bindable
   tag: Tag = {
     key: '',
-    name: ''
+    value: ''
   };
   @bindable
   model: TagEntity;
   @bindable
   namespace: string = '';
   form: HTMLFormElement;
+
+  tagPattern = th.getTagRegEx();
 
   constructor(
     private eventAggregator: EventAggregator
@@ -39,7 +36,7 @@ export class EditTagChip {
   }
 
   submitTag() {
-    if (!this.form.checkValidity()) {
+    if (!this.form.checkValidity() || !this.tagPattern.test(this.tag.key)) {
       return this.eventAggregator.publish('global:message', { body: 'Invalid characters in tag value' });
     }
 

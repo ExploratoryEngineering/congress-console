@@ -10,6 +10,13 @@ export class TagHelper {
   TAG_DESCRIPTION_FALLBACK_VALUE = 'No description';
 
   /**
+   * Gets accepted regex for tag inputs for key and value.
+   */
+  getTagRegEx(): RegExp {
+    return /^[a-zA-Z0-9_+,.\-:;\s]+$/;
+  }
+
+  /**
    * Returns either the name in tagcollection, fallbackKey or lastly
    * the FALLBACK_VALUE for name
    *
