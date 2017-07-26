@@ -1,0 +1,23 @@
+@import "setup/typography";
+@import "variables/grid";
+
+.device-map {
+  &__overlay {
+    align-items: center;
+    background-color: rgba(0,0,0,.56); 
+    bottom: 0;
+    color: $font-color-primary--colored; 
+    display: flex;
+    justify-content:center; 
+    left: 0; 
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    z-index: 5; 
+
+    &--help {
+      top: auto;
+      height: $grid-size * 4;
+    }
+  }
+}

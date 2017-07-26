@@ -1,0 +1,17 @@
+<template class="device-map">
+  <require from="./device-map-card.scss"></require>
+  <div class="card card--full-width">
+    <div class="card__body card__body--no-padding">
+      <div if.bind="deviceMarkers.length === 0 && !updating" class="device-map__overlay">
+        <h3 class="h3">No map data</h3>
+      </div>
+      <div if.bind="updating" class="device-map__overlay device-map__overlay--help">
+        Click on the map where your device is.
+      </div>
+      <google-map latitude.bind="latitude" markers.bind="deviceMarkers" longitude.bind="longitude" zoom="15" map-click.delegate="mapEvent($event)"></google-map>
+    </div>
+    <div class="card__actions card__actions--align-right">
+      <button class="button button--flat" click.delegate="updateLocation()">Update location</button>
+    </div>
+  </div>
+</template>
