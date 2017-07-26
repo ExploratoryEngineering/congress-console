@@ -2,6 +2,8 @@
   <require from="components/edit-tag-chip"></require>
   <require from="components/create-new-tag-chip"></require>
   <require from="valueConverters/tagList"></require>
-  <edit-tag-chip namespace.bind="namespace" model.bind="tagEntity" repeat.for="chipTag of tagEntity.tags | tagList" tag.bind="chipTag"></edit-tag-chip>
+  <require from="valueConverters/sort"></require>
+  <edit-tag-chip namespace.bind="namespace" model.bind="tagEntity" repeat.for="chipTag of tagEntity.tags | tagList | sort:'key'"
+    tag.bind="chipTag"></edit-tag-chip>
   <create-new-tag-chip namespace.bind="namespace" model.bind="tagEntity"></create-new-tag-chip>
 </template>
