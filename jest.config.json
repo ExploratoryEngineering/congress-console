@@ -46,6 +46,5 @@
     "text",
     "html"
   ],
-  "mapCoverage": true,
   "testResultsProcessor": "./node_modules/jest-junit-reporter"
 }
