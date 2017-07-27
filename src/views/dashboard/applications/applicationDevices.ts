@@ -43,6 +43,10 @@ export class ServiceDetails {
           body: 'Device created'
         });
         this.devices.push(response.output);
+        this.router.navigateToRoute('application_device', {
+          applicationId: this.application.appEUI,
+          deviceId: response.output.deviceEUI
+        });
       }
     });
   }
