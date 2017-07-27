@@ -2,12 +2,13 @@
   <require from="./device-message-panel.scss"></require>
   <require from="valueConverters/stringify"></require>
   <require from="components/text-input.html"></require>
+  <require from="components/checkbox-input.html"></require>
   <div class="device-message-panel">
     <div class="device-message-panel__header">
       <form class="message-panel-form" submit.trigger="sendData()">
         <text-input class="message-panel-form__input" name="deviceMessageData" label="Message payload" floatinglabel="true" value.two-way="deviceMessageData"></text-input>
         <text-input class="message-panel-form__input" name="deviceMessagePort" label="Port (1-223)" floatinglabel="true" value.two-way="deviceMessagePort"></text-input>
-        <div class="message-panel-form__input"><label>Require ack <input type="checkbox" checked.bind="deviceMessageRequestAck" /></label></div>
+        <checkbox-input class="message-panel-form__input" name="deviceMessageRequestAck" label="Require ack" checked.two-way="deviceMessageRequestAck"></checkbox-input>
         <button class="button button--primary" type="submit">Send message</button>
       </form>
     </div>
