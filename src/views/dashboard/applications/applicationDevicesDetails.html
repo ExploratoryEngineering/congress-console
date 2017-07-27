@@ -1,0 +1,28 @@
+<template>
+  <require from="./applicationDevicesDetails.scss"></require>
+  <require from="components/application-nav-bar-menu.html"></require>
+  <require from="components/nav-header.html"></require>
+  <require from="components/device-keys-card"></require>
+  <require from="components/device-overview-card"></require>
+  <require from="components/device-message-panel"></require>
+  <require from="components/device-map-card"></require>
+  <nav-header heading="Application devices"></nav-header>
+  <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
+  <div class="section">
+    <div class="grid__row">
+      <device-overview-card class="grid__item grid__item--4" application.bind="application" device.bind="device" delete-device.delegate="deleteDevice($event)"></device-overview-card>
+      <device-keys-card class="grid__item grid__item--4" device.bind="device" provision-device.delegate="provisionDevice($event)"></device-keys-card>
+      <device-map-card class="grid__item grid__item--4" device.bind="device" new-marker-position.delegate="updatePositionTag($event)"></device-map-card>
+      <div class="grid__item grid__item--12">
+        <div class="card card--full-width">
+          <div class="card__header card__header--colored">
+            <h4 class="h4 card-header-heading">Device messages</h4>
+          </div>
+          <div class="card__body">
+            <device-message-panel app-eui.bind="application.appEUI" device.bind="device"></device-message-panel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
