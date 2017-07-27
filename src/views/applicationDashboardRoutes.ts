@@ -25,6 +25,14 @@ export const routes = [
     title: 'Devices'
   },
   {
+    route: ['applications/:applicationId/devices/:deviceId?'],
+    name: 'application_device',
+    moduleId: PLATFORM.moduleName('./dashboard/applications/applicationDevicesDetails'),
+    nav: false,
+    href: '#/dashboard/applications',
+    title: 'Device'
+  },
+  {
     route: [':applicationId/integrations'],
     name: 'application_integrations',
     moduleId: PLATFORM.moduleName('./dashboard/applications/applicationIntegrations'),
