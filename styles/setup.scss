@@ -4,6 +4,9 @@
 // Normalize ALL the things
 @import '../node_modules/normalize.css/normalize.css';
 
+// tn-components
+@import 'components/form-elements/toggles/tn-checkbox';
+
 // Default setup
 @import 'setup/border-box';
 @import 'setup/typography';

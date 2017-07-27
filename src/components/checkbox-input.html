@@ -1,0 +1,6 @@
+<template bindable="name,checked,label">
+  <label class="tn-checkboxwrap" for="${ name }">
+    <input class="tn-checkboxwrap__checkbox" id="${ name }" type="checkbox" checked.bind="checked">
+    <span class="tn-checkboxwrap__text">${ label }</span>
+  </label>
+</template>
