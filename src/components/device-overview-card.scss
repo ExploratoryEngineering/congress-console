@@ -1,0 +1,46 @@
+@import "setup/typography";
+@import "variables/grid";
+
+.device-overview-card {
+  &__metric-container {
+    align-items: stretch; 
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__metric {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    height: 88px;
+    justify-content: center;
+
+    &--large {
+      width: 100%;
+    }
+  }
+
+  &__metric-header {
+    color: $font-color-secondary;
+    font-size: $font-size--14;
+    font-weight: $font-weight--regular;
+    text-align: center;
+    margin-bottom: $grid-size;
+  }
+
+  &__metric-value {
+    color: $font-color-primary;
+    font-size: $font-size--32;
+    font-weight: $font-weight--bold;
+    text-align: center;
+  }
+
+  &__separator {
+    border-bottom: solid 1px $font-color-dividers;
+    margin-bottom: $grid-size;
+  }
+
+  &__chip-list {
+    line-height: $grid-size * 4;
+  }
+}
