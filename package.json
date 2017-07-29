@@ -26,6 +26,7 @@
     "prebuild:prod": "npm run clean:dist",
     "preclean:install": "npm run clean",
     "release": "standard-version --silent",
+    "release:as": "npm run release -- --release-as",
     "release:patch": "npm run release -- --release-as patch",
     "release:minor": "npm run release -- --release-as minor",
     "release:major": "npm run release -- --release-as major",
