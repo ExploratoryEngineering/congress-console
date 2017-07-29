@@ -3,13 +3,14 @@ $modal-background-color: $color-grey-theme--light;
 .modal {
   background-color: $modal-background-color;
   display: flex;
-  left: 15%;
+  left: 0;
+  margin: 0 auto;
   max-height: 80%;
-  max-width: 100%;
+  max-width: 800px;
   min-height: 400px;
   min-width: 600px;
   position: absolute;
-  right: 15%;
+  right: 0;
   top: 10%;
 
   &--small {
