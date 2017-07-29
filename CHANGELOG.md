@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-RC0"></a>
+# [1.0.0-RC0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.22.0...v1.0.0-RC0) (2017-07-29)
+
+
+### Bug Fixes
+
+* **buttons:** use explicit percent for darken ([a4bbd8b](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a4bbd8b))
+* **chip:** remove margin on first chip ([3eb9125](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3eb9125))
+* **coverage:** remove map coverage to correctly get coverage ([1f1447f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/1f1447f))
+* **createDeviceDialog:** add correct heading class ([86fec1e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/86fec1e))
+* **deviceService:** correctly return the non-array object ([ae6d069](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ae6d069))
+* **edit-tag-chip:** correctly stop editing upon submitting tag ([76c4432](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/76c4432))
+* **font:** add missing 700 weight font import ([3ebf2f7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3ebf2f7))
+* **jest.config:** correctly reference tsconfig for jest ([730eb53](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/730eb53))
+* **modal:** fix jagging animation when opening a modal ([99c04e1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/99c04e1))
+* **tagName:** return empty string on no tagEntity ([e35282a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/e35282a))
+* **tags:** allow for space in tag name/value ([cb754ed](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/cb754ed))
+
+
+### Features
+
+* **applicationDeviceDetails:** new view for showing device details ([7828784](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/7828784))
+* **applicationDevices:** redirect to device details upon create ([5ed7822](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5ed7822))
+* **createDeviceDialog:** add tn-checkbox ([2c72041](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2c72041))
+* **createDeviceDialog:** automagic pad with zeroes if missing ([baebff9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/baebff9))
+* **CustomEventHelper:** add helper for Custom Events, IE </3 ([3e01d1c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3e01d1c))
+* **device-keys-card:** add component for keys for device ([9f4bb3a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9f4bb3a))
+* **device-map-card:** add component for mapping a device location ([490ed86](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/490ed86))
+* **device-message-panel:** add initial device message panel component ([8669559](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8669559))
+* **device-overview-card:** add component for device overview ([7215873](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/7215873))
+* **deviceService:** add sendMessage to deviceService ([44b27f8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/44b27f8))
+* **dialog:** add dialog options for keyboard nav ([6276469](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6276469))
+* **gatewayDialog:** add tn-checkbox ([140e819](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/140e819))
+* **grid:** added super simple grid ([45441b6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/45441b6))
+* **lang:** add lang attribute for accessibility ([0055887](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0055887))
+* **modal:** max-width to avoid extreme widths ([9c114c2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9c114c2))
+* **stringify:** add new value converter for stringify ([7135614](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/7135614))
+* **tag-chip-list-simple:** exclude name from tag-list ([de6fb26](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/de6fb26))
+* **taglist:** add exclude filter on tagList value converter ([6ccb032](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6ccb032))
+* **tags:** sort tags by key ([31c1f55](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/31c1f55))
+* **take:** add value converter take ([cff67e9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/cff67e9))
+* **tn-components:** add tn-components dependency and checkbox ([32ede9f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/32ede9f))
+
+
+
 <a name="0.22.1"></a>
 ## [0.22.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v0.22.0...v0.22.1) (2017-07-11)
 
