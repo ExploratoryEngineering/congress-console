@@ -12,5 +12,5 @@
 .page-content {
   align-items: stretch;
   display: flex;
-  height: 100%;
+  height: calc(100% - 72px);
 }
