@@ -71,6 +71,7 @@ export class DeviceMessagePanel {
         this.deviceData.push(deviceData);
       }
     });
+    this.deviceData.push('Connected to Device stream');
   }
 
   unbind() {
