@@ -1,4 +1,4 @@
-$service-card-background-color: $color--blue;
+$service-card-background-color: $color--telenor-blue;
 $service-card-color: $font-color-primary--colored;
 $service-card-color-secondary: $font-color-secondary--colored;
 
@@ -55,7 +55,7 @@ $service-card-color-secondary: $font-color-secondary--colored;
 }
 
 .application-card-dropdown {
-    background-color: darken($color--blue, 10%);
+    background-color: darken($color--telenor-blue, 10%);
     border-radius: 2px;
     color: $color--white;
     display: inline-block;

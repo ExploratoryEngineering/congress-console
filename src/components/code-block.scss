@@ -27,16 +27,16 @@
     }
 
     &--colored {
-      background-color: $color--blue;
+      background-color: $color--telenor-blue;
       color: $font-color-secondary--colored;
 
       &:hover {
-        background-color: darken($color--blue, 5%);
+        background-color: darken($color--telenor-blue, 5%);
         color: $font-color-primary--colored;
       }
 
       &:active {
-        background-color: darken($color--blue, 10%);
+        background-color: darken($color--telenor-blue, 10%);
       }
     }
   }

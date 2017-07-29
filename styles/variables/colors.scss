@@ -1,3 +1,6 @@
+// tn-colors
+@import 'components/_variables/common';
+
 $color--white: #fff;
 $color--black: #000;
 
@@ -7,7 +10,7 @@ $color--green: #4caf50;
 $color--yellow: #ffc107;
 $color--orange: #ff9800;
 
-$color--telenor-blue: #00ace7;
+$color--telenor-blue: $tn-color--brand;
 
 $color--google-grey-200: #eee;
 

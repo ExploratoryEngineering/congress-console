@@ -2,7 +2,7 @@
   display: inline-block;
 
   &__title {
-    background-color: darken($color--blue, 10%);
+    background-color: darken($color--telenor-blue, 10%);
     border-radius: 2px;
     color: $color--white;
     display: inline-block;
@@ -36,7 +36,7 @@
   }
 
   &__menu-item {
-    background-color: $color--blue;
+    background-color: $color--telenor-blue;
     color: $color--white;
     display: inline-block;
     font-weight: $font-weight--bold;
@@ -45,7 +45,7 @@
 
     &:hover,
     &:active {
-      background-color: darken($color--blue, 10%);
+      background-color: darken($color--telenor-blue, 10%);
       color: $color--white;
     }
   }

@@ -12,12 +12,12 @@
   width: 400px;
 
   &__link {
-    color: $color--blue;
+    color: $color--telenor-blue;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color--blue;
+      color: $color--telenor-blue;
     }
   }
 }

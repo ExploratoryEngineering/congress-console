@@ -7,8 +7,8 @@ $button-font-weight: $font-weight--medium;
 
 // Primary button setup
 $button-primary-color: $font-color-primary--colored;
-$button-primary-background-color: $color--blue;
-$button-primary-border-color: $color--blue;
+$button-primary-background-color: $color--telenor-blue;
+$button-primary-border-color: $color--telenor-blue;
 
 $button-primary-hover-color: $font-color-primary--colored;
 $button-primary-hover-background-color: darken($button-primary-background-color, 12%);
@@ -23,7 +23,7 @@ $button-primary-disabled-background-color: rgba(0, 0, 0, .15);
 $button-primary-disabled-border-color: transparent;
 
 // Flat button setup
-$button-flat-color: $color--blue;
+$button-flat-color: $color--telenor-blue;
 $button-flat-background-color: transparent;
 $button-flat-border-color: transparent;
 
@@ -31,7 +31,7 @@ $button-flat-hover-color: inherit;
 $button-flat-hover-background-color: rgba(12, 12, 12, .07);
 $button-flat-hover-border-color: transparent;
 
-$button-flat-active-color: darken($color--blue, 5%);
+$button-flat-active-color: darken($color--telenor-blue, 5%);
 $button-flat-active-background-color: darken($button-flat-hover-background-color, 5%);
 $button-flat-active-border-color: transparent;
 

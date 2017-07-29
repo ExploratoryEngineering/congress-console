@@ -47,7 +47,7 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     }
 
     &--colored {
-      background-color: $color--blue;
+      background-color: $color--telenor-blue;
       color: $color--white;
     }
 
@@ -96,13 +96,13 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
   }
 
   &__link {
-    color: $color--blue;
+    color: $color--telenor-blue;
     font-weight: $font-weight--regular;
 
     &:hover,
     &:active,
     &:visited {
-      color: $color--blue;
+      color: $color--telenor-blue;
     }
   }
 }
@@ -124,7 +124,7 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
   margin-left: $grid-size;
 
   &__action {
-    background-color: darken($color--blue, 10%);
+    background-color: darken($color--telenor-blue, 10%);
     border: 0;
     border-radius: 2px;
     color: $color--white;
