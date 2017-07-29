@@ -1,0 +1,10 @@
+/* Overrides of color */
+
+#nprogress .bar {
+  background: rgba(255,255,255, .87);
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  box-shadow: 0 0 10px rgba(255,255,255, .87), 0 0 5px rgba(255,255,255, .87);
+}
