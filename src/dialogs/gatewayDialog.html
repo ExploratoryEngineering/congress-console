@@ -1,5 +1,6 @@
 <template>
   <require from="components/text-input.html"></require>
+  <require from="components/checkbox-input.html"></require>
   <require from="components/textarea-input.html"></require>
   <div class="modal">
     <div class="flex-container">
@@ -19,7 +20,7 @@
           <textarea-input value.two-way="gateway.tags.description" name="gateway-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
           <text-input value.two-way="gateway.latitude" name="gateway-latitude" label="Gateway latitude (Optional)" floatinglabel="true"></text-input>
           <text-input value.two-way="gateway.longitude" name="gateway-longitude" label="Gateway longitude (Optional)" floatinglabel="true"></text-input>
-          Strict IP: <input type="checkbox" checked.bind="gateway.strictip" />
+          <checkbox-input name="strictIP" label="Strict IP" checked.two-way="gateway.strictip"></checkbox-input>
         </form>
       </div>
       <div class="flex-container__footer">
