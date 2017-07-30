@@ -34,7 +34,7 @@
     "server:dev": "webpack-dev-server -d --devtool '#source-map' --inline --env.server",
     "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod": "npm run build:prod && http-server dist --cors -p 8080 --silent",
-    "start": "npm run server:dev",
+    "start": "npm run server",
     "test": "npm run test:jest && npm run test:lint && npm run test:retire && npm run e2e",
     "test:jest": "del-cli test/coverage-jest && jest --config jest.config.json",
     "test:eslint": "eslint src test/e2e test/unit",
