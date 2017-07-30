@@ -82,7 +82,7 @@
     "@types/lodash": "4.14.64",
     "@types/node": "7.0.18",
     "@types/nprogress": "0.0.29",
-    "@types/webpack": "2.2.15",
+    "@types/webpack": "^3.0.5",
     "aurelia-loader-nodejs": "1.0.1",
     "aurelia-pal-nodejs": "1.0.0-beta.1.0.0",
     "aurelia-protractor-plugin": "1.0.3",
