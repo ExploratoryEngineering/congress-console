@@ -124,7 +124,7 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
   margin-left: $grid-size;
 
   &__action {
-    background-color: darken($color--telenor-blue, 10%);
+    background-color: $color--telenor-blue-darker;
     border: 0;
     border-radius: 2px;
     color: $color--white;

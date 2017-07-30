@@ -11,6 +11,8 @@ $color--yellow: #ffc107;
 $color--orange: #ff9800;
 
 $color--telenor-blue: $tn-color--brand;
+$color--telenor-blue-dark: darken($tn-color--brand, 2%);
+$color--telenor-blue-darker: darken($tn-color--brand, 5%);
 
 $color--google-grey-200: #eee;
 
