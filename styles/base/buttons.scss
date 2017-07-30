@@ -31,7 +31,7 @@ $button-flat-hover-color: inherit;
 $button-flat-hover-background-color: rgba(12, 12, 12, .07);
 $button-flat-hover-border-color: transparent;
 
-$button-flat-active-color: darken($color--telenor-blue, 5%);
+$button-flat-active-color: $color--telenor-blue-dark;
 $button-flat-active-background-color: darken($button-flat-hover-background-color, 5%);
 $button-flat-active-border-color: transparent;
 
