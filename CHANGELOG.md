@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.1"></a>
+# [1.0.0-beta.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta...v1.0.0-beta.1) (2017-07-30)
+
+
+### Bug Fixes
+
+* **nav-header:** add explicit width to avoid font flicker ([5b6586d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5b6586d))
+
+
+
 <a name="1.0.0-beta"></a>
 # [1.0.0-beta](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-RC0...v1.0.0-beta) (2017-07-29)
 
