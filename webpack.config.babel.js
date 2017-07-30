@@ -1,10 +1,9 @@
 const path = require('path');
+const { optimize: { CommonsChunkPlugin }, ProvidePlugin, ContextReplacementPlugin } = require('webpack');
+const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpack  = require('webpack');
-const { AureliaPlugin } = require('aurelia-webpack-plugin');
-const { optimize: { CommonsChunkPlugin }, ProvidePlugin } = require('webpack');
 const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
 const autoprefixer = require('autoprefixer');
 
@@ -118,7 +117,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
         title, server, baseUrl
       }
     }),
-    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en)$/),
+    new ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en)$/),
     new CopyWebpackPlugin([
       {
         from: 'favicon.png',
