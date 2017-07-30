@@ -48,10 +48,16 @@ $top-header-main-nav-item-selected-color: $color--telenor-blue;
   }
 
   &__main-nav-entry {
+    color: $font-color-secondary;
     font-size: $top-header-main-nav-item-font-size;
     font-weight: $top-header-main-nav-item-font-weight;
     margin-right: $grid-size * 2;
     padding-bottom: $grid-size;
+
+    &:hover,
+    &:focus {
+      color: $font-color-primary;
+    }
 
     &--selected {
       color: $top-header-main-nav-item-selected-color;
@@ -66,16 +72,6 @@ $top-header-main-nav-item-selected-color: $color--telenor-blue;
 
   &__icon-nav {
     min-width: 60px;
-  }
-
-  &__navigation-item {
-    color: $top-header-font-color;
-    display: inline-block;
-    margin-left: $grid-size * 2;
-
-    &:first-child {
-      margin-left: 0;
-    }
   }
 
   &__icon {
