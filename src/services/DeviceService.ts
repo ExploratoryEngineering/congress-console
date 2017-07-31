@@ -42,7 +42,6 @@ export class DeviceService {
     return this.apiClient.http.get(`/applications/${applicationEui}/devices`)
       .then(data => data.content.devices)
       .then(devices => {
-        Log.debug('Fetched devices', devices);
         return devices.map(Device.newFromDto);
       });
   }
