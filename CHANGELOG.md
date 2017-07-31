@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.2"></a>
+# [1.0.0-beta.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2017-07-31)
+
+
+### Bug Fixes
+
+* **buttons:** use tn-brand instead of custom darken ([25a42d5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/25a42d5))
+* **snackbar:** remove upper case ([eda7d3a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/eda7d3a))
+
+
+### Features
+
+* **gateway-card:** add title to name in case of shortening ([fb80a8a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fb80a8a))
+
+
+
 <a name="1.0.0-beta.1"></a>
 # [1.0.0-beta.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta...v1.0.0-beta.1) (2017-07-30)
 
