@@ -12,6 +12,7 @@ $font-color-opacity--white-12: rgba(255, 255, 255, .12);
 $font-size--34: 34px;
 $font-size--32: 24px;
 $font-size--20: 20px;
+$font-size--16: 16px;
 $font-size--15: 15px;
 $font-size--14: 14px;
 $font-size--13: 13px;
@@ -24,7 +25,7 @@ $font-weight--bold: 700;
 $font-weight--ultra-bold: 900;
 
 // Abstracted font values
-$font-size-default: $font-size--13;
+$font-size-default: $font-size--14;
 
 $font-color-primary: $font-color-opacity--black-87;
 $font-color-secondary: $font-color-opacity--black-54;
