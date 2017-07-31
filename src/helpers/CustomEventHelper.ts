@@ -1,3 +1,7 @@
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const Log = LogBuilder.create('Custom event');
+
 export const CustomEventHelper = {
   /**
    * Simple helper for dispatchEvent when dealing with CustomEvent (and IE support)
@@ -6,6 +10,10 @@ export const CustomEventHelper = {
    * @param eventInitDict CustomEventInit dict
    */
   dispatchEvent(element: Element, typeArg: string, eventInitDict?: CustomEventInit) {
+    if (!eventInitDict.bubbles) {
+      Log.warn('Event is not bubbling. This is often not intended and will break Custom Event subscription');
+    }
+
     if (typeof CustomEvent === 'function') {
       element.dispatchEvent(new CustomEvent(typeArg, eventInitDict));
     } else {
