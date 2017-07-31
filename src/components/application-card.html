@@ -7,7 +7,7 @@
   <a route-href="route: application_details; params.bind: { applicationId: application.appEUI }" class="card card--selectable application-card"
     title="${ application | tagDescription }">
     <div class="card__header">
-      <h3 class="h3 application-card__header">${application.name}</h3>
+      <h2 title="${application.name}" class="h2 application-card__header">${application.name}</h2>
       <dropdown container-classes="dropdown__container--transform-top-right">
         <dropdown-title><span class="material-icons">more_vert</span></dropdown-title>
         <dropdown-container>
