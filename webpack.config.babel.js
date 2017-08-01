@@ -31,7 +31,7 @@ const sassLoaderConfig = [{
     sourceMap: true
   }
 }, {
-  loader: 'sass-loader', // compiles Less to CSS
+  loader: 'sass-loader', // compiles sass to CSS
   options: {
     sourceMap: true,
     includePaths: ['styles', 'node_modules/telenor-component-library']
