@@ -1,6 +1,7 @@
 import { PLATFORM } from 'aurelia-framework';
+import { RouteConfig } from 'aurelia-router/dist/aurelia-router';
 
-export let routes = [
+export let routes: RouteConfig[] = [
   {
     route: [''],
     redirect: 'dashboard'
@@ -48,6 +49,16 @@ export let routes = [
     moduleId: PLATFORM.moduleName('views/serverError'),
     nav: false,
     title: 'Server issues - Stay calm',
+    settings: {
+      auth: false
+    }
+  },
+  {
+    route: ['not-found'],
+    name: 'not-found',
+    moduleId: PLATFORM.moduleName('views/notFound'),
+    nav: false,
+    title: 'Could not find your page',
     settings: {
       auth: false
     }
