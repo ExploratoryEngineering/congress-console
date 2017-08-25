@@ -11,3 +11,4 @@ npm-debug.log*
 /test/coverage-jest
 test-report.xml
 .idea
+.chrome
