@@ -50,6 +50,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
       Dialogs: path.resolve(__dirname, 'src/dialogs/')
     }
   },
+  devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
   entry: {
     app: ['aurelia-bootstrapper'],
     vendor: ['bluebird', 'chart.js', 'moment']
