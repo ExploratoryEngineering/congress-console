@@ -47,8 +47,8 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     }
 
     &--colored {
-      background-color: $color--telenor-blue;
-      color: $color--white;
+      border-top: solid 4px $color--telenor-blue;
+      padding: (($grid-size * 2) - 4px) $grid-size * 2;
     }
 
     &--table {
