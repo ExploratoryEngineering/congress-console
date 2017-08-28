@@ -2,8 +2,8 @@
   <require from="components/token-expansion-panel"></require>
   <main class="main-content">
     <div class="section">
-      <div class="application-integrations-card card ${ tokens.length === 0 ? '' : 'card--transparent'}">
-        <div class="card__header card__header--colored">
+      <div class="application-integrations-card card">
+        <div class="card__header card__header--table card__header--colored">
           <h4 class="h4 card-header-heading">Available API keys</h4>
           <div class="card-header-actions">
             <button click.trigger="createNewToken()" class="card-header-actions__action">New API key</button>
