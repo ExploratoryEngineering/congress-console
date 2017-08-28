@@ -1,5 +1,5 @@
 const path = require('path');
-const { optimize: { CommonsChunkPlugin, ModuleConcatenationPlugin }, ProvidePlugin, ContextReplacementPlugin } = require('webpack');
+const { optimize: { CommonsChunkPlugin }, ProvidePlugin, ContextReplacementPlugin } = require('webpack');
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -143,7 +143,6 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
     ...when(production, new CommonsChunkPlugin({
       name: 'common',
       minSize: 50
-    })),
-    ...when(production, new ModuleConcatenationPlugin())
+    }))
   ]
 });
