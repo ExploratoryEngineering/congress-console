@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.3"></a>
+# [1.0.0-beta.3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2017-08-28)
+
+
+### Bug Fixes
+
+* **apikeys:** apply correct header class for api keys ([b177145](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b177145))
+* **appRoutes:** add not found route for 404 and add typings ([dfe05ee](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/dfe05ee))
+
+
+### Features
+
+* **bundlesize:** add max bundle size per module ([f5ea469](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f5ea469))
+* **chromedebug:** add experimental feature for chrome debugger ([ce63634](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ce63634))
+
+
+### Performance Improvements
+
+* **webpack:** add moduleconcatplugin on production builds ([d7b1f1b](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/d7b1f1b))
+
+
+
 <a name="1.0.0-beta.2"></a>
 # [1.0.0-beta.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2017-07-31)
 
