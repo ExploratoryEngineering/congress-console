@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.3-patch.2"></a>
+# [1.0.0-beta.3-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.3-patch.1...v1.0.0-beta.3-patch.2) (2017-08-28)
+
+
+### Bug Fixes
+
+* **dialog:** use platform indep imports for dialog ([f56c116](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f56c116))
+
+
+### Features
+
+* **modal:** add large modifier ([b742082](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b742082))
+
+
+### Performance Improvements
+
+* **webpack:** add moduleconcatplugin on production builds ([df78eb0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/df78eb0))
+
+
+
 <a name="1.0.0-beta.3-patch.1"></a>
 # [1.0.0-beta.3-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.3...v1.0.0-beta.3-patch.1) (2017-08-28)
 
