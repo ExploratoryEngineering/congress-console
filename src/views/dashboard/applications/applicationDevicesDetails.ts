@@ -1,5 +1,5 @@
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
-import { autoinject } from 'aurelia-framework';
+import { autoinject, PLATFORM } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 
@@ -8,10 +8,6 @@ import { DeviceService } from 'Services/DeviceService';
 
 import { Application } from 'Models/Application';
 import { Device } from 'Models/Device';
-
-import { ProvisionDeviceDialog } from 'Dialogs/provisionDeviceDialog';
-import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
-import { MessageDialog } from 'Dialogs/messageDialog';
 
 import { Conflict, BadRequestError } from 'Helpers/ResponseHandler';
 import { ApplicationStream } from 'Helpers/ApplicationStream';
@@ -39,7 +35,7 @@ export class ServiceDetails {
 
   deleteDevice() {
     this.dialogService.open({
-      viewModel: MessageDialog,
+      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
         messageHeader: 'Delete device?',
         message: `Are you sure you want to delete the device with EUI: ${this.device.deviceEUI}`,
@@ -101,7 +97,7 @@ export class ServiceDetails {
 
   deleteTag(device: Device, tag: Tag) {
     return this.dialogService.open({
-      viewModel: MessageDialog,
+      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
         messageHeader: 'Delete tag?',
         message: `Are you sure you want to delete the tag: ${tag.key}:${tag.value}`,
@@ -126,7 +122,7 @@ export class ServiceDetails {
   provisionDevice() {
     Log.debug('User wants to provision device', this.device);
     this.dialogService.open({
-      viewModel: ProvisionDeviceDialog,
+      viewModel: PLATFORM.moduleName('dialogs/provisionDeviceDialog'),
       model: {
         appEUI: this.application.appEUI,
         device: this.device

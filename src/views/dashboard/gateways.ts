@@ -1,15 +1,10 @@
-import { autoinject } from 'aurelia-framework';
+import { autoinject, PLATFORM } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { GatewayService } from 'Services/GatewayService';
 import { Gateway } from 'Models/Gateway';
-
-import { MessageDialog } from 'Dialogs/messageDialog';
-import { CreateGatewayDialog } from 'Dialogs/createGatewayDialog';
-import { EditGatewayDialog } from 'Dialogs/editGatewayDialog';
-import { EventLogDialog } from 'Dialogs/eventLogDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -30,7 +25,9 @@ export class Services {
 
   createNewGateway() {
     Log.debug('Create new gateway');
-    this.dialogService.open({ viewModel: CreateGatewayDialog }).whenClosed(response => {
+    this.dialogService.open({
+      viewModel: PLATFORM.moduleName('dialogs/createGatewayDialog')
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
           body: 'Gateway created'
@@ -45,7 +42,7 @@ export class Services {
     Log.debug('Editing gateway', gateway);
 
     this.dialogService.open({
-      viewModel: EditGatewayDialog,
+      viewModel: PLATFORM.moduleName('dialogs/editGatewayDialog'),
       model: {
         gateway: gatewayUntouched
       }
@@ -63,7 +60,7 @@ export class Services {
   deleteGateway(gateway: Gateway) {
     Log.debug('Deleting gateway', gateway);
     this.dialogService.open({
-      viewModel: MessageDialog,
+      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
         messageHeader: `Delete gateway?`,
         message: `Are you sure you want to delete gateway with EUI ${gateway.gatewayEUI}. This can NOT be reversed.`,
@@ -87,7 +84,7 @@ export class Services {
 
   showEventLogForGateway(gateway: Gateway) {
     this.dialogService.open({
-      viewModel: EventLogDialog,
+      viewModel: PLATFORM.moduleName('dialogs/eventLogDialog'),
       model: {
         eventLogStreamEndpoint: `/gateways/${gateway.gatewayEUI}/stream`
       }

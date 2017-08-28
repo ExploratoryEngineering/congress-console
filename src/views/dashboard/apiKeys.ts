@@ -1,6 +1,6 @@
 import { DialogService } from 'aurelia-dialog';
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { autoinject } from 'aurelia-framework';
+import { autoinject, PLATFORM } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 
 import { ApplicationService } from 'Services/ApplicationService';
@@ -10,9 +10,6 @@ import { GatewayService } from 'Services/GatewayService';
 import { Application } from 'Models/Application';
 import { Gateway } from 'Models/Gateway';
 import { Token } from 'Models/Token';
-
-import { MessageDialog } from 'Dialogs/messageDialog';
-import { CreateTokenDialog } from 'Dialogs/createTokenDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
@@ -37,7 +34,7 @@ export class ApiKeys {
     Log.debug('Creating token');
 
     this.dialogService.open({
-      viewModel: CreateTokenDialog,
+      viewModel: PLATFORM.moduleName('dialogs/createTokenDialog'),
       model: {
         applications: this.applications,
         gateways: this.gateways
@@ -54,7 +51,7 @@ export class ApiKeys {
     Log.debug('Received delete request for token', tokenToBeDeleted);
 
     this.dialogService.open({
-      viewModel: MessageDialog,
+      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
         messageHeader: 'Delete token?',
         message: `Are you sure you want to delete the application token? (THIS CAN NOT BE REVERTED)`,

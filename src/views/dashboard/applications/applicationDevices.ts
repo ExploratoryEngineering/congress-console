@@ -1,5 +1,5 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { autoinject } from 'aurelia-framework';
+import { autoinject, PLATFORM } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 
@@ -8,8 +8,6 @@ import { DeviceService } from 'Services/DeviceService';
 
 import { Application } from 'Models/Application';
 import { Device } from 'Models/Device';
-
-import { CreateDeviceDialog } from 'Dialogs/createDeviceDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
@@ -32,8 +30,10 @@ export class ServiceDetails {
 
   createNewDevice() {
     this.dialogService.open({
-      viewModel: CreateDeviceDialog,
-      model: { appEUI: this.application.appEUI }
+      viewModel: PLATFORM.moduleName('dialogs/createDeviceDialog'),
+      model: {
+        appEUI: this.application.appEUI
+      }
     }).whenClosed(response => {
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {

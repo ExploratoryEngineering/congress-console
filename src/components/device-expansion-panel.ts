@@ -3,10 +3,9 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { DeviceService } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
-import { bindable, autoinject, containerless } from 'aurelia-framework';
+import { bindable, autoinject, containerless, PLATFORM } from 'aurelia-framework';
 
 import { DialogService } from 'aurelia-dialog';
-import { ProvisionDeviceDialog } from 'Dialogs/provisionDeviceDialog';
 
 const Log = LogBuilder.create('Device-expansion-panel');
 
@@ -75,7 +74,7 @@ export class DeviceExpansionPanel {
   provisionDevice() {
     Log.debug('User wants to provision device', this.device);
     this.dialogService.open({
-      viewModel: ProvisionDeviceDialog,
+      viewModel: PLATFORM.moduleName('dialogs/provisionDeviceDialog'),
       model: {
         appEUI: this.appeui,
         device: this.device

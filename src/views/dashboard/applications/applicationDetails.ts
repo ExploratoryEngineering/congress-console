@@ -1,6 +1,6 @@
 import { Range } from 'Helpers/Range';
 import { DialogService } from 'aurelia-dialog';
-import { autoinject, bindable } from 'aurelia-framework';
+import { autoinject, bindable, PLATFORM } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
@@ -11,8 +11,6 @@ import { DeviceService } from 'Services/DeviceService';
 
 import { Device } from 'Models/Device';
 import { Application } from 'Models/Application';
-
-import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
 
 import { ApplicationStream } from 'Helpers/ApplicationStream';
 import { WebsocketDeviceDataMessage } from 'Helpers/Websocket';
@@ -109,7 +107,7 @@ export class ServiceDetails {
     let applicationUntouched = Object.assign({}, application);
 
     this.dialogService.open({
-      viewModel: EditApplicationDialog,
+      viewModel: PLATFORM.moduleName('dialogs/editApplicationDialog'),
       model: {
         application: applicationUntouched
       }

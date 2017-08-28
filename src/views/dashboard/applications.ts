@@ -1,4 +1,4 @@
-import { autoinject } from 'aurelia-framework';
+import { autoinject, PLATFORM } from 'aurelia-framework';
 import { DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
@@ -6,10 +6,6 @@ import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { ApplicationService } from 'Services/ApplicationService';
 
 import { Application } from 'Models/Application';
-
-import { CreateApplicationDialog } from 'Dialogs/createApplicationDialog';
-import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
-import { MessageDialog } from 'Dialogs/messageDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { Conflict } from 'Helpers/ResponseHandler';
@@ -30,7 +26,9 @@ export class Services {
   availableApplications: Application[] = [];
 
   createNewApplication() {
-    this.dialogService.open({ viewModel: CreateApplicationDialog }).whenClosed(response => {
+    this.dialogService.open({
+      viewModel: PLATFORM.moduleName('dialogs/createApplicationDialog')
+    }).whenClosed(response => {
       if (!response.wasCancelled) {
         this.eventAggregator.publish('global:message', {
           body: 'Application created'
@@ -44,7 +42,7 @@ export class Services {
     let applicationUntouched = Object.assign({}, application);
 
     this.dialogService.open({
-      viewModel: EditApplicationDialog,
+      viewModel: PLATFORM.moduleName('dialogs/editApplicationDialog'),
       model: {
         application: applicationUntouched
       }
@@ -63,7 +61,7 @@ export class Services {
 
   deleteApplication(application: Application) {
     this.dialogService.open({
-      viewModel: MessageDialog,
+      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
         messageHeader: `Delete ${application.name}?`,
         message: `Note: Before you delete the application you must first delete all devices connected to the application.`,

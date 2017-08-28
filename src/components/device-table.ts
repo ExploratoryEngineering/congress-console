@@ -1,12 +1,10 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { DialogService } from 'aurelia-dialog';
-import { bindable, autoinject } from 'aurelia-framework';
+import { bindable, autoinject, PLATFORM } from 'aurelia-framework';
 
 import { DeviceService } from 'Services/DeviceService';
 
 import { Device } from 'Models/Device';
-
-import { MessageDialog } from 'Dialogs/messageDialog';
 
 import { LogBuilder } from 'Helpers/LogBuilder';
 
@@ -27,7 +25,7 @@ export class DeviceTable {
 
   deleteDevice(device: Device) {
     this.dialogService.open({
-      viewModel: MessageDialog,
+      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
         messageHeader: 'Delete device?',
         message: `Are you sure you want to delete the device with EUI: ${device.deviceEUI}`,
