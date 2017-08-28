@@ -22,6 +22,10 @@ $modal-background-color: $color-grey-theme--light;
     top: 25%;
   }
 
+  &--large {
+    max-width: 80%;
+  }
+
   &--transparent {
     background-color: transparent;
   }
