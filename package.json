@@ -7,7 +7,7 @@
   "bundlesize": [
     {
       "path": "./dist/app.*.js",
-      "maxSize": "200 kB"
+      "maxSize": "150 kB"
     },
     {
       "path": "./dist/common.*.js",
