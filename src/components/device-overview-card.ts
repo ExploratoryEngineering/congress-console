@@ -11,12 +11,11 @@ import { Device } from 'Models/Device';
 
 interface AverageDeviceData {
   rssi: string;
-  dataRate: string;
 }
 
 interface TotalDeviceData {
   rssi: number;
-  dataRate: number;
+  fCount: number;
 }
 
 @autoinject
@@ -59,24 +58,20 @@ export class DeviceOverviewCard {
   get averageData(): AverageDeviceData {
     if (this.messageData.length === 0) {
       return {
-        rssi: 'No data',
-        dataRate: 'No data'
+        rssi: 'No data'
       };
     }
     let dataTotals = this.messageData.reduce((total: TotalDeviceData, messageData: MessageData) => {
       return {
-        rssi: total.rssi + messageData.rssi,
-        dataRate: total.dataRate + parseInt(messageData.dataRate, 10)
+        rssi: total.rssi + messageData.rssi
       };
     }, {
         rssi: 0,
-        dataRate: 0
       }
     );
 
     return {
       rssi: (dataTotals.rssi / this.messageData.length).toFixed(2),
-      dataRate: (dataTotals.dataRate / this.messageData.length).toFixed(2)
     };
   }
 
