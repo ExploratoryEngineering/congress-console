@@ -12,7 +12,7 @@ const Log = LogBuilder.create('LoadingIndicator');
 NProgress.configure({
   showSpinner: false,
   easing: 'ease',
-  speed: 500
+  speed: 200
 });
 
 @noView()

@@ -1,5 +1,10 @@
 @import 'variables/colors';
 
+#nprogress {
+  position: relative;
+  z-index: 1031;
+}
+
 /* Overrides of color and z-index */
 #nprogress .bar {
   background: $color--telenor-blue;
