@@ -77,8 +77,8 @@ export class ServiceDetails {
 
   addTag(device: Device, tag: Tag) {
     return this.deviceService.addTagToDevice(this.application.appEUI, device.deviceEUI, tag).then((tagObject) => {
-      device.tags = Object.assign(device.tags, tagObject);
-      this.device = Object.assign({}, device);
+      device.tags = { ...device.tags, ...tagObject };
+      this.device = { ...device };
       this.eventAggregator.publish('global:message', { body: 'Tag created' });
     }).catch(error => {
       if (error instanceof Conflict) {
@@ -108,7 +108,7 @@ export class ServiceDetails {
       if (!response.wasCancelled) {
         this.deviceService.deleteTagFromDevice(this.application.appEUI, device.deviceEUI, tag).then(() => {
           delete device.tags[tag.key];
-          this.device = Object.assign({}, device);
+          this.device = { ...device };
           this.eventAggregator.publish('global:message', {
             body: 'Tag deleted'
           });

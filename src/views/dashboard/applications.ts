@@ -39,7 +39,7 @@ export class Services {
   }
 
   editApplication(application) {
-    let applicationUntouched = Object.assign({}, application);
+    let applicationUntouched = { ...application };
 
     this.dialogService.open({
       viewModel: PLATFORM.moduleName('dialogs/editApplicationDialog'),

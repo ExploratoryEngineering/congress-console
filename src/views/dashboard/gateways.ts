@@ -38,7 +38,7 @@ export class Services {
   }
 
   editGateway(gateway) {
-    let gatewayUntouched = Object.assign({}, gateway);
+    let gatewayUntouched = { ...gateway };
     Log.debug('Editing gateway', gateway);
 
     this.dialogService.open({
