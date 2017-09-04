@@ -38,7 +38,7 @@ const sassLoaderConfig = [{
   }
 }];
 
-module.exports = ({production, server, extractCss, coverage} = {}) => ({
+module.exports = ({ production, server, extractCss, coverage } = {}) => ({
   resolve: {
     extensions: ['.ts', '.js'],
     modules: [srcDir, 'node_modules'],

@@ -1,6 +1,14 @@
 {
-  "extends": "./node_modules/aurelia-tools/.eslintrc.json",
+  "extends": "./node_modules/tn-conventions/javascript/.eslintrc.json",
   "rules": {
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
     "prefer-promise-reject-errors": 2
   }
 }
