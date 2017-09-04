@@ -120,9 +120,16 @@ export class DeviceService {
       });
   }
 
-  async updateDevice(device: Device): Promise<Device> {
+  async updateDevice(applicationEui: string, device: Device): Promise<Device> {
     Log.debug('Updating device', device);
-    return Promise.resolve(device);
+    return this.apiClient.http.put(
+      `/applications/${applicationEui}/devices/${device.deviceEUI}`,
+      Device.toDto(device)
+    ).then(data => data => data.content)
+      .then(updatedDevice => {
+        Log.debug('Updated device', updatedDevice);
+        return Device.newFromDto(device);
+      });
   }
 
   /**
