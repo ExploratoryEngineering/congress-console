@@ -33,6 +33,28 @@ export class ServiceDetails {
     private router: Router
   ) { }
 
+  editDevice() {
+    Log.debug('Editing', this.device);
+    const untouchedDevice = { ...this.device };
+
+    this.dialogService.open({
+      viewModel: PLATFORM.moduleName('dialogs/editDeviceDialog'),
+      model: {
+        applicationEui: this.application.appEUI,
+        device: untouchedDevice
+      }
+    }).whenClosed(response => {
+      if (!response.wasCancelled) {
+        debugger;
+        this.eventAggregator.publish('global:message', {
+          body: 'Device updated'
+        });
+      } else {
+        Log.debug('Did not edit device');
+      }
+    });
+  }
+
   deleteDevice() {
     this.dialogService.open({
       viewModel: PLATFORM.moduleName('dialogs/messageDialog'),

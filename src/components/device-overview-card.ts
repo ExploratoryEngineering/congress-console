@@ -45,6 +45,16 @@ export class DeviceOverviewCard {
     );
   }
 
+  editDevice() {
+    CustomEventHelper.dispatchEvent(
+      this.element,
+      'edit-device',
+      {
+        bubbles: true
+      }
+    );
+  }
+
   @computedFrom('messageData')
   get averageData(): AverageDeviceData {
     if (this.messageData.length === 0) {

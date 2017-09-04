@@ -1,0 +1,34 @@
+<template>
+  <require from="components/text-input.html"></require>
+  <require from="components/checkbox-input.html"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">Edit your device</h2>
+      </div>
+      <div class="flex-container__body flex-container__body--centered">
+        <form class="form">
+          <div class="form-errors" if.bind="formError">
+            <span class="form-errors__heading">Error when submitting device:</span>
+            <span class="form-errors__error">- ${formError}</span>
+          </div>
+          <div class="form-group">
+            <text-input value.two-way="device.tags.name" name="device-name" label="Device name (Optional)" floatinglabel="true"></text-input>
+            <checkbox-input name="relaxedCounter" label="Relaxed counter" checked.two-way="device.relaxedCounter"></checkbox-input>
+          </div>
+          <div class="form-group">
+            <text-input value.two-way="device.devAddr" name="device-dev-addr" label="Dev Address (Required) Ex: 0ff0ff0" floatinglabel="true"></text-input>
+            <text-input value.two-way="device.appSKey" name="device-app-s-key" label="Application Session key (32-length leading zero integer)"
+              floatinglabel="true" maxlength="32"></text-input>
+            <text-input value.two-way="device.nwkSKey" name="device-network-s-key" label="Network Session key (32-length leading zero integer)"
+              floatinglabel="true" maxlength="32"></text-input>
+          </div>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.delegate="submitDevice()">Update device</button>
+      </div>
+    </div>
+  </div>
+</template>

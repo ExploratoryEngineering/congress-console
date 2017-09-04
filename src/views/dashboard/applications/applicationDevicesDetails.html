@@ -8,7 +8,8 @@
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
     <div class="grid__row">
-      <device-overview-card class="grid__item grid__item--4" application.bind="application" device.bind="device" delete-device.delegate="deleteDevice($event)"></device-overview-card>
+      <device-overview-card class="grid__item grid__item--4" application.bind="application" device.bind="device" delete-device.delegate="deleteDevice($event)"
+        edit-device.delegate="editDevice($event)"></device-overview-card>
       <device-keys-card class="grid__item grid__item--4" device.bind="device" provision-device.delegate="provisionDevice($event)"></device-keys-card>
       <device-map-card class="grid__item grid__item--4" device.bind="device" new-marker-position.delegate="updatePositionTag($event)"></device-map-card>
       <div class="grid__item grid__item--12">
