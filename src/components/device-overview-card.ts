@@ -1,3 +1,4 @@
+import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { computedFrom } from 'aurelia-binding';
 import { bindable, autoinject } from 'aurelia-framework';
 
@@ -28,10 +29,12 @@ export class DeviceOverviewCard {
   selectedRange: Range = Range.LAST_SIX_HOURS;
 
   messageData: MessageData[] = [];
+  subscriptions: Subscription[] = [];
 
   constructor(
     private element: Element,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private eventAggregator: EventAggregator
   ) { }
 
   deleteDevice() {
@@ -89,5 +92,15 @@ export class DeviceOverviewCard {
 
   bind() {
     this.fetchDataForDevice();
+    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
+      if (this.device.deviceEUI === deviceData.deviceEUI) {
+        this.messageData.push(deviceData);
+        this.device.fCntUp += 1;
+      }
+    }));
+  }
+
+  unbind() {
+    this.subscriptions.map((subscription) => subscription.dispose());
   }
 }
