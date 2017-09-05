@@ -82,7 +82,7 @@ export class DeviceOverviewCard {
     this.deviceService.fetchDeviceDataByEUI(this.application.appEUI, this.device.deviceEUI, {
       since: this.selectedRange.value
     }).then((data) => {
-      this.messageData = this.messageData.concat(data);
+      this.messageData = data;
     });
   }
 
