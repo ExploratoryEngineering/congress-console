@@ -66,11 +66,11 @@ export class DeviceMessagePanel {
   }
 
   bind() {
-    this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
+    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
       if (this.device.deviceEUI === deviceData.deviceEUI) {
         this.deviceData.push(deviceData);
       }
-    });
+    }));
     this.deviceData.push('Connected to Device stream');
   }
 
