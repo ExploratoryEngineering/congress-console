@@ -1,0 +1,28 @@
+@import "variables/grid";
+@import "variables/colors";
+
+.signal-strength {
+  align-items: center;
+  display: inline-flex;
+
+  &__icon {
+    cursor: default;
+    margin-right: $grid-size;
+
+    &--low {
+      color: $color--red;
+    }
+
+    &--medium {
+      color: $color--yellow;
+    }
+
+    &--high {
+      color: $color--green;
+    }
+
+    &--unknown {
+      color: $color-grey-theme--darkest;
+    }
+  }
+}
