@@ -1,5 +1,6 @@
 <template bindable="device">
   <require from="components/range-chooser"></require>
+  <require from="components/device-message-stats"></require>
   <require from="components/tag-chip-list.html"></require>
   <require from="valueConverters/tagName"></require>
   <require from="./device-overview-card.scss"></require>
@@ -19,6 +20,12 @@
         <div class="device-overview-card__metric">
           <div class="device-overview-card__metric-header">Average RSSI</div>
           <div class="device-overview-card__metric-value">${ averageData.rssi }</div>
+        </div>
+        <div class="device-overview-card__metric">
+          <div class="device-overview-card__metric-header">Message stats</div>
+          <div class="device-overview-card__metric-value">
+            <device-message-stats device.bind="device" application-eui.bind="application.appEUI"></device-message-stats>
+          </div>
         </div>
         <div class="device-overview-card__metric">
           <div class="device-overview-card__metric-header">Total frame count</div>
