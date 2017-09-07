@@ -13,7 +13,7 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
 
 @autoinject
-export class ServiceDetails {
+export class ApplicationDevices {
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
