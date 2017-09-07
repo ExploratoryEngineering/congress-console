@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.4"></a>
+# [1.0.0-beta.4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.3-patch.2...v1.0.0-beta.4) (2017-09-07)
+
+
+### Bug Fixes
+
+* **device-message-panel:** correctly handle event subscription ([2ab13f2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2ab13f2))
+* **device-overview-card:** overwrite existing messages upon message fetch ([75d765e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/75d765e))
+* **loading-indicator:** fix smooth fadeout ([70127e6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/70127e6))
+
+
+### Features
+
+* **application-devices:** add device message stats ([c397aee](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/c397aee))
+* **device:** add frame count to device overview ([305fdce](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/305fdce))
+* **device:** add possibility to edit device ([17018f6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/17018f6))
+* **device-message-stats:** add component which contains signal and last heard from ([faaf4e6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/faaf4e6))
+* **device-overview-card:** add device message stats ([ab3b887](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ab3b887))
+* **device-overview-card:** subscribe to and add messages from ws ([a853c04](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a853c04))
+* **device-table:** add message data stats ([0e12e96](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0e12e96))
+* **deviceservice:** add put functionality ([01a79c2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/01a79c2))
+* **signal-strength:** add component for showing signal strength ([0cad24e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0cad24e))
+* **time-ago-message:** simple component for showing time ago for a dataMessage ([7b091e2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/7b091e2))
+
+
+
 <a name="1.0.0-beta.3-patch.2"></a>
 # [1.0.0-beta.3-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.3-patch.1...v1.0.0-beta.3-patch.2) (2017-08-28)
 
