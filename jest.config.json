@@ -24,6 +24,7 @@
   "moduleNameMapper": {
     "aurelia-(.*)": "<rootDir>/node_modules/$1",
     "\\.(css|less|scss)$": "<rootDir>/test/mock/styleMock.js",
+    "Test/(.*)": "<rootDir>/test/$1",
     "Helpers/(.*)": "helpers/$1",
     "Components/(.*)": "components/$1",
     "Services/(.*)": "services/$1",
