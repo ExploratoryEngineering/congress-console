@@ -1,6 +1,7 @@
 <template>
   <require from="valueConverters/tagName"></require>
   <require from="components/tag-chip-list-simple.html"></require>
+  <require from="components/device-message-stats"></require>
   <require from="components/dropdown"></require>
   <require from="components/dropdown-title"></require>
   <require from="components/dropdown-container"></require>
@@ -11,6 +12,7 @@
         <th class="table__head-data">Dev address</th>
         <th class="table__head-data">Device EUI</th>
         <th class="table__head-data">Type</th>
+        <th class="table__head-data"></th>
         <th class="table__head-data visible-desktop">Tags</th>
         <th class="table__head-data"></th>
       </tr>
@@ -21,6 +23,9 @@
         <td class="table__data">${ device.devAddr }</td>
         <td class="table__data">${ device.deviceEUI }</td>
         <td class="table__data">${ device.deviceType }</td>
+        <td class="table__data">
+          <device-message-stats device.bind="device" application-eui.bind="applicationEui"></device-message-stats>
+        </td>
         <td class="table__data visible-desktop">
           <tag-chip-list-simple tag-entity.bind="device"></tag-chip-list-simple>
           </a>
