@@ -18,7 +18,7 @@ const Log = LogBuilder.create('Application devices');
 export class ApiKeys {
   applications: Application[] = [];
   gateways: Gateway[] = [];
-  tokens: Token[];
+  tokens: Token[] = [];
   subscriptions: any[] = [];
 
   constructor(
