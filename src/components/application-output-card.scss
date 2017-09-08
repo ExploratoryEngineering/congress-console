@@ -1,0 +1,22 @@
+@import "setup/typography";
+@import "variables/grid";
+
+.application-output-card {
+  &__output-header {
+    color: $font-color-secondary;
+    font-size: $font-size--14;
+    font-weight: $font-weight--regular;
+    margin-bottom: $grid-size;
+    margin-top: auto;
+    text-align: center;
+  }
+
+  &__output-count {
+    color: $font-color-primary;
+    display: flex;
+    font-size: $font-size--32;
+    font-weight: $font-weight--bold;
+    margin: 0 auto auto auto;
+    text-align: center;
+  }
+}
