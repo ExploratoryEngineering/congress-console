@@ -20,7 +20,7 @@ export class DeviceServiceMock {
   }
 
   fetchDeviceDataByEUI() {
-    return Promise.resolve();
+    return Promise.resolve([]);
   }
 
   sendMessageToDevice() {
