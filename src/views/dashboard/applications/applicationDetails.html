@@ -1,5 +1,6 @@
 <template>
   <require from="components/application-nav-bar-menu.html"></require>
+  <require from="components/application-output-card"></require>
   <require from="components/device-table"></require>
   <require from="components/graph-chart"></require>
   <require from="components/range-chooser"></require>
@@ -11,7 +12,7 @@
       <div class="grid__item grid__item--3">
         <application-details-card application.bind="application"></application-details-card>
       </div>
-      <div class="grid__item grid__item--9">
+      <div class="grid__item grid__item--6">
         <div class="card application-data-details-card">
           <div class="card__header card__header--colored">
             <h4 class="h4 card-header-heading">RSSI for devices in ${application.name}</h4>
@@ -27,6 +28,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="grid__item grid__item--3">
+        <application-output-card application-eui.bind="application.appEUI"></application-output-card>
       </div>
     </div>
     <div class="grid__row">
