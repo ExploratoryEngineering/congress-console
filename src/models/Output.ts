@@ -19,7 +19,6 @@ interface OuputConfigDto {
 interface OutputDto {
   eui: string;
   queued: number;
-  type: string;
   config: OuputConfigDto;
   logs: LogEntry[];
   status: string;
@@ -34,7 +33,6 @@ interface LogEntry {
 export class Output {
   eui: string;
   queued: number;
-  type: string;
   config: OutputConfig;
   logs: LogEntry[];
   status: string;
@@ -56,7 +54,6 @@ export class Output {
   } = {}) {
     this.eui = eui;
     this.queued = queued;
-    this.type = type;
     this.config = config;
     this.logs = logs;
     this.status = status;
@@ -66,7 +63,6 @@ export class Output {
     return new Output({
       eui: output.eui,
       queued: output.queued,
-      type: output.type,
       config: {
         type: output.config.type,
         endpoint: output.config.endpoint,
@@ -84,7 +80,6 @@ export class Output {
     return {
       eui: output.eui,
       queued: output.queued,
-      type: output.type,
       config: {
         type: output.config.type,
         endpoint: output.config.endpoint,
