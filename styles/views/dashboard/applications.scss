@@ -7,6 +7,11 @@ $service-card-color-secondary: $font-color-secondary--colored;
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include desktop() {
+    justify-content: flex-start;
+  }
 }
 
 .applications-separator {
@@ -69,8 +74,12 @@ $service-card-color-secondary: $font-color-secondary--colored;
   color: $service-card-color;
   cursor: pointer;
   height: 160px;
-  margin-right: 20px;
-  width: 300px;
+  width: 48%;
+
+  @include desktop() {
+    margin-right: 20px;
+    width: 300px;
+  }
 
   &:hover,
   &:active,

@@ -6,6 +6,11 @@ $gateway-card-color: $color--white;
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include desktop() {
+    justify-content: flex-start;
+  }
 }
 
 .gateway-card {
@@ -13,8 +18,12 @@ $gateway-card-color: $color--white;
   color: $gateway-card-color;
   display: flex;
   height: 160px;
-  margin-right: 20px;
-  width: 300px;
+  width: 48%;
+
+  @include desktop() {
+    margin-right: 20px;
+    width: 300px;
+  }
 
   &--create-new {
     background-color: $color--white;
