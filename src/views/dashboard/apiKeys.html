@@ -2,32 +2,38 @@
   <require from="components/token-expansion-panel"></require>
   <main class="main-content">
     <div class="section">
-      <div class="card">
-        <div class="card__header card__header--colored">
-          <h4 class="h4 card-header-heading">Your API keys</h4>
-          <div class="card-header-actions">
-            <button click.trigger="createNewToken()" class="card-header-actions__action">New API key</button>
+      <div class="grid__row">
+        <div class="grid__item grid__item--3">
+          <div class="card">
+            <div class="card__header card__header--colored">
+              <h4 class="h4 card-header-heading">Your API keys</h4>
+              <div class="card-header-actions">
+                <button click.trigger="createNewToken()" class="card-header-actions__action">New API key</button>
+              </div>
+            </div>
+            <div class="card__body">
+              <p class="tn-p">
+                An API token will give you access directly to our LoRa API which gives you the power to fetch and create resources according
+                to your need programatically. This is especially practical when working on a larger scale or you want to
+                integrate directly towards our backend.
+              </p>
+              <p class="tn-p" if.bind="tokens.length > 0">
+                On the right you will find your existing tokens and you can create new ones by clicking the "New API key" in the top right
+                corner.
+              </p>
+              <p class="tn-p" if.bind="tokens.length === 0">
+                You have no API keys yet. Why not create one? You can create new ones by clicking the "New API key" in the top right corner.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="card__body">
-          <p class="tn-p">
-            An API token will give you access directly to our LoRa API which gives you the power to fetch and create resources according
-            to your need programatically. This is especially practical when working on a larger scale or you want to integrate
-            directly towards our backend.
-          </p>
-          <p class="tn-p" if.bind="tokens.length > 0">
-            Underneath you will find your existing tokens and you can create new ones by clicking the "New API key" in the top right
-            corner.
-          </p>
-          <p class="tn-p" if.bind="tokens.length === 0">
-            You have no API keys yet. Why not create one? You can create new ones by clicking the "New API key" in the top right corner.
-          </p>
+        <div class="grid__item grid__item--9">
+          <div class="card card--full-width card--transparent">
+            <token-expansion-panel if.bind="tokens.length > 0" repeat.for="token of tokens" applications.bind="applications" gateways.bind="gateways"
+              token.bind="token"></token-expansion-panel>
+          </div>
         </div>
       </div>
-      <div if.bind="tokens.length > 0">
-        <token-expansion-panel repeat.for="token of tokens" applications.bind="applications" gateways.bind="gateways" token.bind="token"></token-expansion-panel>
-      </div>
-    </div>
     </div>
   </main>
 </template>
