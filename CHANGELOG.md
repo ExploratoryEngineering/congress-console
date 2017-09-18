@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.5"></a>
+# [1.0.0-beta.5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2017-09-18)
+
+
+### Bug Fixes
+
+* **text-input:** fix non-compliant html binding name ([139c825](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/139c825))
+
+
+### Features
+
+* **application-output-card:** simple overview card for available outputs ([dad9474](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/dad9474))
+* **applicationdetails:** add application output card ([088bda5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/088bda5))
+* **applicationIntegrations:** add output-table ([1b62f2d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/1b62f2d))
+* **colored-cards:** add more responsive cards ([2b454c1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2b454c1))
+* **output:** add model ([58fc326](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/58fc326))
+* **output:** add service ([fa02bd8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fa02bd8))
+* **output-table:** add output-table component ([07e2f01](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/07e2f01))
+* **outputDialogs:** add create and edit output dialogs ([57815fb](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/57815fb))
+* **outputservice:** add CUD functionality for output ([e018c7d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/e018c7d))
+* **text-input:** add config of text-input type ([3ce9ad6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3ce9ad6))
+
+
+
 <a name="1.0.0-beta.4"></a>
 # [1.0.0-beta.4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.3-patch.2...v1.0.0-beta.4) (2017-09-07)
 
