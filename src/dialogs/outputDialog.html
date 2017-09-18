@@ -1,0 +1,41 @@
+<template>
+  <require from="components/text-input.html"></require>
+  <require from="components/checkbox-input.html"></require>
+  <require from="components/textarea-input.html"></require>
+  <require from="components/form-error.html"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">${dialogHeader}</h2>
+      </div>
+      <div class="flex-container__body flex-container__body--centered">
+        <form class="form" submit.delegate="submitOuput()">
+          <form-error form-error.bind="formError"></form-error>
+          <div class="form-group">
+            <h4 class="h4">Output type</h4>
+            <select value.bind="output.config.type" class="form-group__select">
+              <option value="mqtt">MQTT</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <h4 class="h4">Endpoint configuration</h4>
+            <text-input value.two-way="output.tags.name" name="output-name" label="Name" floatinglabel="true"></text-input>
+            <text-input value.two-way="output.config.endpoint" name="gateway-eui" label="Endpoint URL" floatinglabel="true"></text-input>
+            <text-input value.two-way="output.config.port" name="gateway-eui" label="Endpoint port" floatinglabel="true"></text-input>
+            <checkbox-input name="cert-check" label="Need valid cert" checked.two-way="output.config.certCheck"></checkbox-input>
+          </div>
+          <div class="form-group">
+            <h4 class="h4">User configuration</h4>
+            <text-input value.two-way="output.config.username" name="output-user" label="Username" floatinglabel="true"></text-input>
+            <text-input input-type="password" value.two-way="output.config.password" name="output-password" label="User password" floatinglabel="true">
+            </text-input>
+          </div>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary" type="submit" click.delegate="submitOutput()">${confirmButtonText}</button>
+      </div>
+    </div>
+  </div>
+</template>
