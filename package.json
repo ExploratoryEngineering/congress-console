@@ -52,7 +52,7 @@
     "test:eslint": "eslint src test/e2e test/unit",
     "test:lint": "npm run test:eslint && npm run test:tslint",
     "test:tslint": "tslint src/**/*.ts && tslint test/**/*.ts",
-    "test:retire": "retire .",
+    "test:retire": "retire . --ignore .chrome",
     "test:debug": "npm test -- --single-run=false --debug",
     "watch": "npm run watch:dev",
     "watch:dev": "npm run build:dev -- --watch",
