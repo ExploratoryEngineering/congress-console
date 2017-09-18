@@ -53,7 +53,7 @@ export class Output {
     },
     logs = [],
     status = ''
-  }: Output) {
+  } = {}) {
     this.eui = eui;
     this.queued = queued;
     this.type = type;
