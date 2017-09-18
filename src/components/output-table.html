@@ -1,0 +1,39 @@
+<template bindable="outputs">
+  <require from="valueConverters/tagName"></require>
+  <require from="components/dropdown"></require>
+  <require from="components/dropdown-title"></require>
+  <require from="components/dropdown-container"></require>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="table__head-data">Name</th>
+        <th class="table__head-data">Type</th>
+        <th class="table__head-data">Endpoint</th>
+        <th class="table__head-data">Certificate check</th>
+        <th class="table__head-data">Status</th>
+        <th class="table__head-data visible-desktop">Tags</th>
+        <th class="table__head-data"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="output of outputs">
+        <td class="table__data">Unnamed</td>
+        <td class="table__data">${ output.config.type }</td>
+        <td class="table__data">${ output.config.username }@${ output.config.endpoint }:${ output.config.port }</td>
+        <td class="table__data">${ output.config.certCheck }</td>
+        <td class="table__data">${ output.status }</td>
+        <td class="table__data visible-desktop">
+        </td>
+        <td class="table__data table__data--action-column">
+          <dropdown container-classes="dropdown__container--transform-top-right">
+            <dropdown-title><span class="material-icons">more_vert</span></dropdown-title>
+            <dropdown-container>
+              <a class="dropdown__menu-item" click.delegate="editOutput(output)">Edit</a>
+              <a class="dropdown__menu-item" click.delegate="deleteOutput(output)">Delete</a>
+            </dropdown-container>
+          </dropdown>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
