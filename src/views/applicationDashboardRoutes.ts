@@ -33,12 +33,12 @@ export const routes = [
     title: 'Device'
   },
   {
-    route: [':applicationId/integrations'],
-    name: 'application_integrations',
-    moduleId: PLATFORM.moduleName('./dashboard/applications/applicationIntegrations'),
+    route: ['applications/:applicationId/outputs'],
+    name: 'application_outputs',
+    moduleId: PLATFORM.moduleName('./dashboard/applications/applicationOutputs'),
     nav: true,
     href: '#/dashboard/applications',
-    title: 'Integrations'
+    title: 'Outputs'
   }
 
 ];
