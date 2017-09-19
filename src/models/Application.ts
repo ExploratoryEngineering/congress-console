@@ -3,14 +3,12 @@ import Debug from 'Helpers/Debug';
 interface ApplicationDto {
   applicationEUI: string;
   appKey: string;
-  name: string;
   tags: { [tagName: string]: string };
 }
 
 export class Application implements TagEntity {
   appEUI: string;
   appKey: string;
-  name: string;
   tags: { [tagName: string]: string };
 
   constructor({
@@ -21,7 +19,6 @@ export class Application implements TagEntity {
   } = {}) {
     this.appEUI = appEUI;
     this.appKey = appKey;
-    this.name = name;
     this.tags = tags;
   }
 
@@ -32,7 +29,6 @@ export class Application implements TagEntity {
     return new Application({
       appEUI: dto.applicationEUI,
       appKey: dto.appKey,
-      name: dto.name,
       tags: dto.tags,
     });
   }
@@ -44,7 +40,6 @@ export class Application implements TagEntity {
     return {
       applicationEUI: application.appEUI,
       appKey: application.appKey,
-      name: application.name,
       tags: application.tags,
     };
   }

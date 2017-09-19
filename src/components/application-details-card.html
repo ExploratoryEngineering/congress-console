@@ -1,5 +1,6 @@
 <template class="card card--full-width" bindable="application">
   <require from="components/tag-chip-list-simple.html"></require>
+  <require from="valueConverters/tagName"></require>
   <div class="card__header card__header--colored">
     <h4 class="h4 card-header-heading">Application details</h4>
     <div class="card-header-actions">
@@ -8,7 +9,7 @@
   </div>
   <div class="card__body">
     <h5 class="application-details-card__heading">Name</h5>
-    <p class="application-details-card__content">${ application.name }</p>
+    <p class="application-details-card__content">${ application | tagName }</p>
     <h5 class="application-details-card__heading">EUI</h5>
     <p class="application-details-card__content">${ application.appEUI }</p>
     <h5 class="application-details-card__heading">Key</h5>

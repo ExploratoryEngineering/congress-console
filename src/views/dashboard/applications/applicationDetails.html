@@ -6,6 +6,7 @@
   <require from="components/range-chooser"></require>
   <require from="components/application-details-card"></require>
   <require from="valueConverters/take"></require>
+  <require from="valueConverters/tagName"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
     <div class="grid__row">
@@ -15,7 +16,7 @@
       <div class="grid__item grid__item--6">
         <div class="card application-data-details-card">
           <div class="card__header card__header--colored">
-            <h4 class="h4 card-header-heading">RSSI for devices in ${application.name}</h4>
+            <h4 class="h4 card-header-heading">RSSI for devices in ${ application | tagName }</h4>
             <div class="card-header-actions">
               <range-chooser selected-range.bind="selectedRange"></range-chooser>
             </div>

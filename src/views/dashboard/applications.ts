@@ -7,10 +7,12 @@ import { ApplicationService } from 'Services/ApplicationService';
 
 import { Application } from 'Models/Application';
 
+import { TagHelper } from 'Helpers/TagHelper';
 import { LogBuilder } from 'Helpers/LogBuilder';
 import { Conflict } from 'Helpers/ResponseHandler';
 
 const Log = LogBuilder.create('Applications');
+const th = new TagHelper();
 
 @autoinject
 export class Services {
@@ -63,7 +65,7 @@ export class Services {
     this.dialogService.open({
       viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
       model: {
-        messageHeader: `Delete ${application.name}?`,
+        messageHeader: `Delete ${th.getTagOrFallback(application, 'name', 'appEUI', 'application')}?`,
         message: `Note: Before you delete the application you must first delete all devices connected to the application.`,
         confirmButtonText: 'Delete',
         cancelButtonText: 'Cancel'
