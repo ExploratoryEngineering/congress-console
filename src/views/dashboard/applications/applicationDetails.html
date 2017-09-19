@@ -2,11 +2,9 @@
   <require from="components/application-nav-bar-menu.html"></require>
   <require from="components/application-output-card"></require>
   <require from="components/device-table"></require>
-  <require from="components/graph-chart"></require>
-  <require from="components/range-chooser"></require>
   <require from="components/application-details-card"></require>
+  <require from="components/application-graph-card.html"></require>
   <require from="valueConverters/take"></require>
-  <require from="valueConverters/tagName"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
     <div class="grid__row">
@@ -14,21 +12,7 @@
         <application-details-card application.bind="application"></application-details-card>
       </div>
       <div class="grid__item grid__item--6">
-        <div class="card application-data-details-card">
-          <div class="card__header card__header--colored">
-            <h4 class="h4 card-header-heading">RSSI for devices in ${ application | tagName }</h4>
-            <div class="card-header-actions">
-              <range-chooser selected-range.bind="selectedRange"></range-chooser>
-            </div>
-          </div>
-          <div class="card__body">
-            <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
-            <div class="no-graph-data" if.bind="!hasMessageData">
-              <i class="material-icons no-graph-data__icon">insert_chart</i>
-              <h2 class="h2 no-graph-data__heading">No data to graph</h2>
-            </div>
-          </div>
-        </div>
+        <application-graph-card containerless application.bind="application" graph.bind="graph" selected-range.two-way="selectedRange"></application-graph-card>
       </div>
       <div class="grid__item grid__item--3">
         <application-output-card application-eui.bind="application.appEUI"></application-output-card>
