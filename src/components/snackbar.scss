@@ -1,3 +1,9 @@
+@import 'setup/typography';
+
+@import 'variables/animations';
+@import 'variables/colors';
+@import 'variables/grid';
+
 .snackbar {
   bottom: -$grid-size * 6;
   display: flex;
