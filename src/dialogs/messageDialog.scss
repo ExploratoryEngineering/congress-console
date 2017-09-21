@@ -1,3 +1,8 @@
+@import 'setup/typography';
+
+@import 'variables/colors';
+@import 'variables/grid';
+
 $message-dialog-box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .38);
 
 .message-dialog {
