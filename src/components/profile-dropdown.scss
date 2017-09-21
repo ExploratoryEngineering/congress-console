@@ -1,3 +1,9 @@
+@import 'setup/typography';
+
+@import 'variables/grid';
+@import 'variables/animations';
+@import 'variables/colors';
+
 .profile-dropdown {
   display: inline-block;
   line-height: $grid-size * 4;
