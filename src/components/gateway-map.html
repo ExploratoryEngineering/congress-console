@@ -1,14 +1,5 @@
 <template>
   <div class="gateway-map">
-    <!--<div class="gateway-map__search">
-      <input type="text" value.bind="search & debounce:450" />
-      <div class="gateway-search-result">
-        <div class="gateway-search-result__search-item" repeat.for="gateway of gateways">
-          <i class="gateway-search-result__search-item-icon material-icons">network_cell</i>
-          <span>${gateway.gatewayEUI}</span>
-        </div>
-      </div>
-    </div>-->
     <div class="gateway-map__map">
       <google-map latitude.bind="latitude" longitude.bind="longitude" markers.bind="gatewayMarkers" auto-update-bounds="true"></google-map>
     </div>
