@@ -1,3 +1,10 @@
+@import 'setup/typography';
+
+@import 'mixins/responsive';
+
+@import 'variables/colors';
+@import 'variables/grid';
+
 $gateway-card-background-color: $color--telenor-blue;
 $gateway-card-color: $color--white;
 
