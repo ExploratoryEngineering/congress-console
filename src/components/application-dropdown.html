@@ -13,7 +13,7 @@
     <dropdown-container>
       <nav>
         <a route-href="route.bind: router.currentInstruction.config.name; params.bind: { applicationId: selectableApplication.appEUI }"
-          class="application-dropdown__menu-item" repeat.for="selectableApplication of selectableApplications">${ selectedApplication | tagName }</a>
+          class="application-dropdown__menu-item" repeat.for="selectableApplication of selectableApplications">${ selectableApplication | tagName }</a>
       </nav>
     </dropdown-container>
   </dropdown>
