@@ -1,3 +1,8 @@
+@import 'setup/typography';
+
+@import 'variables/colors';
+@import 'variables/grid';
+
 $application-header-background-color: #fafafa;
 $application-header-border-color: #e5e5e5;
 $application-header-color: $font-color-secondary;

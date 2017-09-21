@@ -1,4 +1,5 @@
 <template class="application-header" bindable="application, selectableapplications, router">
+  <require from="./application-nav-bar-menu.scss"></require>
   <require from="components/application-dropdown.html"></require>
   <application-dropdown class="application-header__application-chooser" router.bind="router" selectable-applications.bind="selectableapplications"
     selected-application.bind="application"></application-dropdown>
