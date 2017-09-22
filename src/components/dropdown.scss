@@ -3,6 +3,7 @@
 @import "variables/animations";
 @import "variables/colors";
 @import "variables/grid";
+@import "variables/opacities";
 
 $dropdown-container-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
 $dropdown-container-color: $font-color-secondary;
@@ -85,4 +86,24 @@ $dropdown-menu-item-font-size: $font-size--12;
       margin-bottom: $grid-size;
     }
   }
+
+  &__icon {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 100%;
+    padding: 2px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, .12);
+    }
+
+    &--colored {
+      background-color: rgba(255, 255, 255, 0);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, .12);
+      }
+    }
+  }
+
+  
 }
