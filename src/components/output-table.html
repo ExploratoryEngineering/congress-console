@@ -9,7 +9,7 @@
         <th class="table__head-data">Name</th>
         <th class="table__head-data">Type</th>
         <th class="table__head-data">Endpoint</th>
-        <th class="table__head-data">TLS certificate validation</th>
+        <th class="table__head-data">TLS</th>
         <th class="table__head-data">Status</th>
         <th class="table__head-data visible-desktop">Tags</th>
         <th class="table__head-data"></th>
@@ -20,13 +20,13 @@
         <td class="table__data">Unnamed</td>
         <td class="table__data">${ output.config.type }</td>
         <td class="table__data">${ output.config.username }@${ output.config.endpoint }:${ output.config.port }</td>
-        <td class="table__data">${ output.config.certCheck }</td>
+        <td class="table__data">${ output.config.tls ? 'Yes' + (output.config.certCheck ? ', validate cert' : ', no cert validation') : 'No' }</td>
         <td class="table__data">${ output.status }</td>
         <td class="table__data visible-desktop">
         </td>
         <td class="table__data table__data--action-column">
           <dropdown container-classes="dropdown__container--transform-top-right">
-            <dropdown-title><span class="material-icons">more_vert</span></dropdown-title>
+            <dropdown-title><span class="material-icons dropdown__icon">more_vert</span></dropdown-title>
             <dropdown-container>
               <a class="dropdown__menu-item" click.delegate="editOutput(output)">Edit</a>
               <a class="dropdown__menu-item" click.delegate="deleteOutput(output)">Delete</a>

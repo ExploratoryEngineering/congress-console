@@ -4,6 +4,7 @@ interface OutputConfig {
   port: number;
   username: string;
   password: string;
+  tls: boolean;
   certCheck: boolean;
 }
 
@@ -13,6 +14,7 @@ interface OuputConfigDto {
   port: number;
   username: string;
   password: string;
+  tls: boolean;
   cert_check: boolean;
 }
 
@@ -47,6 +49,7 @@ export class Output {
       port: 1883,
       username: '',
       password: '',
+      tls: true,
       certCheck: true
     },
     logs = [],
@@ -69,6 +72,7 @@ export class Output {
         port: output.config.port,
         username: output.config.username,
         password: output.config.password,
+        tls: output.config.tls,
         certCheck: output.config.cert_check
       },
       logs: output.logs,
@@ -86,6 +90,7 @@ export class Output {
         port: output.config.port,
         username: output.config.username,
         password: output.config.password,
+        tls: output.config.tls,
         cert_check: output.config.certCheck
       },
       logs: output.logs,
