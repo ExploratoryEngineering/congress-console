@@ -3,6 +3,22 @@ import { SortValueConverter } from './sort';
 const sort = new SortValueConverter();
 
 describe('Sort value converter', () => {
+  describe('deep nested variables', () => {
+    it('should correctly be able to sort deep nested variables', () => {
+      let unSortedList = [{
+        num: { a: 3 }
+      }, {
+        num: { a: 1 }
+      }, {
+        num: { a: 2 }
+      }];
+
+      expect(sort.toView(unSortedList, 'num.a')).toEqual([
+        { num: { a: 1 } }, { num: { a: 2 } }, { num: { a: 3 } }
+      ]);
+    });
+  });
+
   describe('sorting numbers', () => {
     it('should correctly sort a list of object with numbers', () => {
       let unSortedList = [{
@@ -74,6 +90,20 @@ describe('Sort value converter', () => {
 
       expect(sort.toView(unSortedList, 'str')).toEqual([
         { str: 3 }, { str: '1' }, { str: true }
+      ]);
+    });
+
+    it('should sort undefined values last', () => {
+      let unSortedList = [{
+        str: 3
+      }, {
+        notStr: '1'
+      }, {
+        str: true
+      }];
+
+      expect(sort.toView(unSortedList, 'str')).toEqual([
+        { str: 3 }, { str: true }, { notStr: '1' }
       ]);
     });
   });
