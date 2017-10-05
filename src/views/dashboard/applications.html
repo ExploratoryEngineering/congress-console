@@ -6,7 +6,7 @@
       <div class="applications-separator__title">Your applications</div>
     </div>
     <div class="applications-container">
-      <application-card repeat.for="application of availableApplications | sort:'name':'asc'" application.bind="application"></application-card>
+      <application-card repeat.for="application of availableApplications | sort:'tags.name':'asc'" application.bind="application"></application-card>
       <a class="card card--selectable application-card application-card--create-new" click.trigger="createNewApplication()" tabindex="0">
         <div class="card__header">
           <h2 class="h2">Create new application</h3>
