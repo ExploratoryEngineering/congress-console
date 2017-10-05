@@ -12,9 +12,8 @@ export class Application implements TagEntity {
   tags: { [tagName: string]: string };
 
   constructor({
-    appEUI = Debug.getRandomHexString(),
-    appKey = Debug.getRandomHexString(16, false),
-    name = '',
+    appEUI = '',
+    appKey = '',
     tags = {}
   } = {}) {
     this.appEUI = appEUI;
