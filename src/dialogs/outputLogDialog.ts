@@ -18,7 +18,7 @@ export class OutputLogDialog {
   ) { }
 
   update() {
-    this.outputService.getOutputByEui(this.applicationEui, this.output.eui).then((output) => {
+    return this.outputService.getOutputByEui(this.applicationEui, this.output.eui).then((output) => {
       this.output = output;
     });
   }
