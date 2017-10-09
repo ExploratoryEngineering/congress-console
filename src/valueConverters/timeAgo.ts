@@ -6,8 +6,8 @@ const INVALID_DATE = 'Invalid date';
 const Log = LogBuilder.create('Time ago');
 
 export class TimeAgoValueConverter {
-  toView(value) {
-    let date = moment(value, 'X');
+  toView(value, format = [moment.ISO_8601, 'X']) {
+    let date = moment(value, format);
 
     if (date.isValid()) {
       return date.fromNow();
