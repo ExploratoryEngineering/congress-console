@@ -78,6 +78,10 @@ $button-floating-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     opacity: .3;
   }
 
+  & + .button {
+    margin-left: $grid-size;
+  }
+
   &--primary {
     background-color: $button-primary-background-color;
     border-color: $button-primary-border-color;
