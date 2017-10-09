@@ -122,17 +122,4 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
   flex-shrink: 1;
   font-size: $font-size--15;
   margin-left: $grid-size;
-
-  &__action {
-    background-color: $color--telenor-blue-darker;
-    border: 0;
-    border-radius: 2px;
-    color: $color--white;
-    cursor: pointer;
-    display: inline-block;
-    font-size: inherit;
-    font-weight: $font-weight--bold;
-    padding: $grid-size;
-    position: relative;
-  }
 }

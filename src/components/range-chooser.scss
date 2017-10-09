@@ -25,13 +25,13 @@
 
   &__icon {
     display: inline-block;
-    font-size: $font-size--15;
+    font-size: $font-size--16;
     position: absolute;
-    right: $grid-size;
-    top: $grid-size;
+    right: 10px;
+    top: 8px;
 
     &--left {
-      left: $grid-size;
+      left: 10px;
       right: auto;
     }
   }
