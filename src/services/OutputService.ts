@@ -13,8 +13,8 @@ export class OutputService {
     return this.apiClient.http.get(
       `/applications/${applicationEui}/outputs/${outputEui}`
     ).then(data => data.content)
-      .then(outputs => {
-        return outputs.map(Output.newFromDto);
+      .then(output => {
+        return Output.newFromDto(output);
       });
   }
 
