@@ -22,6 +22,16 @@ export class OutputTable {
     private eventAggregator: EventAggregator
   ) { }
 
+  showOutputLog(output: Output) {
+    this.dialogService.open({
+      viewModel: PLATFORM.moduleName('dialogs/outputLogDialog'),
+      model: {
+        applicationEui: this.applicationEui,
+        output: output
+      }
+    });
+  }
+
   editOutput(outputToEdit: Output) {
     let outputUntouched = { ...outputToEdit };
 

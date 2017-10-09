@@ -28,6 +28,7 @@
           <dropdown container-classes="dropdown__container--transform-top-right">
             <dropdown-title><span class="material-icons dropdown__icon">more_vert</span></dropdown-title>
             <dropdown-container>
+              <a class="dropdown__menu-item" click.delegate="showOutputLog(output)">Show log</a>
               <a class="dropdown__menu-item" click.delegate="editOutput(output)">Edit</a>
               <a class="dropdown__menu-item" click.delegate="deleteOutput(output)">Delete</a>
             </dropdown-container>
