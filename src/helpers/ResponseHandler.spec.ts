@@ -14,7 +14,7 @@ describe('Response handler', () => {
 
   let responseHandler: ResponseHandler;
 
-  beforeEach(() => {
+  beforeAll(() => {
     routerStub = new RouterStub();
     eventAggregatorStub = new EventAggreagatorStub();
 
