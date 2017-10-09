@@ -27,7 +27,7 @@ interface OutputDto {
 }
 
 interface LogEntry {
-  time: string;
+  timestamp: string;
   message: string;
 }
 
