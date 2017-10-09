@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.6"></a>
+# [1.0.0-beta.6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.5-patch.1...v1.0.0-beta.6) (2017-10-09)
+
+
+### Bug Fixes
+
+* **application:** do not generate any appEui and appKey. Fixes #87 ([aee1563](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/aee1563)), closes [#87](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/87)
+* **application-card:** correctly add name as title from tags ([c751565](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/c751565))
+* **applicationDropdown:** fix bug where selectable application name was wrong ([ff8d3f5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ff8d3f5))
+* **applications:** correctly sort by tags ([223887a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/223887a))
+* **device-table:** remove unclosed tag ([b9600a5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b9600a5))
+* **gateway-card:** remove accidental character ([f70fbb7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f70fbb7))
+* **output:** fix correct name for logmodel in output ([9d0b74a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9d0b74a))
+* **outputService:** stop mapping single entities ([a7c336b](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a7c336b))
+
+
+### Features
+
+* **output:** add tls flag for output ([3e64405](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3e64405))
+* **outputLogDialog:** add outputlogDialog ([789a9e8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/789a9e8))
+* **sort:** allow for deep nested properties ([fc53210](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fc53210))
+* **time-ago-message:** add actual date on hover ([15651d8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/15651d8))
+* **valueConverters:** add ISO.8601 as a sane default ([6f997b3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6f997b3))
+
+
+
 <a name="1.0.0-beta.5-patch.1"></a>
 # [1.0.0-beta.5-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.5...v1.0.0-beta.5-patch.1) (2017-09-19)
 
