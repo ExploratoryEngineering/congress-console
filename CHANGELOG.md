@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.6-patch.1"></a>
+# [1.0.0-beta.6-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.6...v1.0.0-beta.6-patch.1) (2017-10-10)
+
+
+### Bug Fixes
+
+* **graphs:** refactor and correctly bind graphs to data result ([b106fd4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b106fd4))
+
+
+
 <a name="1.0.0-beta.6"></a>
 # [1.0.0-beta.6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.5-patch.1...v1.0.0-beta.6) (2017-10-09)
 
