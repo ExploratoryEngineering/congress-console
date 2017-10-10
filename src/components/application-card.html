@@ -10,7 +10,9 @@
     <div class="card__header">
       <h2 title="${application | tagName }" class="h2 application-card__header">${ application | tagName }</h2>
       <dropdown container-classes="dropdown__container--transform-top-right">
-        <dropdown-title><span class="dropdown__icon dropdown__icon--colored material-icons">more_vert</span></dropdown-title>
+        <dropdown-title>
+          <span class="dropdown__icon dropdown__icon--colored material-icons">more_vert</span>
+        </dropdown-title>
         <dropdown-container>
           <div class="dropdown__menu-item" click.delegate="editApplication()">Edit</div>
           <div class="dropdown__menu-item" click.delegate="deleteApplication()">Delete</div>
@@ -18,7 +20,7 @@
       </dropdown>
     </div>
     <div class="card__body card__body--no-padding">
-      <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+      <graph-chart chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
     </div>
   </a>
 </template>

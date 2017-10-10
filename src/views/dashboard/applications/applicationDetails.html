@@ -3,7 +3,7 @@
   <require from="components/application-output-card"></require>
   <require from="components/device-table"></require>
   <require from="components/application-details-card"></require>
-  <require from="components/application-graph-card.html"></require>
+  <require from="components/application-graph-card"></require>
   <require from="valueConverters/take"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
@@ -12,7 +12,7 @@
         <application-details-card application.bind="application"></application-details-card>
       </div>
       <div class="grid__item grid__item--6">
-        <application-graph-card containerless application.bind="application" graph.bind="graph" selected-range.two-way="selectedRange"></application-graph-card>
+        <application-graph-card containerless application.bind="application" chart-data.bind="chartData" selected-range.two-way="selectedRange"></application-graph-card>
       </div>
       <div class="grid__item grid__item--3">
         <application-output-card application-eui.bind="application.appEUI"></application-output-card>

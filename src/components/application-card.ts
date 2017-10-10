@@ -50,7 +50,6 @@ export class ApplicationCard {
     }
   };
   chartType = 'bar';
-  chart = {};
 
   dataInterval;
 

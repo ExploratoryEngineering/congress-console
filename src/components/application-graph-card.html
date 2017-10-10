@@ -1,4 +1,4 @@
-<template bindable="application,chart,selectedRange">
+<template>
   <require from="components/range-chooser"></require>
   <require from="components/graph-chart"></require>
   <require from="valueConverters/tagName"></require>
@@ -11,7 +11,7 @@
     </div>
     <div class="card__body">
       <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
-      <div class="no-graph-data" if.bind="!hasMessageData">
+      <div class="no-graph-data" if.bind="!chartData || chartData.datasets.length === 0">
         <i class="material-icons no-graph-data__icon">insert_chart</i>
         <h2 class="h2 no-graph-data__heading">No data to graph</h2>
       </div>

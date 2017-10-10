@@ -4,7 +4,6 @@ import { autoinject, bindable, PLATFORM } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
-import * as moment from 'moment';
 
 import { ApplicationService } from 'Services/ApplicationService';
 import { DeviceService } from 'Services/DeviceService';
@@ -27,45 +26,6 @@ export class ServiceDetails {
   subscriptions: Subscription[] = [];
 
   chartData: GraphData;
-  chartOptions = {
-    maintainAspectRatio: false,
-    showLines: true,
-    spanGaps: true,
-    gridLines: {
-      display: true
-    },
-    legend: {
-      display: true,
-      position: 'right'
-    },
-    scales: {
-      yAxes: [{
-        display: true,
-        ticks: {
-          beginAtZero: true,
-          suggestedMax: 3
-        }
-      }],
-      xAxes: [{
-        display: true,
-        type: 'time',
-        ticks: {
-          max: 8,
-          min: 0
-        }
-      }]
-    },
-    tooltips: {
-      enabled: true,
-      callbacks: {
-        title: function (tooltipItem, data) {
-          return moment(parseInt(data.labels[tooltipItem[0].index], 10)).format('LTS');
-        }
-      }
-    }
-  };
-  chartType = 'line';
-  chart;
 
   @bindable
   selectedRange: Range = Range.LAST_SIX_HOURS;
@@ -83,9 +43,12 @@ export class ServiceDetails {
   ) { }
 
   initiateChartData() {
+    Log.debug('Initiating chart data');
     this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: this.selectedRange.value }).then(messageData => {
       this.hasMessageData = messageData.length > 0;
       this.chartData = this.getChartData(messageData);
+
+      Log.debug('Got chart data', this.chartData);
     });
   }
 
