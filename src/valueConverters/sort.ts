@@ -8,7 +8,6 @@ export class SortValueConverter {
       .slice(0)
       .sort((a, b) => {
         let aProp = this.getProp(a, propertyName), bProp = this.getProp(b, propertyName);
-        Log.debug('Sorting', aProp, bProp);
         if (typeof aProp === 'string' && typeof bProp === 'string') {
           return aProp.localeCompare(bProp) * factor;
         }
@@ -30,8 +29,6 @@ export class SortValueConverter {
   private getProp(element: any, property: string): any {
     const pieces = property.split('.');
     let tempEl = { ...element };
-
-    Log.debug('Pieces', pieces, tempEl);
 
     pieces.forEach(piece => {
       try {
