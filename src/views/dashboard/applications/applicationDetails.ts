@@ -1,4 +1,3 @@
-import { Range } from 'Helpers/Range';
 import { DialogService } from 'aurelia-dialog';
 import { autoinject, bindable, PLATFORM } from 'aurelia-framework';
 import { GraphController, GraphData } from 'Helpers/GraphController';
@@ -11,9 +10,10 @@ import { DeviceService } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
 import { Application } from 'Models/Application';
 
+import { Range } from 'Helpers/Range';
+import { LogBuilder } from 'Helpers/LogBuilder';
 import { ApplicationStream } from 'Helpers/ApplicationStream';
 import { WebsocketDeviceDataMessage } from 'Helpers/Websocket';
-import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Application details');
 
