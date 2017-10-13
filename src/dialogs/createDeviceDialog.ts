@@ -98,7 +98,7 @@ export class CreateDeviceDialog {
     } else if (this.isStep(2)) {
       return 'Create device';
     } else {
-      return 'Finish';
+      return 'To new device';
     }
   }
 
@@ -117,6 +117,7 @@ export class CreateDeviceDialog {
       return this.submitDevice()
         .then(() => this.fetchSource())
         .then(() => {
+          this.dialogController.settings.overlayDismiss = false;
           this.step = 3;
         });
     } else if (this.isStep(3)) {
