@@ -35,7 +35,11 @@ export class Services {
         this.eventAggregator.publish('global:message', {
           body: 'Application created'
         });
-        this.availableApplications.push(response.output);
+        const newApplication: Application = response.output;
+        this.availableApplications.push(newApplication);
+        this.router.navigateToRoute('application_details', {
+          applicationId: newApplication.appEUI
+        });
       }
     });
   }
