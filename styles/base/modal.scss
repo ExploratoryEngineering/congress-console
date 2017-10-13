@@ -12,6 +12,7 @@ $modal-background-color: $color-grey-theme--light;
   position: absolute;
   right: 0;
   top: 10%;
+  transition: max-width 0.15s ease-out;
 
   &--small {
     left: 30%;
