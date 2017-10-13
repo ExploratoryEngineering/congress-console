@@ -14,6 +14,10 @@ class DeviceServiceStub {
 }
 
 class DialogControllerStub {
+  settings = {
+    overlayDismiss: true
+  };
+
   ok() {
     return Promise.resolve();
   }
@@ -21,6 +25,7 @@ class DialogControllerStub {
   cancel() {
     return Promise.resolve();
   }
+
 }
 
 describe('Create device dialog', () => {
@@ -144,7 +149,16 @@ describe('Create device dialog', () => {
 
     it('should correctly show next text on step 3', () => {
       createDeviceDialog.step = 3;
-      expect(createDeviceDialog.nextText).toBe('Finish');
+      expect(createDeviceDialog.nextText).toBe('To new device');
+    });
+
+    it('should correctly set overlayDismiss to false upon reaching step 3', (done) => {
+      expect(dialogControllerStub.settings.overlayDismiss).toBe(true);
+      createDeviceDialog.step = 2;
+      createDeviceDialog.next().then(() => {
+        expect(dialogControllerStub.settings.overlayDismiss).toBe(false);
+        done();
+      });
     });
   });
 
