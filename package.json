@@ -69,7 +69,7 @@
     "aurelia-configuration": "^1.0.17",
     "aurelia-dialog": "^1.0.0-rc.1.0.3",
     "aurelia-framework": "1.1.4",
-    "aurelia-google-maps": "^1.0.21",
+    "aurelia-google-maps": "^2.1.0",
     "aurelia-history-browser": "1.0.0",
     "aurelia-http-client": "^1.1.1",
     "aurelia-loader-webpack": "2.1.0",
