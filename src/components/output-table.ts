@@ -29,6 +29,10 @@ export class OutputTable {
         applicationEui: this.applicationEui,
         output: output
       }
+    }).whenClosed(response => {
+      if (!response.wasCancelled) {
+        output = response.output;
+      }
     });
   }
 
