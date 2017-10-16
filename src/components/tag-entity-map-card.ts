@@ -2,9 +2,8 @@ import { bindable, autoinject } from 'aurelia-framework';
 
 import { CustomEventHelper } from 'Helpers/CustomEventHelper';
 import { LogBuilder } from 'Helpers/LogBuilder';
-import { Device } from 'Models/Device';
 
-interface DeviceMarker {
+interface TagMarker {
   longitude: number;
   latitude: number;
 }
@@ -12,14 +11,14 @@ interface DeviceMarker {
 const Log = LogBuilder.create('Device map card');
 
 @autoinject
-export class DeviceMapCard {
+export class TagEntityMapCard {
   @bindable
-  device: Device;
+  tagEntity: TagEntity;
 
   latitude = 63.422064;
   longitude = 10.438485;
 
-  deviceMarkers: DeviceMarker[] = [];
+  tagEntityMarkers: TagMarker[] = [];
 
   updating: boolean = false;
 
@@ -27,13 +26,13 @@ export class DeviceMapCard {
     private element: Element
   ) { }
 
-  updateDeviceMarker() {
-    this.deviceMarkers = [];
+  updateTagEntityMarker() {
+    this.tagEntityMarkers = [];
 
-    if (this.device && this.device.tags.location) {
-      let [latitude, longitude] = this.device.tags.location.split(',');
+    if (this.tagEntity && this.tagEntity.tags.location) {
+      let [latitude, longitude] = this.tagEntity.tags.location.split(',');
       if (longitude && latitude) {
-        this.deviceMarkers.push({
+        this.tagEntityMarkers.push({
           latitude: parseFloat(latitude),
           longitude: parseFloat(longitude)
         });
@@ -48,7 +47,7 @@ export class DeviceMapCard {
     this.updating = true;
   }
 
-  mapEvent(mapEvent: CustomEvent) {
+  mapClickEvent(mapEvent: CustomEvent) {
     if (!this.updating) {
       return;
     }
@@ -66,18 +65,18 @@ export class DeviceMapCard {
       }
     );
 
-    this.device.tags.location = `${latLngDetails.lat()},${latLngDetails.lng()}`;
-    this.updateDeviceMarker();
+    this.tagEntity.tags.location = `${latLngDetails.lat()},${latLngDetails.lng()}`;
+    this.updateTagEntityMarker();
 
     this.updating = false;
     Log.debug('Event', mapEvent.detail);
   }
 
-  deviceChanged() {
-    this.updateDeviceMarker();
+  tagEntityChanged() {
+    this.updateTagEntityMarker();
   }
 
   bind() {
-    this.updateDeviceMarker();
+    this.updateTagEntityMarker();
   }
 }

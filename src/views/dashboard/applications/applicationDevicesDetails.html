@@ -4,14 +4,14 @@
   <require from="components/device-keys-card"></require>
   <require from="components/device-overview-card"></require>
   <require from="components/device-message-panel"></require>
-  <require from="components/device-map-card"></require>
+  <require from="components/tag-entity-map-card"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
     <div class="grid__row">
       <device-overview-card class="grid__item grid__item--4" application.bind="application" device.bind="device" delete-device.delegate="deleteDevice($event)"
         edit-device.delegate="editDevice($event)"></device-overview-card>
       <device-keys-card class="grid__item grid__item--4" device.bind="device" provision-device.delegate="provisionDevice($event)"></device-keys-card>
-      <device-map-card class="grid__item grid__item--4" device.bind="device" new-marker-position.delegate="updatePositionTag($event)"></device-map-card>
+      <tag-entity-map-card class="grid__item grid__item--4" tag-entity.bind="device" new-marker-position.delegate="updatePositionTag($event)"></tag-entity-map-card>
       <div class="grid__item grid__item--12">
         <div class="card card--full-width">
           <div class="card__header card__header--colored">
