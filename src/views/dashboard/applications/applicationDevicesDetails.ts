@@ -45,7 +45,6 @@ export class ServiceDetails {
       }
     }).whenClosed(response => {
       if (!response.wasCancelled) {
-        debugger;
         this.eventAggregator.publish('global:message', {
           body: 'Device updated'
         });
