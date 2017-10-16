@@ -38,8 +38,9 @@ $flex-container-header-border-color: $color-grey-theme--dark;
   }
 
   &__body {
-    padding: $grid-size*4;
     flex: 1;
+    overflow-y: auto;
+    padding: $grid-size*4;
 
     &--centered {
       align-items: center;
