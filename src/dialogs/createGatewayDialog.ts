@@ -9,14 +9,24 @@ import { BadRequestError, Conflict } from 'Helpers/ResponseHandler';
 
 const Log = LogBuilder.create('Create gateway dialog');
 
+interface TagMarker {
+  longitude: number;
+  latitude: number;
+}
+
 @useView(PLATFORM.moduleName('dialogs/gatewayDialog.html'))
 @autoinject
 export class CreateGatewayDialog {
   gateway: Gateway = new Gateway();
+  mapMarkers: TagMarker[] = [];
+
 
   dialogHeader = 'Create your new gateway';
   confirmButtonText = 'Create new gateway';
   formError: string;
+
+  latitude = 63.422064;
+  longitude = 10.438485;
 
   constructor(
     private gatewayService: GatewayService,
@@ -28,10 +38,36 @@ export class CreateGatewayDialog {
     });
   }
 
+  mapClickEvent(mapEvent: CustomEvent) {
+    Log.debug('Mapevent', mapEvent);
+
+    let latLngDetails = mapEvent.detail.latLng;
+
+    this.gateway.latitude = latLngDetails.lat();
+    this.gateway.longitude = latLngDetails.lng();
+
+    Log.debug('Event', mapEvent.detail);
+    this.setGatewayMarker();
+  }
+
   private setCurrentPosition(position: Position) {
-    this.gateway.latitude = position.coords.latitude;
-    this.gateway.longitude = position.coords.longitude;
-    this.gateway.altitude = position.coords.altitude ? position.coords.altitude : 0;
+    if (!this.hasLocation) {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+    }
+  }
+
+  private setGatewayMarker() {
+    if (this.hasLocation()) {
+      this.mapMarkers = [{
+        longitude: this.gateway.longitude,
+        latitude: this.gateway.latitude
+      }];
+    }
+  }
+
+  private hasLocation(): boolean {
+    return !!(this.gateway.latitude && this.gateway.longitude);
   }
 
   submitGateway() {

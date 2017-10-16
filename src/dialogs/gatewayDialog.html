@@ -7,7 +7,7 @@
       <div class="flex-container__header">
         <h2 class="h2">${dialogHeader}</h2>
       </div>
-      <div class="flex-container__body flex-container__body--centered">
+      <div class="flex-container__body">
         <form class="form" submit.delegate="submitGateway()">
           <div class="form-errors" if.bind="formError">
             <span class="form-errors__heading">Error when submitting gateway:</span>
@@ -18,9 +18,13 @@
           <text-input value.two-way="gateway.gatewayEUI" name="gateway-eui" label="Gateway EUI (Required) Ex: 00-FF-00-FF-00-FF-00-FF"
             floatinglabel="true"></text-input>
           <textarea-input value.two-way="gateway.tags.description" name="gateway-description" label="Description (Optional)" floatinglabel="true"></textarea-input>
-          <text-input value.two-way="gateway.latitude" name="gateway-latitude" label="Gateway latitude (Optional)" floatinglabel="true"></text-input>
-          <text-input value.two-way="gateway.longitude" name="gateway-longitude" label="Gateway longitude (Optional)" floatinglabel="true"></text-input>
-          <checkbox-input name="strictIP" label="Strict IP" checked.two-way="gateway.strictip"></checkbox-input>
+          <div class="form-group">
+            <checkbox-input name="strictIP" label="Strict IP" checked.two-way="gateway.strictip"></checkbox-input>
+          </div>
+          <div class="form-group">
+            <label class="form-group__label">Position(optional)</label>
+            <google-map latitude.bind="latitude" longitude.bind="longitude" zoom="15" markers.bind="mapMarkers" map-click.delegate="mapClickEvent($event)"></google-map>
+          </div>
         </form>
       </div>
       <div class="flex-container__footer">
