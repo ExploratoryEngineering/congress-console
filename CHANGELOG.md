@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.7"></a>
+# [1.0.0-beta.7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.6-patch.1...v1.0.0-beta.7) (2017-10-16)
+
+
+### Bug Fixes
+
+* **createDeviceDialog:** disallow clicking away modal on finish. Fixes #99 ([c75ca2d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/c75ca2d)), closes [#99](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/99)
+* **output-table:** replace existing output with updated model upon modal close ([a96159d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a96159d))
+
+
+### Features
+
+* **applications:** redirect to new application upon creation. Fixes #105 ([5d1a0d0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5d1a0d0)), closes [#105](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/105)
+* **device-table:** make names clickable. Fixes #101 ([b9ca65d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b9ca65d)), closes [#101](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/101)
+* **gatewayDialog:** add map instead of coordinates. Fixes #103 ([97dd092](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/97dd092)), closes [#103](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/103)
+
+
+
 <a name="1.0.0-beta.6-patch.1"></a>
 # [1.0.0-beta.6-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.6...v1.0.0-beta.6-patch.1) (2017-10-10)
 
