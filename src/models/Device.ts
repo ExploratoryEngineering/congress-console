@@ -7,6 +7,7 @@ interface DeviceDto {
   fCntUp: number;
   nwkSKey: string;
   relaxedCounter: boolean;
+  keyWarning: boolean;
   tags: { [tagName: string]: string };
 }
 
@@ -19,6 +20,7 @@ export class Device implements TagEntity {
   fCntDn: number;
   nwkSKey: string;
   relaxedCounter: boolean;
+  keyWarning: boolean;
   tags: { [tagName: string]: string };
 
   constructor({
@@ -30,6 +32,7 @@ export class Device implements TagEntity {
     fCntUp = 0,
     fCntDn = 0,
     relaxedCounter = true,
+    keyWarning = false,
     tags = {}
   } = {}) {
     this.deviceEUI = deviceEUI;
@@ -40,6 +43,7 @@ export class Device implements TagEntity {
     this.fCntUp = fCntUp;
     this.fCntDn = fCntDn;
     this.relaxedCounter = relaxedCounter;
+    this.keyWarning = keyWarning;
     this.tags = tags;
   }
 
@@ -53,6 +57,7 @@ export class Device implements TagEntity {
       fCntUp: device.fCntUp,
       fCntDn: device.fCntDn,
       relaxedCounter: device.relaxedCounter,
+      keyWarning: device.keyWarning,
       tags: device.tags
     });
   }
@@ -67,6 +72,7 @@ export class Device implements TagEntity {
       fCntUp: device.fCntUp,
       fCntDn: device.fCntDn,
       relaxedCounter: device.relaxedCounter,
+      keyWarning: device.keyWarning,
       tags: device.tags
     };
   }
