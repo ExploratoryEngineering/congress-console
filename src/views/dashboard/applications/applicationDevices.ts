@@ -1,3 +1,4 @@
+import { computedFrom } from 'aurelia-binding';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { autoinject, PLATFORM } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
@@ -45,6 +46,13 @@ export class ApplicationDevices {
           deviceId: response.output.deviceEUI
         });
       }
+    });
+  }
+
+  @computedFrom('devices')
+  get hasDevicesWithWarnings(): boolean {
+    return this.devices.some((device) => {
+      return device.keyWarning;
     });
   }
 
