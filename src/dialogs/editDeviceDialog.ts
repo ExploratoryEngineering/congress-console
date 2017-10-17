@@ -23,7 +23,6 @@ export class EditDeviceDialog {
   submitDevice() {
     this.deviceService.updateDevice(this.applicationEui, this.device)
       .then((device) => {
-        Log.debug('Wat');
         this.dialogController.ok(device);
       }).catch((error) => {
         if (error instanceof BadRequestError) {
