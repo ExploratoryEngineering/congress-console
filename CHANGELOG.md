@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.8"></a>
+# [1.0.0-beta.8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2017-10-17)
+
+
+### Bug Fixes
+
+* **applicationDeviceDetails:** remove debugger from code ([f385f95](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f385f95))
+* **applicationDevicesDetails:** propagate change to current model ([ca342e9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ca342e9))
+
+
+### Features
+
+* **applicationDevices:** add warning header for key warning ([e69654f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/e69654f))
+* **device-keys-card:** add keyWarning ([3e86ff1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3e86ff1))
+* **device-table:** add keyWarning to table view ([aa742f4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/aa742f4))
+
+
+
 <a name="1.0.0-beta.7"></a>
 # [1.0.0-beta.7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.6-patch.1...v1.0.0-beta.7) (2017-10-16)
 
