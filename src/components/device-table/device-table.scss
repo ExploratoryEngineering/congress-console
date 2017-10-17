@@ -1,0 +1,15 @@
+@import 'variables/colors';
+@import 'variables/grid';
+
+.device-table {
+  &__device-warning-icon {
+    color: $color--yellow;
+    cursor: default;
+    margin-left: $grid-size;
+  }
+
+  &__icon-cell {
+    align-items: center;
+    display: flex;
+  }
+}

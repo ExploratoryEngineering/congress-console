@@ -5,7 +5,8 @@
   <require from="components/dropdown"></require>
   <require from="components/dropdown-title"></require>
   <require from="components/dropdown-container"></require>
-  <table class="table">
+  <require from="./device-table.scss"></require>
+  <table class="table device-table">
     <thead>
       <tr>
         <th class="table__head-data">Name</th>
@@ -20,7 +21,10 @@
     <tbody>
       <tr repeat.for="device of devices">
         <td class="table__data">
-          <a class="link" route-href="route: application_device; params.bind: { applicationId: applicationEui, deviceId: device.deviceEUI}">${ device | tagName }</a>
+          <div class="device-table__icon-cell">
+            <a class="link" route-href="route: application_device; params.bind: { applicationId: applicationEui, deviceId: device.deviceEUI}">${ device | tagName }</a>
+            <span if.bind="device.keyWarning" title="Key warning" class="material-icons device-table__device-warning-icon">warning</span>
+          </div>
         </td>
         <td class="table__data">${ device.devAddr }</td>
         <td class="table__data">${ device.deviceEUI }</td>

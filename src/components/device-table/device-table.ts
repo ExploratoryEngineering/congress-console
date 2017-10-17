@@ -1,16 +1,15 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { DialogService } from 'aurelia-dialog';
-import { bindable, autoinject, PLATFORM } from 'aurelia-framework';
+import { bindable, autoinject, PLATFORM, useView } from 'aurelia-framework';
 
 import { DeviceService } from 'Services/DeviceService';
-
 import { Device } from 'Models/Device';
-
 import { LogBuilder } from 'Helpers/LogBuilder';
 
 const Log = LogBuilder.create('Device table');
 
 @autoinject
+@useView(PLATFORM.moduleName('components/device-table/device-table.html'))
 export class DeviceTable {
   @bindable
   devices: Device[];
