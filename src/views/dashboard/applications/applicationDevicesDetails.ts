@@ -48,6 +48,7 @@ export class ServiceDetails {
         this.eventAggregator.publish('global:message', {
           body: 'Device updated'
         });
+        this.device = response.output;
       } else {
         Log.debug('Did not edit device');
       }
