@@ -1,12 +1,12 @@
-import { BadRequestError } from 'Helpers/ResponseHandler';
 import { autoinject } from 'aurelia-framework';
+import { computedFrom } from 'aurelia-binding';
 import { DialogController } from 'aurelia-dialog';
 
 import { DeviceService, NewOTAADevice, NewABPDevice } from 'Services/DeviceService';
 import { Device } from 'Models/Device';
 
+import { BadRequestError } from 'Helpers/ResponseHandler';
 import { LogBuilder } from 'Helpers/LogBuilder';
-import { computedFrom } from 'aurelia-binding';
 
 const Log = LogBuilder.create('Device Dialog');
 
