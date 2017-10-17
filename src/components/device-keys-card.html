@@ -1,9 +1,18 @@
 <template>
-  <div class="card card--full-width">
-    <div class="card__header card__header--colored">
-      <h4 class="h4 card-header-heading">Device keys</h4>
+  <require from="./device-keys-card.scss"></require>
+  <div class="card card--full-width device-keys-card">
+    <div class="card__header ${ device.keyWarning ? 'card__header--colored-yellow' : 'card__header--colored' }">
+      <h4 class="h4 card-header-heading">
+        Device keys${ device.keyWarning ? ' - Warning!': '' }
+        <span if.bind="device.keyWarning" class="material-icons device-keys-card__key-warning-icon" title="Key warning">warning</span>
+      </h4>
     </div>
     <div class="card__body">
+      <h5 class="h5" if.bind="device.keyWarning">Keys are in use by another device</h5>
+      <p if.bind="device.keyWarning">
+        This keys of this device are in use by more than one device. Your data might not be secure and may be read by others. To
+        fix this, change both the application session key and network session key.
+      </p>
       <h5 class="h5">Device EUI</h5>
       <p>${ device.deviceEUI }</p>
       <h5 class="h5">Device dev address</h5>

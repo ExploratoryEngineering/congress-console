@@ -1,0 +1,7 @@
+@import 'variables/colors';
+
+.device-keys-card {
+  &__key-warning-icon {
+    color: $color--yellow;
+  }
+}
