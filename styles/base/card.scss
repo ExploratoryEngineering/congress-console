@@ -53,6 +53,11 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
       padding: (($grid-size * 2) - 4px) $grid-size * 2;
     }
 
+    &--colored-yellow {
+      border-top: solid 4px $color--yellow;
+      padding: (($grid-size * 2) - 4px) $grid-size * 2;
+    }
+
     &--table {
       padding: (($grid-size * 2) - 4px) $grid-size * 3;
     }
