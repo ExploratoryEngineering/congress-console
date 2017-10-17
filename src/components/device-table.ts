@@ -9,7 +9,6 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Device table');
 
 @autoinject
-@useView(PLATFORM.moduleName('components/device-table/device-table.html'))
 export class DeviceTable {
   @bindable
   devices: Device[];
