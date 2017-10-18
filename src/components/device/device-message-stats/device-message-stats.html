@@ -1,0 +1,8 @@
+<template>
+  <require from="components/device/signal-strength/signal-strength"></require>
+  <require from="components/common/time-ago-message/time-ago-message.html"></require>
+  <div class="device-message-stats">
+    <signal-strength message-data.bind="lastMessage"></signal-strength>
+    <time-ago-message containerless message-data.bind="lastMessage"></time-ago-message>
+  </div>
+</template>

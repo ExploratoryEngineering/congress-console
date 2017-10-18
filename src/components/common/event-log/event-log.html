@@ -1,0 +1,8 @@
+<template>
+  <require from="./event-log.scss"></require>
+  <div class="event-log">
+    <pre class="event-log__entry" repeat.for="message of websocketData">
+      #${ $index } - ${ message }
+    </pre>
+  </div>
+</template>

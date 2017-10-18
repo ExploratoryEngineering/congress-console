@@ -1,0 +1,10 @@
+<template class="application-header" bindable="application, selectableapplications, router">
+  <require from="./application-nav-bar-menu.scss"></require>
+  <require from="components/application/application-dropdown/application-dropdown.html"></require>
+  <application-dropdown class="application-header__application-chooser" router.bind="router" selectable-applications.bind="selectableapplications"
+    selected-application.bind="application"></application-dropdown>
+  <nav>
+    <a repeat.for="row of router.navigation" class="application-header__nav-item ${row.isActive ? 'application-header__nav-item--selected' : ''}"
+      route-href="route.bind: row.config.name; params.bind: { applicationId: application.appEUI }">${row.title}</a>
+  </nav>
+</template>

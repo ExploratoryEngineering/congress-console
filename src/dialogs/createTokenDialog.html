@@ -1,6 +1,6 @@
 <template>
-  <require from="components/text-input.html"></require>
-  <require from="components/textarea-input.html"></require>
+  <require from="components/common/form/text-input.html"></require>
+  <require from="components/common/form/textarea-input.html"></require>
   <require from="valueConverters/tagName"></require>
   <div class="modal">
     <div class="flex-container">
@@ -38,7 +38,7 @@
           </label>
           <label class="radio-group">
             <div class="radio-group__input">
-              <input type="radio" value="fullaccess" checked.bind="selectedAccessLevel" name="token-type"/>
+              <input type="radio" value="fullaccess" checked.bind="selectedAccessLevel" name="token-type" />
             </div>
             <div class="radio-group__input-text">
               <h4 class="h4">Full access</h4>

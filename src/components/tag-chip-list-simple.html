@@ -1,5 +1,0 @@
-<template bindable="tagEntity">
-  <require from="components/tag-chip.html"></require>
-  <require from="valueConverters/tagList"></require>
-  <tag-chip repeat.for="tag of tagEntity.tags | tagList:['name']" tag.bind="tag"></tag-chip>
-</template>

@@ -1,0 +1,20 @@
+<template>
+  <require from="components/common/range-chooser/range-chooser"></require>
+  <require from="components/common/graph-chart/graph-chart"></require>
+  <require from="valueConverters/tagName"></require>
+  <div class="card application-data-details-card">
+    <div class="card__header card__header--colored">
+      <h4 class="h4 card-header-heading">RSSI for devices in ${application | tagName}</h4>
+      <div class="card-header-actions">
+        <range-chooser selected-range.bind="selectedRange"></range-chooser>
+      </div>
+    </div>
+    <div class="card__body">
+      <graph-chart chart.bind="chart" chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+      <div class="no-graph-data" if.bind="!chartData || chartData.datasets.length === 0">
+        <i class="material-icons no-graph-data__icon">insert_chart</i>
+        <h2 class="h2 no-graph-data__heading">No data to graph</h2>
+      </div>
+    </div>
+  </div>
+</template>

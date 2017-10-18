@@ -1,0 +1,10 @@
+<template bindable="messageData">
+  <require from="valueConverters/timeAgo"></require>
+  <require from="valueConverters/dateFormat"></require>
+  <span if.bind="messageData" title="${ messageData.timestamp | dateFormat }">
+    ${ messageData.timestamp | timeAgo & signal:'updateTime' }
+  </span>
+  <span if.bind="!messageData">
+    Never heard from
+  </span>
+</template>

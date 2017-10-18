@@ -1,7 +1,7 @@
 <template>
-  <require from="components/loading-indicator"></require>
-  <require from="components/snackbar"></require>
-  <require from="components/nav-header.html"></require>
+  <require from="components/common/snackbar/snackbar"></require>
+  <require from="components/common/nav-header/nav-header.html"></require>
+  <require from="components/common/loading-indicator/loading-indicator"></require>
   <loading-indicator loading.bind="router.isNavigating"></loading-indicator>
   <snackbar></snackbar>
   <nav-header router.bind="router"></nav-header>

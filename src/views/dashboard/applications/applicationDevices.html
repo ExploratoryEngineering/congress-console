@@ -1,6 +1,6 @@
 <template>
-  <require from="components/application-nav-bar-menu.html"></require>
-  <require from="components/device-table"></require>
+  <require from="components/device/device-table/device-table"></require>
+  <require from="components/application/application-nav-bar-menu/application-nav-bar-menu.html"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
     <div class="card" if.bind="hasDevicesWithWarnings">

@@ -1,5 +1,5 @@
 <template>
-  <require from="components/raven.html"></require>
+  <require from="components/common/svg/raven.html"></require>
   <section class="not-found">
     <div class="not-found__logo">
       <raven></raven>
@@ -8,7 +8,8 @@
       <h1 class="h1 not-found__header">This is not the page you're looking for...</h1>
       <div class="not-found__body">
         <p>
-          Or perhaps it is. Anyway, it's not here unfortunately. My best guess? Try to go back or simply go to the <a href="/">homepage</a>.
+          Or perhaps it is. Anyway, it's not here unfortunately. My best guess? Try to go back or simply go to the
+          <a href="/">homepage</a>.
         </p>
         <a class="button button--primary" click.trigger="navigateBack()">Back to where I came from</a>
         <a class="button button--primary" route-href="route: dashboard">Application dashboard</a>

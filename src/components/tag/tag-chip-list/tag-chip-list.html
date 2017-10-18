@@ -1,0 +1,9 @@
+<template bindable="tagEntity,namespace">
+  <require from="components/tag/edit-tag-chip/edit-tag-chip"></require>
+  <require from="components/tag/create-new-tag-chip/create-new-tag-chip"></require>
+  <require from="valueConverters/tagList"></require>
+  <require from="valueConverters/sort"></require>
+  <edit-tag-chip namespace.bind="namespace" model.bind="tagEntity" repeat.for="chipTag of tagEntity.tags | tagList | sort:'key'"
+    tag.bind="chipTag"></edit-tag-chip>
+  <create-new-tag-chip namespace.bind="namespace" model.bind="tagEntity"></create-new-tag-chip>
+</template>

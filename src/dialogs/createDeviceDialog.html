@@ -1,8 +1,8 @@
 <template>
-  <require from="components/tab-navigation.scss"></require>
-  <require from="components/text-input.html"></require>
-  <require from="components/checkbox-input.html"></require>
-  <require from="components/source-code"></require>
+  <require from="components/common/form/text-input.html"></require>
+  <require from="components/common/form/checkbox-input.html"></require>
+  <require from="components/common/source-code/source-code"></require>
+  <require from="components/common/tab-navigation/tab-navigation.scss"></require>
   <div class="modal ${ step === 3 ? 'modal--large' : '' }">
     <div class="flex-container">
       <div class="flex-container__header">
@@ -33,7 +33,8 @@
               <div class="radio-group__input-text">
                 <h4 class="h4">OTAA - Over The Air Activation</h4>
                 <span>The easiest way of adding a new device to your application. All configuration will be added to the device
-                  automagically.</span>
+                  automagically.
+                </span>
               </div>
             </label>
             <label class="radio-group">
