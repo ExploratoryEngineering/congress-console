@@ -5,6 +5,7 @@
     "endpoint": "http://localhost:8080",
     "wsEndpoint": "ws://localhost:8080"
   },
+  "googleAnalytics": "UA-89311620-2",
   "myConnectUrl": "https://connect.telenordigital.com/",
   "development": {
     "api": {

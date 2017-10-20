@@ -3,15 +3,46 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel='icon' href='/favicon.png' type='image/x-icon' />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-  <title>
-    <%- htmlWebpackPlugin.options.metadata.title %>
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
-  <!-- imported CSS are concatenated and added automatically -->
+  <% if (htmlWebpackPlugin.options.metadata.production) { %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89311620-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', '${ htmlWebpackPlugin.options.metadata.googleAnalytics }', { 'anonymize_ip': true });
+    </script>
+    <script type="text/javascript">
+      window._trackJs = {
+        token: "htmlWebpackPlugin.options.metadata.trackJs",
+        application: "loraengineering",
+        network: {
+          enabled: false,
+          error: true
+        },
+        onError: function (payload) {
+          payload.network = payload.network.filter(function (item) {
+            if (item.statusCode !== 400 && item.statusCode !== 401) {
+              return true;
+            }
+            else {
+              return false;
+            }
+          });
+        }
+      };
+    </script>
+    <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+    <% } %>
+
+      <link rel='icon' href='/favicon.png' type='image/x-icon' />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <title>
+        <%- htmlWebpackPlugin.options.metadata.title %>
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
+      <!-- imported CSS are concatenated and added automatically -->
 </head>
 
 <body class="body">

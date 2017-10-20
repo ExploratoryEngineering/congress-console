@@ -1,4 +1,5 @@
 const path = require('path');
+const appConfig = require('./config/config.json');
 const { optimize: { CommonsChunkPlugin, ModuleConcatenationPlugin }, ProvidePlugin, ContextReplacementPlugin } = require('webpack');
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -118,7 +119,12 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
       } : undefined,
       metadata: {
         // available in index.ejs //
-        title, server, baseUrl
+        googleAnalytics: appConfig.googleAnalytics,
+        trackJs: appConfig.trackJs,
+        title,
+        server,
+        baseUrl,
+        production
       }
     }),
     new ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en)$/),

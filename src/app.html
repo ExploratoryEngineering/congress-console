@@ -2,7 +2,9 @@
   <require from="components/common/snackbar/snackbar"></require>
   <require from="components/common/nav-header/nav-header.html"></require>
   <require from="components/common/loading-indicator/loading-indicator"></require>
+  <require from="components/common/tracker/ga-tracker"></require>
   <loading-indicator loading.bind="router.isNavigating"></loading-indicator>
+  <ga-tracker></ga-tracker>
   <snackbar></snackbar>
   <nav-header router.bind="router"></nav-header>
   <div class="page-content">
