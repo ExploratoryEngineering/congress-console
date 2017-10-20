@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.9"></a>
+# [1.0.0-beta.9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.8-patch.1...v1.0.0-beta.9) (2017-10-20)
+
+
+### Features
+
+* **tracking:** add trackJs and GA tracking. Fixes #34 ([b77e7e1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/b77e7e1)), closes [#34](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/34)
+
+
+
 <a name="1.0.0-beta.8-patch.1"></a>
 # [1.0.0-beta.8-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.8...v1.0.0-beta.8-patch.1) (2017-10-17)
 
