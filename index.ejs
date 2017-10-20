@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <% if (htmlWebpackPlugin.options.metadata.production) { %>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89311620-2"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${ htmlWebpackPlugin.options.metadata.googleAnalytics }"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
@@ -13,8 +13,8 @@
     </script>
     <script type="text/javascript">
       window._trackJs = {
-        token: "htmlWebpackPlugin.options.metadata.trackJs",
-        application: "loraengineering",
+        token: "${ htmlWebpackPlugin.options.metadata.trackJs.token }",
+        application: "${ htmlWebpackPlugin.options.metadata.trackJs.application }",
         network: {
           enabled: false,
           error: true
