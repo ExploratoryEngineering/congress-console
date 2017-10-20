@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.9-patch.1"></a>
+# [1.0.0-beta.9-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.9...v1.0.0-beta.9-patch.1) (2017-10-20)
+
+
+### Bug Fixes
+
+* **tracking:** improve config control of tokens ([6af890c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6af890c))
+
+
+
 <a name="1.0.0-beta.9"></a>
 # [1.0.0-beta.9](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.8-patch.1...v1.0.0-beta.9) (2017-10-20)
 
