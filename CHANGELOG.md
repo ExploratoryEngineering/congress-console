@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.9-patch.2"></a>
+# [1.0.0-beta.9-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.9-patch.1...v1.0.0-beta.9-patch.2) (2017-10-20)
+
+
+### Bug Fixes
+
+* **trackJS:** return true on filtering ([fea5a31](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fea5a31))
+
+
+
 <a name="1.0.0-beta.9-patch.1"></a>
 # [1.0.0-beta.9-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.9...v1.0.0-beta.9-patch.1) (2017-10-20)
 
