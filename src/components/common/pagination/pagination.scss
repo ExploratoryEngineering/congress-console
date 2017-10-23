@@ -1,0 +1,40 @@
+@import 'variables/grid';
+@import 'styles/setup/typography';
+
+.pagination {
+  align-items: center;
+  color: $font-color-secondary;
+  display: flex;
+  font-size: $font-size--13;
+  justify-content: flex-end;
+  padding: 2 * $grid-size;
+
+  &__chevron {
+    cursor: pointer;
+    margin: 0 $grid-size;
+  }
+
+  &__dropdown-triangle {
+    position: absolute;
+    right: 0;
+    top: -5px;
+  }
+
+  &__page-control {
+    align-content: center;
+    display: flex;
+    margin-left: 2 * $grid-size;
+    user-select: none;
+  }
+
+  &__row-data {
+    margin: 0 2 * $grid-size;
+  }
+
+  &__row-pr-page {
+    display: inline-block;
+    margin: 0 2 * $grid-size;
+    padding-top: 0;
+    width: 45px;
+  }
+}

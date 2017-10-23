@@ -1,0 +1,24 @@
+<template>
+  <require from="./pagination.scss"></require>
+  <require from="components/common/dropdown/dropdown"></require>
+  <require from="components/common/dropdown/dropdown-title"></require>
+  <require from="components/common/dropdown/dropdown-container"></require>
+  <require from="components/common/form/select-input.html"></require>
+  <div class="pagination">
+    <div>Rows per page:
+      <dropdown dropdownPosition="top" class="pagination__row-pr-page">
+        <dropdown-title>${ rowsPrPage }
+          <span class="material-icons pagination__dropdown-triangle">arrow_drop_down</span>
+        </dropdown-title>
+        <dropdown-container>
+          <div repeat.for="rowsPrPageNumber of availableRowsPrPage" class="dropdown__menu-item" click.delegate="setRowsPrPage(rowsPrPageNumber)">${rowsPrPageNumber}</div>
+        </dropdown-container>
+      </dropdown>
+    </div>
+    <div class="pagination__row-data">${ rowData }</div>
+    <div class="pagination__page-control ">
+      <div class="material-icons pagination__chevron " click.delegate="decreasePageNumber() ">chevron_left</div>
+      <div class="material-icons pagination__chevron " click.delegate="increasePageNumber() ">chevron_right</div>
+    </div>
+  </div>
+</template>
