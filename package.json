@@ -25,6 +25,7 @@
     "commitmsg": "validate-commit-msg",
     "deploy:pi": "npm run build:prod && ./scripts/deployToPi.sh",
     "deploy:staging": "npm run test && npm run build:prod && ./scripts/deployToStaging.sh",
+    "dev": "npm run server",
     "e2e": "concurrently --success first --kill-others \"npm run e2e:start-when-ready\" \"cross-env npm run e2e:start-server\"",
     "e2e:start-server": "http-server dist --cors -p 19876 --silent",
     "e2e:start-when-ready": "wait-on --timeout 20000 http-get://localhost:19876/index.html && npm run e2e:start",
