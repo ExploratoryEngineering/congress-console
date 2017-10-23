@@ -8,12 +8,20 @@
     <div class="card">
       <div class="card__header card__header--table card__header--colored">
         <h4 class="h4 card-header-heading">Your outputs</h4>
-        <div class="card-header-actions">
+        <div class="card-header-actions" show.bind="outputs.length > 0">
           <button click.delegate="createNewOutput()" class="button button--primary">Add output</button>
         </div>
       </div>
-      <div class="card__body card__body--no-padding">
-        <output-table application-eui.bind="application.appEUI" outputs.bind="outputs"></output-table>
+      <div class="card__body card__body--no-padding" show.bind="outputs.length > 0">
+        <application-output-table application-eui.bind="application.appEUI" outputs.bind="outputs"></application-output-table>
+      </div>
+      <div class="card__body no-data-card-body" show.bind="outputs.length === 0">
+        <i class="no-data-card-body__icon material-icons">call_split</i>
+        <div class="no-data-card-body__heading h2">No outputs found.
+          <div class="button-group">
+            <button class="button button--primary" click.delegate="createNewOutput()">Create one?</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card">
