@@ -1,5 +1,6 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { DialogService } from 'aurelia-dialog';
+import { bindingMode } from 'aurelia-binding';
 import { bindable, autoinject, PLATFORM } from 'aurelia-framework';
 
 import { Output } from 'Models/Output';
@@ -11,7 +12,7 @@ const Log = LogBuilder.create('Output table');
 
 @autoinject
 export class ApplicationOutputTable {
-  @bindable
+  @bindable({ defaultBindingMode: bindingMode.twoWay })
   outputs: Output[];
   @bindable
   applicationEui: string;
