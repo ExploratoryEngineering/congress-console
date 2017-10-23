@@ -1,4 +1,5 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { bindingMode } from 'aurelia-binding';
 import { DialogService } from 'aurelia-dialog';
 import { bindable, autoinject, PLATFORM, useView } from 'aurelia-framework';
 
@@ -10,7 +11,7 @@ const Log = LogBuilder.create('Device table');
 
 @autoinject
 export class DeviceTable {
-  @bindable
+  @bindable({ defaultBindingMode: bindingMode.twoWay })
   devices: Device[];
   @bindable
   applicationEui: string;
