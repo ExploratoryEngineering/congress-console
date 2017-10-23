@@ -65,6 +65,11 @@ $dropdown-menu-item-font-size: $font-size--12;
     &--below {
       top: 100%;
     }
+
+    &--top {
+      bottom: 0;
+      top: auto;
+    }
   }
 
   &__menu-item {
