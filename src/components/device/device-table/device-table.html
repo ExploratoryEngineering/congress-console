@@ -2,6 +2,7 @@
   <require from="valueConverters/tagName"></require>
   <require from="components/tag/tag-chip-list-simple/tag-chip-list-simple.html"></require>
   <require from="components/device/device-message-stats/device-message-stats"></require>
+  <require from="components/common/pagination/pagination"></require>
   <require from="components/common/dropdown/dropdown"></require>
   <require from="components/common/dropdown/dropdown-title"></require>
   <require from="components/common/dropdown/dropdown-container"></require>
@@ -19,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr repeat.for="device of devices">
+      <tr repeat.for="device of filteredDevices">
         <td class="table__data">
           <div class="device-table__icon-cell">
             <span if.bind="device.keyWarning" title="Key warning" class="material-icons device-table__device-warning-icon">warning</span>
@@ -49,4 +50,5 @@
       </tr>
     </tbody>
   </table>
+  <pagination filter-callback.call="filteredDevicesCallback(filteredCollection)" collection.bind="devices"></pagination>
 </template>

@@ -15,6 +15,7 @@ export class DeviceTable {
   devices: Device[];
   @bindable
   applicationEui: string;
+  filteredDevices: Device[] = [];
 
   constructor(
     private dialogService: DialogService,
@@ -44,5 +45,9 @@ export class DeviceTable {
         Log.debug('Did not delete device');
       }
     });
+  }
+
+  filteredDevicesCallback(filteredDevices) {
+    this.filteredDevices = filteredDevices;
   }
 }
