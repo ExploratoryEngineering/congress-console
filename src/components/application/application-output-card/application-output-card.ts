@@ -17,11 +17,19 @@ export class ApplicationOutputCard {
     private outputService: OutputService
   ) { }
 
-  bind() {
+  fetchAndPopulateOutputs() {
     this.outputService.getOutputsForApplication(
       this.applicationEui
     ).then(outputs => {
       this.outputs = outputs;
     });
+  }
+
+  bind() {
+    this.fetchAndPopulateOutputs();
+  }
+
+  applicationEuiChanged() {
+    this.fetchAndPopulateOutputs();
   }
 }

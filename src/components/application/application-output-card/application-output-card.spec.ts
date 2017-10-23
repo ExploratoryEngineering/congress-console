@@ -22,5 +22,14 @@ describe('Applications output card component', () => {
 
       expect(ouputServiceSpy).toHaveBeenCalledWith('1234');
     });
+
+    it('should fetch all outputs upon application eui change', () => {
+      const ouputServiceSpy = spyOn(outputServiceMock, 'getOutputsForApplication').and.callThrough();
+
+      applicationOutputCard.applicationEui = '1234';
+      applicationOutputCard.applicationEuiChanged();
+
+      expect(ouputServiceSpy).toHaveBeenCalledWith('1234');
+    });
   });
 });
