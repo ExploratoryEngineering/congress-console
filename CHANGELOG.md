@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.10"></a>
+# [1.0.0-beta.10](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.9-patch.2...v1.0.0-beta.10) (2017-10-23)
+
+
+### Bug Fixes
+
+* **application-output-card:** listen on application eui change ([aafb13e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/aafb13e))
+* **application-output-table:** use two-way binding to improve UI sync ([fd23012](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/fd23012))
+* **device-table:** use two-way binding to improve UI sync ([9cc77f7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/9cc77f7))
+
+
+### Features
+
+* **applicationDetails:** remove take and add pagination instead ([2160b8b](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2160b8b))
+* **applicationOuputs:** add no output state. Fixes #102 ([28ba8fb](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/28ba8fb)), closes [#102](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/102)
+* **device-table:** add pagination ([019a16f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/019a16f))
+* **dropdown:** add top-modifier ([a9c20c5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a9c20c5))
+* **pagination:** add new component for pagination ([875596c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/875596c))
+
+
+
 <a name="1.0.0-beta.9-patch.2"></a>
 # [1.0.0-beta.9-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.9-patch.1...v1.0.0-beta.9-patch.2) (2017-10-20)
 
