@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.10-patch.1"></a>
+# [1.0.0-beta.10-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.10...v1.0.0-beta.10-patch.1) (2017-10-24)
+
+
+### Bug Fixes
+
+* **pagination:** make dropdown correctly go on top ([5e742d8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5e742d8))
+* **timestamp:** use milliseconds instead of seconds/nanoseconds ([948a3d2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/948a3d2))
+
+
+
 <a name="1.0.0-beta.10"></a>
 # [1.0.0-beta.10](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.9-patch.2...v1.0.0-beta.10) (2017-10-23)
 

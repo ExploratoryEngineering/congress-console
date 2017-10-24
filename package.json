@@ -1,6 +1,6 @@
 {
   "name": "lora-self-service-portal",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.10-patch.1",
   "description": "Front end for self service portal for Exploratory Engineering LORA",
   "main": "dist",
   "productName": "LORA Self Service Portal",
