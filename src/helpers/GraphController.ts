@@ -340,7 +340,7 @@ export class GraphController {
         dataBucketSet[message.timestamp].dataSets[message.deviceEUI] = [message];
       } else {
         dataBucketSet[message.timestamp] = {
-          label: message.timestamp * 1000,
+          label: message.timestamp,
           dataSets: {}
         };
         dataBucketSet[message.timestamp].dataSets[message.deviceEUI] = [message];
