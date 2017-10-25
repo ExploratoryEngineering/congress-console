@@ -23,13 +23,15 @@ const baseUrl = '/';
 const sassLoaderConfig = [{
   loader: 'css-loader', // translates CSS into CommonJS
   options: {
-    sourceMap: true
+    sourceMap: true,
+    importLoaders: 2
   }
 }, {
   loader: 'postcss-loader', // adding needed prefixer for older browsers
   options: {
     plugins: () => [autoprefixer({ browsers: ['last 2 versions'] })],
-    sourceMap: true
+    sourceMap: true,
+    postcss: {}
   }
 }, {
   loader: 'sass-loader', // compiles sass to CSS
