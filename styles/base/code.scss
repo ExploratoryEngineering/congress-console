@@ -51,11 +51,6 @@
     overflow: scroll;
     padding: 0 $grid-size * 2;
   }
-
-  &__content-offscreen-field {
-    left: 99999px;
-    position: fixed;
-  }
 }
 
 .code-line {

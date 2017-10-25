@@ -1,8 +1,11 @@
 <template bindable="code, icon">
   <div class="code-line">
-    <div class="code-line__icon"><i if.bind="icon" class="material-icons">${ icon }</i></div>
+    <div class="code-line__icon">
+      <i if.bind="icon" class="material-icons">${ icon }</i>
+    </div>
     <code class="code-line__content">${ code }</code>
-    <div class="code-line__icon code-line__icon--colored code-line__icon--clickable" click.delegate="copySource()"><i class="material-icons">content_copy</i></div>
+    <div class="code-line__icon code-line__icon--colored code-line__icon--clickable" click.delegate="copySource()">
+      <i class="material-icons">content_copy</i>
+    </div>
   </div>
-  <input class="code__content-offscreen-field" ref="codeTextField" value.bind="code" />
 </template>

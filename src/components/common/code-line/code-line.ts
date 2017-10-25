@@ -1,7 +1,10 @@
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { LogBuilder } from 'Helpers/LogBuilder';
 import { bindable, containerless, autoinject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
+import { CopyHelper } from 'Helpers/CopyHelper';
+import { LogBuilder } from 'Helpers/LogBuilder';
+
+const copyHelper = new CopyHelper();
 const Log = LogBuilder.create('Code line');
 
 @containerless
@@ -11,20 +14,17 @@ export class CodeLine {
   icon: string;
   @bindable
   code: string;
-  codeTextField: HTMLInputElement;
 
   constructor(
     private eventAggregator: EventAggregator
   ) { }
 
-  copySource() {
+  copySource(event: MouseEvent) {
     Log.debug('Copying code line to clipboard');
-    this.codeTextField.select();
-    try {
-      document.execCommand('copy');
+    copyHelper.copyToClipBoard(this.code).then(() => {
       this.eventAggregator.publish('global:message', { body: 'Copied code' });
-    } catch (error) {
+    }).catch(error => {
       Log.warn('Copy failed');
-    }
+    });
   }
 }
