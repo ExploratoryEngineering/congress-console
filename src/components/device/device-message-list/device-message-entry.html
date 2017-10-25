@@ -1,0 +1,40 @@
+<template class="device-message-entry">
+  <require from="./device-message-entry.scss"></require>
+  <require from="valueConverters/timeAgo"></require>
+  <require from="valueConverters/dateFormat"></require>
+  <div class="device-message-entry__header" click.delegate="toggle()">
+    <span class="device-message-entry__heading">Data message</span>
+    <span class="device-message-entry__heading-details" title="${ deviceMessage.timestamp | dateFormat }">${ deviceMessage.timestamp | timeAgo }</span>
+    <span class="device-message-entry__heading-more-code">{ ... }</span>
+    <span class="material-icons">${ toggled ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }</span>
+    <span class="device-message-entry__heading-actions">
+      <button class="button button--flat" click.delegate="copyAsJson($event)">Copy as JSON</button>
+    </span>
+  </div>
+  <div class="device-message-entry__data ${ toggled ? 'device-message-entry__data--expanded' : '' }">
+    <div class="device-message-entry__data-group">
+      <div class="device-message-entry__data-name">Data</div>
+      <div class="device-message-entry__data-value">${ deviceMessage.data }</div>
+    </div>
+    <div class="device-message-entry__data-group">
+      <div class="device-message-entry__data-name">Datarate</div>
+      <div class="device-message-entry__data-value">${ deviceMessage.dataRate }</div>
+    </div>
+    <div class="device-message-entry__data-group">
+      <div class="device-message-entry__data-name">Frequency</div>
+      <div class="device-message-entry__data-value">${ deviceMessage.frequency }</div>
+    </div>
+    <div class="device-message-entry__data-group">
+      <div class="device-message-entry__data-name">RSSI</div>
+      <div class="device-message-entry__data-value">${ deviceMessage.rssi }</div>
+    </div>
+    <div class="device-message-entry__data-group">
+      <div class="device-message-entry__data-name">SNR</div>
+      <div class="device-message-entry__data-value">${ deviceMessage.snr }</div>
+    </div>
+    <div class="device-message-entry__data-group">
+      <div class="device-message-entry__data-name">Timestamp</div>
+      <div class="device-message-entry__data-value">${ deviceMessage.timestamp }</div>
+    </div>
+  </div>
+</template>

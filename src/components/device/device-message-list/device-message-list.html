@@ -1,0 +1,15 @@
+<template>
+  <require from="./device-message-entry"></require>
+  <require from="./device-message-list.scss"></require>
+  <require from="components/common/pagination/pagination"></require>
+  <div class="device-message-list">
+    <div class="device-message-list__no-messages" show.bind="filteredMessages.length === 0">
+      <div class="material-icons device-message-list__no-messages-icon">message</div>
+      <h2 class="h2 device-message-list__no-messages-text">No messages from device yet</h2>
+    </div>
+    <div show.bind="filteredMessages.length > 0">
+      <device-message-entry repeat.for="message of filteredMessages" device-message.bind="message"></device-message-entry>
+      <pagination rows-pr-page="5" filter-callback.call="filteredDeviceMessagesCallback(filteredCollection)" collection.bind="deviceMessages"></pagination>
+    </div>
+  </div>
+</template>

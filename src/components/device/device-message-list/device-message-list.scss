@@ -1,0 +1,22 @@
+@import 'variables/grid';
+@import 'setup/typography';
+
+.device-message-list {
+  &__no-messages {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $grid-size * 6;
+  }
+
+  &__no-messages-icon {
+    color: $font-color-disabled;
+    font-size: 128px;
+  }
+
+  &__no-messages-text {
+    color: $font-color-disabled;
+    font-weight: $font-weight--medium;
+  }
+}

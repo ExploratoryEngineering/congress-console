@@ -1,0 +1,73 @@
+@import "variables/grid";
+@import "variables/colors";
+@import "setup/typography";
+
+.device-message-entry {
+  background-color: $color-grey-theme--light;
+  display: block;
+  margin-top: $grid-size;
+  padding: 2 * $grid-size;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &__header {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    user-select: none;
+  }
+
+  &__heading {
+    display: inline-block;
+    font-size: $font-size--16;
+    margin-right: 3 * $grid-size;
+  }
+
+  &__heading-details {
+    color: $font-color-secondary;
+    display: inline-block;
+    margin-right: 3 * $grid-size;
+    font-size: $font-size--14;
+  }
+
+  &__heading-more-code {
+    display: inline-block;
+    font-size: $font-size--16;
+    margin-right: 2 * $grid-size;
+  }
+
+  &__heading-actions {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  &__data {
+    display: none;
+    padding-top: $grid-size * 2;
+
+    &--expanded {
+      display: block;
+    }
+  }
+
+  &__data-group {
+    border-bottom: solid 2px $font-color-dividers;
+    display: flex;
+    padding: $grid-size 0;
+  }
+
+  &__data-name {
+    font-weight: $font-weight--bold;
+    min-width: 80px;
+    width: 25%;
+  }
+
+  &__data-value {
+    color: $font-color-secondary;
+    flex: 1;
+  }
+}
