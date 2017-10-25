@@ -91,7 +91,7 @@ export class DeviceService {
     deviceEui: string,
     {
       limit = 50,
-      since = Time.SIX_HOURS_AGO.format('X')
+      since = Time.SIX_HOURS_AGO.format('x')
     }: DataSearchParameters = {}): Promise<MessageData[]> {
     return this.apiClient.http.get(
       `/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`

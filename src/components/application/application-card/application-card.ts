@@ -60,7 +60,7 @@ export class ApplicationCard {
   ) { }
 
   initiateChartData() {
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: Time.ONE_HOUR_AGO.format('X') }).then(messageData => {
+    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: Time.ONE_HOUR_AGO.format('x') }).then(messageData => {
       this.chartData = this.graphController.getGraph(messageData, {
         chartDataColors: ['rgba(255,255,255,.7)'],
         graphType: 'count-aggregated'

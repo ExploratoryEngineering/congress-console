@@ -3,7 +3,7 @@ import { DateFormatValueConverter } from './dateFormat';
 const dateFormat = new DateFormatValueConverter();
 
 describe('Dateformat value converter', () => {
-  const firstOfApril = '1490997600';
+  const firstOfApril = '1490997600000';
   const illegalDate = 'abc';
 
   it('should return the default format if given correct date but no format', () => {

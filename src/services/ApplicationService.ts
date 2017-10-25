@@ -35,7 +35,7 @@ export class ApplicationService {
     applicationEui: string,
     {
       limit = 100,
-      since = Time.SIX_HOURS_AGO.format('X')
+      since = Time.SIX_HOURS_AGO.format('x')
     }: DataSearchParameters = {}): Promise<MessageData[]> {
     return this.apiClient.http.get(
       `/applications/${applicationEui}/data?limit=${limit}&since=${since}`
