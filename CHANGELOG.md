@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.10-patch.2"></a>
+# [1.0.0-beta.10-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.10-patch.1...v1.0.0-beta.10-patch.2) (2017-10-25)
+
+
+### Bug Fixes
+
+* **profile-dropdown:** add min-width for menu entries ([f905f7f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f905f7f))
+* **timestamp:** fix correct timestamp from seconds to milliseconds ([3aaa314](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/3aaa314))
+
+
+### Features
+
+* **copyHelper:** add copyHelper for those copy/pasting needs ([bbbfab1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/bbbfab1))
+* **device-message-list:** add list for data messages pr device. Fixes #71 ([19c3f18](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/19c3f18)), closes [#71](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/71)
+
+
+
 <a name="1.0.0-beta.10-patch.1"></a>
 # [1.0.0-beta.10-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.10...v1.0.0-beta.10-patch.1) (2017-10-24)
 
