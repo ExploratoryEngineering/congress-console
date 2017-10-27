@@ -3,9 +3,6 @@
   <require from="valueConverters/tagName"></require>
   <div class="card__header card__header--colored">
     <h4 class="h4 card-header-heading">Application details</h4>
-    <div class="card-header-actions">
-      <button click.trigger="editApplication()" class="button button--primary">Edit</button>
-    </div>
   </div>
   <div class="card__body">
     <h5 class="application-details-card__heading">Name</h5>
@@ -13,5 +10,8 @@
     <h5 class="application-details-card__heading">EUI</h5>
     <p class="application-details-card__content">${ application.appEUI }</p>
     <tag-chip-list-simple tag-entity.bind="application"></tag-chip-list-simple>
+  </div>
+  <div class="card__actions card__actions--align-right">
+    <button click.trigger="editApplication()" class="button button--flat">Edit application</button>
   </div>
 </template>
