@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.11"></a>
+# [1.0.0-beta.11](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.10-patch.2...v1.0.0-beta.11) (2017-10-27)
+
+
+### Features
+
+* **device-keys-card:** add secret-text for secret props. Fixes #74 ([db1129a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/db1129a)), closes [#74](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/74)
+* **device-message-list:** subscribe to event stream for device data. Fixes #115 ([5f3ffa6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5f3ffa6)), closes [#115](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/115)
+* **secret-text:** add component for rendering secret text ([95d930d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/95d930d))
+
+
+
 <a name="1.0.0-beta.10-patch.2"></a>
 # [1.0.0-beta.10-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.10-patch.1...v1.0.0-beta.10-patch.2) (2017-10-25)
 
