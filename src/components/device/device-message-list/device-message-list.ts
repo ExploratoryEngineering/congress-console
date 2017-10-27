@@ -1,6 +1,7 @@
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { bindable, autoinject } from 'aurelia-framework';
 
+import { Time } from 'Helpers/Time';
 import { Device } from 'Models/Device';
 import { DeviceService } from 'Services/DeviceService';
 
@@ -29,7 +30,8 @@ export class DeviceMessageList {
     this.deviceService.fetchDeviceDataByEUI(
       this.appEui,
       this.device.deviceEUI, {
-        limit: 50
+        limit: 250,
+        since: Time.DAWN_OF_TIME
       }).then((deviceMessages) => {
         this.deviceMessages = deviceMessages;
       });
