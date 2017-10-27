@@ -162,10 +162,6 @@ export class ServiceDetails {
     this.subscriptions.push(this.eventAggregator.subscribe('device:tag:delete', ({ model, tag }) => {
       this.deleteTag(model, tag);
     }));
-    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
-      if (deviceData.deviceEUI === this.device.deviceEUI) {
-      }
-    }));
 
     return Promise.all([
       this.applicationService.fetchApplications().then((applications) => {
@@ -190,13 +186,12 @@ export class ServiceDetails {
       })
     ]).then(() => {
       this.applicationStream.openApplicationDataStream(this.application.appEUI);
-    })
-      .catch(err => {
-        Log.error(err);
-        this.router.navigateToRoute('application_devices', {
-          applicationId: this.application.appEUI
-        });
+    }).catch(err => {
+      Log.error(err);
+      this.router.navigateToRoute('application_devices', {
+        applicationId: this.application.appEUI
       });
+    });
   }
 
   deactivate() {
