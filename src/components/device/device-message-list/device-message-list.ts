@@ -1,3 +1,4 @@
+import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 import { bindable, autoinject } from 'aurelia-framework';
 
 import { Device } from 'Models/Device';
@@ -11,13 +12,13 @@ export class DeviceMessageList {
   @bindable
   device: Device;
 
-  @bindable
   deviceMessages: MessageData[] = [];
-
-  filteredMessages: MessageData[];
+  filteredMessages: MessageData[] = [];
+  subscriptions: Subscription[] = [];
 
   constructor(
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private eventAggregator: EventAggregator
   ) { }
 
   filteredDeviceMessagesCallback(filteredDeviceMessages: MessageData[]) {
@@ -32,5 +33,15 @@ export class DeviceMessageList {
       }).then((deviceMessages) => {
         this.deviceMessages = deviceMessages;
       });
+    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
+      if (this.device.deviceEUI === deviceData.deviceEUI) {
+        this.deviceMessages.unshift(deviceData);
+      }
+    }));
+  }
+
+  unbind() {
+    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions = [];
   }
 }
