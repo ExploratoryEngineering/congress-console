@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.11-patch.2"></a>
+# [1.0.0-beta.11-patch.2](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.1...v1.0.0-beta.11-patch.2) (2017-10-27)
+
+
+### Bug Fixes
+
+* **deviceMessageList:** ask for since dawn of time ([bb8d3df](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/bb8d3df))
+
+
+
 <a name="1.0.0-beta.11-patch.1"></a>
 # [1.0.0-beta.11-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11...v1.0.0-beta.11-patch.1) (2017-10-27)
 
