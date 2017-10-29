@@ -49,7 +49,7 @@
     "test": "npm run test:jest && npm run test:lint && npm run test:retire && npm run test:build",
     "test:build": "npm run build:prod && npm run test:bundlesize && npm run e2e",
     "test:bundlesize": "bundlesize",
-    "test:jest": "del-cli test/coverage-jest && jest --config jest.config.json",
+    "test:jest": "del-cli test/coverage-jest && jest --config jest.config.json --forceExit",
     "test:eslint": "eslint src test/e2e test/unit",
     "test:lint": "npm run test:eslint && npm run test:tslint",
     "test:tslint": "tslint src/**/*.ts && tslint test/**/*.ts",
