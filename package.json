@@ -144,7 +144,7 @@
     "url-loader": "0.5.9",
     "validate-commit-msg": "^2.14.0",
     "wait-on": "2.0.2",
-    "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.3"
   }
 }
