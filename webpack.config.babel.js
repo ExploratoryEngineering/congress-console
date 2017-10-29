@@ -50,7 +50,8 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
       Helpers: path.resolve(__dirname, 'src/helpers/'),
       Models: path.resolve(__dirname, 'src/models/'),
       Components: path.resolve(__dirname, 'src/components/'),
-      Dialogs: path.resolve(__dirname, 'src/dialogs/')
+      Dialogs: path.resolve(__dirname, 'src/dialogs/'),
+      'aurelia-pal': path.resolve('node_modules/aurelia-pal/dist/commonjs/aurelia-pal.js')
     }
   },
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',

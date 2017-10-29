@@ -1,8 +1,9 @@
 /// <reference types="aurelia-loader-webpack/src/webpack-hot-interface"/>
 import '../styles/styles.scss';
 
-import { LogManager, Aurelia, PLATFORM } from 'aurelia-framework';
+import { LogManager, Aurelia } from 'aurelia-framework';
 import { ConsoleAppender } from 'aurelia-logging-console';
+import { PLATFORM } from 'aurelia-pal';
 
 // Promise polyfill
 import * as Bluebird from 'bluebird';

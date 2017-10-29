@@ -1,4 +1,4 @@
-import { PLATFORM } from 'aurelia-framework';
+import { PLATFORM } from 'aurelia-pal';
 import { RouteConfig } from 'aurelia-router/dist/aurelia-router';
 
 export let routes: RouteConfig[] = [

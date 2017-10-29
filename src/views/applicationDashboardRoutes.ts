@@ -1,4 +1,4 @@
-import { PLATFORM } from 'aurelia-framework';
+import { PLATFORM } from 'aurelia-pal';
 
 export const routes = [
   {

@@ -10,7 +10,7 @@
   </h1>
   <nav class="top-header__main-nav">
     <a repeat.for="row of router.navigation" class="top-header__main-nav-entry ${row.isActive ? 'top-header__main-nav-entry--selected' : ''}"
-      route-href="route.bind: row.config.name;">${row.title}</a>
+      href.bind="row.href">${row.title}</a>
   </nav>
   <nav class="top-header__icon-nav">
     <span class="top-header__icon material-icons">notifications</span>
