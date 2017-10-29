@@ -22,7 +22,7 @@
     "<rootDir>/test/jest-pretest.ts"
   ],
   "moduleNameMapper": {
-    "aurelia-(.*)": "<rootDir>/node_modules/$1",
+    "^aurelia-(.*)": "<rootDir>/node_modules/aurelia-$1",
     "\\.(css|less|scss)$": "<rootDir>/test/mock/styleMock.js",
     "Test/(.*)": "<rootDir>/test/$1",
     "Helpers/(.*)": "helpers/$1",
