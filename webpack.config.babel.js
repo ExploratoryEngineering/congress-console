@@ -1,6 +1,6 @@
 const path = require('path');
 const appConfig = require('./config/config.json');
-const { optimize: { CommonsChunkPlugin, ModuleConcatenationPlugin }, ProvidePlugin, ContextReplacementPlugin } = require('webpack');
+const { optimize: { CommonsChunkPlugin, ModuleConcatenationPlugin }, ProvidePlugin, ContextReplacementPlugin, LoaderOptionsPlugin } = require('webpack');
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -73,6 +73,7 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
   },
   module: {
     rules: [
+      { test: /\.html$/, enforce: 'pre', use: 'aurelia-template-lint-loader' },
       {
         test: /\.(scss|css)$/i,
         issuer: [{ test: /\.html$/i }],
@@ -108,6 +109,33 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
   plugins: [
     new AureliaPlugin({
       features: { svg: false, unparser: false, polyfills: 'es2015' }
+    }),
+    new LoaderOptionsPlugin({
+      options: {
+        aureliaTemplateLinter: {
+          // you can pass an configuration class
+          // config reference https://github.com/MeirionHughes/aurelia-template-lint#config
+          // configuration: options && options.config,
+
+          // aurelia errors are displayed by default as warnings
+          // set emitErrors to true to display them as errors
+          emitErrors: true,
+
+          // aurelia does not interrupt the compilation by default
+          // if you want any file with aurelia errors to fail
+          // set failOnHint to true
+          // failOnHint: true,
+
+          // aurelia does not type check by default
+          // if you want to do type checking set
+          // typeChecking to true and provide
+          // the right fileGlob
+          // reference https://github.com/MeirionHughes/aurelia-template-lint#static-type-checking
+          // these settings can also be passed with configuration above
+          typeChecking: true,
+          fileGlob: 'app/**/*.ts'
+        }
+      }
     }),
     new ProvidePlugin({
       'Promise': 'bluebird'

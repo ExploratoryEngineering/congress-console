@@ -99,6 +99,7 @@
     "aurelia-loader-nodejs": "1.0.1",
     "aurelia-pal-nodejs": "1.0.0-beta.1.0.0",
     "aurelia-protractor-plugin": "1.0.5",
+    "aurelia-template-lint-loader": "^1.0.1",
     "aurelia-testing": "1.0.0-beta.3.0.1",
     "aurelia-tools": "^1.0.0",
     "aurelia-webpack-plugin": "^2.0.0-rc.5",
