@@ -20,6 +20,14 @@ export class MessageDialog {
     private dialogController: DialogController
   ) { }
 
+  ok() {
+    this.dialogController.ok();
+  }
+
+  cancel() {
+    this.dialogController.cancel();
+  }
+
   activate(args: MessageDialogConfig = {
     messageHeader: 'Default header',
     message: 'Default message',

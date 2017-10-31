@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="flex-container__footer">
-        <button class="button button--flat" if.bind="step !== 3" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--flat" if.bind="step !== 3" click.delegate="cancel()">Cancel</button>
         <button class="button button--primary" type="submit" click.delegate="next()">${ nextText }</button>
       </div>
     </div>

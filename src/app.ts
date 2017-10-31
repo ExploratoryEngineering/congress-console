@@ -11,13 +11,16 @@ const Log = LogBuilder.create();
 
 @autoinject
 export class App {
+  router: Router;
+
   UPDATE_TIME_INTERVAL_MS: number = 10000;
 
   constructor(
-    private router: Router,
     private userInformation: UserInformation,
-    private signaler: BindingSignaler
+    private signaler: BindingSignaler,
+    router: Router
   ) {
+    this.router = router;
     setInterval(() => { this.signaler.signal('updateTime'); }, this.UPDATE_TIME_INTERVAL_MS);
   }
 

@@ -42,6 +42,10 @@ export class CreateTokenDialog {
     });
   }
 
+  cancel() {
+    this.dialogController.cancel();
+  }
+
   getResourceAccessUrl(): string {
     const resourceAccess = this.selectedResourceAccess;
 

@@ -53,7 +53,7 @@ describe('the App module', () => {
     mockedRouter = new RouterStub();
     mockedUserInformation = new UserInformationStub();
     mockedSignaler = new SignalerStub();
-    sut = new App(mockedRouter, mockedUserInformation, mockedSignaler);
+    sut = new App(mockedUserInformation, mockedSignaler, mockedRouter);
     sut.configureRouter(mockedRouter, mockedRouter);
   });
 

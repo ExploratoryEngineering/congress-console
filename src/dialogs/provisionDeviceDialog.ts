@@ -21,6 +21,10 @@ export class ProvisionDeviceDialog {
     private dialogController: DialogController
   ) { }
 
+  ok() {
+    this.dialogController.ok();
+  }
+
   activate(args) {
     this.device = args.device;
     this.appEUI = args.appEUI;

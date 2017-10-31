@@ -15,6 +15,8 @@ const Log = LogBuilder.create('Application devices');
 
 @autoinject
 export class ApplicationDevices {
+  router: Router;
+
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
@@ -26,8 +28,10 @@ export class ApplicationDevices {
     private deviceService: DeviceService,
     private dialogService: DialogService,
     private eventAggregator: EventAggregator,
-    private router: Router
-  ) { }
+    router: Router
+  ) {
+    this.router = router;
+  }
 
   createNewDevice() {
     this.dialogService.open({

@@ -18,7 +18,9 @@ import { WebsocketDeviceDataMessage } from 'Helpers/Websocket';
 const Log = LogBuilder.create('Application details');
 
 @autoinject
-export class ServiceDetails {
+export class ApplicationDetails {
+  router: Router;
+
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
@@ -35,12 +37,14 @@ export class ServiceDetails {
   constructor(
     private applicationService: ApplicationService,
     private deviceService: DeviceService,
-    private router: Router,
     private eventAggregator: EventAggregator,
     private dialogService: DialogService,
     private graphController: GraphController,
-    private applicationStream: ApplicationStream
-  ) { }
+    private applicationStream: ApplicationStream,
+    router: Router,
+  ) {
+    this.router = router;
+  }
 
   initiateChartData() {
     Log.debug('Initiating chart data');

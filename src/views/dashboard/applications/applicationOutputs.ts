@@ -14,7 +14,9 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
 
 @autoinject
-export class ServiceDetails {
+export class ApplicationOutputs {
+  router: Router;
+
   outputs: Output[] = [];
 
   application: Application = new Application();
@@ -26,8 +28,10 @@ export class ServiceDetails {
     private outputService: OutputService,
     private dialogService: DialogService,
     private eventAggregator: EventAggregator,
-    private router: Router
-  ) { }
+    router: Router
+  ) {
+    this.router = router;
+  }
 
   createNewOutput() {
     this.dialogService.open({

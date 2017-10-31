@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
 const autoprefixer = require('autoprefixer');
+const { Config } = require('aurelia-template-lint');
 
 // config helpers:
 const ensureArray = (config) => config && (Array.isArray(config) ? config : [config]) || [];
@@ -19,6 +20,13 @@ const outDir = path.resolve(__dirname, 'dist');
 const srcDir = path.resolve(__dirname, 'src');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
 const baseUrl = '/';
+
+// Aurelia lint config
+let aureliaLintSettings = new Config();
+
+aureliaLintSettings.useRuleAureliaBindingAccess = true;
+aureliaLintSettings.reflectionOpts.typingsFileGlob = [`${path.resolve(__dirname, 'globalTypings')}/**/*.d.ts`];
+aureliaLintSettings.reflectionOpts.sourceFileGlob = [`${ srcDir }/**/*.ts`];
 
 const sassLoaderConfig = [{
   loader: 'css-loader', // translates CSS into CommonJS
@@ -115,25 +123,11 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
         aureliaTemplateLinter: {
           // you can pass an configuration class
           // config reference https://github.com/MeirionHughes/aurelia-template-lint#config
-          // configuration: options && options.config,
+          configuration: aureliaLintSettings,
 
           // aurelia errors are displayed by default as warnings
           // set emitErrors to true to display them as errors
-          emitErrors: true,
-
-          // aurelia does not interrupt the compilation by default
-          // if you want any file with aurelia errors to fail
-          // set failOnHint to true
-          // failOnHint: true,
-
-          // aurelia does not type check by default
-          // if you want to do type checking set
-          // typeChecking to true and provide
-          // the right fileGlob
-          // reference https://github.com/MeirionHughes/aurelia-template-lint#static-type-checking
-          // these settings can also be passed with configuration above
-          typeChecking: true,
-          fileGlob: 'app/**/*.ts'
+          emitErrors: true
         }
       }
     }),

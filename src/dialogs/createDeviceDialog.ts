@@ -125,6 +125,10 @@ export class CreateDeviceDialog {
     }
   }
 
+  cancel() {
+    this.dialogController.cancel();
+  }
+
   activate(args) {
     Log.debug('Activating with args:', args);
     this.appEui = args.appEUI;

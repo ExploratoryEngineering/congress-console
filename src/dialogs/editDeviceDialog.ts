@@ -35,6 +35,10 @@ export class EditDeviceDialog {
       });
   }
 
+  cancel() {
+    this.dialogController.cancel();
+  }
+
   activate(args) {
     this.device = args.device;
     this.applicationEui = args.applicationEui;

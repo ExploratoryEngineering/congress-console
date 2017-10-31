@@ -5,7 +5,7 @@
     <div class="card__header ${ device.keyWarning ? 'card__header--colored-yellow' : 'card__header--colored' }">
       <h4 class="h4 card-header-heading">
         <span if.bind="device.keyWarning" class="material-icons device-keys-card__key-warning-icon" title="Key warning">warning</span>
-        Device keys${ device.keyWarning ? ' - Warning!': '' }
+        Device keys${ device.warning ? ' - Warning!': '' }
       </h4>
     </div>
     <div class="card__body">
@@ -21,7 +21,6 @@
         ${ device.devAddr }
       </p>
       <h5 class="h5">Application session key</h5>
-
       <p>
         <secret-text secret-text.bind="device.appSKey"></secret-text>
       </p>

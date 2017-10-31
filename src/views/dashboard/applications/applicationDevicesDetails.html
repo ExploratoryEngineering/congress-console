@@ -11,7 +11,7 @@
     <div class="grid__row">
       <device-overview-card class="grid__item grid__item--4" application.bind="application" device.bind="device" delete-device.delegate="deleteDevice($event)"
         edit-device.delegate="editDevice($event)"></device-overview-card>
-      <device-keys-card class="grid__item grid__item--4" device.bind="device" provision-device.delegate="provisionDevice($event)"></device-keys-card>
+      <device-keys-card class="grid__item grid__item--4" device.bind="device" provision-device.delegate="showDeviceProvisionDetails($event)"></device-keys-card>
       <tag-entity-map-card class="grid__item grid__item--4" tag-entity.bind="device" new-marker-position.delegate="updatePositionTag($event)"></tag-entity-map-card>
       <div class="grid__item grid__item--6">
         <div class="card card--full-width">

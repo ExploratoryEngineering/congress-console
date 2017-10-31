@@ -16,7 +16,9 @@ import { LogBuilder } from 'Helpers/LogBuilder';
 const Log = LogBuilder.create('Application devices');
 
 @autoinject
-export class ServiceDetails {
+export class ApplicationDevicesDetails {
+  router: Router;
+
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
@@ -30,8 +32,10 @@ export class ServiceDetails {
     private dialogService: DialogService,
     private eventAggregator: EventAggregator,
     private applicationStream: ApplicationStream,
-    private router: Router
-  ) { }
+    router: Router
+  ) {
+    this.router = router;
+  }
 
   editDevice() {
     Log.debug('Editing', this.device);
@@ -97,6 +101,17 @@ export class ServiceDetails {
     }
   }
 
+  showDeviceProvisionDetails(event: CustomEvent) {
+    Log.debug('User wants to provision device', this.device);
+    this.dialogService.open({
+      viewModel: PLATFORM.moduleName('dialogs/provisionDeviceDialog'),
+      model: {
+        appEUI: this.application.appEUI,
+        device: this.device
+      }
+    });
+  }
+
   addTag(device: Device, tag: Tag) {
     return this.deviceService.addTagToDevice(this.application.appEUI, device.deviceEUI, tag).then((tagObject) => {
       device.tags = { ...device.tags, ...tagObject };
@@ -137,17 +152,6 @@ export class ServiceDetails {
         });
       } else {
         Log.debug('Did not delete tag');
-      }
-    });
-  }
-
-  provisionDevice() {
-    Log.debug('User wants to provision device', this.device);
-    this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/provisionDeviceDialog'),
-      model: {
-        appEUI: this.application.appEUI,
-        device: this.device
       }
     });
   }

@@ -9,6 +9,10 @@ export class EventLogDialog {
     private dialogController: DialogController
   ) { }
 
+  close() {
+    this.dialogController.ok();
+  }
+
   activate(args) {
     this.eventLogStreamEndpoint = args.eventLogStreamEndpoint;
   }
