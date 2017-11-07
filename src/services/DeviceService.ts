@@ -1,12 +1,12 @@
-import { Time } from 'Helpers/Time';
-import { autoinject } from 'aurelia-framework';
+import { autoinject } from "aurelia-framework";
+import { Time } from "Helpers/Time";
 
-import { ApiClient } from 'Helpers/ApiClient';
-import { Device } from 'Models/Device';
+import { ApiClient } from "Helpers/ApiClient";
+import { Device } from "Models/Device";
 
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
 
-const Log = LogBuilder.create('Device service');
+const Log = LogBuilder.create("Device service");
 
 interface NewDevice {
   DeviceType: string;
@@ -15,11 +15,11 @@ interface NewDevice {
 }
 
 export interface NewOTAADevice extends NewDevice {
-  DeviceType: 'OTAA';
+  DeviceType: "OTAA";
 }
 
 export interface NewABPDevice extends NewDevice {
-  DeviceType: 'ABP';
+  DeviceType: "ABP";
   DevAddr: string;
   AppSKey: string;
   NwkSKey: string;
@@ -40,17 +40,17 @@ export class DeviceService {
 
   fetchDevices(applicationEui: string): Promise<Device[]> {
     return this.apiClient.http.get(`/applications/${applicationEui}/devices`)
-      .then(data => data.content.devices)
-      .then(devices => {
+      .then((data) => data.content.devices)
+      .then((devices) => {
         return devices.map(Device.newFromDto);
       });
   }
 
   fetchDeviceByEUI(applicationEui: string, deviceEui: string): Promise<Device> {
     return this.apiClient.http.get(`/applications/${applicationEui}/devices/${deviceEui}`)
-      .then(data => data.content)
-      .then(device => {
-        Log.debug('Fetched device ', device);
+      .then((data) => data.content)
+      .then((device) => {
+        Log.debug("Fetched device ", device);
         return Device.newFromDto(device);
       });
   }
@@ -59,21 +59,21 @@ export class DeviceService {
     return this.apiClient.http
       .createRequest(`/applications/${applicationEui}/devices/${deviceEui}/source`)
       .asGet()
-      .withResponseType('text')
-      .send().then(data => data.response);
+      .withResponseType("text")
+      .send().then((data) => data.response);
   }
 
   getTagsForDevice(applicationEui: string, deviceEui: string): Promise<TagObject> {
     return this.apiClient.http.get(`/applications/${applicationEui}/devices/${deviceEui}/tags`)
-      .then(data => data.content);
+      .then((data) => data.content);
   }
 
   addTagToDevice(applicationEui: string, deviceEui: string, tag: Tag): Promise<TagObject> {
-    let tagObject = {};
+    const tagObject = {};
     tagObject[tag.key] = tag.value;
 
     return this.apiClient.http.post(`/applications/${applicationEui}/devices/${deviceEui}/tags`, tagObject)
-      .then(data => data.content);
+      .then((data) => data.content);
   }
 
   deleteTagFromDevice(applicationEui: string, deviceEui: string, tag: Tag): Promise<any> {
@@ -91,43 +91,43 @@ export class DeviceService {
     deviceEui: string,
     {
       limit = 50,
-      since = Time.SIX_HOURS_AGO.format('x')
+      since = Time.SIX_HOURS_AGO.format("x"),
     }: DataSearchParameters = {}): Promise<MessageData[]> {
     return this.apiClient.http.get(
-      `/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`
+      `/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`,
     )
-      .then(data => data.content.messages)
-      .then(data => data.reverse());
+      .then((data) => data.content.messages)
+      .then((data) => data.reverse());
 
   }
 
   async sendMessageToDevice(applicationEui: string, deviceEui: string, messageData: NewMessageData): Promise<NewMessageData> {
     return this.apiClient.http.post(
       `/applications/${applicationEui}/devices/${deviceEui}/message`,
-      messageData
-    ).then(data => data.content);
+      messageData,
+    ).then((data) => data.content);
   }
 
   async createNewDevice(device: NewABPDevice | NewOTAADevice, appEui: string): Promise<Device> {
-    Log.debug('Creating device', device);
+    Log.debug("Creating device", device);
     return this.apiClient.http.post(
       `/applications/${appEui}/devices`,
-      device
-    ).then(data => data.content)
-      .then(newDevice => {
-        Log.debug('Created device ', newDevice);
+      device,
+    ).then((data) => data.content)
+      .then((newDevice) => {
+        Log.debug("Created device ", newDevice);
         return Device.newFromDto(newDevice);
       });
   }
 
   async updateDevice(applicationEui: string, device: Device): Promise<Device> {
-    Log.debug('Updating device', device);
+    Log.debug("Updating device", device);
     return this.apiClient.http.put(
       `/applications/${applicationEui}/devices/${device.deviceEUI}`,
-      Device.toDto(device)
-    ).then(data => data => data.content)
-      .then(updatedDevice => {
-        Log.debug('Updated device', updatedDevice);
+      Device.toDto(device),
+    ).then((data) => data.content)
+      .then((updatedDevice) => {
+        Log.debug("Updated device", updatedDevice);
         return Device.newFromDto(device);
       });
   }
@@ -139,9 +139,9 @@ export class DeviceService {
    */
   async deleteDevice(appEUI: string, device: Device): Promise<any> {
     return this.apiClient.http.delete(
-      `/applications/${appEUI}/devices/${device.deviceEUI}`
-    ).then(res => {
-      Log.debug('Delete success!', res);
+      `/applications/${appEUI}/devices/${device.deviceEUI}`,
+    ).then((res) => {
+      Log.debug("Delete success!", res);
     });
   }
 }

@@ -6,7 +6,7 @@ export class DeviceServiceMock {
     return Promise.resolve({});
   }
   fetchSourceForDevice() {
-    return Promise.resolve('');
+    return Promise.resolve("");
   }
 
   getTagsForDevice() {

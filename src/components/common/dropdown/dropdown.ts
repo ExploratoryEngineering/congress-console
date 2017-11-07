@@ -1,12 +1,12 @@
-import { bindable } from 'aurelia-framework';
+import { bindable } from "aurelia-framework";
 
 export class Dropdown {
   @bindable
   active = false;
   @bindable
-  dropdownPosition: string = 'above';
+  dropdownPosition: string = "above";
   @bindable
-  containerClasses: string = '';
+  containerClasses: string = "";
   @bindable
   disabled: boolean = false;
 
@@ -15,22 +15,22 @@ export class Dropdown {
   closeOnItemSelect = true;
   closeOnOutsideClick = true;
 
-  handleDropdownClick = (event) => { };
-  handleBodyClick = (event) => { };
-
   constructor() {
-    this.handleDropdownClick = e => {
+    this.handleDropdownClick = (e) => {
       if (this.closeOnItemSelect) {
         this.closeDropdown();
       }
     };
-    this.handleBodyClick = e => {
+    this.handleBodyClick = (e) => {
       if (this.closeOnOutsideClick &&
         !this.container.contains(e.target)) {
         this.closeDropdown();
       }
     };
   }
+
+  handleDropdownClick = (event) => { return; };
+  handleBodyClick = (event) => { return; };
 
   toggleDropdown() {
     if (this.disabled) {
@@ -41,11 +41,11 @@ export class Dropdown {
   }
 
   attached() {
-    this.container.addEventListener('click', this.handleDropdownClick);
+    this.container.addEventListener("click", this.handleDropdownClick);
   }
 
   detached() {
-    this.container.removeEventListener('click', this.handleDropdownClick);
+    this.container.removeEventListener("click", this.handleDropdownClick);
   }
 
   closeDropdown() {
@@ -54,9 +54,9 @@ export class Dropdown {
 
   activeChanged(isActive) {
     if (isActive) {
-      window.document.addEventListener('click', this.handleBodyClick);
+      window.document.addEventListener("click", this.handleBodyClick);
     } else {
-      window.document.removeEventListener('click', this.handleBodyClick);
+      window.document.removeEventListener("click", this.handleBodyClick);
     }
   }
 }

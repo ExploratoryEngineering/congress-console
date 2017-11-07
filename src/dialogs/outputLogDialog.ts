@@ -1,7 +1,7 @@
-import { Output } from 'Models/Output';
-import { OutputService } from 'Services/OutputService';
-import { autoinject } from 'aurelia-framework';
-import { DialogController } from 'aurelia-dialog';
+import { DialogController } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
+import { Output } from "Models/Output";
+import { OutputService } from "Services/OutputService";
 
 const POLL_INTERVAL_MS = 10000;
 
@@ -14,7 +14,7 @@ export class OutputLogDialog {
 
   constructor(
     private dialogController: DialogController,
-    private outputService: OutputService
+    private outputService: OutputService,
   ) { }
 
   update() {

@@ -1,10 +1,10 @@
-import { GravatarService } from 'Services/GravatarService';
-import { autoinject } from 'aurelia-framework';
-import { UserProfile } from 'Models/UserProfile';
-import { AuthService } from 'Services/AuthService';
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { autoinject } from "aurelia-framework";
+import { LogBuilder } from "Helpers/LogBuilder";
+import { UserProfile } from "Models/UserProfile";
+import { AuthService } from "Services/AuthService";
+import { GravatarService } from "Services/GravatarService";
 
-const Log = LogBuilder.create('UserInformation');
+const Log = LogBuilder.create("UserInformation");
 
 @autoinject
 export class UserInformation {
@@ -13,7 +13,7 @@ export class UserInformation {
 
   constructor(
     private authService: AuthService,
-    private gravatarService: GravatarService
+    private gravatarService: GravatarService,
   ) { }
 
   fetchUserProfile(): Promise<UserProfile> {
@@ -21,9 +21,9 @@ export class UserInformation {
       return Promise.resolve(this.userProfile);
     }
 
-    Log.debug('Fetching user information');
+    Log.debug("Fetching user information");
 
-    return this.authService.getUserProfile().then(userProfile => {
+    return this.authService.getUserProfile().then((userProfile) => {
       this.userProfile = userProfile;
       this.gravatarSrc = this.gravatarService.getImageSrcByEmail(userProfile.email);
       return this.userProfile;

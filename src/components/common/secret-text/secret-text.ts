@@ -1,12 +1,12 @@
-import { bindable } from 'aurelia-framework';
+import { bindable } from "aurelia-framework";
 
 export class SecretText {
   @bindable
-  secretText: string = '';
+  secretText: string = "";
   @bindable
   visible: boolean = false;
   @bindable
-  placeholderText: string = '<secret>';
+  placeholderText: string = "<secret>";
 
   toggleVisibility() {
     this.visible = !this.visible;

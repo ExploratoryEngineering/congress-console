@@ -1,21 +1,18 @@
-import { UserInformation } from 'Helpers/UserInformation';
-import { UserProfile } from 'Models/UserProfile';
+import { UserInformation } from "Helpers/UserInformation";
+import { UserProfile } from "Models/UserProfile";
+import { GravatarServiceMock } from "Test/mock/mocks";
 
-const TEST_EMAIL = 'testemail@example.com';
+const TEST_EMAIL = "testemail@example.com";
 
 class AuthServiceMock {
   getUserProfile() {
     return Promise.resolve(new UserProfile({
-      email: TEST_EMAIL
+      email: TEST_EMAIL,
     }));
   }
 }
 
-class GravatarServiceMock {
-  getImageSrcByEmail() { }
-}
-
-describe('The UserInformation helper', () => {
+describe("The UserInformation helper", () => {
   let mockedAuthService;
   let mockedGravatarService;
   let userInformation;
@@ -26,28 +23,28 @@ describe('The UserInformation helper', () => {
     userInformation = new UserInformation(mockedAuthService, mockedGravatarService);
   });
 
-  it('should reject the fetch user profile call if not logged in', (done) => {
+  it("should reject the fetch user profile call if not logged in", (done) => {
     delete userInformation.userProfile;
 
     mockedAuthService.getUserProfile = () => {
-      return Promise.reject(new Error('Not logged in'));
+      return Promise.reject(new Error("Not logged in"));
     };
     userInformation.fetchUserProfile().catch(() => {
       done();
     });
   });
 
-  it('should return a user profile object on logged in', (done) => {
-    userInformation.fetchUserProfile().then(profile => {
+  it("should return a user profile object on logged in", (done) => {
+    userInformation.fetchUserProfile().then((profile) => {
       expect(profile).toBeTruthy();
       done();
     });
   });
 
-  it('should generate a gravatar src based on email when loading new profile object', (done) => {
-    let getImageSpy = spyOn(mockedGravatarService, 'getImageSrcByEmail');
+  it("should generate a gravatar src based on email when loading new profile object", (done) => {
+    const getImageSpy = spyOn(mockedGravatarService, "getImageSrcByEmail");
 
-    userInformation.fetchUserProfile().then(profile => {
+    userInformation.fetchUserProfile().then((profile) => {
       expect(getImageSpy).toHaveBeenCalledWith(TEST_EMAIL);
       done();
     });

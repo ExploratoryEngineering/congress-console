@@ -1,15 +1,15 @@
-import { ApiClient } from 'Helpers/ApiClient';
-import { UserProfile } from 'Models/UserProfile';
-import { autoinject } from 'aurelia-framework';
+import { autoinject } from "aurelia-framework";
+import { ApiClient } from "Helpers/ApiClient";
+import { UserProfile } from "Models/UserProfile";
 
 @autoinject
 export class AuthService {
   constructor(
-    private apiClient: ApiClient
+    private apiClient: ApiClient,
   ) { }
 
   getUserProfile(): Promise<UserProfile> {
-    return this.apiClient.http.get('/connect/profile')
-      .then(data => UserProfile.newFromDto(data.content));
+    return this.apiClient.http.get("/connect/profile")
+      .then((data) => UserProfile.newFromDto(data.content));
   }
 }

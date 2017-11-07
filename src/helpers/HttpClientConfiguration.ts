@@ -1,31 +1,31 @@
-import { AureliaConfiguration } from 'aurelia-configuration';
-import { autoinject } from 'aurelia-framework';
+import { AureliaConfiguration } from "aurelia-configuration";
+import { autoinject } from "aurelia-framework";
 
-import { ResponseHandler } from 'Helpers/ResponseHandler';
+import { ResponseHandler } from "Helpers/ResponseHandler";
 
-import { LogBuilder } from './LogBuilder';
-const Log = LogBuilder.create('Http client config');
+import { LogBuilder } from "./LogBuilder";
+const Log = LogBuilder.create("Http client config");
 
 @autoinject
 export class HttpClientConfiguration {
   constructor(
     private responseHandler: ResponseHandler,
-    private config: AureliaConfiguration
+    private config: AureliaConfiguration,
   ) { }
 
   apiEndpointConfiguration() {
     return (client) => {
-      client.withBaseUrl(this.config.get('api.endpoint'));
+      client.withBaseUrl(this.config.get("api.endpoint"));
       client.withCredentials(true);
       client.withInterceptor({
         responseError: (responseError) => {
-          let customError = this.responseHandler.handleResponse(responseError);
+          const customError = this.responseHandler.handleResponse(responseError);
 
-          Log.debug('In responseError', responseError, customError);
+          Log.debug("In responseError", responseError, customError);
           if (customError) {
             throw customError;
           }
-        }
+        },
       });
     };
   }

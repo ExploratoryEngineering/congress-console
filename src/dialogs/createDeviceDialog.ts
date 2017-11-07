@@ -1,18 +1,18 @@
-import { autoinject } from 'aurelia-framework';
-import { computedFrom } from 'aurelia-binding';
-import { DialogController } from 'aurelia-dialog';
+import { computedFrom } from "aurelia-binding";
+import { DialogController } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
 
-import { DeviceService, NewOTAADevice, NewABPDevice } from 'Services/DeviceService';
-import { Device } from 'Models/Device';
+import { Device } from "Models/Device";
+import { DeviceService, NewABPDevice, NewOTAADevice } from "Services/DeviceService";
 
-import { BadRequestError } from 'Helpers/ResponseHandler';
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
+import { BadRequestError } from "Helpers/ResponseHandler";
 
-const Log = LogBuilder.create('Device Dialog');
+const Log = LogBuilder.create("Device Dialog");
 
 const DeviceTypes = {
-  ABP: 'ABP',
-  OTAA: 'OTAA'
+  ABP: "ABP",
+  OTAA: "OTAA",
 };
 
 @autoinject
@@ -23,29 +23,29 @@ export class CreateDeviceDialog {
   device: Device = new Device();
   createdDevice: Device;
   step: number = 1;
-  source: string = '';
+  source: string = "";
 
   formError: string;
 
   constructor(
     private deviceService: DeviceService,
-    private dialogController: DialogController
+    private dialogController: DialogController,
   ) {
     this.step = 1;
   }
 
   submitDevice() {
-    Log.debug('New device is', this.device, this.getNewDevice());
+    Log.debug("New device is", this.device, this.getNewDevice());
     return this.deviceService.createNewDevice(this.getNewDevice(), this.appEui)
-      .then(device => {
+      .then((device) => {
         this.createdDevice = device;
       })
-      .catch(error => {
+      .catch((error) => {
         if (error instanceof BadRequestError) {
-          Log.debug('400', error);
+          Log.debug("400", error);
           this.formError = error.content;
         } else {
-          Log.error('Create device: Error occured', error);
+          Log.error("Create device: Error occured", error);
           this.dialogController.cancel();
         }
       });
@@ -54,28 +54,28 @@ export class CreateDeviceDialog {
   fetchSource() {
     return this.deviceService
       .fetchSourceForDevice(this.appEui, this.createdDevice.deviceEUI)
-      .then(source => {
+      .then((source) => {
         this.source = source;
       });
   }
 
   getNewDevice(): NewABPDevice | NewOTAADevice {
     if (this.selectedType === DeviceTypes.OTAA) {
-      let otaaDevice: NewOTAADevice = {
-        DeviceType: 'OTAA',
+      const otaaDevice: NewOTAADevice = {
+        DeviceType: "OTAA",
         RelaxedCounter: this.device.relaxedCounter,
-        Tags: this.device.tags
+        Tags: this.device.tags,
       };
 
       return otaaDevice;
     } else {
-      let abpDevice: NewABPDevice = {
-        DeviceType: 'ABP',
-        NwkSKey: this.device.nwkSKey.padStart(32, '0'),
+      const abpDevice: NewABPDevice = {
+        DeviceType: "ABP",
+        NwkSKey: this.device.nwkSKey.padStart(32, "0"),
         DevAddr: this.device.devAddr,
-        AppSKey: this.device.appSKey.padStart(32, '0'),
+        AppSKey: this.device.appSKey.padStart(32, "0"),
         RelaxedCounter: this.device.relaxedCounter,
-        Tags: this.device.tags
+        Tags: this.device.tags,
       };
 
       return abpDevice;
@@ -86,24 +86,24 @@ export class CreateDeviceDialog {
     return stepNumber === this.step;
   }
 
-  @computedFrom('selectedType')
+  @computedFrom("selectedType")
   get isAbp(): boolean {
     return this.selectedType === DeviceTypes.ABP;
   }
 
-  @computedFrom('step')
+  @computedFrom("step")
   get nextText(): string {
     if (this.isStep(1)) {
-      return 'Configure device';
+      return "Configure device";
     } else if (this.isStep(2)) {
-      return 'Create device';
+      return "Create device";
     } else {
-      return 'To new device';
+      return "To new device";
     }
   }
 
   goToStep(stepNumber: number) {
-    Log.debug('Setting step to number', stepNumber);
+    Log.debug("Setting step to number", stepNumber);
     if (this.step !== 3) {
       this.step = stepNumber;
     }
@@ -130,7 +130,7 @@ export class CreateDeviceDialog {
   }
 
   activate(args) {
-    Log.debug('Activating with args:', args);
+    Log.debug("Activating with args:", args);
     this.appEui = args.appEUI;
   }
 }

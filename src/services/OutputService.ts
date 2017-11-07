@@ -1,52 +1,51 @@
-import { autoinject } from 'aurelia-framework';
+import { autoinject } from "aurelia-framework";
 
-import { ApiClient } from 'Helpers/ApiClient';
-import { Output } from 'Models/Output';
+import { ApiClient } from "Helpers/ApiClient";
+import { Output } from "Models/Output";
 
 @autoinject
 export class OutputService {
   constructor(
-    private apiClient: ApiClient
+    private apiClient: ApiClient,
   ) { }
 
   getOutputByEui(applicationEui: string, outputEui: string): Promise<Output> {
     return this.apiClient.http.get(
-      `/applications/${applicationEui}/outputs/${outputEui}`
-    ).then(data => data.content)
-      .then(output => {
+      `/applications/${applicationEui}/outputs/${outputEui}`,
+    ).then((data) => data.content)
+      .then((output) => {
         return Output.newFromDto(output);
       });
   }
 
   getOutputsForApplication(applicationEui: string): Promise<Output[]> {
     return this.apiClient.http.get(
-      `/applications/${applicationEui}/outputs`
-    ).then(data => data.content.outputs)
-      .then(outputs => {
+      `/applications/${applicationEui}/outputs`,
+    ).then((data) => data.content.outputs)
+      .then((outputs) => {
         return outputs.map(Output.newFromDto);
       });
   }
 
-
   createOutput(applicationEui: string, output: Output): Promise<Output> {
     return this.apiClient.http.post(
       `/applications/${applicationEui}/outputs`,
-      Output.toDto(output)
-    ).then(data => data.content)
-      .then(output => Output.newFromDto(output));
+      Output.toDto(output),
+    ).then((data) => data.content)
+      .then((newOutput) => Output.newFromDto(newOutput));
   }
 
   updateOutput(applicationEui: string, output: Output): Promise<Output> {
     return this.apiClient.http.put(
       `/applications/${applicationEui}/outputs/${output.eui}`,
-      Output.toDto(output)
-    ).then(data => data.content)
-      .then(output => Output.newFromDto(output));
+      Output.toDto(output),
+    ).then((data) => data.content)
+      .then((updatedOutput) => Output.newFromDto(updatedOutput));
   }
 
   deleteOutput(applicationEui: string, outputEui: string): Promise<any> {
     return this.apiClient.http.delete(
-      `/applications/${applicationEui}/outputs/${outputEui}`
+      `/applications/${applicationEui}/outputs/${outputEui}`,
     );
   }
 }

@@ -1,9 +1,9 @@
-import { autoinject, bindable, containerless } from 'aurelia-framework';
+import { autoinject, bindable, containerless } from "aurelia-framework";
 
-import { Output } from 'Models/Output';
-import { OutputService } from 'Services/OutputService';
+import { Output } from "Models/Output";
+import { OutputService } from "Services/OutputService";
 
-import './application-output-card.scss';
+import "./application-output-card.scss";
 
 @autoinject
 @containerless
@@ -14,13 +14,13 @@ export class ApplicationOutputCard {
   outputs: Output[] = [];
 
   constructor(
-    private outputService: OutputService
+    private outputService: OutputService,
   ) { }
 
   fetchAndPopulateOutputs() {
     this.outputService.getOutputsForApplication(
-      this.applicationEui
-    ).then(outputs => {
+      this.applicationEui,
+    ).then((outputs) => {
       this.outputs = outputs;
     });
   }

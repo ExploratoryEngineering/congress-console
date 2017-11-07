@@ -1,8 +1,8 @@
-import { Application } from 'Models/Application';
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { autoinject, bindable } from 'aurelia-framework';
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
+import { Application } from "Models/Application";
 
-import './application-details-card.scss';
+import "./application-details-card.scss";
 
 @autoinject
 export class ApplicationDetailsCard {
@@ -10,10 +10,10 @@ export class ApplicationDetailsCard {
   application: Application;
 
   constructor(
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   editApplication() {
-    this.eventAggregator.publish('application:edit', this.application);
+    this.eventAggregator.publish("application:edit", this.application);
   }
 }

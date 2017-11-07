@@ -1,7 +1,7 @@
-import { bindable, autoinject } from 'aurelia-framework';
+import { autoinject, bindable } from "aurelia-framework";
 
-import { CustomEventHelper } from 'Helpers/CustomEventHelper';
-import { Device } from 'Models/Device';
+import { CustomEventHelper } from "Helpers/CustomEventHelper";
+import { Device } from "Models/Device";
 
 @autoinject
 export class DeviceKeysCard {
@@ -9,19 +9,19 @@ export class DeviceKeysCard {
   device: Device;
 
   constructor(
-    private element: Element
+    private element: Element,
   ) { }
 
   provisionDevice() {
     CustomEventHelper.dispatchEvent(
       this.element,
-      'provision-device',
+      "provision-device",
       {
         detail: {
-          device: this.device
+          device: this.device,
         },
-        bubbles: true
-      }
+        bubbles: true,
+      },
     );
   }
 }

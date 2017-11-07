@@ -1,5 +1,5 @@
-import { autoinject } from 'aurelia-framework';
-import { DialogController } from 'aurelia-dialog';
+import { DialogController } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
 
 interface MessageDialogConfig {
   messageHeader: string;
@@ -17,7 +17,7 @@ export class MessageDialog {
   confirmButtonText: string;
 
   constructor(
-    private dialogController: DialogController
+    private dialogController: DialogController,
   ) { }
 
   ok() {
@@ -29,10 +29,10 @@ export class MessageDialog {
   }
 
   activate(args: MessageDialogConfig = {
-    messageHeader: 'Default header',
-    message: 'Default message',
-    cancelButtonText: '',
-    confirmButtonText: ''
+    messageHeader: "Default header",
+    message: "Default message",
+    cancelButtonText: "",
+    confirmButtonText: "",
   }) {
     this.messageHeader = args.messageHeader;
     this.message = args.message;

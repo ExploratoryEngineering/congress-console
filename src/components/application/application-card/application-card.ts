@@ -1,14 +1,14 @@
-import { Time } from 'Helpers/Time';
-import { GraphController } from 'Helpers/GraphController';
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { Application } from 'Models/Application';
-import { ApplicationService } from 'Services/ApplicationService';
-import { bindable, containerless, autoinject } from 'aurelia-framework';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, bindable, containerless } from "aurelia-framework";
+import { GraphController } from "Helpers/GraphController";
+import { LogBuilder } from "Helpers/LogBuilder";
+import { Time } from "Helpers/Time";
+import { Application } from "Models/Application";
+import { ApplicationService } from "Services/ApplicationService";
 
-import Debug from 'Helpers/Debug';
+import Debug from "Helpers/Debug";
 
-const Log = LogBuilder.create('Application-card');
+const Log = LogBuilder.create("Application-card");
 
 @containerless
 @autoinject
@@ -22,58 +22,58 @@ export class ApplicationCard {
     maintainAspectRatio: false,
     showLines: false,
     gridLines: {
-      display: false
+      display: false,
     },
     legend: {
-      display: false
+      display: false,
     },
     scales: {
       yAxes: [{
         display: false,
         ticks: {
-          beginAtZero: true
-        }
+          beginAtZero: true,
+        },
       }],
       xAxes: [{
         display: false,
-        type: 'time',
+        type: "time",
         barThickness: 2,
         time: {
           min: Time.ONE_HOUR_AGO,
           max: Time.NOW,
-          unit: 'hour'
-        }
-      }]
+          unit: "hour",
+        },
+      }],
     },
     tooltips: {
-      enabled: false
-    }
+      enabled: false,
+    },
   };
-  chartType = 'bar';
+  chartType = "bar";
 
   dataInterval;
 
   constructor(
     private eventAggregator: EventAggregator,
     private applicationService: ApplicationService,
-    private graphController: GraphController
+    private graphController: GraphController,
   ) { }
 
   initiateChartData() {
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: Time.ONE_HOUR_AGO.format('x') }).then(messageData => {
+    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: Time.ONE_HOUR_AGO.format("x") }).then((messageData) => {
       this.chartData = this.graphController.getGraph(messageData, {
-        chartDataColors: ['rgba(255,255,255,.7)'],
-        graphType: 'count-aggregated'
+        chartDataColors: ["rgba(255,255,255,.7)"],
+        graphType: "count-aggregated",
       });
     });
   }
 
   editApplication() {
-    this.eventAggregator.publish('application:edit', this.application);
+    this.eventAggregator.publish("application:edit", this.application);
   }
 
   deleteApplication() {
-    this.eventAggregator.publish('application:delete', this.application);
+    this.eventAggregator.publish("application:delete", this.application);
   }
 
   unbind() {

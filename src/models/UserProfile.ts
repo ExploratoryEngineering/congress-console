@@ -9,6 +9,21 @@ interface UserProfileDto {
 }
 
 export class UserProfile {
+  /**
+   * Returns a new UserProfile from a dto
+   */
+  static newFromDto(dto: UserProfileDto): UserProfile {
+    return new UserProfile({
+      connectdId: dto.connect_id,
+      name: dto.name,
+      locale: dto.locale,
+      email: dto.email,
+      verifiedEmail: dto.verified_email,
+      phone: dto.phone,
+      verifiedPhone: dto.verified_phone,
+    });
+  }
+
   connectId: string;
   name: string;
   locale: string;
@@ -18,13 +33,13 @@ export class UserProfile {
   verifiedPhone: boolean;
 
   constructor({
-    connectdId = '',
-    name = '',
-    locale = 'en',
-    email = '',
+    connectdId = "",
+    name = "",
+    locale = "en",
+    email = "",
     verifiedEmail = false,
-    phone = '',
-    verifiedPhone = false
+    phone = "",
+    verifiedPhone = false,
   } = {}) {
     this.connectId = connectdId;
     this.name = name;
@@ -33,20 +48,5 @@ export class UserProfile {
     this.verifiedEmail = verifiedEmail;
     this.phone = phone;
     this.verifiedPhone = verifiedPhone;
-  }
-
-  /**
- * Returns a new UserProfile from a dto
- */
-  static newFromDto(dto: UserProfileDto): UserProfile {
-    return new UserProfile({
-      connectdId: dto.connect_id,
-      name: dto.name,
-      locale: dto.locale,
-      email: dto.email,
-      verifiedEmail: dto.verified_email,
-      phone: dto.phone,
-      verifiedPhone: dto.verified_phone
-    });
   }
 }

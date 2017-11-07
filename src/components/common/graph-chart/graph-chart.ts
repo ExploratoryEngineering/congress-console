@@ -1,15 +1,15 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { bindable, bindingMode, containerless } from 'aurelia-framework';
+import { bindable, bindingMode, containerless } from "aurelia-framework";
+import { LogBuilder } from "Helpers/LogBuilder";
 
-import Chart from 'chart.js';
+import Chart from "chart.js";
 
-const Log = LogBuilder.create('Graph chart');
+const Log = LogBuilder.create("Graph chart");
 
 @containerless
 export class GraphChart {
   @bindable chartData: any = {};
   @bindable chartOptions = {};
-  @bindable chartType = 'line';
+  @bindable chartType = "line";
   @bindable({ defaultBindingMode: bindingMode.twoWay }) chart;
 
   canvas;
@@ -18,7 +18,7 @@ export class GraphChart {
     this.chart = new Chart(this.canvas, {
       type: this.chartType,
       data: this.chartData,
-      options: this.chartOptions
+      options: this.chartOptions,
     });
   }
 

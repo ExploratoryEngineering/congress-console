@@ -1,9 +1,5 @@
-import { ApplicationCard } from './application-card';
-
-class EventAggregatorStub {
-  publish() {
-  }
-}
+import { EventAggregatorMock } from "Test/mock/mocks";
+import { ApplicationCard } from "./application-card";
 
 class ApplicationStub {
 }
@@ -18,12 +14,12 @@ class GraphControllerStub {
   getGraph() {
     return {
       dataSets: [],
-      labels: []
+      labels: [],
     };
   }
 }
 
-describe('ApplicationCard component', () => {
+describe("ApplicationCard component", () => {
   let applicationCard;
 
   let eventAggregatorStub;
@@ -32,7 +28,7 @@ describe('ApplicationCard component', () => {
   let graphControllerStub;
 
   beforeEach(() => {
-    eventAggregatorStub = new EventAggregatorStub();
+    eventAggregatorStub = new EventAggregatorMock();
     applicationStub = new ApplicationStub();
     applicationServiceStub = new ApplicationServiceStub();
     graphControllerStub = new GraphControllerStub();
@@ -45,11 +41,11 @@ describe('ApplicationCard component', () => {
     applicationCard.unbind();
   });
 
-  describe('Binding behaviour', () => {
-    it('should initiate chartData upon bind', () => {
+  describe("Binding behaviour", () => {
+    it("should initiate chartData upon bind", () => {
       expect(applicationCard.chartData).toBeFalsy();
 
-      spyOn(applicationCard, 'initiateChartData');
+      spyOn(applicationCard, "initiateChartData");
 
       applicationCard.bind();
 
@@ -57,19 +53,19 @@ describe('ApplicationCard component', () => {
     });
   });
 
-  describe('Chart data', () => {
-    it('should have no data upon initialization', () => {
+  describe("Chart data", () => {
+    it("should have no data upon initialization", () => {
       expect(applicationCard.chartData).toBeFalsy();
     });
   });
 
-  describe('Event handling', () => {
-    it('should emit the correct event upon edit call', () => {
-      spyOn(eventAggregatorStub, 'publish');
+  describe("Event handling", () => {
+    it("should emit the correct event upon edit call", () => {
+      spyOn(eventAggregatorStub, "publish");
 
       applicationCard.editApplication();
 
-      expect(eventAggregatorStub.publish).toHaveBeenCalledWith('application:edit', applicationStub);
+      expect(eventAggregatorStub.publish).toHaveBeenCalledWith("application:edit", applicationStub);
     });
   });
 });

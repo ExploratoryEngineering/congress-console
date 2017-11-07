@@ -1,40 +1,39 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
-import { autoinject, bindable } from 'aurelia-framework';
+import { EventAggregator, Subscription } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
+import { LogBuilder } from "Helpers/LogBuilder";
 
-const Log = LogBuilder.create('Snackbar');
+const Log = LogBuilder.create("Snackbar");
 
 interface Message {
   body: string;
   timeout: number;
-  callback?: { (): void };
+  callback?: () => void;
 }
-
 
 @autoinject
 export class Snackbar {
   DEFAULT_TIMEOUT: number = 3000;
   @bindable
-  scope: string = 'global';
+  scope: string = "global";
   isActive: boolean = false;
   subscriptions: Subscription[] = [];
 
   messageQueue: Promise<any> = Promise.resolve();
-  message: string = '';
+  message: string = "";
 
   constructor(
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   publishMessage({
     timeout = this.DEFAULT_TIMEOUT,
-    body
-  }: Message = { body: '', timeout: this.DEFAULT_TIMEOUT }) {
-    Log.debug('Received message', body, timeout);
+    body,
+  }: Message = { body: "", timeout: this.DEFAULT_TIMEOUT }) {
+    Log.debug("Received message", body, timeout);
 
     this.showMessage({
       body: body,
-      timeout: timeout
+      timeout: timeout,
     });
   }
 
@@ -54,7 +53,7 @@ export class Snackbar {
 
   setDeactivationTimeout(timeout: number, res) {
     setTimeout(() => {
-      this.message = '';
+      this.message = "";
       res();
     }, timeout);
 
@@ -68,7 +67,7 @@ export class Snackbar {
   }
 
   unbind() {
-    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions.forEach((subscription) => subscription.dispose());
     this.subscriptions = [];
   }
 }

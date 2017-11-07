@@ -1,13 +1,13 @@
-import { Snackbar } from './snackbar';
+import { Snackbar } from "./snackbar";
 
 class EventAggregatorStub {
-  subscribe() { }
-  publish() { }
+  subscribe() { return; }
+  publish() { return; }
 }
 
 jest.useFakeTimers();
 
-describe('Snackbar component', () => {
+describe("Snackbar component", () => {
   let snackbar;
   let eventAggregatorStub;
 
@@ -16,15 +16,15 @@ describe('Snackbar component', () => {
     snackbar = new Snackbar(eventAggregatorStub);
   });
 
-  it('should subscribe to the default global scope when no scope is given upon bind', () => {
-    spyOn(eventAggregatorStub, 'subscribe');
+  it("should subscribe to the default global scope when no scope is given upon bind", () => {
+    spyOn(eventAggregatorStub, "subscribe");
     snackbar.bind();
-    expect(eventAggregatorStub.subscribe).toHaveBeenCalledWith('global:message', jasmine.anything());
+    expect(eventAggregatorStub.subscribe).toHaveBeenCalledWith("global:message", jasmine.anything());
   });
 
-  it('should unsubscribe to old subs upon unbind', () => {
-    let testSubscription = { dispose: () => { } };
-    spyOn(testSubscription, 'dispose');
+  it("should unsubscribe to old subs upon unbind", () => {
+    const testSubscription = { dispose: () => { return; } };
+    spyOn(testSubscription, "dispose");
 
     snackbar.subscriptions.push(testSubscription);
     snackbar.unbind();
@@ -32,53 +32,53 @@ describe('Snackbar component', () => {
     expect(testSubscription.dispose).toHaveBeenCalled();
   });
 
-  it('should handle messages without timeout', () => {
-    spyOn(snackbar, 'showMessage');
+  it("should handle messages without timeout", () => {
+    spyOn(snackbar, "showMessage");
 
-    snackbar.publishMessage({ body: 'test' });
-    expect(snackbar.showMessage).toHaveBeenCalledWith({ body: 'test', timeout: snackbar.DEFAULT_TIMEOUT });
+    snackbar.publishMessage({ body: "test" });
+    expect(snackbar.showMessage).toHaveBeenCalledWith({ body: "test", timeout: snackbar.DEFAULT_TIMEOUT });
   });
 
-  it('should handle messages with timeout', () => {
-    let customTimeout = 7500;
-    spyOn(snackbar, 'showMessage');
+  it("should handle messages with timeout", () => {
+    const customTimeout = 7500;
+    spyOn(snackbar, "showMessage");
 
-    snackbar.publishMessage({ body: 'test', timeout: customTimeout });
-    expect(snackbar.showMessage).toHaveBeenCalledWith({ body: 'test', timeout: customTimeout });
+    snackbar.publishMessage({ body: "test", timeout: customTimeout });
+    expect(snackbar.showMessage).toHaveBeenCalledWith({ body: "test", timeout: customTimeout });
   });
 
-  it('should replace the current promise in queue with new promise', () => {
-    let oldMessageQueue = snackbar.messageQueue;
+  it("should replace the current promise in queue with new promise", () => {
+    const oldMessageQueue = snackbar.messageQueue;
 
-    snackbar.showMessage({ body: 'test', timeout: 2500 });
+    snackbar.showMessage({ body: "test", timeout: 2500 });
 
     expect(oldMessageQueue).not.toBe(snackbar.messageQueue);
   });
 
-  it('should set text and mark snackbar as active when activating message', () => {
-    snackbar.activateMessage('test');
+  it("should set text and mark snackbar as active when activating message", () => {
+    snackbar.activateMessage("test");
 
-    expect(snackbar.message).toBe('test');
+    expect(snackbar.message).toBe("test");
     expect(snackbar.isActive).toBe(true);
   });
 
-  it('should correctly set deactivation timeout for message', () => {
-    let cb = { spy: () => { } };
-    let timeout = 500;
-    spyOn(cb, 'spy');
+  it("should correctly set deactivation timeout for message", () => {
+    const cb = { spy: () => { return; } };
+    const timeout = 500;
+    spyOn(cb, "spy");
 
-    snackbar.activateMessage('test');
+    snackbar.activateMessage("test");
     snackbar.setDeactivationTimeout(timeout, cb.spy);
 
     expect(snackbar.isActive).toBe(true);
-    expect(snackbar.message).toBe('test');
+    expect(snackbar.message).toBe("test");
 
     jest.runTimersToTime(timeout - 250);
 
     expect(snackbar.isActive).toBe(false);
 
     jest.runTimersToTime(timeout - 250);
-    expect(snackbar.message).toBe('');
+    expect(snackbar.message).toBe("");
     expect(cb.spy).toHaveBeenCalled();
   });
 });

@@ -1,13 +1,13 @@
-import { useView, autoinject } from 'aurelia-framework';
-import { DialogController } from 'aurelia-dialog';
+import { DialogController } from "aurelia-dialog";
+import { autoinject, useView } from "aurelia-framework";
 
-import { DeviceService } from 'Services/DeviceService';
-import { Device } from 'Models/Device';
+import { Device } from "Models/Device";
+import { DeviceService } from "Services/DeviceService";
 
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { BadRequestError } from 'Helpers/ResponseHandler';
+import { LogBuilder } from "Helpers/LogBuilder";
+import { BadRequestError } from "Helpers/ResponseHandler";
 
-const Log = LogBuilder.create('Device provision dialog');
+const Log = LogBuilder.create("Device provision dialog");
 
 @autoinject
 export class ProvisionDeviceDialog {
@@ -18,7 +18,7 @@ export class ProvisionDeviceDialog {
 
   constructor(
     private deviceService: DeviceService,
-    private dialogController: DialogController
+    private dialogController: DialogController,
   ) { }
 
   ok() {
@@ -31,8 +31,8 @@ export class ProvisionDeviceDialog {
 
     this.deviceService.fetchSourceForDevice(
       this.appEUI,
-      this.device.deviceEUI
-    ).then(source => {
+      this.device.deviceEUI,
+    ).then((source) => {
       this.source = source;
     });
   }

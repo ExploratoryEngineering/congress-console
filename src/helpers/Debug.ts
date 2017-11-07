@@ -13,7 +13,7 @@ export default class Debug {
    * @param {number} length Optional. The maximum value of the random number
    */
   static getRandomArray(arraySize: number = 20, length: number = 1000000000): number[] {
-    let randomArray: number[] = [];
+    const randomArray: number[] = [];
 
     for (let i = 0; i < arraySize; i += 1) {
       randomArray.push(Debug.getRandomNumber(length));
@@ -28,13 +28,12 @@ export default class Debug {
    * @param {boolean} [dashes=true] Optional. Use dashes as a separator
    */
   static getRandomHexString(hexSize: number = 8, dashes: boolean = true): string {
-    let hexString = '';
+    let hexString = "";
 
     for (let i = 0; i < hexSize; i += 1) {
-      hexString += (dashes && hexString ? '-' : '') + Debug.getRandomNumber(10) + Debug.getRandomNumber(10);
+      hexString += (dashes && hexString ? "-" : "") + Debug.getRandomNumber(10) + Debug.getRandomNumber(10);
     }
 
     return hexString;
   }
 }
-

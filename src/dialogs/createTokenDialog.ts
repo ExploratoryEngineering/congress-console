@@ -1,23 +1,23 @@
-import { DialogController } from 'aurelia-dialog';
-import { autoinject } from 'aurelia-framework';
+import { DialogController } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
 
-import { TokenService } from 'Services/TokenService';
+import { TokenService } from "Services/TokenService";
 
-import { Application } from 'Models/Application';
-import { Gateway } from 'Models/Gateway';
-import { Token } from 'Models/Token';
+import { Application } from "Models/Application";
+import { Gateway } from "Models/Gateway";
+import { Token } from "Models/Token";
 
 const AccessLevels = {
   readonly: false,
-  fullaccess: true
+  fullaccess: true,
 };
 
 @autoinject
 export class CreateTokenDialog {
   token: Token;
 
-  selectedAccessLevel: string = 'readonly';
-  selectedResourceAccess: string = 'all';
+  selectedAccessLevel: string = "readonly";
+  selectedResourceAccess: string = "all";
   selectedApplication: string;
   selectedGateway: string;
 
@@ -26,10 +26,10 @@ export class CreateTokenDialog {
 
   constructor(
     private dialogController: DialogController,
-    private tokenService: TokenService
+    private tokenService: TokenService,
   ) {
     this.token = new Token({
-      write: false
+      write: false,
     });
   }
 
@@ -37,7 +37,7 @@ export class CreateTokenDialog {
     this.token.write = AccessLevels[this.selectedAccessLevel];
     this.token.resource = this.getResourceAccessUrl();
 
-    this.tokenService.createToken(this.token).then(token => {
+    this.tokenService.createToken(this.token).then((token) => {
       this.dialogController.ok(token);
     });
   }
@@ -49,16 +49,16 @@ export class CreateTokenDialog {
   getResourceAccessUrl(): string {
     const resourceAccess = this.selectedResourceAccess;
 
-    if (resourceAccess === 'all') {
-      return '/';
+    if (resourceAccess === "all") {
+      return "/";
     } else {
-      if (resourceAccess === 'applications' || resourceAccess === 'gateways') {
+      if (resourceAccess === "applications" || resourceAccess === "gateways") {
         return `/${resourceAccess}`;
       }
 
-      if (resourceAccess === 'specific_application') {
+      if (resourceAccess === "specific_application") {
         return `/applications/${this.selectedApplication}`;
-      } else if (resourceAccess === 'specific_gateway') {
+      } else if (resourceAccess === "specific_gateway") {
         return `/gateways/${this.selectedGateway}`;
       }
     }

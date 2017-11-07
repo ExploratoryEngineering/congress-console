@@ -1,12 +1,12 @@
-import { autoinject } from 'aurelia-framework';
-import { DialogController } from 'aurelia-dialog';
+import { DialogController } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
 
 @autoinject
 export class EventLogDialog {
-  eventLogStreamEndpoint: string = '';
+  eventLogStreamEndpoint: string = "";
 
   constructor(
-    private dialogController: DialogController
+    private dialogController: DialogController,
   ) { }
 
   close() {

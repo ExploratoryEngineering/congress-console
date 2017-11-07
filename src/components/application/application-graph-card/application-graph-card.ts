@@ -1,8 +1,8 @@
-import { bindable } from 'aurelia-framework';
-import * as moment from 'moment';
+import { bindable } from "aurelia-framework";
+import * as moment from "moment";
 
-import { Application } from 'Models/Application';
-import { GraphData } from 'Helpers/GraphController';
+import { GraphData } from "Helpers/GraphController";
+import { Application } from "Models/Application";
 
 export class ApplicationGraphCard {
   @bindable
@@ -15,39 +15,39 @@ export class ApplicationGraphCard {
     showLines: true,
     spanGaps: true,
     gridLines: {
-      display: true
+      display: true,
     },
     legend: {
       display: true,
-      position: 'bottom'
+      position: "bottom",
     },
     scales: {
       yAxes: [{
         display: true,
         ticks: {
           beginAtZero: true,
-          suggestedMax: 3
-        }
+          suggestedMax: 3,
+        },
       }],
       xAxes: [{
         display: true,
-        type: 'time',
+        type: "time",
         ticks: {
           max: 8,
-          min: 0
-        }
-      }]
+          min: 0,
+        },
+      }],
     },
     tooltips: {
       enabled: true,
       callbacks: {
         title: function (tooltipItem, data) {
-          return moment(parseInt(data.labels[tooltipItem[0].index], 10)).format('LTS');
-        }
-      }
-    }
+          return moment(parseInt(data.labels[tooltipItem[0].index], 10)).format("LTS");
+        },
+      },
+    },
   };
-  chartType = 'line';
+  chartType = "line";
 
   @bindable
   application: Application;

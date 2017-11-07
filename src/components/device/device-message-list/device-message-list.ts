@@ -1,9 +1,9 @@
-import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
-import { bindable, autoinject } from 'aurelia-framework';
+import { EventAggregator, Subscription } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
 
-import { Time } from 'Helpers/Time';
-import { Device } from 'Models/Device';
-import { DeviceService } from 'Services/DeviceService';
+import { Time } from "Helpers/Time";
+import { Device } from "Models/Device";
+import { DeviceService } from "Services/DeviceService";
 
 @autoinject
 export class DeviceMessageList {
@@ -19,7 +19,7 @@ export class DeviceMessageList {
 
   constructor(
     private deviceService: DeviceService,
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   filteredDeviceMessagesCallback(filteredDeviceMessages: MessageData[]) {
@@ -31,11 +31,11 @@ export class DeviceMessageList {
       this.appEui,
       this.device.deviceEUI, {
         limit: 250,
-        since: Time.DAWN_OF_TIME
+        since: Time.DAWN_OF_TIME,
       }).then((deviceMessages) => {
         this.deviceMessages = deviceMessages;
       });
-    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("deviceData", (deviceData: MessageData) => {
       if (this.device.deviceEUI === deviceData.deviceEUI) {
         this.deviceMessages.unshift(deviceData);
       }
@@ -43,7 +43,7 @@ export class DeviceMessageList {
   }
 
   unbind() {
-    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions.forEach((subscription) => subscription.dispose());
     this.subscriptions = [];
   }
 }

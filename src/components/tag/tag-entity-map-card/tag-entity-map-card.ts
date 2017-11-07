@@ -1,14 +1,14 @@
-import { bindable, autoinject } from 'aurelia-framework';
+import { autoinject, bindable } from "aurelia-framework";
 
-import { CustomEventHelper } from 'Helpers/CustomEventHelper';
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { CustomEventHelper } from "Helpers/CustomEventHelper";
+import { LogBuilder } from "Helpers/LogBuilder";
 
 interface TagMarker {
   longitude: number;
   latitude: number;
 }
 
-const Log = LogBuilder.create('Device map card');
+const Log = LogBuilder.create("Device map card");
 
 @autoinject
 export class TagEntityMapCard {
@@ -23,18 +23,18 @@ export class TagEntityMapCard {
   updating: boolean = false;
 
   constructor(
-    private element: Element
+    private element: Element,
   ) { }
 
   updateTagEntityMarker() {
     this.tagEntityMarkers = [];
 
     if (this.tagEntity && this.tagEntity.tags.location) {
-      let [latitude, longitude] = this.tagEntity.tags.location.split(',');
+      const [latitude, longitude] = this.tagEntity.tags.location.split(",");
       if (longitude && latitude) {
         this.tagEntityMarkers.push({
           latitude: parseFloat(latitude),
-          longitude: parseFloat(longitude)
+          longitude: parseFloat(longitude),
         });
 
         this.latitude = parseFloat(latitude);
@@ -51,25 +51,25 @@ export class TagEntityMapCard {
     if (!this.updating) {
       return;
     }
-    let latLngDetails = mapEvent.detail.latLng;
+    const latLngDetails = mapEvent.detail.latLng;
 
     CustomEventHelper.dispatchEvent(
       this.element,
-      'new-marker-position',
+      "new-marker-position",
       {
         bubbles: true,
         detail: {
           latitude: latLngDetails.lat(),
-          longitude: latLngDetails.lng()
-        }
-      }
+          longitude: latLngDetails.lng(),
+        },
+      },
     );
 
     this.tagEntity.tags.location = `${latLngDetails.lat()},${latLngDetails.lng()}`;
     this.updateTagEntityMarker();
 
     this.updating = false;
-    Log.debug('Event', mapEvent.detail);
+    Log.debug("Event", mapEvent.detail);
   }
 
   tagEntityChanged() {

@@ -1,5 +1,5 @@
 export class EventAggregatorMock {
-  publish() { }
-  subscribe() { }
-  subscribeOnce() { }
+  publish() { return; }
+  subscribe() { return; }
+  subscribeOnce() { return; }
 }

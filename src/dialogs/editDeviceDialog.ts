@@ -1,13 +1,13 @@
-import { autoinject } from 'aurelia-framework';
-import { DialogController } from 'aurelia-dialog';
+import { DialogController } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
 
-import { Device } from 'Models/Device';
-import { DeviceService } from 'Services/DeviceService';
+import { Device } from "Models/Device";
+import { DeviceService } from "Services/DeviceService";
 
-import { BadRequestError } from 'Helpers/ResponseHandler';
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
+import { BadRequestError } from "Helpers/ResponseHandler";
 
-const Log = LogBuilder.create('Edit Device Dialog');
+const Log = LogBuilder.create("Edit Device Dialog");
 
 @autoinject
 export class EditDeviceDialog {
@@ -17,7 +17,7 @@ export class EditDeviceDialog {
 
   constructor(
     private dialogController: DialogController,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
   ) { }
 
   submitDevice() {
@@ -26,10 +26,10 @@ export class EditDeviceDialog {
         this.dialogController.ok(device);
       }).catch((error) => {
         if (error instanceof BadRequestError) {
-          Log.debug('400', error);
+          Log.debug("400", error);
           this.formError = error.content;
         } else {
-          Log.error('Edit gateway: Error occured', error);
+          Log.error("Edit gateway: Error occured", error);
           this.dialogController.cancel();
         }
       });

@@ -1,41 +1,9 @@
-import { App } from './app';
+import { RouterMock, SignalerMock } from "Test/mock/mocks";
+import { App } from "./app";
 
-import { UserProfile } from 'Models/UserProfile';
-
-class RouterStub {
-  authStep;
-  routes;
-
-  constructor() { }
-
-  configure(handler) {
-    handler(this);
-  }
-
-  addAuthorizeStep(authorizeFunction) {
-    this.authStep = authorizeFunction;
-  }
-
-  mapUnknownRoutes() {
-    return true;
-  }
-
-  getUnknownRoute() {
-    return '';
-  }
-
-  map(routes) {
-    this.routes = routes;
-  }
-}
-
-class SignalerStub {
-  signal() { }
-}
+import { UserProfile } from "Models/UserProfile";
 
 class UserInformationStub {
-  constructor() { }
-
   fetchUserProfile() {
     return Promise.resolve(new UserProfile());
   }
@@ -43,67 +11,67 @@ class UserInformationStub {
 
 jest.useFakeTimers();
 
-describe('the App module', () => {
+describe("the App module", () => {
   let sut;
   let mockedRouter;
   let mockedUserInformation;
   let mockedSignaler;
 
   beforeEach(() => {
-    mockedRouter = new RouterStub();
+    mockedRouter = new RouterMock();
     mockedUserInformation = new UserInformationStub();
-    mockedSignaler = new SignalerStub();
+    mockedSignaler = new SignalerMock();
     sut = new App(mockedUserInformation, mockedSignaler, mockedRouter);
     sut.configureRouter(mockedRouter, mockedRouter);
   });
 
-  describe('Basic functionality', () => {
-    it('contains a router property', () => {
+  describe("Basic functionality", () => {
+    it("contains a router property", () => {
       expect(sut.router).toBeDefined();
     });
 
-    it('configures the router title', () => {
+    it("configures the router title", () => {
       expect(sut.router.title).toBeTruthy();
     });
 
-    it('should signal the signaler with updateTime', () => {
-      spyOn(mockedSignaler, 'signal');
+    it("should signal the signaler with updateTime", () => {
+      spyOn(mockedSignaler, "signal");
       expect(mockedSignaler.signal).not.toHaveBeenCalled();
       jest.runTimersToTime(sut.UPDATE_TIME_INTERVAL_MS);
-      expect(mockedSignaler.signal).toHaveBeenCalledWith('updateTime');
+      expect(mockedSignaler.signal).toHaveBeenCalledWith("updateTime");
     });
 
-    it('should have a application dashboard route', () => {
+    it("should have a application dashboard route", () => {
       expect(sut.router.routes).toContainEqual({
-        route: ['dashboard'],
-        name: 'dashboard',
-        moduleId: 'views/application-dashboard',
+        route: ["dashboard"],
+        name: "dashboard",
+        moduleId: "views/application-dashboard",
         nav: true,
-        title: 'Applications',
+        title: "Applications",
         settings: {
-          auth: true
-        }
+          auth: true,
+        },
       });
     });
 
-    it('should contain a base redirect route', () => {
-      expect(sut.router.routes).toContainEqual({ route: [''], redirect: 'dashboard' });
+    it("should contain a base redirect route", () => {
+      expect(sut.router.routes).toContainEqual({ route: [""], redirect: "dashboard" });
     });
   });
 
-  describe('Authorize functionality', () => {
+  describe("Authorize functionality", () => {
     const navInstructionWithoutAuth = {
       getAllInstructions: () => {
         return [
           {
             config: {
               settings: {
-                auth: false
-              }
-            }
-          }
+                auth: false,
+              },
+            },
+          },
         ];
-      }
+      },
     };
 
     const navInstructionWithAuth = {
@@ -112,23 +80,25 @@ describe('the App module', () => {
           {
             config: {
               settings: {
-                auth: true
-              }
-            }
-          }
+                auth: true,
+              },
+            },
+          },
         ];
-      }
+      },
     };
 
-    it('should call cancel on nav if a route is authed and user is not logged in', (done) => {
+    it("should call cancel on nav if a route is authed and user is not logged in", (done) => {
       mockedUserInformation.fetchUserProfile = () => {
         return Promise.reject(new Error());
       };
 
-      let nextCb = {
-        cancel: () => { }
+      const nextCb = {
+        cancel: () => {
+          return;
+        },
       };
-      spyOn(nextCb, 'cancel');
+      spyOn(nextCb, "cancel");
 
       mockedRouter.authStep.run(navInstructionWithAuth, nextCb).then(() => {
         expect(nextCb.cancel).toHaveBeenCalled();
@@ -136,21 +106,25 @@ describe('the App module', () => {
       });
     });
 
-    it('should call next on nav if a route is not authed and user is not logged in', () => {
-      let callback = {
-        next: () => { }
+    it("should call next on nav if a route is not authed and user is not logged in", () => {
+      const callback = {
+        next: () => {
+          return;
+        },
       };
-      spyOn(callback, 'next');
+      spyOn(callback, "next");
 
       mockedRouter.authStep.run(navInstructionWithoutAuth, callback.next);
       expect(callback.next).toHaveBeenCalled();
     });
 
-    it('should call next on nav if a route is auth and user is logged in', (done) => {
-      let callback = {
-        next: function () { }
+    it("should call next on nav if a route is auth and user is logged in", (done) => {
+      const callback = {
+        next: function () {
+          return;
+        },
       };
-      spyOn(callback, 'next');
+      spyOn(callback, "next");
 
       mockedRouter.authStep.run(navInstructionWithAuth, callback.next).then(() => {
         expect(callback.next).toHaveBeenCalled();

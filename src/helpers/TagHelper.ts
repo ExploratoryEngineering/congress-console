@@ -1,13 +1,13 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
 
-const Log = LogBuilder.create('TagHelper');
+const Log = LogBuilder.create("TagHelper");
 
 export class TagHelper {
-  TAG_NAME_KEY = 'name';
-  TAG_NAME_FALLBACK_VALUE = 'Unnamed';
+  TAG_NAME_KEY = "name";
+  TAG_NAME_FALLBACK_VALUE = "Unnamed";
 
-  TAG_DESCRIPTION_KEY = 'description';
-  TAG_DESCRIPTION_FALLBACK_VALUE = 'No description';
+  TAG_DESCRIPTION_KEY = "description";
+  TAG_DESCRIPTION_FALLBACK_VALUE = "No description";
 
   /**
    * Gets accepted regex for tag inputs for key and value.
@@ -23,12 +23,12 @@ export class TagHelper {
    * @param entity Entity with tags available
    * @param fallbackKey The key of the entity to use as fallback
    */
-  getEntityName(entity: TagEntity, fallbackKey: string = ''): string {
+  getEntityName(entity: TagEntity, fallbackKey: string = ""): string {
     return this.getTagOrFallback(
       entity,
       this.TAG_NAME_KEY,
       fallbackKey,
-      this.TAG_NAME_FALLBACK_VALUE
+      this.TAG_NAME_FALLBACK_VALUE,
     );
   }
 
@@ -39,12 +39,12 @@ export class TagHelper {
    * @param entity Entity with tags available
    * @param fallbackKey The key of the entity to use as fallback
    */
-  getEntityDescription(entity: TagEntity, fallbackKey: string = ''): string {
+  getEntityDescription(entity: TagEntity, fallbackKey: string = ""): string {
     return this.getTagOrFallback(
       entity,
       this.TAG_DESCRIPTION_KEY,
       fallbackKey,
-      this.TAG_DESCRIPTION_FALLBACK_VALUE
+      this.TAG_DESCRIPTION_FALLBACK_VALUE,
     );
   }
 
@@ -65,10 +65,10 @@ export class TagHelper {
    * @param tagObject TabObject to be tranformed
    */
   getTagsFromObject(tagObject: TagObject): Tag[] {
-    return Object.keys(tagObject).map(key => {
+    return Object.keys(tagObject).map((key) => {
       return {
         key: key,
-        value: tagObject[key]
+        value: tagObject[key],
       };
     });
   }
@@ -78,14 +78,14 @@ export class TagHelper {
    * @param tagString String to be parsed to tag
    */
   parseStringToTag(tagString: string): Tag {
-    let pieces = tagString.split(':');
+    const pieces = tagString.split(":");
 
-    let key = pieces.splice(0, 1)[0];
-    let value = pieces.join(':');
+    const key = pieces.splice(0, 1)[0];
+    const value = pieces.join(":");
 
     return {
       key: key,
-      value: value
+      value: value,
     };
   }
 

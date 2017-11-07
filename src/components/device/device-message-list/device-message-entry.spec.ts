@@ -1,5 +1,5 @@
-import { DeviceMessageEntry } from './device-message-entry';
-import { EventAggregatorMock } from 'Test/mock/mocks';
+import { EventAggregatorMock } from "Test/mock/mocks";
+import { DeviceMessageEntry } from "./device-message-entry";
 
 class CopyHelperMock {
   copyToClipBoard() {
@@ -8,11 +8,11 @@ class CopyHelperMock {
 }
 
 class MouseEventMock {
-  stopPropagation() { }
-  preventDefault() { }
+  stopPropagation() { return; }
+  preventDefault() { return; }
 }
 
-describe('Device message entry', () => {
+describe("Device message entry", () => {
   let deviceMessageEntry: DeviceMessageEntry;
   let eventAggregatorMock;
   let mouseEventMock;
@@ -25,8 +25,8 @@ describe('Device message entry', () => {
     deviceMessageEntry = new DeviceMessageEntry(eventAggregatorMock);
   });
 
-  describe('lifecycle', () => {
-    it('should reset toggled to false upon bind', () => {
+  describe("lifecycle", () => {
+    it("should reset toggled to false upon bind", () => {
       deviceMessageEntry.toggled = true;
 
       deviceMessageEntry.bind();
@@ -35,24 +35,23 @@ describe('Device message entry', () => {
     });
   });
 
-  describe('copy as json', () => {
-    it('should call stopPropagation and preventDefault', () => {
+  describe("copy as json", () => {
+    it("should call stopPropagation and preventDefault", () => {
       deviceMessageEntry.copyHelper = copyHelperMock;
 
-      let stopPropSpy = spyOn(mouseEventMock, 'stopPropagation');
-      let preventDefaultSpy = spyOn(mouseEventMock, 'preventDefault');
+      const stopPropSpy = spyOn(mouseEventMock, "stopPropagation");
+      const preventDefaultSpy = spyOn(mouseEventMock, "preventDefault");
 
       deviceMessageEntry.copyAsJson(mouseEventMock);
-
 
       expect(stopPropSpy).toHaveBeenCalled();
       expect(preventDefaultSpy).toHaveBeenCalled();
     });
 
-    it('should publish message upon successful copy success', (done) => {
+    it("should publish message upon successful copy success", (done) => {
       deviceMessageEntry.copyHelper = copyHelperMock;
 
-      let publishSpy = spyOn(eventAggregatorMock, 'publish');
+      const publishSpy = spyOn(eventAggregatorMock, "publish");
       deviceMessageEntry.copyAsJson(mouseEventMock).then(() => {
         expect(publishSpy).toHaveBeenCalled();
         done();

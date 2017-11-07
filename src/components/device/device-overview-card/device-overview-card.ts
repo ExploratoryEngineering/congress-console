@@ -1,14 +1,14 @@
-import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
-import { computedFrom } from 'aurelia-binding';
-import { bindable, autoinject } from 'aurelia-framework';
+import { computedFrom } from "aurelia-binding";
+import { EventAggregator, Subscription } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
 
-import { CustomEventHelper } from 'Helpers/CustomEventHelper';
-import { Range } from 'Helpers/Range';
+import { CustomEventHelper } from "Helpers/CustomEventHelper";
+import { Range } from "Helpers/Range";
 
-import { DeviceService } from 'Services/DeviceService';
+import { DeviceService } from "Services/DeviceService";
 
-import { Application } from 'Models/Application';
-import { Device } from 'Models/Device';
+import { Application } from "Models/Application";
+import { Device } from "Models/Device";
 
 interface AverageDeviceData {
   rssi: string;
@@ -34,43 +34,43 @@ export class DeviceOverviewCard {
   constructor(
     private element: Element,
     private deviceService: DeviceService,
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   deleteDevice() {
     CustomEventHelper.dispatchEvent(
       this.element,
-      'delete-device',
+      "delete-device",
       {
-        bubbles: true
-      }
+        bubbles: true,
+      },
     );
   }
 
   editDevice() {
     CustomEventHelper.dispatchEvent(
       this.element,
-      'edit-device',
+      "edit-device",
       {
-        bubbles: true
-      }
+        bubbles: true,
+      },
     );
   }
 
-  @computedFrom('messageData')
+  @computedFrom("messageData")
   get averageData(): AverageDeviceData {
     if (this.messageData.length === 0) {
       return {
-        rssi: 'No data'
+        rssi: "No data",
       };
     }
-    let dataTotals = this.messageData.reduce((total: TotalDeviceData, messageData: MessageData) => {
+    const dataTotals = this.messageData.reduce((total: TotalDeviceData, messageData: MessageData) => {
       return {
-        rssi: total.rssi + messageData.rssi
+        rssi: total.rssi + messageData.rssi,
       };
     }, {
         rssi: 0,
-      }
+      },
     );
 
     return {
@@ -80,7 +80,7 @@ export class DeviceOverviewCard {
 
   fetchDataForDevice() {
     this.deviceService.fetchDeviceDataByEUI(this.application.appEUI, this.device.deviceEUI, {
-      since: this.selectedRange.value
+      since: this.selectedRange.value,
     }).then((data) => {
       this.messageData = data;
     });
@@ -92,7 +92,7 @@ export class DeviceOverviewCard {
 
   bind() {
     this.fetchDataForDevice();
-    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("deviceData", (deviceData: MessageData) => {
       if (this.device.deviceEUI === deviceData.deviceEUI) {
         this.messageData.push(deviceData);
         this.device.fCntUp += 1;

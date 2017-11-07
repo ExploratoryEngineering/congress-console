@@ -1,6 +1,6 @@
-import { HttpClientConfiguration } from 'Helpers/HttpClientConfiguration';
-import { autoinject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-http-client';
+import { autoinject } from "aurelia-framework";
+import { HttpClient } from "aurelia-http-client";
+import { HttpClientConfiguration } from "Helpers/HttpClientConfiguration";
 
 @autoinject
 export class ApiClient {
@@ -8,7 +8,7 @@ export class ApiClient {
 
   constructor(
     http: HttpClient,
-    private httpClientConfig: HttpClientConfiguration
+    private httpClientConfig: HttpClientConfiguration,
   ) {
     this.http = http;
     http.configure(httpClientConfig.apiEndpointConfiguration());

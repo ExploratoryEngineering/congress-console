@@ -1,25 +1,25 @@
-import { autoinject, bindable } from 'aurelia-framework';
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { TagHelper } from 'Helpers/TagHelper';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
+import { LogBuilder } from "Helpers/LogBuilder";
+import { TagHelper } from "Helpers/TagHelper";
 
 const th = new TagHelper();
 
-const Log = LogBuilder.create('Create new tag chip');
+const Log = LogBuilder.create("Create new tag chip");
 
 @autoinject
 export class CreateNewTagChip {
   editing: boolean = false;
   tag: Tag = {
-    key: '',
-    value: ''
+    key: "",
+    value: "",
   };
 
   @bindable
   model: any;
 
   @bindable
-  namespace: string = '';
+  namespace: string = "";
 
   inputElement: HTMLInputElement;
   form: HTMLFormElement;
@@ -27,7 +27,7 @@ export class CreateNewTagChip {
   tagPattern = th.getTagRegEx();
 
   constructor(
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   chipClicked(e: Event) {
@@ -38,18 +38,18 @@ export class CreateNewTagChip {
     this.editing = !this.editing;
 
     if (this.editing) {
-      this.tag.key = '';
-      this.tag.value = '';
+      this.tag.key = "";
+      this.tag.value = "";
     }
   }
 
   submitTag() {
     if (!this.form.checkValidity() || !this.tagPattern.test(this.tag.key) || !this.tagPattern.test(this.tag.value)) {
-      return this.eventAggregator.publish('global:message', { body: 'Invalid characters in tag name and/or value' });
+      return this.eventAggregator.publish("global:message", { body: "Invalid characters in tag name and/or value" });
     }
     this.eventAggregator.publish(`${this.namespace}:tag:new`, {
       model: this.model,
-      tag: this.tag
+      tag: this.tag,
     });
     this.toggleEditing();
   }

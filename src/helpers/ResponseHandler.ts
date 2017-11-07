@@ -1,11 +1,11 @@
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { Router } from 'aurelia-router';
-import { autoinject } from 'aurelia-framework';
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { HttpResponseMessage } from 'aurelia-http-client';
-import { Promise } from 'bluebird';
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject } from "aurelia-framework";
+import { HttpResponseMessage } from "aurelia-http-client";
+import { Router } from "aurelia-router";
+import { Promise } from "bluebird";
+import { LogBuilder } from "Helpers/LogBuilder";
 
-const Log = LogBuilder.create('Response handler');
+const Log = LogBuilder.create("Response handler");
 
 interface ResponseHandlerObject {
   isSuccess: boolean;
@@ -15,7 +15,7 @@ interface ResponseHandlerObject {
 
 export class ResponseError {
   content: any;
-  message: string = 'Generic response error';
+  message: string = "Generic response error";
   stack: string;
   name: string;
 
@@ -29,7 +29,7 @@ ResponseError.prototype = Object.create(Error.prototype);
 
 export class BadRequestError extends ResponseError {
   errorCode = 400;
-  message = 'Bad request';
+  message = "Bad request";
 
   constructor(content: any) {
     super(content);
@@ -38,7 +38,7 @@ export class BadRequestError extends ResponseError {
 
 class UnauthorizedError extends ResponseError {
   errorCode = 401;
-  message = 'Unauthorized';
+  message = "Unauthorized";
 
   constructor(content: any) {
     super(content);
@@ -47,7 +47,7 @@ class UnauthorizedError extends ResponseError {
 
 class ForbiddenError extends ResponseError {
   errorCode = 403;
-  message = 'Forbidden';
+  message = "Forbidden";
 
   constructor(content: any) {
     super(content);
@@ -56,7 +56,7 @@ class ForbiddenError extends ResponseError {
 
 export class NotFoundError extends ResponseError {
   errorCode = 404;
-  message = 'Not found';
+  message = "Not found";
 
   constructor(content: any) {
     super(content);
@@ -65,7 +65,7 @@ export class NotFoundError extends ResponseError {
 
 class MethodNotSupported extends ResponseError {
   errorCode = 405;
-  message = 'Not supported';
+  message = "Not supported";
 
   constructor(content: any) {
     super(content);
@@ -74,7 +74,7 @@ class MethodNotSupported extends ResponseError {
 
 export class Conflict extends ResponseError {
   errorCode = 409;
-  message = 'Conflict';
+  message = "Conflict";
 
   constructor(content: any) {
     super(content);
@@ -83,7 +83,7 @@ export class Conflict extends ResponseError {
 
 class ServerErrorError extends ResponseError {
   errorCode = 500;
-  message = 'Server error';
+  message = "Server error";
 
   constructor(content: any) {
     super(content);
@@ -92,7 +92,7 @@ class ServerErrorError extends ResponseError {
 
 class BadGatewayError extends ResponseError {
   errorCode = 502;
-  message = 'Bad gateway';
+  message = "Bad gateway";
 
   constructor(content: any) {
     super(content);
@@ -101,7 +101,7 @@ class BadGatewayError extends ResponseError {
 
 class ServiceUnavailableError extends ResponseError {
   errorCode = 503;
-  message = 'Service unavailable';
+  message = "Service unavailable";
 
   constructor(content: any) {
     super(content);
@@ -110,7 +110,7 @@ class ServiceUnavailableError extends ResponseError {
 
 class UnknownError extends ResponseError {
   errorCode = 0;
-  message = 'Unknown error';
+  message = "Unknown error";
 
   constructor(content: any) {
     super(content);
@@ -124,7 +124,7 @@ class UnknownError extends ResponseError {
 export class ResponseHandler {
   constructor(
     private router: Router,
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   handleResponse(response: ResponseHandlerObject) {
@@ -144,15 +144,15 @@ export class ResponseHandler {
         throw new ForbiddenError(response.content);
       }
       case 404: {
-        Log.debug('returning on 404');
+        Log.debug("returning on 404");
         throw new NotFoundError(response.content);
       }
       case 405: {
-        this.eventAggregator.publish('global:message', { body: 'Feature not implemented... yet!' });
+        this.eventAggregator.publish("global:message", { body: "Feature not implemented... yet!" });
         throw new MethodNotSupported(response.content);
       }
       case 409: {
-        Log.debug('returning on 409');
+        Log.debug("returning on 409");
         throw new Conflict(response.content);
       }
       case 500: {
@@ -175,12 +175,12 @@ export class ResponseHandler {
   }
 
   private navigateToLogin() {
-    Log.debug('Redirecting to login due to 401');
-    this.router.navigate('login');
+    Log.debug("Redirecting to login due to 401");
+    this.router.navigate("login");
   }
 
   private navigateToServerError() {
-    Log.debug('Redirecting to server-error page');
-    this.router.navigate('server-error');
+    Log.debug("Redirecting to server-error page");
+    this.router.navigate("server-error");
   }
 }

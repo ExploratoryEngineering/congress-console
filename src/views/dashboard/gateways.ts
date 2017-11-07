@@ -1,36 +1,35 @@
-import { autoinject, PLATFORM } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
-import { DialogService } from 'aurelia-dialog';
-import { EventAggregator } from 'aurelia-event-aggregator';
+import { DialogService } from "aurelia-dialog";
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, PLATFORM } from "aurelia-framework";
+import { Router } from "aurelia-router";
 
-import { GatewayService } from 'Services/GatewayService';
-import { Gateway } from 'Models/Gateway';
+import { Gateway } from "Models/Gateway";
+import { GatewayService } from "Services/GatewayService";
 
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
 
-const Log = LogBuilder.create('Gateways');
+const Log = LogBuilder.create("Gateways");
 
 @autoinject
 export class Services {
+  gateways: Gateway[] = [];
   subscriptions: any = [];
 
   constructor(
     private gatewayService: GatewayService,
     private dialogService: DialogService,
     private router: Router,
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
-  gateways: Gateway[] = [];
-
   createNewGateway() {
-    Log.debug('Create new gateway');
+    Log.debug("Create new gateway");
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/createGatewayDialog')
-    }).whenClosed(response => {
+      viewModel: PLATFORM.moduleName("dialogs/createGatewayDialog"),
+    }).whenClosed((response) => {
       if (!response.wasCancelled) {
-        this.eventAggregator.publish('global:message', {
-          body: 'Gateway created'
+        this.eventAggregator.publish("global:message", {
+          body: "Gateway created",
         });
         this.gateways.push(response.output);
       }
@@ -38,19 +37,19 @@ export class Services {
   }
 
   editGateway(gateway) {
-    let gatewayUntouched = { ...gateway };
-    Log.debug('Editing gateway', gateway);
+    const gatewayUntouched = { ...gateway };
+    Log.debug("Editing gateway", gateway);
 
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/editGatewayDialog'),
+      viewModel: PLATFORM.moduleName("dialogs/editGatewayDialog"),
       model: {
-        gateway: gatewayUntouched
-      }
-    }).whenClosed(response => {
-      Log.debug('Edit application', response);
+        gateway: gatewayUntouched,
+      },
+    }).whenClosed((response) => {
+      Log.debug("Edit application", response);
       if (!response.wasCancelled) {
-        this.eventAggregator.publish('global:message', {
-          body: 'Gateway updated'
+        this.eventAggregator.publish("global:message", {
+          body: "Gateway updated",
         });
         this.fetchAndPopulateGateways();
       }
@@ -58,45 +57,45 @@ export class Services {
   }
 
   deleteGateway(gateway: Gateway) {
-    Log.debug('Deleting gateway', gateway);
+    Log.debug("Deleting gateway", gateway);
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
+      viewModel: PLATFORM.moduleName("dialogs/messageDialog"),
       model: {
         messageHeader: `Delete gateway?`,
         message: `Are you sure you want to delete gateway with EUI ${gateway.gatewayEUI}. This can NOT be reversed.`,
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-      }
-    }).whenClosed(response => {
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
+      },
+    }).whenClosed((response) => {
       if (!response.wasCancelled) {
-        Log.debug('Deleting gateway');
+        Log.debug("Deleting gateway");
         this.gatewayService.deleteGateway(gateway).then(() => {
-          this.eventAggregator.publish('global:message', {
-            body: 'Gateway deleted'
+          this.eventAggregator.publish("global:message", {
+            body: "Gateway deleted",
           });
-          this.gateways = this.gateways.filter(gw => gw.gatewayEUI !== gateway.gatewayEUI);
+          this.gateways = this.gateways.filter((gw) => gw.gatewayEUI !== gateway.gatewayEUI);
         });
       } else {
-        Log.debug('Did not delete gateway');
+        Log.debug("Did not delete gateway");
       }
     });
   }
 
   showEventLogForGateway(gateway: Gateway) {
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/eventLogDialog'),
+      viewModel: PLATFORM.moduleName("dialogs/eventLogDialog"),
       model: {
-        eventLogStreamEndpoint: `/gateways/${gateway.gatewayEUI}/stream`
-      }
+        eventLogStreamEndpoint: `/gateways/${gateway.gatewayEUI}/stream`,
+      },
     });
   }
 
   fetchAndPopulateGateways() {
     return new Promise((res) => {
-      this.gatewayService.fetchGateways().then(gateways => {
+      this.gatewayService.fetchGateways().then((gateways) => {
         this.gateways = gateways;
         res();
-      }).catch(err => {
+      }).catch((err) => {
         Log.error(err);
         res();
       });
@@ -104,13 +103,13 @@ export class Services {
   }
 
   activate() {
-    this.subscriptions.push(this.eventAggregator.subscribe('gateway:edit', (gateway) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("gateway:edit", (gateway) => {
       this.editGateway(gateway);
     }));
-    this.subscriptions.push(this.eventAggregator.subscribe('gateway:delete', (gateway) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("gateway:delete", (gateway) => {
       this.deleteGateway(gateway);
     }));
-    this.subscriptions.push(this.eventAggregator.subscribe('gateway:eventLog', (gateway) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("gateway:eventLog", (gateway) => {
       this.showEventLogForGateway(gateway);
     }));
 
@@ -118,7 +117,7 @@ export class Services {
   }
 
   deactivate() {
-    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions.forEach((subscription) => subscription.dispose());
     this.subscriptions = [];
   }
 }

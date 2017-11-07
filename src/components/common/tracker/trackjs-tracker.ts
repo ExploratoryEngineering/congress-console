@@ -1,4 +1,4 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
 interface TrackJs {
   track(errorMessage: string);
 }
@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-const Log = LogBuilder.create('TrackJs tracker');
+const Log = LogBuilder.create("TrackJs tracker");
 
 export class TrackJsTracker {
   trackError(error: string) {
@@ -17,10 +17,10 @@ export class TrackJsTracker {
   }
 
   getTrackJs(): TrackJs {
-    let tempErrorFunc = {
+    const tempErrorFunc = {
       track: (errorString) => {
         Log.debug(`Would've sent error, but no TrackJs: ${errorString}`);
-      }
+      },
     };
     return window.trackJs || tempErrorFunc;
   }

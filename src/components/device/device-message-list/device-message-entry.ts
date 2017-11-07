@@ -1,6 +1,6 @@
-import { CopyHelper } from 'Helpers/CopyHelper';
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { bindable, autoinject } from 'aurelia-framework';
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
+import { CopyHelper } from "Helpers/CopyHelper";
 
 @autoinject
 export class DeviceMessageEntry {
@@ -12,7 +12,7 @@ export class DeviceMessageEntry {
   toggled: boolean = false;
 
   constructor(
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   toggle() {
@@ -28,7 +28,7 @@ export class DeviceMessageEntry {
     event.preventDefault();
 
     return this.copyHelper.copyToClipBoard(JSON.stringify(this.deviceMessage)).then(() => {
-      this.eventAggregator.publish('global:message', { body: 'Copied code' });
+      this.eventAggregator.publish("global:message", { body: "Copied code" });
     });
   }
 }

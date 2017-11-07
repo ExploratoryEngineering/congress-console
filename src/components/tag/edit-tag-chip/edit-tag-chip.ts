@@ -1,10 +1,10 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { TagHelper } from 'Helpers/TagHelper';
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { autoinject, bindable, bindingMode } from 'aurelia-framework';
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { LogBuilder } from "Helpers/LogBuilder";
+import { TagHelper } from "Helpers/TagHelper";
 
 const th = new TagHelper();
-const Log = LogBuilder.create('Edit tag chip');
+const Log = LogBuilder.create("Edit tag chip");
 
 @autoinject
 export class EditTagChip {
@@ -12,19 +12,19 @@ export class EditTagChip {
 
   @bindable
   tag: Tag = {
-    key: '',
-    value: ''
+    key: "",
+    value: "",
   };
   @bindable
   model: TagEntity;
   @bindable
-  namespace: string = '';
+  namespace: string = "";
   form: HTMLFormElement;
 
   tagPattern = th.getTagRegEx();
 
   constructor(
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   chipClicked(e: Event) {
@@ -37,24 +37,24 @@ export class EditTagChip {
 
   submitTag() {
     if (!this.form.checkValidity() || !this.tagPattern.test(this.tag.key)) {
-      return this.eventAggregator.publish('global:message', { body: 'Invalid characters in tag value' });
+      return this.eventAggregator.publish("global:message", { body: "Invalid characters in tag value" });
     }
 
     this.eventAggregator.publish(`${this.namespace}:tag:edit`, {
       model: this.model,
-      tag: this.tag
+      tag: this.tag,
     });
     this.editing = false;
   }
 
   deleteTag() {
-    Log.debug('Event emitting', `${this.namespace}:tag:delete`, {
+    Log.debug("Event emitting", `${this.namespace}:tag:delete`, {
       model: this.model,
-      tag: this.tag
+      tag: this.tag,
     });
     this.eventAggregator.publish(`${this.namespace}:tag:delete`, {
       model: this.model,
-      tag: this.tag
+      tag: this.tag,
     });
   }
 }

@@ -1,4 +1,4 @@
-import { TagHelper } from 'Helpers/TagHelper';
+import { TagHelper } from "Helpers/TagHelper";
 
 const th = new TagHelper();
 

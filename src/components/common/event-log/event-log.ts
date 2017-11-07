@@ -1,22 +1,22 @@
-import { AureliaConfiguration } from 'aurelia-configuration';
-import { bindable, autoinject } from 'aurelia-framework';
+import { AureliaConfiguration } from "aurelia-configuration";
+import { autoinject, bindable } from "aurelia-framework";
 
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { Websocket } from 'Helpers/Websocket';
+import { LogBuilder } from "Helpers/LogBuilder";
+import { Websocket } from "Helpers/Websocket";
 
-const Log = LogBuilder.create('Event log');
+const Log = LogBuilder.create("Event log");
 
 @autoinject
 export class EventLog {
   @bindable
   websocket: Websocket;
   @bindable
-  eventLogStreamEndpoint: string = '';
+  eventLogStreamEndpoint: string = "";
 
   websocketData: any[] = [];
 
   constructor(
-    private aureliaConfiguration: AureliaConfiguration
+    private aureliaConfiguration: AureliaConfiguration,
   ) { }
 
   websocketEndpointChanged() {
@@ -25,20 +25,20 @@ export class EventLog {
   }
 
   initiateWebsocket() {
-    Log.debug('Initiating websocket');
-    this.websocketData.push('Connecting to endpoint');
+    Log.debug("Initiating websocket");
+    this.websocketData.push("Connecting to endpoint");
     this.websocket = new Websocket({
-      url: this.aureliaConfiguration.get('api.wsEndpoint') + this.eventLogStreamEndpoint,
+      url: this.aureliaConfiguration.get("api.wsEndpoint") + this.eventLogStreamEndpoint,
       onmessage: (message) => { this.onMessage(message); },
-      onopen: () => { this.websocketData.push('Connected to endpoint, awaiting data'); },
-      onerror: () => { this.websocketData.push('There was an error connecting to the endpoint'); },
-      onclose: () => { this.websocketData.push('Websocket was closed'); }
+      onopen: () => { this.websocketData.push("Connected to endpoint, awaiting data"); },
+      onerror: () => { this.websocketData.push("There was an error connecting to the endpoint"); },
+      onclose: () => { this.websocketData.push("Websocket was closed"); },
     });
 
   }
 
   onMessage(message: any) {
-    Log.debug('Got message', message);
+    Log.debug("Got message", message);
     this.websocketData.push(message.data);
   }
 
@@ -47,7 +47,7 @@ export class EventLog {
   }
 
   unbind() {
-    Log.debug('Unbind, closing websocket');
+    Log.debug("Unbind, closing websocket");
     this.websocket.close();
   }
 }

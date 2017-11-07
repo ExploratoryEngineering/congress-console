@@ -1,4 +1,4 @@
-import Debug from 'Helpers/Debug';
+import Debug from "Helpers/Debug";
 
 interface ApplicationDto {
   applicationEUI: string;
@@ -6,18 +6,6 @@ interface ApplicationDto {
 }
 
 export class Application implements TagEntity {
-  appEUI: string;
-  tags: { [tagName: string]: string };
-
-  constructor({
-    appEUI = '',
-    appKey = '',
-    tags = {}
-  } = {}) {
-    this.appEUI = appEUI;
-    this.tags = tags;
-  }
-
   /**
    * Returns a new Application from a dto
    */
@@ -37,4 +25,17 @@ export class Application implements TagEntity {
       tags: application.tags,
     };
   }
+
+  appEUI: string;
+  tags: { [tagName: string]: string };
+
+  constructor({
+    appEUI = "",
+    appKey = "",
+    tags = {},
+  } = {}) {
+    this.appEUI = appEUI;
+    this.tags = tags;
+  }
+
 }

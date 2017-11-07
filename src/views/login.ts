@@ -1,14 +1,14 @@
-import { autoinject } from 'aurelia-framework';
-import { AureliaConfiguration } from 'aurelia-configuration';
+import { AureliaConfiguration } from "aurelia-configuration";
+import { autoinject } from "aurelia-framework";
 
-import { Router } from 'aurelia-router';
-import { UserInformation } from 'Helpers/UserInformation';
+import { Router } from "aurelia-router";
+import { UserInformation } from "Helpers/UserInformation";
 
 @autoinject
 export class Login {
   constructor(
     private router: Router,
-    private config: AureliaConfiguration
+    private config: AureliaConfiguration,
   ) { }
 
   login() {
@@ -20,10 +20,10 @@ export class Login {
   }
 
   getLoginUrl(): string {
-    return `${this.config.get('api.endpoint')}/connect/login`;
+    return `${this.config.get("api.endpoint")}/connect/login`;
   }
 
   getLogoutUrl(): string {
-    return `${this.config.get('api.endpoint')}/connect/logout`;
+    return `${this.config.get("api.endpoint")}/connect/logout`;
   }
 }

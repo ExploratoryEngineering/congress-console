@@ -12,41 +12,6 @@ interface DeviceDto {
 }
 
 export class Device implements TagEntity {
-  appSKey: string;
-  devAddr: string;
-  deviceEUI: string;
-  deviceType: string;
-  fCntUp: number;
-  fCntDn: number;
-  nwkSKey: string;
-  relaxedCounter: boolean;
-  keyWarning: boolean;
-  tags: { [tagName: string]: string };
-
-  constructor({
-    deviceEUI = '',
-    devAddr = '',
-    appSKey = '',
-    nwkSKey = '',
-    deviceType = 'ABP',
-    fCntUp = 0,
-    fCntDn = 0,
-    relaxedCounter = true,
-    keyWarning = false,
-    tags = {}
-  } = {}) {
-    this.deviceEUI = deviceEUI;
-    this.devAddr = devAddr;
-    this.appSKey = appSKey;
-    this.nwkSKey = nwkSKey;
-    this.deviceType = deviceType;
-    this.fCntUp = fCntUp;
-    this.fCntDn = fCntDn;
-    this.relaxedCounter = relaxedCounter;
-    this.keyWarning = keyWarning;
-    this.tags = tags;
-  }
-
   static newFromDto(device: DeviceDto): Device {
     return new Device({
       deviceEUI: device.deviceEUI,
@@ -58,7 +23,7 @@ export class Device implements TagEntity {
       fCntDn: device.fCntDn,
       relaxedCounter: device.relaxedCounter,
       keyWarning: device.keyWarning,
-      tags: device.tags
+      tags: device.tags,
     });
   }
 
@@ -73,7 +38,42 @@ export class Device implements TagEntity {
       fCntDn: device.fCntDn,
       relaxedCounter: device.relaxedCounter,
       keyWarning: device.keyWarning,
-      tags: device.tags
+      tags: device.tags,
     };
+  }
+
+  appSKey: string;
+  devAddr: string;
+  deviceEUI: string;
+  deviceType: string;
+  fCntUp: number;
+  fCntDn: number;
+  nwkSKey: string;
+  relaxedCounter: boolean;
+  keyWarning: boolean;
+  tags: { [tagName: string]: string };
+
+  constructor({
+    deviceEUI = "",
+    devAddr = "",
+    appSKey = "",
+    nwkSKey = "",
+    deviceType = "ABP",
+    fCntUp = 0,
+    fCntDn = 0,
+    relaxedCounter = true,
+    keyWarning = false,
+    tags = {},
+  } = {}) {
+    this.deviceEUI = deviceEUI;
+    this.devAddr = devAddr;
+    this.appSKey = appSKey;
+    this.nwkSKey = nwkSKey;
+    this.deviceType = deviceType;
+    this.fCntUp = fCntUp;
+    this.fCntDn = fCntDn;
+    this.relaxedCounter = relaxedCounter;
+    this.keyWarning = keyWarning;
+    this.tags = tags;
   }
 }

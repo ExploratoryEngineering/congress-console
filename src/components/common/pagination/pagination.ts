@@ -1,19 +1,19 @@
-import { computedFrom } from 'aurelia-binding';
-import { bindable, bindingMode } from 'aurelia-framework';
+import { computedFrom } from "aurelia-binding";
+import { bindable, bindingMode } from "aurelia-framework";
 
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
 
-const Log = LogBuilder.create('Pagination');
+const Log = LogBuilder.create("Pagination");
 
 export class Pagination {
   @bindable
   collection: any[] = [];
   @bindable
-  rowsPrPage: string = '10';
+  rowsPrPage: string = "10";
   availableRowsPrPage = [
     10,
     25,
-    100
+    100,
   ];
   @bindable
   offset: number = 0;
@@ -23,11 +23,11 @@ export class Pagination {
   filterCallback;
 
   filter() {
-    let collection = [...this.collection];
-    Log.debug('filtering');
+    const collection = [...this.collection];
+    Log.debug("filtering");
     this.filteredCollection = collection.splice(parseInt(this.rowsPrPage, 10) * this.offset, parseInt(this.rowsPrPage, 10));
     this.filterCallback({
-      filteredCollection: this.filteredCollection
+      filteredCollection: this.filteredCollection,
     });
   }
 
@@ -40,14 +40,14 @@ export class Pagination {
   }
 
   increasePageNumber() {
-    Log.debug('Increase page number', (parseInt(this.rowsPrPage, 10) * (this.offset + 1)));
+    Log.debug("Increase page number", (parseInt(this.rowsPrPage, 10) * (this.offset + 1)));
     if (this.collection.length - (parseInt(this.rowsPrPage, 10) * (this.offset + 1)) > 0) {
       this.offset += 1;
     }
   }
 
   decreasePageNumber() {
-    Log.debug('Decrease page number');
+    Log.debug("Decrease page number");
     if (this.offset - 1 >= 0) {
       this.offset -= 1;
     }
@@ -57,7 +57,7 @@ export class Pagination {
     this.rowsPrPage = rowsPrPage;
   }
 
-  @computedFrom('filteredCollection')
+  @computedFrom("filteredCollection")
   get rowData(): string {
     return `${this.getFromRange()} - ${this.getToRange()} of ${this.collection.length}`;
   }

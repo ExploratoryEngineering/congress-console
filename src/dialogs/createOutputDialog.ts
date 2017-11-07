@@ -1,15 +1,15 @@
-import { DialogController } from 'aurelia-dialog';
-import { autoinject, useView, PLATFORM } from 'aurelia-framework';
+import { DialogController } from "aurelia-dialog";
+import { autoinject, PLATFORM, useView } from "aurelia-framework";
 
-import { OutputService } from 'Services/OutputService';
-import { Output } from 'Models/Output';
-import { BadRequestError } from 'Helpers/ResponseHandler';
+import { BadRequestError } from "Helpers/ResponseHandler";
+import { Output } from "Models/Output";
+import { OutputService } from "Services/OutputService";
 
 @autoinject
-@useView(PLATFORM.moduleName('dialogs/outputDialog.html'))
+@useView(PLATFORM.moduleName("dialogs/outputDialog.html"))
 export class CreateOutputDialog {
-  confirmButtonText: string = 'Add output';
-  dialogHeader: string = 'Add new output';
+  confirmButtonText: string = "Add output";
+  dialogHeader: string = "Add new output";
 
   applicationEui: string;
   output: Output = new Output();
@@ -18,14 +18,14 @@ export class CreateOutputDialog {
 
   constructor(
     private outputService: OutputService,
-    private dialogController: DialogController
+    private dialogController: DialogController,
   ) { }
 
   submitOutput() {
     this.outputService.createOutput(this.applicationEui, this.output)
       .then((output) => {
         this.dialogController.ok(output);
-      }).catch(err => {
+      }).catch((err) => {
         if (err instanceof BadRequestError) {
           this.formError = err.content;
         } else {

@@ -1,7 +1,7 @@
-import { AureliaConfiguration } from 'aurelia-configuration';
-import { Router } from 'aurelia-router';
-import { UserInformation } from 'Helpers/UserInformation';
-import { autoinject } from 'aurelia-framework';
+import { AureliaConfiguration } from "aurelia-configuration";
+import { autoinject } from "aurelia-framework";
+import { Router } from "aurelia-router";
+import { UserInformation } from "Helpers/UserInformation";
 
 @autoinject
 export class ProfileDropdown {
@@ -11,13 +11,13 @@ export class ProfileDropdown {
   constructor(
     private router: Router,
     private config: AureliaConfiguration,
-    userInformation: UserInformation
+    userInformation: UserInformation,
   ) {
     this.userInformation = userInformation;
-    this.myPageUrl = this.config.get('myConnectUrl');
+    this.myPageUrl = this.config.get("myConnectUrl");
   }
 
   logOut() {
-    document.location.href = `${this.config.get('api.endpoint')}/connect/logout`;
+    document.location.href = `${this.config.get("api.endpoint")}/connect/logout`;
   }
 }

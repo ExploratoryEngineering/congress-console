@@ -1,7 +1,7 @@
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { computedFrom } from 'aurelia-binding';
-import { Range } from 'Helpers/Range';
-import { bindable, bindingMode } from 'aurelia-framework';
+import { computedFrom } from "aurelia-binding";
+import { EventAggregator } from "aurelia-event-aggregator";
+import { bindable, bindingMode } from "aurelia-framework";
+import { Range } from "Helpers/Range";
 
 export class RangeChooser {
   @bindable({ defaultBindingMode: bindingMode.twoWay })
@@ -10,14 +10,14 @@ export class RangeChooser {
   availableRanges: Range[] = [
     Range.ONE_HOUR_AGO,
     Range.LAST_SIX_HOURS,
-    Range.START_OF_DAY
+    Range.START_OF_DAY,
   ];
 
   constructor(
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
-  @computedFrom('selectedRange')
+  @computedFrom("selectedRange")
   get selectableRanges(): Range[] {
     return this.availableRanges.filter((range: Range) => {
       return this.selectedRange.id !== range.id;

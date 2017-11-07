@@ -1,5 +1,5 @@
-import { CreateApplicationDialog } from 'Dialogs/createApplicationDialog';
-
+import { CreateApplicationDialog } from "Dialogs/createApplicationDialog";
+import { DialogControllerMock } from "Test/mock/mocks";
 
 class ApplicationServiceStub {
   createNewApplication(app) {
@@ -7,14 +7,9 @@ class ApplicationServiceStub {
   }
 }
 
-class DialogControllerStub {
-  ok() { }
-  cancel() { }
-}
-
 class ApplicationStub { }
 
-describe('CreateApplication dialog', () => {
+describe("CreateApplication dialog", () => {
   let applicationServiceStub;
   let dialogControllerStub;
   let applicationStub;
@@ -23,19 +18,19 @@ describe('CreateApplication dialog', () => {
 
   beforeEach(() => {
     applicationServiceStub = new ApplicationServiceStub();
-    dialogControllerStub = new DialogControllerStub();
+    dialogControllerStub = new DialogControllerMock();
     applicationStub = new ApplicationStub();
 
     createApplicationDialog = new CreateApplicationDialog(
       applicationServiceStub,
-      dialogControllerStub
+      dialogControllerStub,
     );
 
     createApplicationDialog.application = applicationStub;
   });
 
-  it('should send the current application to applicationService when submitting application', (done) => {
-    spyOn(applicationServiceStub, 'createNewApplication').and.callThrough();
+  it("should send the current application to applicationService when submitting application", (done) => {
+    spyOn(applicationServiceStub, "createNewApplication").and.callThrough();
 
     createApplicationDialog.submitApplication();
 
@@ -44,8 +39,8 @@ describe('CreateApplication dialog', () => {
     done();
   });
 
-  it('should call ok for dialog upon successful save of application', (done) => {
-    spyOn(dialogControllerStub, 'ok');
+  it("should call ok for dialog upon successful save of application", (done) => {
+    spyOn(dialogControllerStub, "ok");
 
     createApplicationDialog.submitApplication().then(() => {
       expect(dialogControllerStub.ok).toHaveBeenCalled();
@@ -53,12 +48,11 @@ describe('CreateApplication dialog', () => {
     });
   });
 
-  it('should not call ok for dialog upon failed save of application', (done) => {
-    spyOn(dialogControllerStub, 'ok');
+  it("should not call ok for dialog upon failed save of application", (done) => {
+    spyOn(dialogControllerStub, "ok");
     applicationServiceStub.createNewApplication = () => {
-      return Promise.reject(new Error('Test that error works'));
+      return Promise.reject(new Error("Test that error works"));
     };
-
 
     createApplicationDialog.submitApplication().then(() => {
       expect(dialogControllerStub.ok).not.toHaveBeenCalled();

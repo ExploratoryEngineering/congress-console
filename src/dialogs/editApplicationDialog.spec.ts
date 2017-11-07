@@ -1,5 +1,5 @@
-import { EditApplicationDialog } from 'Dialogs/editApplicationDialog';
-
+import { EditApplicationDialog } from "Dialogs/editApplicationDialog";
+import { DialogControllerMock } from "Test/mock/mocks";
 
 class ApplicationServiceStub {
   updateApplication(app) {
@@ -7,13 +7,9 @@ class ApplicationServiceStub {
   }
 }
 
-class DialogControllerStub {
-  ok() { }
-}
+class ApplicationStub { }
 
-class ApplicationStub {}
-
-describe('EditApplication dialog', () => {
+describe("EditApplication dialog", () => {
   let applicationServiceStub;
   let dialogControllerStub;
   let applicationStub;
@@ -22,36 +18,36 @@ describe('EditApplication dialog', () => {
 
   beforeEach(() => {
     applicationServiceStub = new ApplicationServiceStub();
-    dialogControllerStub = new DialogControllerStub();
+    dialogControllerStub = new DialogControllerMock();
     applicationStub = new ApplicationStub();
 
     editApplicationDialog = new EditApplicationDialog(
       applicationServiceStub,
-      dialogControllerStub
+      dialogControllerStub,
     );
 
     editApplicationDialog.application = applicationStub;
   });
 
-  describe('Activate lifecycle', () => {
-    it('should propagate given application in activate', () => {
+  describe("Activate lifecycle", () => {
+    it("should propagate given application in activate", () => {
       editApplicationDialog.activate({ application: applicationStub });
 
       expect(editApplicationDialog.application).toBe(applicationStub);
     });
   });
 
-  describe('Submitting application', () => {
-    it('should send the current application to applicationService when submitting application', () => {
-      spyOn(applicationServiceStub, 'updateApplication').and.callThrough();
+  describe("Submitting application", () => {
+    it("should send the current application to applicationService when submitting application", () => {
+      spyOn(applicationServiceStub, "updateApplication").and.callThrough();
 
       editApplicationDialog.submitApplication();
 
       expect(applicationServiceStub.updateApplication).toHaveBeenCalledWith(applicationStub);
     });
 
-    it('should call ok for dialog upon successful update of application', (done) => {
-      spyOn(dialogControllerStub, 'ok');
+    it("should call ok for dialog upon successful update of application", (done) => {
+      spyOn(dialogControllerStub, "ok");
 
       editApplicationDialog.submitApplication().then(() => {
         expect(dialogControllerStub.ok).toHaveBeenCalled();
@@ -59,10 +55,10 @@ describe('EditApplication dialog', () => {
       });
     });
 
-    it('should not call ok for dialog upon failed update of application', (done) => {
-      spyOn(dialogControllerStub, 'ok');
+    it("should not call ok for dialog upon failed update of application", (done) => {
+      spyOn(dialogControllerStub, "ok");
       applicationServiceStub.updateApplication = () => {
-        return Promise.reject(new Error('Test that error works'));
+        return Promise.reject(new Error("Test that error works"));
       };
 
       editApplicationDialog.submitApplication().then(() => {

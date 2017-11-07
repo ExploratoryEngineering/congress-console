@@ -1,10 +1,10 @@
 export class CopyHelper {
   copyToClipBoard(copyText): Promise<any> {
     return new Promise((res, rej) => {
-      let textArea = document.createElement('textarea');
+      const textArea = document.createElement("textarea");
 
-      textArea.style.position = 'fixed';
-      textArea.style.left = '-9999px';
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
 
       document.body.appendChild(textArea);
 
@@ -14,7 +14,7 @@ export class CopyHelper {
       let error;
 
       try {
-        document.execCommand('copy');
+        document.execCommand("copy");
       } catch (copyError) {
         error = copyError;
       }

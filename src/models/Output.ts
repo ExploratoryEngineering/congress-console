@@ -31,37 +31,7 @@ interface LogEntry {
   message: string;
 }
 
-
 export class Output {
-  eui: string;
-  queued: number;
-  config: OutputConfig;
-  logs: LogEntry[];
-  status: string;
-
-  constructor({
-    eui = '',
-    queued = 0,
-    type = '',
-    config = {
-      type: 'mqtt',
-      endpoint: '',
-      port: 1883,
-      username: '',
-      password: '',
-      tls: true,
-      certCheck: true
-    },
-    logs = [],
-    status = ''
-  } = {}) {
-    this.eui = eui;
-    this.queued = queued;
-    this.config = config;
-    this.logs = logs;
-    this.status = status;
-  }
-
   static newFromDto(output: OutputDto): Output {
     return new Output({
       eui: output.eui,
@@ -73,10 +43,10 @@ export class Output {
         username: output.config.username,
         password: output.config.password,
         tls: output.config.tls,
-        certCheck: output.config.cert_check
+        certCheck: output.config.cert_check,
       },
       logs: output.logs,
-      status: output.status
+      status: output.status,
     });
   }
 
@@ -91,10 +61,39 @@ export class Output {
         username: output.config.username,
         password: output.config.password,
         tls: output.config.tls,
-        cert_check: output.config.certCheck
+        cert_check: output.config.certCheck,
       },
       logs: output.logs,
-      status: output.status
+      status: output.status,
     };
+  }
+
+  eui: string;
+  queued: number;
+  config: OutputConfig;
+  logs: LogEntry[];
+  status: string;
+
+  constructor({
+    eui = "",
+    queued = 0,
+    type = "",
+    config = {
+      type: "mqtt",
+      endpoint: "",
+      port: 1883,
+      username: "",
+      password: "",
+      tls: true,
+      certCheck: true,
+    },
+    logs = [],
+    status = "",
+  } = {}) {
+    this.eui = eui;
+    this.queued = queued;
+    this.config = config;
+    this.logs = logs;
+    this.status = status;
   }
 }

@@ -1,17 +1,17 @@
 
-import { EventAggregator } from 'aurelia-event-aggregator';
-import { DialogService } from 'aurelia-dialog';
-import { computedFrom } from 'aurelia-binding';
-import { autoinject, PLATFORM } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
+import { computedFrom } from "aurelia-binding";
+import { DialogService } from "aurelia-dialog";
+import { EventAggregator } from "aurelia-event-aggregator";
+import { autoinject, PLATFORM } from "aurelia-framework";
+import { Router } from "aurelia-router";
 
-import { Output } from 'Models/Output';
-import { OutputService } from 'Services/OutputService';
-import { Application } from 'Models/Application';
-import { ApplicationService } from 'Services/ApplicationService';
+import { Application } from "Models/Application";
+import { Output } from "Models/Output";
+import { ApplicationService } from "Services/ApplicationService";
+import { OutputService } from "Services/OutputService";
 
-import { LogBuilder } from 'Helpers/LogBuilder';
-const Log = LogBuilder.create('Application devices');
+import { LogBuilder } from "Helpers/LogBuilder";
+const Log = LogBuilder.create("Application devices");
 
 @autoinject
 export class ApplicationOutputs {
@@ -28,35 +28,35 @@ export class ApplicationOutputs {
     private outputService: OutputService,
     private dialogService: DialogService,
     private eventAggregator: EventAggregator,
-    router: Router
+    router: Router,
   ) {
     this.router = router;
   }
 
   createNewOutput() {
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/createOutputDialog'),
+      viewModel: PLATFORM.moduleName("dialogs/createOutputDialog"),
       model: {
-        applicationEui: this.application.appEUI
-      }
-    }).whenClosed(response => {
+        applicationEui: this.application.appEUI,
+      },
+    }).whenClosed((response) => {
       if (!response.wasCancelled) {
-        this.eventAggregator.publish('global:message', {
-          body: 'Output created'
+        this.eventAggregator.publish("global:message", {
+          body: "Output created",
         });
         this.outputs.push(response.output);
       }
     });
   }
 
-  @computedFrom('application')
+  @computedFrom("application")
   get wstaCodeExample() {
     return `wsta -I
     wss://api.lora.telenor.io/applications/${this.application.appEUI}/stream
     -H X-API-Token:YOUR-API-TOKEN`;
   }
 
-  @computedFrom('application')
+  @computedFrom("application")
   get wstaCodeExampleWithJqPipe() {
     return `wsta -I
     wss://api.lora.telenor.io/applications/${this.application.appEUI}/stream
@@ -69,7 +69,7 @@ export class ApplicationOutputs {
       this.applicationService.fetchApplications().then((applications) => {
         this.allApplications = applications;
 
-        let selectedApplication = this.allApplications.find((application) => {
+        const selectedApplication = this.allApplications.find((application) => {
           return application.appEUI === args.applicationId;
         });
 
@@ -83,13 +83,13 @@ export class ApplicationOutputs {
           return application.appEUI !== this.application.appEUI;
         });
       }).then(() => {
-        this.outputService.getOutputsForApplication(this.application.appEUI).then(outputs => {
+        this.outputService.getOutputsForApplication(this.application.appEUI).then((outputs) => {
           this.outputs = outputs;
         });
-      })
-    ]).catch(err => {
+      }),
+    ]).catch((err) => {
       Log.error(err);
-      this.router.navigate('');
+      this.router.navigate("");
     });
   }
 }

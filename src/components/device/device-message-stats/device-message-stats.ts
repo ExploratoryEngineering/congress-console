@@ -1,12 +1,12 @@
-import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
-import { bindable, autoinject } from 'aurelia-framework';
+import { EventAggregator, Subscription } from "aurelia-event-aggregator";
+import { autoinject, bindable } from "aurelia-framework";
 
-import './device-message-stats.scss';
+import "./device-message-stats.scss";
 
-import { DeviceService } from 'Services/DeviceService';
-import { Device } from 'Models/Device';
+import { Device } from "Models/Device";
+import { DeviceService } from "Services/DeviceService";
 
-import { Time } from 'Helpers/Time';
+import { Time } from "Helpers/Time";
 
 @autoinject
 export class DeviceMessageStats {
@@ -22,7 +22,7 @@ export class DeviceMessageStats {
 
   constructor(
     private deviceService: DeviceService,
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
 
   getLastHeardFrom(): Promise<any> {
@@ -31,9 +31,9 @@ export class DeviceMessageStats {
       this.device.deviceEUI,
       {
         limit: 1,
-        since: Time.DAWN_OF_TIME
-      }
-    ).then(messages => {
+        since: Time.DAWN_OF_TIME,
+      },
+    ).then((messages) => {
       if (messages.length > 0) {
         this.lastMessage = messages[0];
       }
@@ -43,7 +43,7 @@ export class DeviceMessageStats {
 
   bind() {
     this.getLastHeardFrom();
-    this.subscriptions.push(this.eventAggregator.subscribe('deviceData', (deviceData: MessageData) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("deviceData", (deviceData: MessageData) => {
       if (this.device.deviceEUI === deviceData.deviceEUI) {
         this.lastMessage = deviceData;
       }

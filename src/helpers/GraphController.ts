@@ -1,6 +1,6 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { autoinject } from 'aurelia-framework';
-import { DataTransformer } from 'Helpers/DataTransformer';
+import { autoinject } from "aurelia-framework";
+import { DataTransformer } from "Helpers/DataTransformer";
+import { LogBuilder } from "Helpers/LogBuilder";
 
 interface DataBucket {
   label: any;
@@ -40,45 +40,45 @@ interface GraphConfig {
   chartDataColors?: string[];
 }
 
-type GraphType = 'count' | 'count-aggregated' | 'CO2' | 'rssi';
+type GraphType = "count" | "count-aggregated" | "CO2" | "rssi";
 
-const Log = LogBuilder.create('Graph controller');
+const Log = LogBuilder.create("Graph controller");
 
 // A bunch of colors from http://epub.wu.ac.at/1692/1/document.pdf
 const defaultColors = [
-  '#023fa5',
-  '#7d87b9',
-  '#bec1d4',
-  '#d6bcc0',
-  '#bb7784',
-  '#8e063b',
-  '#4a6fe3',
-  '#8595e1',
-  '#b5bbe3',
-  '#e6afb9',
-  '#e07b91',
-  '#d33f6a',
-  '#11c638',
-  '#8dd593',
-  '#c6dec7',
-  '#ead3c6',
-  '#f0b98d',
-  '#ef9708',
-  '#0fcfc0',
-  '#9cded6',
-  '#d5eae7',
-  '#f3e1eb',
-  '#f6c4e1',
-  '#f79cd4'
+  "#023fa5",
+  "#7d87b9",
+  "#bec1d4",
+  "#d6bcc0",
+  "#bb7784",
+  "#8e063b",
+  "#4a6fe3",
+  "#8595e1",
+  "#b5bbe3",
+  "#e6afb9",
+  "#e07b91",
+  "#d33f6a",
+  "#11c638",
+  "#8dd593",
+  "#c6dec7",
+  "#ead3c6",
+  "#f0b98d",
+  "#ef9708",
+  "#0fcfc0",
+  "#9cded6",
+  "#d5eae7",
+  "#f3e1eb",
+  "#f6c4e1",
+  "#f79cd4",
 ];
 
 const mapper = {
-  '00-09-09-00-00-00-00-0a': 'Roald',
-  '00-09-09-00-00-00-00-09': 'BRB',
-  '00-09-09-00-00-00-00-0b': 'WTF',
-  '00-09-09-00-00-00-00-07': 'Sune',
-  '00-09-09-00-00-00-00-0c': 'Game room',
-  '00-09-09-00-00-00-00-08': 'Column EE'
+  "00-09-09-00-00-00-00-0a": "Roald",
+  "00-09-09-00-00-00-00-09": "BRB",
+  "00-09-09-00-00-00-00-0b": "WTF",
+  "00-09-09-00-00-00-00-07": "Sune",
+  "00-09-09-00-00-00-00-0c": "Game room",
+  "00-09-09-00-00-00-00-08": "Column EE",
 };
 
 @autoinject()
@@ -86,28 +86,28 @@ export class GraphController {
   chartDataColors: string[] = [];
 
   constructor(
-    private dataTransformer: DataTransformer
+    private dataTransformer: DataTransformer,
   ) { }
 
-  getGraph(messageData: MessageData[], { graphType = 'CO2', chartDataColors = defaultColors }: GraphConfig = {}): GraphData {
+  getGraph(messageData: MessageData[], { graphType = "CO2", chartDataColors = defaultColors }: GraphConfig = {}): GraphData {
     this.chartDataColors = chartDataColors;
-    let graphMetaData = this.createGraphMetaData(messageData);
+    const graphMetaData = this.createGraphMetaData(messageData);
 
-    let dataBucketSet = graphMetaData.dataBucketSet;
-    let dataEUIs = graphMetaData.dataEUIs;
+    const dataBucketSet = graphMetaData.dataBucketSet;
+    const dataEUIs = graphMetaData.dataEUIs;
 
     let graphDataSets: GraphDataSet[] = [];
 
     switch (graphType) {
-      case 'CO2': {
+      case "CO2": {
         graphDataSets = graphDataSets.concat(this.createCO2GraphDataSet(graphMetaData));
         break;
       }
-      case 'count-aggregated': {
+      case "count-aggregated": {
         graphDataSets = graphDataSets.concat(this.createCountAggregatedGraphDataSet(graphMetaData));
         break;
       }
-      case 'rssi': {
+      case "rssi": {
         graphDataSets = graphDataSets.concat(this.createRssiGraphDataSet(graphMetaData));
         break;
       }
@@ -122,10 +122,10 @@ export class GraphController {
       labels: this.getLabelsFromDataBucket(dataBucketSet),
       graphConfig: {
         graphType: graphType,
-        chartDataColors: this.chartDataColors
+        chartDataColors: this.chartDataColors,
       },
       graphMetaData: graphMetaData,
-      messageData: messageData
+      messageData: messageData,
     };
   }
 
@@ -133,10 +133,10 @@ export class GraphController {
    * Convenience method to add data to an existing GraphData object
    */
   addToGraph(messageData: MessageData, graphData: GraphData): GraphData {
-    Log.debug('Adding to graph');
+    Log.debug("Adding to graph");
     graphData.messageData.push(messageData);
 
-    let newGraphData = this.getGraph(graphData.messageData, graphData.graphConfig);
+    const newGraphData = this.getGraph(graphData.messageData, graphData.graphConfig);
 
     // Copy meta data
     graphData.graphMetaData = newGraphData.graphMetaData;
@@ -155,13 +155,13 @@ export class GraphController {
     let countGraphDataSet: GraphDataSet[] = [];
 
     graphMetaData.dataEUIs.forEach((uid, idx) => {
-      let countGraphData = this.createCountGraphData(uid, graphMetaData.dataBucketSet);
+      const countGraphData = this.createCountGraphData(uid, graphMetaData.dataBucketSet);
 
       countGraphDataSet = countGraphDataSet.concat([{
         label: `${uid} - Count`,
         fill: false,
         data: countGraphData.data,
-        backgroundColor: this.getColorByIndex(idx)
+        backgroundColor: this.getColorByIndex(idx),
       }]);
     });
 
@@ -172,10 +172,10 @@ export class GraphController {
    * Create GraphData based on the type 'count'
    */
   createCountGraphData(dataEUI: string, dataBucketSet: DataBucketSet) {
-    let countData: { data: Array<number | undefined> } = { data: [] };
+    const countData: { data: Array<number | undefined> } = { data: [] };
 
     Object.keys(dataBucketSet).forEach((label) => {
-      let dataBucket = dataBucketSet[label];
+      const dataBucket = dataBucketSet[label];
 
       if (dataBucket.dataSets[dataEUI]) {
         countData.data.push(dataBucket.dataSets[dataEUI].length);
@@ -193,7 +193,7 @@ export class GraphController {
   createCountAggregatedGraphDataSet(graphMetaData: GraphMetaData): GraphDataSet[] {
     let aggregatedCountGraphDataSet: GraphDataSet[] = [];
 
-    let data: number[] = [];
+    const data: number[] = [];
 
     Object.keys(graphMetaData.dataBucketSet).forEach((label) => {
       let labelCount = 0;
@@ -209,7 +209,7 @@ export class GraphController {
       label: `Number of received messages`,
       fill: false,
       data: data,
-      backgroundColor: this.getColorByIndex(0)
+      backgroundColor: this.getColorByIndex(0),
     }]);
 
     return aggregatedCountGraphDataSet;
@@ -223,13 +223,13 @@ export class GraphController {
     let rssiGraphDataSet: GraphDataSet[] = [];
 
     graphMetaData.dataEUIs.forEach((uid, idx) => {
-      let countGraphData = this.createRssiGraphData(uid, graphMetaData.dataBucketSet);
+      const countGraphData = this.createRssiGraphData(uid, graphMetaData.dataBucketSet);
 
       rssiGraphDataSet = rssiGraphDataSet.concat([{
         label: `${mapper[uid] ? mapper[uid] : uid} - RSSI`,
         fill: false,
         data: countGraphData.data,
-        backgroundColor: this.getColorByIndex(idx)
+        backgroundColor: this.getColorByIndex(idx),
       }]);
     });
 
@@ -241,10 +241,10 @@ export class GraphController {
    * @param dataBucketSet The bucket set for the EUI
    */
   createRssiGraphData(dataEUI: string, dataBucketSet: DataBucketSet) {
-    let countData: { data: Array<number | undefined> } = { data: [] };
+    const countData: { data: Array<number | undefined> } = { data: [] };
 
     Object.keys(dataBucketSet).forEach((label) => {
-      let dataBucket = dataBucketSet[label];
+      const dataBucket = dataBucketSet[label];
 
       if (dataBucket.dataSets[dataEUI]) {
         countData.data.push(dataBucket.dataSets[dataEUI][0].rssi);
@@ -263,18 +263,18 @@ export class GraphController {
     let co2GraphDataSets: GraphDataSet[] = [];
 
     graphMetaData.dataEUIs.forEach((uid, idx) => {
-      let co2GraphData = this.createCO2GraphData(uid, graphMetaData.dataBucketSet);
+      const co2GraphData = this.createCO2GraphData(uid, graphMetaData.dataBucketSet);
 
       co2GraphDataSets = co2GraphDataSets.concat([{
         label: `${mapper[uid] ? mapper[uid] : uid} - Sensor #1`,
         fill: false,
         data: co2GraphData.sensorOne,
-        backgroundColor: this.getColorByIndex(idx)
+        backgroundColor: this.getColorByIndex(idx),
       }, {
         label: `${mapper[uid] ? mapper[uid] : uid} - Sensor #2`,
         fill: false,
         data: co2GraphData.sensorTwo,
-        backgroundColor: this.getColorByIndex(idx)
+        backgroundColor: this.getColorByIndex(idx),
       }]);
     });
 
@@ -285,21 +285,21 @@ export class GraphController {
    * Create GraphData based on the type 'CO2'
    */
   createCO2GraphData(dataEUI: string, dataBucketSet: DataBucketSet) {
-    let co2Data: {
+    const co2Data: {
       sensorOne: any[],
       sensorTwo: any[],
-      sensorTwoStatus: any[]
+      sensorTwoStatus: any[],
     } = {
         sensorOne: [],
         sensorTwo: [],
-        sensorTwoStatus: []
+        sensorTwoStatus: [],
       };
 
     Object.keys(dataBucketSet).forEach((label) => {
-      let dataBucket = dataBucketSet[label];
+      const dataBucket = dataBucketSet[label];
 
       if (dataBucket.dataSets[dataEUI]) {
-        let transformation = this.dataTransformer.transformCO2Message(dataBucket.dataSets[dataEUI][0]);
+        const transformation = this.dataTransformer.transformCO2Message(dataBucket.dataSets[dataEUI][0]);
 
         co2Data.sensorOne.push(transformation.data.sensorOne);
         co2Data.sensorTwo.push(transformation.data.sensorTwo);
@@ -329,10 +329,10 @@ export class GraphController {
    * Create GraphMetaData based on the given MessageData set
    */
   private createGraphMetaData(messageData: MessageData[]): GraphMetaData {
-    let dataBucketSet: DataBucketSet = {};
-    let messageDataSet: MessageDataSet = {};
+    const dataBucketSet: DataBucketSet = {};
+    const messageDataSet: MessageDataSet = {};
 
-    let dataEUIs: string[] = [];
+    const dataEUIs: string[] = [];
 
     messageData.forEach((message) => {
       // Add data bucket set
@@ -341,7 +341,7 @@ export class GraphController {
       } else {
         dataBucketSet[message.timestamp] = {
           label: message.timestamp,
-          dataSets: {}
+          dataSets: {},
         };
         dataBucketSet[message.timestamp].dataSets[message.deviceEUI] = [message];
       }
@@ -361,7 +361,7 @@ export class GraphController {
 
     return {
       dataBucketSet: dataBucketSet,
-      dataEUIs: dataEUIs
+      dataEUIs: dataEUIs,
     };
   }
 }

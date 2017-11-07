@@ -1,21 +1,18 @@
-import { NotFound } from './notFound';
+import { RouterMock } from "Test/mock/mocks";
+import { NotFound } from "./notFound";
 
-class RouterStub {
-  navigateBack() { }
-}
-
-describe('Not found view', () => {
+describe("Not found view", () => {
   let routerStub;
   let notFoundView: NotFound;
 
   beforeEach(() => {
-    routerStub = new RouterStub();
+    routerStub = new RouterMock();
 
     notFoundView = new NotFound(routerStub);
   });
 
-  it('should call navigateBack to router when triggering navigateBack', () => {
-    let callToNavigateBack = spyOn(routerStub, 'navigateBack');
+  it("should call navigateBack to router when triggering navigateBack", () => {
+    const callToNavigateBack = spyOn(routerStub, "navigateBack");
 
     notFoundView.navigateBack();
 

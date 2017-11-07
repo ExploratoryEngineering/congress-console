@@ -1,64 +1,63 @@
-import { autoinject, PLATFORM } from 'aurelia-framework';
-import { DialogService } from 'aurelia-dialog';
-import { Router } from 'aurelia-router';
-import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
+import { DialogService } from "aurelia-dialog";
+import { EventAggregator, Subscription } from "aurelia-event-aggregator";
+import { autoinject, PLATFORM } from "aurelia-framework";
+import { Router } from "aurelia-router";
 
-import { ApplicationService } from 'Services/ApplicationService';
+import { ApplicationService } from "Services/ApplicationService";
 
-import { Application } from 'Models/Application';
+import { Application } from "Models/Application";
 
-import { TagHelper } from 'Helpers/TagHelper';
-import { LogBuilder } from 'Helpers/LogBuilder';
-import { Conflict } from 'Helpers/ResponseHandler';
+import { LogBuilder } from "Helpers/LogBuilder";
+import { Conflict } from "Helpers/ResponseHandler";
+import { TagHelper } from "Helpers/TagHelper";
 
-const Log = LogBuilder.create('Applications');
+const Log = LogBuilder.create("Applications");
 const th = new TagHelper();
 
 @autoinject
 export class Services {
+  availableApplications: Application[] = [];
   subscriptions: Subscription[] = [];
 
   constructor(
     private applicationService: ApplicationService,
     private dialogService: DialogService,
     private router: Router,
-    private eventAggregator: EventAggregator
+    private eventAggregator: EventAggregator,
   ) { }
-
-  availableApplications: Application[] = [];
 
   createNewApplication() {
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/createApplicationDialog')
-    }).whenClosed(response => {
+      viewModel: PLATFORM.moduleName("dialogs/createApplicationDialog"),
+    }).whenClosed((response) => {
       if (!response.wasCancelled) {
-        this.eventAggregator.publish('global:message', {
-          body: 'Application created'
+        this.eventAggregator.publish("global:message", {
+          body: "Application created",
         });
         const newApplication: Application = response.output;
         this.availableApplications.push(newApplication);
-        this.router.navigateToRoute('application_details', {
-          applicationId: newApplication.appEUI
+        this.router.navigateToRoute("application_details", {
+          applicationId: newApplication.appEUI,
         });
       }
     });
   }
 
   editApplication(application) {
-    let applicationUntouched = { ...application };
+    const applicationUntouched = { ...application };
 
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/editApplicationDialog'),
+      viewModel: PLATFORM.moduleName("dialogs/editApplicationDialog"),
       model: {
-        application: applicationUntouched
-      }
-    }).whenClosed(response => {
-      Log.debug('Edit application', response);
+        application: applicationUntouched,
+      },
+    }).whenClosed((response) => {
+      Log.debug("Edit application", response);
       if (!response.wasCancelled) {
-        this.eventAggregator.publish('global:message', {
-          body: 'Application updated'
+        this.eventAggregator.publish("global:message", {
+          body: "Application updated",
         });
-        this.applicationService.fetchApplications().then(applications => {
+        this.applicationService.fetchApplications().then((applications) => {
           this.availableApplications = applications;
         });
       }
@@ -67,39 +66,39 @@ export class Services {
 
   deleteApplication(application: Application) {
     this.dialogService.open({
-      viewModel: PLATFORM.moduleName('dialogs/messageDialog'),
+      viewModel: PLATFORM.moduleName("dialogs/messageDialog"),
       model: {
-        messageHeader: `Delete ${th.getTagOrFallback(application, 'name', 'appEUI', 'application')}?`,
+        messageHeader: `Delete ${th.getTagOrFallback(application, "name", "appEUI", "application")}?`,
         message: `Note: Before you delete the application you must first delete all devices connected to the application.`,
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-      }
-    }).whenClosed(response => {
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
+      },
+    }).whenClosed((response) => {
       if (!response.wasCancelled) {
-        Log.debug('Deleting application');
+        Log.debug("Deleting application");
         this.applicationService.deleteApplication(application).then(() => {
-          this.eventAggregator.publish('global:message', {
-            body: 'Application deleted'
+          this.eventAggregator.publish("global:message", {
+            body: "Application deleted",
           });
-          this.availableApplications = this.availableApplications.filter(app => app.appEUI !== application.appEUI);
+          this.availableApplications = this.availableApplications.filter((app) => app.appEUI !== application.appEUI);
         }).catch((error) => {
           if (error instanceof Conflict) {
-            Log.debug('409', error);
-            this.eventAggregator.publish('global:message', { body: 'Could not delete application due to existing devices.', timeout: 5000 });
+            Log.debug("409", error);
+            this.eventAggregator.publish("global:message", { body: "Could not delete application due to existing devices.", timeout: 5000 });
           }
         });
       } else {
-        Log.debug('Did not delete application');
+        Log.debug("Did not delete application");
       }
     });
   }
 
   fetchAndPopulateApplications() {
     return new Promise((res) => {
-      this.applicationService.fetchApplications().then(applications => {
+      this.applicationService.fetchApplications().then((applications) => {
         this.availableApplications = applications;
         res();
-      }).catch(err => {
+      }).catch((err) => {
         Log.error(err);
         res();
       });
@@ -107,13 +106,13 @@ export class Services {
   }
 
   activate() {
-    this.subscriptions.push(this.eventAggregator.subscribe('application:edit', (application) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("application:edit", (application) => {
       this.editApplication(application);
     }));
-    this.subscriptions.push(this.eventAggregator.subscribe('application:delete', (application) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("application:delete", (application) => {
       this.deleteApplication(application);
     }));
-    this.subscriptions.push(this.eventAggregator.subscribe('network:selected', (network) => {
+    this.subscriptions.push(this.eventAggregator.subscribe("network:selected", (network) => {
       this.fetchAndPopulateApplications();
     }));
 
@@ -121,7 +120,7 @@ export class Services {
   }
 
   deactivate() {
-    this.subscriptions.forEach(subscription => subscription.dispose());
+    this.subscriptions.forEach((subscription) => subscription.dispose());
     this.subscriptions = [];
   }
 }

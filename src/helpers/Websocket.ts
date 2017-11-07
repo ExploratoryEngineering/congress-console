@@ -1,9 +1,9 @@
-import { LogBuilder } from 'Helpers/LogBuilder';
+import { LogBuilder } from "Helpers/LogBuilder";
 
 const GUARD_DOG_INTERVAL: number = 5000;
 const APP_WAKE_TIME: number = 10000;
 const WS = WebSocket;
-const Log = LogBuilder.create('Websocket');
+const Log = LogBuilder.create("Websocket");
 
 export class Websocket {
   private socket: WebSocket;
@@ -13,24 +13,32 @@ export class Websocket {
   private config;
 
   constructor({
-    url = '',
-    onmessage = (message: WebsocketStatusMessage | WebsocketDeviceDataMessage) => { },
-    onopen = (open: any) => { },
-    onclose = (close: any) => { },
-    onerror = (error: any) => { }
+    url = "",
+    onmessage = (message: WebsocketStatusMessage | WebsocketDeviceDataMessage) => {
+      return;
+    },
+    onopen = (open: any) => {
+      return;
+    },
+    onclose = (close: any) => {
+      return;
+    },
+    onerror = (error: any) => {
+      return;
+    },
   } = {}) {
     this._connect({
       url: url,
       onmessage: onmessage,
       onopen: onopen,
       onclose: onclose,
-      onerror: onerror
+      onerror: onerror,
     });
   }
 
   _connect(config) {
     if (WS === undefined) {
-      Log.info('WebSockets are not supported in this browser');
+      Log.info("WebSockets are not supported in this browser");
       return;
     }
 
@@ -49,15 +57,15 @@ export class Websocket {
 
   send(message) {
     if (!this.isOpen()) {
-      Log.info('Tried sending to a closed socket: ', message);
+      Log.info("Tried sending to a closed socket: ", message);
       return;
     }
 
-    if (typeof message !== 'string') {
+    if (typeof message !== "string") {
       message = JSON.stringify(message);
     }
 
-    Log.info('Sending WebSocket message: ', message);
+    Log.info("Sending WebSocket message: ", message);
     this.socket.send(message);
   }
 
@@ -71,7 +79,7 @@ export class Websocket {
     this.guardDogIntervalId = window.setInterval(() => {
       const newBark = (new Date()).getTime();
       if (newBark - this.lastGuardDogBark > (GUARD_DOG_INTERVAL + GUARD_DOG_INTERVAL / 2)) {
-        Log.info('Reconnect due to guard dog');
+        Log.info("Reconnect due to guard dog");
         setTimeout(() => {
           this.reconnect();
         }, APP_WAKE_TIME);
@@ -87,13 +95,13 @@ export class Websocket {
   }
 
   reconnect() {
-    Log.info('Reconnecting websocket.');
+    Log.info("Reconnecting websocket.");
     this.close();
     this._connect(this.config);
   }
 }
 
-type MessageType = 'Error' | 'DeviceData' | 'KeepAlive';
+type MessageType = "Error" | "DeviceData" | "KeepAlive";
 
 export interface WebsocketMessage {
   type: MessageType;

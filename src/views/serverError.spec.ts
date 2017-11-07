@@ -1,21 +1,18 @@
-import { ServerError } from './serverError';
+import { RouterMock } from "Test/mock/mocks";
+import { ServerError } from "./serverError";
 
-class RouterStub {
-  navigateBack() { }
-}
-
-describe('Server error view', () => {
+describe("Server error view", () => {
   let routerStub;
   let serverErrorView: ServerError;
 
   beforeEach(() => {
-    routerStub = new RouterStub();
+    routerStub = new RouterMock();
 
     serverErrorView = new ServerError(routerStub);
   });
 
-  it('should call navigateBack to router when triggering navigateBack', () => {
-    let callToNavigateBack = spyOn(routerStub, 'navigateBack');
+  it("should call navigateBack to router when triggering navigateBack", () => {
+    const callToNavigateBack = spyOn(routerStub, "navigateBack");
 
     serverErrorView.navigateBack();
 
