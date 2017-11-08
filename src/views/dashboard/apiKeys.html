@@ -28,9 +28,8 @@
           </div>
         </div>
         <div class="grid__item grid__item--9">
-          <div class="card card--full-width card--transparent">
-            <token-expansion-panel show.bind="tokens.length > 0" repeat.for="token of tokens" applications.bind="applications" gateways.bind="gateways"
-              token.bind="token"></token-expansion-panel>
+          <div class="card card--full-width card--transparent" if.bind="tokens.length > 0">
+            <token-expansion-panel repeat.for="token of tokens" applications.bind="applications" gateways.bind="gateways" token.bind="token"></token-expansion-panel>
           </div>
         </div>
       </div>
