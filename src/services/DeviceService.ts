@@ -97,7 +97,11 @@ export class DeviceService {
       `/applications/${applicationEui}/devices/${deviceEui}/data?limit=${limit}&since=${since}`,
     )
       .then((data) => data.content.messages)
-      .then((data) => data.reverse());
+      .then((messages: MessageData[]) => {
+        return messages.sort((a, b) => {
+          return b.timestamp - a.timestamp;
+        });
+      });
 
   }
 
