@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.11-patch.4"></a>
+# [1.0.0-beta.11-patch.4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.3...v1.0.0-beta.11-patch.4) (2017-11-08)
+
+
+### Bug Fixes
+
+* **createTokenDialog:** use tag instead of model name. Fixes #117 ([ad20065](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ad20065)), closes [#117](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/117)
+* **deviceService:** explicit sorting on timestamp. Fixes #118 ([2a4fee6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2a4fee6)), closes [#118](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/118)
+* **templates:** correct errors in templates found by linting ([0c6b464](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0c6b464))
+
+
+### Features
+
+* **linting:** add aurelia deep linting of templates ([ee90a19](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ee90a19))
+* **typeLinting:** add type linting to all templates and fix accordingly ([dca8640](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/dca8640))
+
+
+
 <a name="1.0.0-beta.11-patch.3"></a>
 # [1.0.0-beta.11-patch.3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.2...v1.0.0-beta.11-patch.3) (2017-10-27)
 
