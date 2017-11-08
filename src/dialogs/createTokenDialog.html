@@ -21,7 +21,7 @@
               <option value="specific_gateway">One specific gateway</option>
             </select>
             <select if.bind="selectedResourceAccess === 'specific_application'" value.bind="selectedApplication" class="form-group__select">
-              <option repeat.for="application of applications" value="${application.appEUI}">${ application.name || application.appEUI }</option>
+              <option repeat.for="application of applications" value="${application.appEUI}">${ application | tagName:'appEUI' }</option>
             </select>
             <select if.bind="selectedResourceAccess === 'specific_gateway'" value.bind="selectedGateway" class="form-group__select">
               <option repeat.for="gateway of gateways" value="${gateway.gatewayEUI}">${ gateway | tagName:'gatewayEUI'}</option>
