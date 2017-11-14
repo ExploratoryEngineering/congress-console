@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.11-patch.5"></a>
+# [1.0.0-beta.11-patch.5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.4...v1.0.0-beta.11-patch.5) (2017-11-14)
+
+
+### Features
+
+* **documentation:** add link to doc. Fixes #119 ([5eacf00](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/5eacf00)), closes [#119](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/119)
+
+
+
 <a name="1.0.0-beta.11-patch.4"></a>
 # [1.0.0-beta.11-patch.4](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.3...v1.0.0-beta.11-patch.4) (2017-11-08)
 
