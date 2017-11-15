@@ -19,7 +19,7 @@ export class DeviceMessagePanel {
   @bindable
   deviceMessageData: string = "";
   @bindable
-  deviceMessagePort: number = 1;
+  deviceMessagePort: string = "1";
   @bindable
   deviceMessageRequestAck: boolean = false;
 
@@ -48,7 +48,7 @@ export class DeviceMessagePanel {
   getSendableDataMessage(): NewMessageData {
     return {
       data: this.encodeStringAsHex(this.deviceMessageData),
-      port: this.deviceMessagePort,
+      port: parseInt(this.deviceMessagePort, 10),
       ack: this.deviceMessageRequestAck,
     };
   }
