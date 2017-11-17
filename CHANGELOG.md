@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.11-patch.7"></a>
+# [1.0.0-beta.11-patch.7](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.6...v1.0.0-beta.11-patch.7) (2017-11-17)
+
+
+
 <a name="1.0.0-beta.11-patch.6"></a>
 # [1.0.0-beta.11-patch.6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.5...v1.0.0-beta.11-patch.6) (2017-11-17)
 
