@@ -1,8 +1,8 @@
 import { computedFrom } from "aurelia-binding";
 import { EventAggregator, Subscription } from "aurelia-event-aggregator";
 import { autoinject, bindable } from "aurelia-framework";
+import { DOM } from "aurelia-pal";
 
-import { CustomEventHelper } from "Helpers/CustomEventHelper";
 import { Range } from "Helpers/Range";
 
 import { DeviceService } from "Services/DeviceService";
@@ -38,23 +38,21 @@ export class DeviceOverviewCard {
   ) { }
 
   deleteDevice() {
-    CustomEventHelper.dispatchEvent(
-      this.element,
+    this.element.dispatchEvent(DOM.createCustomEvent(
       "delete-device",
       {
         bubbles: true,
       },
-    );
+    ));
   }
 
   editDevice() {
-    CustomEventHelper.dispatchEvent(
-      this.element,
+    this.element.dispatchEvent(DOM.createCustomEvent(
       "edit-device",
       {
         bubbles: true,
       },
-    );
+    ));
   }
 
   @computedFrom("messageData")

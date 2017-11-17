@@ -1,6 +1,6 @@
 import { autoinject, bindable } from "aurelia-framework";
+import { DOM } from "aurelia-pal";
 
-import { CustomEventHelper } from "Helpers/CustomEventHelper";
 import { LogBuilder } from "Helpers/LogBuilder";
 
 interface TagMarker {
@@ -53,8 +53,7 @@ export class TagEntityMapCard {
     }
     const latLngDetails = mapEvent.detail.latLng;
 
-    CustomEventHelper.dispatchEvent(
-      this.element,
+    this.element.dispatchEvent(DOM.createCustomEvent(
       "new-marker-position",
       {
         bubbles: true,
@@ -63,7 +62,7 @@ export class TagEntityMapCard {
           longitude: latLngDetails.lng(),
         },
       },
-    );
+    ));
 
     this.tagEntity.tags.location = `${latLngDetails.lat()},${latLngDetails.lng()}`;
     this.updateTagEntityMarker();

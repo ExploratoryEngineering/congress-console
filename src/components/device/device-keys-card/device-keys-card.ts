@@ -1,6 +1,6 @@
 import { autoinject, bindable } from "aurelia-framework";
 
-import { CustomEventHelper } from "Helpers/CustomEventHelper";
+import { DOM } from "aurelia-pal";
 import { Device } from "Models/Device";
 
 @autoinject
@@ -13,8 +13,7 @@ export class DeviceKeysCard {
   ) { }
 
   provisionDevice() {
-    CustomEventHelper.dispatchEvent(
-      this.element,
+    this.element.dispatchEvent(DOM.createCustomEvent(
       "provision-device",
       {
         detail: {
@@ -22,6 +21,6 @@ export class DeviceKeysCard {
         },
         bubbles: true,
       },
-    );
+    ));
   }
 }
