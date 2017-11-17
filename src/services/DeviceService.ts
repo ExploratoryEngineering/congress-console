@@ -57,7 +57,7 @@ export class DeviceService {
 
   fetchSourceForDevice(applicationEui: string, deviceEui: string, type: "lopy" | "c" = "c"): Promise<string> {
     return this.apiClient.http
-      .createRequest(`/applications/${applicationEui}/devices/${deviceEui}/source`)
+      .createRequest(`/applications/${applicationEui}/devices/${deviceEui}/source?type=${type}`)
       .asGet()
       .withResponseType("text")
       .send().then((data) => data.response);
