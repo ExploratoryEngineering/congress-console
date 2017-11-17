@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.11-patch.6"></a>
+# [1.0.0-beta.11-patch.6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.5...v1.0.0-beta.11-patch.6) (2017-11-17)
+
+
+### Bug Fixes
+
+* **aurelia-templating:** Temp clone array instead of push. Fixes #120 ([c7ce97e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/c7ce97e)), closes [#120](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/120)
+* **device-message-panel:** parse port to int. Fixes #121 ([6ceecf6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6ceecf6)), closes [#121](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/121)
+
+
+### Features
+
+* **event-log:** reverse sort for newest message first ([0c80dab](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0c80dab))
+
+
+
 <a name="1.0.0-beta.11-patch.5"></a>
 # [1.0.0-beta.11-patch.5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.4...v1.0.0-beta.11-patch.5) (2017-11-14)
 
