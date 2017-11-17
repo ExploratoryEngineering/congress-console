@@ -31,16 +31,16 @@ export class DeviceMessagePanel {
   ) { }
 
   sendData() {
-    this.deviceData.push("Sending message to device:\n" + JSON.stringify(this.getSendableDataMessage(), null, 2));
+    this.deviceData = [...this.deviceData, "Sending message to device:\n" + JSON.stringify(this.getSendableDataMessage(), null, 2)];
     this.deviceService.sendMessageToDevice(
       this.appEui,
       this.device.deviceEUI,
       this.getSendableDataMessage(),
     ).then(() => {
-      this.deviceData.push("Message successfully received. Will propagate to device when able.");
+      this.deviceData = [...this.deviceData, "Message successfully received. Will propagate to device when able."];
     }).catch((error) => {
       if (error instanceof BadRequestError) {
-        this.deviceData.push(error.content);
+        this.deviceData = [...this.deviceData, error.content];
       }
     });
   }
@@ -68,10 +68,10 @@ export class DeviceMessagePanel {
   bind() {
     this.subscriptions.push(this.eventAggregator.subscribe("deviceData", (deviceData: MessageData) => {
       if (this.device.deviceEUI === deviceData.deviceEUI) {
-        this.deviceData.push(deviceData);
+        this.deviceData = [...this.deviceData, deviceData];
       }
     }));
-    this.deviceData.push("Connected to Device stream");
+    this.deviceData = [...this.deviceData, "Connected to Device stream"];
   }
 
   unbind() {

@@ -102,7 +102,6 @@ export class DeviceService {
           return b.timestamp - a.timestamp;
         });
       });
-
   }
 
   async sendMessageToDevice(applicationEui: string, deviceEui: string, messageData: NewMessageData): Promise<NewMessageData> {

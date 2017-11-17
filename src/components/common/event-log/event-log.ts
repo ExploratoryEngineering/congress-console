@@ -13,7 +13,7 @@ export class EventLog {
   @bindable
   eventLogStreamEndpoint: string = "";
 
-  websocketData: any[] = [];
+  websocketData = [];
 
   constructor(
     private aureliaConfiguration: AureliaConfiguration,
@@ -30,11 +30,10 @@ export class EventLog {
     this.websocket = new Websocket({
       url: this.aureliaConfiguration.get("api.wsEndpoint") + this.eventLogStreamEndpoint,
       onmessage: (message) => { this.onMessage(message); },
-      onopen: () => { this.websocketData.push("Connected to endpoint, awaiting data"); },
-      onerror: () => { this.websocketData.push("There was an error connecting to the endpoint"); },
-      onclose: () => { this.websocketData.push("Websocket was closed"); },
+      onopen: () => { this.websocketData = [...this.websocketData, "Connected to endpoint, awaiting data"]; },
+      onerror: () => { this.websocketData = [...this.websocketData, "There was an error connecting to the endpoint"]; },
+      onclose: () => { this.websocketData = [...this.websocketData, "Websocket was closed"]; },
     });
-
   }
 
   onMessage(message: any) {
