@@ -14,7 +14,7 @@
       </form>
     </div>
     <div class="device-message-entries">
-      <pre class="device-message-panel__data-entry" repeat.for="data of deviceData">#${$index} ${data | stringify}</pre>
+      <pre class="device-message-panel__data-entry" repeat.for="data of deviceData">${data | stringify}</pre>
     </div>
   </div>
 </template>
