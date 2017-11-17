@@ -51,22 +51,10 @@ export class DeviceMessagePanel {
 
   getSendableDataMessage(): NewMessageData {
     return {
-      data: this.encodeStringAsHex(this.deviceMessageData),
+      data: this.deviceMessageData,
       port: parseInt(this.deviceMessagePort, 10),
       ack: this.deviceMessageRequestAck,
     };
-  }
-
-  encodeStringAsHex(stringToBeEncoded: string): string {
-    let encodedString: string = "";
-    let tempHex: string = "";
-
-    for (let i = 0; i < stringToBeEncoded.length; i += 1) {
-      tempHex = stringToBeEncoded.charCodeAt(i).toString(16);
-      encodedString += ("000" + tempHex).slice(-4);
-    }
-
-    return encodedString;
   }
 
   bind() {
