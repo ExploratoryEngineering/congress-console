@@ -1,7 +1,7 @@
 import { EventAggregator, Subscription } from "aurelia-event-aggregator";
 import { autoinject, bindable, containerless } from "aurelia-framework";
 
-import { BadRequestError } from "Helpers/ResponseHandler";
+import { BadRequestError, Conflict } from "Helpers/ResponseHandler";
 import { Device } from "Models/Device";
 
 import { DeviceService, NewMessageData } from "Services/DeviceService";
@@ -31,16 +31,20 @@ export class DeviceMessagePanel {
   ) { }
 
   sendData() {
-    this.deviceData = [...this.deviceData, "Sending message to device:\n" + JSON.stringify(this.getSendableDataMessage(), null, 2)];
+    this.deviceData = ["Sending message to device:\n" + JSON.stringify(this.getSendableDataMessage(), null, 2), ...this.deviceData];
     this.deviceService.sendMessageToDevice(
       this.appEui,
       this.device.deviceEUI,
       this.getSendableDataMessage(),
     ).then(() => {
-      this.deviceData = [...this.deviceData, "Message successfully received. Will propagate to device when able."];
+      this.deviceData = ["Message successfully received. Will propagate to device when able.", ...this.deviceData];
     }).catch((error) => {
       if (error instanceof BadRequestError) {
-        this.deviceData = [...this.deviceData, error.content];
+        this.deviceData = [error.content, ...this.deviceData];
+      } else if (error instanceof Conflict) {
+        this.deviceData = ["A message is already scheduled for output.", ...this.deviceData];
+      } else {
+        this.deviceData = [error.content, ...this.deviceData];
       }
     });
   }
@@ -68,10 +72,10 @@ export class DeviceMessagePanel {
   bind() {
     this.subscriptions.push(this.eventAggregator.subscribe("deviceData", (deviceData: MessageData) => {
       if (this.device.deviceEUI === deviceData.deviceEUI) {
-        this.deviceData = [...this.deviceData, deviceData];
+        this.deviceData = [deviceData, ...this.deviceData];
       }
     }));
-    this.deviceData = [...this.deviceData, "Connected to Device stream"];
+    this.deviceData = ["Connected to Device stream", ...this.deviceData];
   }
 
   unbind() {
