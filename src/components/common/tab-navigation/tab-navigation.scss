@@ -8,8 +8,6 @@
 $tab-navigation-font-size: $font-size--14;
 $tab-navigation-color: $font-color-secondary;
 $tab-navigation-font-weight: $font-weight--medium;
-
-$tab-navigation-tab-background-color-hover: darken($color--white, $opacity-12);
 $tab-navigation-tab-selected-color: $color--telenor-blue;
 $tab-navigation-tab-selected-border-color: $color--telenor-blue;
 
@@ -29,9 +27,13 @@ $tab-navigation-tab-selected-border-color: $color--telenor-blue;
 
   &__tabs {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     position: relative;
     width: 100%;
+
+    &--align-left {
+      justify-content: flex-start;
+    }
   }
 
   &__tab {
@@ -42,16 +44,14 @@ $tab-navigation-tab-selected-border-color: $color--telenor-blue;
     border-top: 0;
     color: $tab-navigation-color;
     cursor: pointer;
-    flex: 1;
     font-size: $tab-navigation-font-size;
     font-weight: $tab-navigation-font-weight;
     padding: $grid-size * 2 $grid-size * 6;
     text-align: center;
-    transition: background .5s $animation-cubic-bezier-1;
+    transition: color .15s $animation-cubic-bezier-1;
 
     &:hover {
-      background-color: $tab-navigation-tab-background-color-hover;
-      color: inherit;
+      color: $tab-navigation-tab-selected-color;
     }
 
     &--selected {
