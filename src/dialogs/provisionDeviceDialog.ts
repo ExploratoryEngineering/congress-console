@@ -1,11 +1,9 @@
 import { DialogController } from "aurelia-dialog";
 import { autoinject, useView } from "aurelia-framework";
 
+import { LogBuilder } from "Helpers/LogBuilder";
 import { Device } from "Models/Device";
 import { DeviceService } from "Services/DeviceService";
-
-import { LogBuilder } from "Helpers/LogBuilder";
-import { BadRequestError } from "Helpers/ResponseHandler";
 
 const Log = LogBuilder.create("Device provision dialog");
 
@@ -13,8 +11,9 @@ const Log = LogBuilder.create("Device provision dialog");
 export class ProvisionDeviceDialog {
   device: Device;
   appEUI: string;
-  source: string;
-  sourceTextField;
+
+  lopySource: string = "";
+  cSource: string = "";
 
   constructor(
     private deviceService: DeviceService,
@@ -29,11 +28,19 @@ export class ProvisionDeviceDialog {
     this.device = args.device;
     this.appEUI = args.appEUI;
 
+    return Promise.all([this.deviceService.fetchSourceForDevice(
+      this.appEUI,
+      this.device.deviceEUI,
+      "lopy",
+    ).then((lopySource) => {
+      this.lopySource = lopySource;
+    }),
     this.deviceService.fetchSourceForDevice(
       this.appEUI,
       this.device.deviceEUI,
-    ).then((source) => {
-      this.source = source;
-    });
+      "c",
+    ).then((cSource) => {
+      this.cSource = cSource;
+    })]);
   }
 }

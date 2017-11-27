@@ -1,7 +1,7 @@
 <template>
   <require from="components/common/form/text-input.html"></require>
   <require from="components/common/form/checkbox-input.html"></require>
-  <require from="components/common/source-code/source-code"></require>
+  <require from="components/common/source-provisioning/source-provisioning"></require>
   <require from="components/common/tab-navigation/tab-navigation.scss"></require>
   <div class="modal ${ step === 3 ? 'modal--large' : '' }">
     <div class="flex-container">
@@ -69,7 +69,7 @@
             Below you'll find the source needed to correctly provision your device. When you close this window, your device will be available
             in the device list.
           </p>
-          <source-code source.bind="source"></source-code>
+          <source-provisioning c-source.bind="cSource" lopy-source.bind="lopySource"></source-provisioning>
         </div>
       </div>
       <div class="flex-container__footer">

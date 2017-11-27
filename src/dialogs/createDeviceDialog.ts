@@ -23,7 +23,9 @@ export class CreateDeviceDialog {
   device: Device = new Device();
   createdDevice: Device;
   step: number = 1;
-  source: string = "";
+
+  cSource: string = "";
+  lopySource: string = "";
 
   formError: string;
 
@@ -52,11 +54,20 @@ export class CreateDeviceDialog {
   }
 
   fetchSource() {
-    return this.deviceService
-      .fetchSourceForDevice(this.appEui, this.createdDevice.deviceEUI)
-      .then((source) => {
-        this.source = source;
-      });
+    return Promise.all([this.deviceService.fetchSourceForDevice(
+      this.appEui,
+      this.createdDevice.deviceEUI,
+      "lopy",
+    ).then((lopySource) => {
+      this.lopySource = lopySource;
+    }),
+    this.deviceService.fetchSourceForDevice(
+      this.appEui,
+      this.createdDevice.deviceEUI,
+      "c",
+    ).then((cSource) => {
+      this.cSource = cSource;
+    })]);
   }
 
   getNewDevice(): NewABPDevice | NewOTAADevice {

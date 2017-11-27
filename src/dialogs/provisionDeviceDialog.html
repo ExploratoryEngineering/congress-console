@@ -1,12 +1,12 @@
 <template>
-  <require from="components/common/source-code/source-code"></require>
+  <require from="components/common/source-provisioning/source-provisioning"></require>
   <div class="modal modal--large">
     <div class="flex-container">
       <div class="flex-container__header">
         <h2 class="h2">Provision your device</h2>
       </div>
       <div class="flex-container__body">
-        <source-code source.bind="source"></source-code>
+        <source-provisioning c-source.bind="cSource" lopy-source.bind="lopySource"></source-provisioning>
       </div>
       <div class="flex-container__footer">
         <button class="button button--primary" type="submit" click.delegate="ok()">Close dialog</button>

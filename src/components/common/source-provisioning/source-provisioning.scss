@@ -1,0 +1,48 @@
+@import "setup/typography";
+
+@import "variables/grid";
+@import "variables/colors";
+@import "variables/animations";
+
+.source-provisioning {
+  &__source-selector {
+    align-items: center;
+    background-color: $color--google-grey-200;
+    border-bottom: solid 2px $color-grey-theme--darkest;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__source-option {
+    background-color: transparent;
+    border: 0;
+    color: $font-color-secondary;
+    cursor: pointer;
+    padding: $grid-size * 2 $grid-size * 6;
+    transition: color .15s $animation-cubic-bezier-1;
+
+    &:hover {
+      color: $color--telenor-blue;
+    }
+
+    &--selected {
+      color: $color--telenor-blue;
+    }
+  }
+
+  &__copy-actions {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  &__copy-action {
+    color: $font-color-secondary;
+    cursor: pointer;
+    margin-right: $grid-size * 2;
+
+    &:hover {
+      color: $color--telenor-blue;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<template>
+  <require from="./source-provisioning.scss"></require>
+  <div class="source-provisioning">
+    <div class="source-provisioning__source-selector">
+      <button if.bind="availableSourceTypes.includes('c')" class="source-provisioning__source-option ${ sourceType === 'c' ? 'source-provisioning__source-option--selected' : ''}"
+        click.delegate="setSourceType('c')">C(LMIC/MyNewt/LoraWanLib)</button>
+      <button if.bind="availableSourceTypes.includes('lopy')" class="source-provisioning__source-option ${ sourceType === 'lopy' ? 'source-provisioning__source-option--selected' : ''}"
+        click.delegate="setSourceType('lopy')">LoPy</button>
+      <div class="source-provisioning__copy-actions" click.delegate="copySource()">
+        <i class="source-provisioning__copy-action material-icons">content_copy</i>
+      </div>
+    </div>
+    <div class="source-provisioning__source code">
+      <pre class="code__content">${ selectedSourceCode }</pre>
+    </div>
+  </div>
+</template>
