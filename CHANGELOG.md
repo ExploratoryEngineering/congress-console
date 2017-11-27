@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.12"></a>
+# [1.0.0-beta.12](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.8...v1.0.0-beta.12) (2017-11-27)
+
+
+### Features
+
+* **source-provisioning:** add multiple languages to source code provisioning. Fixes #123 ([0276502](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0276502)), closes [#123](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/123)
+
+
+
 <a name="1.0.0-beta.11-patch.8"></a>
 # [1.0.0-beta.11-patch.8](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.7...v1.0.0-beta.11-patch.8) (2017-11-17)
 
