@@ -48,8 +48,9 @@
   }
 
   &__content {
+    margin: 0;
     overflow: scroll;
-    padding: 0 $grid-size * 2;
+    padding: $grid-size * 2;
   }
 }
 
