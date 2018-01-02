@@ -44,5 +44,9 @@
         width: 100%;
       }
     }
+
+    &--no-stretch {
+      align-items: flex-start;
+    }
   }
 }
