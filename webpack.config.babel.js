@@ -37,6 +37,7 @@ const sassLoaderConfig = [{
 }, {
     loader: "postcss-loader", // adding needed prefixer for older browsers
     options: {
+        ident: "postcss",
         plugins: () => [autoprefixer({ browsers: ["last 2 versions"] })],
         sourceMap: "inline",
         postcss: {}
