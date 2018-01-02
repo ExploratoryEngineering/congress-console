@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.13"></a>
+# [1.0.0-beta.13](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2018-01-02)
+
+
+### Bug Fixes
+
+* **top-header:** removed duplicated icon class. Fixes #129 ([deb362c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/deb362c)), closes [#129](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/129)
+* **webpack:** add ident for postcss. Fixes null error ([1a0a628](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/1a0a628))
+
+
+### Features
+
+* **gateways:** add ability to show public gateways. Fixes #127 ([8f28ac5](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8f28ac5)), closes [#127](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/127)
+
+
+
 <a name="1.0.0-beta.12"></a>
 # [1.0.0-beta.12](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.11-patch.8...v1.0.0-beta.12) (2017-11-27)
 
