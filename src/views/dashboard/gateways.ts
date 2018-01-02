@@ -12,7 +12,8 @@ const Log = LogBuilder.create("Gateways");
 
 @autoinject
 export class Services {
-  gateways: Gateway[] = [];
+  personalGateways: Gateway[] = [];
+  publicGateways: Gateway[] = [];
   subscriptions: any = [];
 
   constructor(
@@ -31,7 +32,7 @@ export class Services {
         this.eventAggregator.publish("global:message", {
           body: "Gateway created",
         });
-        this.gateways.push(response.output);
+        this.personalGateways.push(response.output);
       }
     });
   }
@@ -73,7 +74,7 @@ export class Services {
           this.eventAggregator.publish("global:message", {
             body: "Gateway deleted",
           });
-          this.gateways = this.gateways.filter((gw) => gw.gatewayEUI !== gateway.gatewayEUI);
+          this.personalGateways = this.personalGateways.filter((gw) => gw.gatewayEUI !== gateway.gatewayEUI);
         });
       } else {
         Log.debug("Did not delete gateway");
@@ -92,11 +93,15 @@ export class Services {
 
   fetchAndPopulateGateways() {
     return new Promise((res) => {
-      this.gatewayService.fetchGateways().then((gateways) => {
-        this.gateways = gateways;
+      Promise.all([
+        this.gatewayService.fetchPersonalGateways(),
+        this.gatewayService.fetchPublicGateways(),
+      ]).then(([personalGateways, publicGateways]) => {
+        this.personalGateways = personalGateways;
+        this.publicGateways = publicGateways;
         res();
       }).catch((err) => {
-        Log.error(err);
+        Log.warn("Failed fetching gateways", err);
         res();
       });
     });

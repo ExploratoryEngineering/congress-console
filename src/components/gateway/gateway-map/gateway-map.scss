@@ -3,27 +3,31 @@
 @import 'variables/grid';
 
 .gateway-map {
-  display: flex;
-
   &__search {
     padding: $grid-size * 2;
   }
 
   &__map {
     flex-grow: 1;
+    position: relative;
   }
-}
 
-.gateway-search-result {
-  &__search-item {
-    color: $font-color-secondary;
+  &__controls {
     display: flex;
-    line-height: $grid-size * 3;
-    padding: $grid-size;
+    padding: $grid-size * 2;
   }
 
-  &__search-item-icon {
-    color: $font-color-secondary;
-    margin-right: $grid-size;
+  &__overlay {
+    align-items: center;
+    background-color: rgba(0,0,0,.56);
+    bottom: 0;
+    color: $font-color-primary--colored;
+    display: flex;
+    justify-content:center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
   }
 }

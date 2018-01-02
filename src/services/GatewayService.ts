@@ -8,8 +8,14 @@ export class GatewayService {
     private apiClient: ApiClient,
   ) { }
 
-  fetchGateways(): Promise<Gateway[]> {
+  fetchPersonalGateways(): Promise<Gateway[]> {
     return this.apiClient.http.get("/gateways")
+      .then((data) => data.content.gateways)
+      .then((gateways) => gateways.map(Gateway.newFromDto));
+  }
+
+  fetchPublicGateways(): Promise<Gateway[]> {
+    return this.apiClient.http.get("/gateways/public")
       .then((data) => data.content.gateways)
       .then((gateways) => gateways.map(Gateway.newFromDto));
   }

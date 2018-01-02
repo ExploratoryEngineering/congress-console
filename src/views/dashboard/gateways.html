@@ -2,22 +2,28 @@
   <require from="components/gateway/gateway-map/gateway-map"></require>
   <require from="components/gateway/gateway-card/gateway-card"></require>
   <main class="main-content">
-    <section class="section">
-      <div class="card">
-        <div class="card__body card__body--no-padding">
-          <gateway-map gateways.bind="gateways"></gateway-map>
+    <section class="grid section">
+      <div class="grid__row">
+        <div class="grid__item grid__item--4 grid__item--no-stretch">
+          <div class="card card--full-width">
+            <div class="card__body card__body--no-padding">
+              <gateway-map personal-gateways.bind="personalGateways" public-gateways.bind="publicGateways"></gateway-map>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="gateway-container">
-        <gateway-card repeat.for="gateway of gateways" gateway.bind="gateway"></gateway-card>
-        <a class="card card--selectable gateway-card gateway-card--create-new" click.trigger="createNewGateway()">
-          <div class="card__header">
-            <h3 class="h3">Add new gateway</h3>
+        <div class="grid__item grid__item--8 grid__item--no-stretch">
+          <div class="gateway-container">
+            <gateway-card repeat.for="gateway of personalGateways" gateway.bind="gateway"></gateway-card>
+            <a class="card card--selectable gateway-card gateway-card--create-new" click.trigger="createNewGateway()">
+              <div class="card__header">
+                <h3 class="h3">Add new gateway</h3>
+              </div>
+              <div class="card__body card__body--no-padding gateway-card__create-new-body">
+                <i class="material-icons application-card__create-new-icon">add</i>
+              </div>
+            </a>
           </div>
-          <div class="card__body card__body--no-padding gateway-card__create-new-body">
-            <i class="material-icons application-card__create-new-icon">add</i>
-          </div>
-        </a>
+        </div>
       </div>
     </section>
   </main>

@@ -1,8 +1,16 @@
 <template>
   <require from="./gateway-map.scss"></require>
+  <require from="components/common/form/checkbox-input.html"></require>
   <div class="gateway-map">
     <div class="gateway-map__map">
       <google-map latitude.bind="latitude" longitude.bind="longitude" markers.bind="gatewayMarkers" auto-update-bounds="true"></google-map>
+      <div if.bind="gatewayMarkers.length === 0" class="gateway-map__overlay">
+        <h3 class="h3">No gateways found</h3>
+      </div>
     </div>
+    <form class="gateway-map__controls">
+      <checkbox-input name="showPublicGateways" checked.two-way="showPublicGateways" label="Show public gateways"></checkbox-input>
+      <checkbox-input name="showPersonalGateways" checked.two-way="showPersonalGateways" label="Show personal gateways"></checkbox-input>
+    </form>
   </div>
 </template>
