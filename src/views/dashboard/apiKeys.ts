@@ -85,7 +85,7 @@ export class ApiKeys {
       this.applicationService.fetchApplications().then((applications) => {
         this.applications = applications;
       }),
-      this.gatewayService.fetchGateways().then((gateways) => {
+      this.gatewayService.fetchPersonalGateways().then((gateways) => {
         this.gateways = gateways;
       }),
     ]).catch((err) => {
