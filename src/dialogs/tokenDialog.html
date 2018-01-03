@@ -5,10 +5,14 @@
   <div class="modal">
     <div class="flex-container">
       <div class="flex-container__header">
-        <h2 class="h2">Create a new API key</h2>
+        <h2 class="h2">${dialogHeader}</h2>
       </div>
       <div class="flex-container__body flex-container__body--centered">
         <form class="form" submit.delegate="createToken()">
+          <div class="form-errors" if.bind="formError">
+            <span class="form-errors__heading">Error when submitting API key:</span>
+            <span class="form-errors__error">- ${formError}</span>
+          </div>
           <text-input value.two-way="token.tags.name" name="token-name" label="Name" floatinglabel="true"></text-input>
           <div class="form-group">
             <h4 class="h4">Access level</h4>
@@ -49,7 +53,7 @@
       </div>
       <div class="flex-container__footer">
         <button class="button button--flat" click.delegate="cancel()">Cancel</button>
-        <button class="button button--primary" type="submit" click.delegate="createToken()">Create API key</button>
+        <button class="button button--primary" type="submit" click.delegate="createToken()">${confirmButtonText}</button>
       </div>
     </div>
   </div>

@@ -43,6 +43,9 @@ export class ApiKeys {
       if (!response.wasCancelled) {
         Log.debug("Data from created token", response);
         this.tokens.push(response.output);
+        this.eventAggregator.publish("global:message", {
+          body: "Token created",
+        });
       }
     });
   }

@@ -1,8 +1,11 @@
 import { DialogController } from "aurelia-dialog";
-import { autoinject } from "aurelia-framework";
+import { autoinject, useView } from "aurelia-framework";
+import { PLATFORM } from "aurelia-pal";
 
 import { TokenService } from "Services/TokenService";
 
+import { LogBuilder } from "Helpers/LogBuilder";
+import { BadRequestError } from "Helpers/ResponseHandler";
 import { Application } from "Models/Application";
 import { Gateway } from "Models/Gateway";
 import { Token } from "Models/Token";
@@ -12,6 +15,9 @@ const AccessLevels = {
   fullaccess: true,
 };
 
+const Log = LogBuilder.create("Create token dialog");
+
+@useView(PLATFORM.moduleName("dialogs/tokenDialog.html"))
 @autoinject
 export class CreateTokenDialog {
   token: Token;
@@ -23,6 +29,10 @@ export class CreateTokenDialog {
 
   applications: Application[] = [];
   gateways: Gateway[] = [];
+
+  dialogHeader = "Create a new API key";
+  confirmButtonText = "Create API key";
+  formError: string;
 
   constructor(
     private dialogController: DialogController,
@@ -39,6 +49,14 @@ export class CreateTokenDialog {
 
     this.tokenService.createToken(this.token).then((token) => {
       this.dialogController.ok(token);
+    }).catch((error) => {
+      if (error instanceof BadRequestError) {
+        Log.warn(`${error.errorCode}`, error);
+        this.formError = error.content;
+      } else {
+        Log.error("Create token: Error occured", error);
+        this.dialogController.cancel();
+      }
     });
   }
 
