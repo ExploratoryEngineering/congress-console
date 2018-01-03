@@ -10,6 +10,6 @@ export class AuthService {
 
   getUserProfile(): Promise<UserProfile> {
     return this.apiClient.http.get("/connect/profile")
-      .then((data) => UserProfile.newFromDto(data.content));
+      .then((data) => UserProfile.newFromDto(JSON.parse(data.content)));
   }
 }
