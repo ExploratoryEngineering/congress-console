@@ -10,30 +10,19 @@ class ApplicationServiceStub {
   }
 }
 
-class GraphControllerStub {
-  getGraph() {
-    return {
-      dataSets: [],
-      labels: [],
-    };
-  }
-}
-
 describe("ApplicationCard component", () => {
   let applicationCard;
 
   let eventAggregatorStub;
   let applicationServiceStub;
   let applicationStub;
-  let graphControllerStub;
 
   beforeEach(() => {
     eventAggregatorStub = new EventAggregatorMock();
     applicationStub = new ApplicationStub();
     applicationServiceStub = new ApplicationServiceStub();
-    graphControllerStub = new GraphControllerStub();
 
-    applicationCard = new ApplicationCard(eventAggregatorStub, applicationServiceStub, graphControllerStub);
+    applicationCard = new ApplicationCard(eventAggregatorStub, applicationServiceStub);
     applicationCard.application = applicationStub;
   });
 
