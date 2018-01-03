@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.14"></a>
+# [1.0.0-beta.14](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2018-01-03)
+
+
+### Bug Fixes
+
+* **profileDropdown:** Temp explicitly parse JSON from endpoint. Fixes #113 ([caae31a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/caae31a)), closes [#113](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/113)
+
+
+### Features
+
+* **applicationStats:** use application stats endpoint for application graphs. Ref #128 ([f12518a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f12518a))
+
+
+
 <a name="1.0.0-beta.13"></a>
 # [1.0.0-beta.13](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2018-01-02)
 
