@@ -8,6 +8,11 @@ import { Time } from "Helpers/Time";
 
 const Log = LogBuilder.create("Application service");
 
+interface ApplicationStats {
+  messagesIn: number[];
+  messagesOut: number[];
+}
+
 @autoinject
 export class ApplicationService {
   constructor(
@@ -29,6 +34,11 @@ export class ApplicationService {
         Log.debug("Fetching application", application);
         return Application.newFromDto(application);
       });
+  }
+
+  async fetchApplicationStatsByEUI(applicationEui: string): Promise<ApplicationStats> {
+    return this.apiClient.http.get(`/applications/${applicationEui}/stats`)
+      .then((data) => JSON.parse(data.content));
   }
 
   async fetchApplicationDataByEUI(

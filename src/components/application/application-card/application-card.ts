@@ -1,9 +1,9 @@
 import { EventAggregator } from "aurelia-event-aggregator";
 import { autoinject, bindable, containerless } from "aurelia-framework";
-import { GraphController } from "Helpers/GraphController";
 import { LogBuilder } from "Helpers/LogBuilder";
 import { Time } from "Helpers/Time";
 import { Application } from "Models/Application";
+import * as moment from "moment";
 import { ApplicationService } from "Services/ApplicationService";
 
 import Debug from "Helpers/Debug";
@@ -37,7 +37,7 @@ export class ApplicationCard {
       xAxes: [{
         display: false,
         type: "time",
-        barThickness: 2,
+        barThickness: 1,
         time: {
           min: Time.ONE_HOUR_AGO,
           max: Time.NOW,
@@ -56,15 +56,26 @@ export class ApplicationCard {
   constructor(
     private eventAggregator: EventAggregator,
     private applicationService: ApplicationService,
-    private graphController: GraphController,
   ) { }
 
   initiateChartData() {
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: Time.ONE_HOUR_AGO.format("x") }).then((messageData) => {
-      this.chartData = this.graphController.getGraph(messageData, {
-        chartDataColors: ["rgba(255,255,255,.7)"],
-        graphType: "count-aggregated",
-      });
+    this.applicationService.fetchApplicationStatsByEUI(this.application.appEUI).then((applicationStats) => {
+      this.chartData = {
+        datasets: [{
+          label: "Incoming - Count",
+          fill: false,
+          data: applicationStats.messagesIn,
+          backgroundColor: "rgba(255,255,255,.7)",
+        }, {
+          label: "Outgoing - Count",
+          fill: false,
+          data: applicationStats.messagesOut,
+          backgroundColor: "rgba(255,255,255,.7)",
+        }],
+        labels: applicationStats.messagesIn.map((item, idx) => {
+          return `${moment().subtract(idx + 1, "minutes").format()}`;
+        }),
+      };
     });
   }
 
