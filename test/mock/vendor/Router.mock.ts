@@ -1,6 +1,7 @@
 export class RouterMock {
   authStep;
   routes;
+  options = {};
 
   configure(handler) {
     handler(this);
