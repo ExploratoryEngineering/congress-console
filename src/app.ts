@@ -39,6 +39,7 @@ export class App {
 
   configureRouter(config) {
     config.title = "Telenor LORA";
+    config.options.pushState = true;
     config.mapUnknownRoutes(this.getUnknownRoute());
     config.addAuthorizeStep(new AuthorizeStep(this.userInformation));
     config.map(routes);
