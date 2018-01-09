@@ -1,6 +1,7 @@
 export { GravatarServiceMock } from "./services/GravatarService.mock";
 export { DeviceServiceMock } from "./services/DeviceService.mock";
 export { OutputServiceMock } from "./services/OutputService.mock";
+export { TokenServiceMock } from "./services/TokenService.mock";
 
 export { EventAggregatorMock } from "./vendor/EventAggregator.mock";
 export { DialogServiceMock } from "./vendor/DialogService.mock";
