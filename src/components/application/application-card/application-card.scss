@@ -1,0 +1,14 @@
+@import 'variables/colors';
+
+.application-card {
+  &__wrapper {
+    position: relative
+  }
+
+  &__dropdown {
+    color: $color--white;
+    position: absolute;
+    right: 32px;
+    top: 16px;
+  }
+}
