@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.15"></a>
+# [1.0.0-beta.15](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.14-patch.1...v1.0.0-beta.15) (2018-01-09)
+
+
+### Features
+
+* **token:** make token editable ([f883103](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f883103))
+
+
+
 <a name="1.0.0-beta.14-patch.1"></a>
 # [1.0.0-beta.14-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.15...v1.0.0-beta.14-patch.1) (2018-01-09)
 
