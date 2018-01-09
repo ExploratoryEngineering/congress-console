@@ -20,8 +20,8 @@
           <div class="form-group">
             <h4 class="h4">Endpoint configuration</h4>
             <text-input value.two-way="output.tags.name" name="output-name" label="Name" floatinglabel="true"></text-input>
-            <text-input value.two-way="output.config.endpoint" name="gateway-eui" label="Endpoint URL" floatinglabel="true"></text-input>
-            <text-input value.two-way="output.config.port" name="gateway-eui" label="Endpoint port" floatinglabel="true"></text-input>
+            <text-input value.two-way="output.config.endpoint" name="output-endpoint" label="Endpoint URL" floatinglabel="true"></text-input>
+            <text-input value.two-way="output.config.port" name="output-endpoint-port" label="Endpoint port" floatinglabel="true"></text-input>
             <div class="form-group">
               <checkbox-input name="tls" label="TLS" checked.two-way="output.config.tls"></checkbox-input>
               <checkbox-input if.bind="output.config.tls" name="cert-check" label="TLS certificate validation" checked.two-way="output.config.certCheck"></checkbox-input>
