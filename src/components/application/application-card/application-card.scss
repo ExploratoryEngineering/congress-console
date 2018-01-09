@@ -1,14 +1,82 @@
 @import 'variables/colors';
+@import 'variables/grid';
+@import 'setup/typography';
+@import 'mixins/responsive';
+
+$service-card-background-color: $color--telenor-blue;
+$service-card-color: $font-color-primary--colored;
+$service-card-color-secondary: $font-color-secondary--colored;
 
 .application-card {
+  background-color: $service-card-background-color;
+  color: $service-card-color;
+  cursor: pointer;
+  height: 160px;
+  width: 100%;
+
+  @include desktop() {
+    width: 300px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $service-card-color;
+  }
+
+  &--create-new {
+    background-color: $color--white;
+    color: $font-color-disabled;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $font-color-disabled;
+    }
+  }
+
+  &__header {
+    color: $service-card-color;
+    line-height: $grid-size * 3.5;
+    margin: 0 auto 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__statistics-text {
+    color: $service-card-color-secondary;
+    float: right;
+    font-size: 20px;
+    font-weight: $font-weight--light;
+  }
+
+  &__create-new-body {
+    align-items: center;
+  }
+
+  &__create-new-icon {
+    font-size: $grid-size * 8;
+  }
+
+  &__graph {
+    color: $service-card-color-secondary;
+  }
+
   &__wrapper {
-    position: relative
+    position: relative;
+    width: 48%;
+
+    @include desktop() {
+      margin-right: 20px;      
+      width: auto;
+    }
   }
 
   &__dropdown {
     color: $color--white;
     position: absolute;
-    right: 32px;
-    top: 16px;
+    right: $grid-size * 2;
+    top: $grid-size * 2;
   }
 }
