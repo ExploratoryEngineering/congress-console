@@ -123,6 +123,11 @@ export class TokenExpansionPanel {
     `;
   }
 
+  editToken() {
+    Log.debug("User wants to edit token", this.token);
+    this.eventAggregator.publish("token:edit", this.token);
+  }
+
   deleteToken() {
     Log.debug("User wants to delete token", this.token);
     this.eventAggregator.publish("token:delete", this.token);

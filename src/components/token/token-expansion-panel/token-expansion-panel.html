@@ -50,7 +50,8 @@
       </p>
     </div>
     <div if.bind="active" class="expansion-panel__footer">
-      <button class="button button--flat expansion-panel__primary-button" click.delegate="deleteToken()">Delete token</button>
+      <button class="button button--flat" click.delegate="editToken()">Edit token</button>
+      <button class="button button--flat" click.delegate="deleteToken()">Delete token</button>
     </div>
   </div>
 </template>

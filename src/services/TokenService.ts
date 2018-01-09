@@ -20,24 +20,17 @@ export class TokenService {
       });
   }
 
-  fetchTokensForApplication(appEui: string): Promise<Token[]> {
-    const appResourcePath = `/applicatoins/${appEui}`;
-
-    return this.apiClient.http.get(`/tokens`)
-      .then((data) => data.content.tokens)
-      .then((tokens) => {
-        return tokens.map(Token.newFromDto);
-      })
-      .then((tokens) => {
-        Log.debug("Fetched tokens", tokens);
-        return tokens.filter((token) => {
-          return token.resource === appResourcePath;
-        });
+  createToken(token: Token): Promise<Token> {
+    return this.apiClient.http.post("/tokens",
+      Token.toDto(token),
+    ).then((data) => data.content)
+      .then((newToken) => {
+        return Token.newFromDto(newToken);
       });
   }
 
-  createToken(token: Token): Promise<Token> {
-    return this.apiClient.http.post("/tokens",
+  updateToken(token: Token): Promise<Token> {
+    return this.apiClient.http.put("/tokens",
       Token.toDto(token),
     ).then((data) => data.content)
       .then((newToken) => {

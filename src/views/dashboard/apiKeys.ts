@@ -75,7 +75,36 @@ export class ApiKeys {
     });
   }
 
+  editToken(tokenToEdit: Token) {
+    Log.debug("Received edit request for token", tokenToEdit);
+    const tokenUntouched = { ...tokenToEdit };
+
+    this.dialogService.open({
+      viewModel: PLATFORM.moduleName("dialogs/editTokenDialog"),
+      model: {
+        applications: this.applications,
+        gateways: this.gateways,
+        token: tokenUntouched,
+      },
+    }).whenClosed((response) => {
+      if (!response.wasCancelled) {
+        const updatedToken = response.output;
+        Log.debug("Updating token");
+        const index = this.tokens.findIndex((token) => {
+          return token.token !== updatedToken.token;
+        });
+        this.tokens.splice(index, 1, updatedToken);
+      } else {
+        Log.debug("Did not update token");
+      }
+    });
+  }
+
   activate(args) {
+    this.subscriptions.push(this.eventAggregator.subscribe("token:edit", (token) => {
+      this.editToken(token);
+    }));
+
     this.subscriptions.push(this.eventAggregator.subscribe("token:delete", (token) => {
       this.deleteToken(token);
     }));

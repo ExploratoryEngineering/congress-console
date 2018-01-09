@@ -15,11 +15,11 @@ const AccessLevels = {
   fullaccess: true,
 };
 
-const Log = LogBuilder.create("Create token dialog");
+const Log = LogBuilder.create("Edit token dialog");
 
 @useView(PLATFORM.moduleName("dialogs/tokenDialog.html"))
 @autoinject
-export class CreateTokenDialog {
+export class EditTokenDialog {
   token: Token;
 
   selectedAccessLevel: string = "readonly";
@@ -30,8 +30,8 @@ export class CreateTokenDialog {
   applications: Application[] = [];
   gateways: Gateway[] = [];
 
-  dialogHeader = "Create a new API key";
-  confirmButtonText = "Create API key";
+  dialogHeader = "Update your API key";
+  confirmButtonText = "Update API key";
   formError: string;
 
   constructor(
@@ -47,7 +47,7 @@ export class CreateTokenDialog {
     this.token.write = AccessLevels[this.selectedAccessLevel];
     this.token.resource = this.getResourceAccessUrl();
 
-    this.tokenService.createToken(this.token).then((token) => {
+    this.tokenService.updateToken(this.token).then((token) => {
       this.dialogController.ok(token);
     }).catch((error) => {
       if (error instanceof BadRequestError) {
@@ -64,7 +64,41 @@ export class CreateTokenDialog {
     this.dialogController.cancel();
   }
 
-  getResourceAccessUrl(): string {
+  activate(args) {
+    Log.debug("Args", args);
+    this.applications = args.applications;
+    this.gateways = args.gateways;
+    this.token = args.token;
+
+    this.propagateAccessRightsFromToken(this.token);
+  }
+
+  private propagateAccessRightsFromToken(token: Token) {
+    const url = token.resource;
+
+    this.selectedAccessLevel = token.write ? "fullaccess" : "readonly";
+
+    if (url === "/") {
+      this.selectedResourceAccess = "all";
+    } else {
+      if (url === "/applications" || url === "/gateways") {
+        this.selectedResourceAccess = url.replace("/", "");
+        return;
+      }
+
+      const accessChunks = url.split("/");
+
+      if (accessChunks[1] === "applications") {
+        this.selectedResourceAccess = "specific_application";
+        this.selectedApplication = accessChunks[2];
+      } else if (accessChunks[1] === "gateways") {
+        this.selectedResourceAccess = "specific_gateway";
+        this.selectedApplication = accessChunks[2];
+      }
+    }
+  }
+
+  private getResourceAccessUrl(): string {
     const resourceAccess = this.selectedResourceAccess;
 
     if (resourceAccess === "all") {
@@ -80,10 +114,5 @@ export class CreateTokenDialog {
         return `/gateways/${this.selectedGateway}`;
       }
     }
-  }
-
-  activate(args) {
-    this.applications = args.applications;
-    this.gateways = args.gateways;
   }
 }
