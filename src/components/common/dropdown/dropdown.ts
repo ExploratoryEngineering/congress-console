@@ -23,6 +23,7 @@ export class Dropdown {
     };
     this.handleBodyClick = (e) => {
       if (this.closeOnOutsideClick &&
+        this.container &&
         !this.container.contains(e.target)) {
         this.closeDropdown();
       }
