@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.14-patch.1"></a>
+# [1.0.0-beta.14-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.15...v1.0.0-beta.14-patch.1) (2018-01-09)
+
+
+### Bug Fixes
+
+* **nav-header:** correctly redirect to slash. Fixes #132 ([92bb1a0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/92bb1a0)), closes [#132](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/132)
+
+
+
 <a name="1.0.0-beta.15"></a>
 # [1.0.0-beta.15](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2018-01-09)
 
