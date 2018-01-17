@@ -3,6 +3,10 @@
   <require from="components/common/dropdown/dropdown"></require>
   <require from="components/common/dropdown/dropdown-title"></require>
   <require from="components/common/dropdown/dropdown-container"></require>
+  <require from="./mqtt-endpoint-details.html"></require>
+  <require from="./mqtt-tls-details.html"></require>
+  <require from="./awsiot-endpoint-details.html"></require>
+  <require from="./awsiot-tls-details.html"></require>
   <table class="table">
     <thead>
       <tr>
@@ -19,8 +23,14 @@
       <tr repeat.for="output of outputs">
         <td class="table__data">Unnamed</td>
         <td class="table__data">${ output.config.type }</td>
-        <td class="table__data">${ output.config.username }@${ output.config.endpoint }:${ output.config.port }</td>
-        <td class="table__data">${ output.config.tls ? 'Yes' + (output.config.certCheck ? ', validate cert' : ', no cert validation') : 'No' }</td>
+        <td class="table__data">
+          <mqtt-endpoint-details if.bind="output.config.type === 'mqtt'" mqtt-output.bind="output"></mqtt-endpoint-details>
+          <awsiot-endpoint-details if.bind="output.config.type === 'awsiot'" awsiot-output.bind="output"></awsiot-endpoint-details>
+        </td>
+        <td class="table__data">
+          <mqtt-tls-details if.bind="output.config.type === 'mqtt'" mqtt-output.bind="output"></mqtt-tls-details>
+          <awsiot-tls-details if.bind="output.config.type === 'awsiot'" aws-output.bind="output"></awsiot-tls-details>
+        </td>
         <td class="table__data">${ output.status }</td>
         <td class="table__data visible-desktop">
         </td>

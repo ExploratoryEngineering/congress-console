@@ -1,0 +1,3 @@
+<template bindable="mqttOutput">
+  ${ mqttOutput.config.tls ? 'Yes' + (mqttOutput.config.certCheck ? ', validate cert' : ', no cert validation') : 'No' }
+</template>

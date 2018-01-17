@@ -12,7 +12,7 @@ export class EditOutputDialog {
   dialogHeader: string = "Update output";
 
   applicationEui: string;
-  output: Output = new Output();
+  output: Output = new Output({});
 
   formError: string;
 

@@ -1,6 +1,17 @@
 interface OutputConfig {
   type: string;
   endpoint: string;
+}
+
+export interface AwsIotConfig extends OutputConfig {
+  type: "awsiot";
+  clientCertificate: string;
+  privateKey: string;
+  clientId: string;
+}
+
+export interface MqttOutputConfig extends OutputConfig {
+  type: "mqtt";
   port: number;
   username: string;
   password: string;
@@ -8,9 +19,20 @@ interface OutputConfig {
   certCheck: boolean;
 }
 
-interface OuputConfigDto {
+interface OutputConfigDto {
   type: string;
   endpoint: string;
+}
+
+interface AwsIotConfigDto extends OutputConfigDto {
+  type: "awsiot";
+  clientCertificate: string;
+  privateKey: string;
+  clientId: string;
+}
+
+interface MqttOutputConfigDto extends OutputConfig {
+  type: "mqtt";
   port: number;
   username: string;
   password: string;
@@ -21,7 +43,7 @@ interface OuputConfigDto {
 interface OutputDto {
   eui: string;
   queued: number;
-  config: OuputConfigDto;
+  config: AwsIotConfigDto | MqttOutputConfigDto;
   logs: LogEntry[];
   status: string;
 }
@@ -31,38 +53,74 @@ interface LogEntry {
   message: string;
 }
 
+interface OutputParameters {
+  eui?: string;
+  queued?: number;
+  config?: AwsIotConfig | MqttOutputConfig;
+  logs?: LogEntry[];
+  status?: string;
+}
+
 export class Output {
   static newFromDto(output: OutputDto): Output {
+    function getOutputConfigFromDto(outputConfig: AwsIotConfigDto | MqttOutputConfigDto): AwsIotConfig | MqttOutputConfig {
+      if (outputConfig.type === "mqtt") {
+        return {
+          type: outputConfig.type,
+          endpoint: outputConfig.endpoint,
+          port: outputConfig.port,
+          username: outputConfig.username,
+          password: outputConfig.password,
+          tls: outputConfig.tls,
+          certCheck: outputConfig.cert_check,
+        };
+      } else if (outputConfig.type === "awsiot") {
+        return {
+          type: outputConfig.type,
+          endpoint: outputConfig.endpoint,
+          clientCertificate: outputConfig.clientCertificate,
+          privateKey: outputConfig.privateKey,
+          clientId: outputConfig.clientId,
+        };
+      }
+    }
+
     return new Output({
       eui: output.eui,
       queued: output.queued,
-      config: {
-        type: output.config.type,
-        endpoint: output.config.endpoint,
-        port: output.config.port,
-        username: output.config.username,
-        password: output.config.password,
-        tls: output.config.tls,
-        certCheck: output.config.cert_check,
-      },
+      config: getOutputConfigFromDto(output.config),
       logs: output.logs,
       status: output.status,
     });
   }
 
   static toDto(output: Output): OutputDto {
+    function getOutConfigToDto(outputConfig: AwsIotConfig | MqttOutputConfig): AwsIotConfigDto | MqttOutputConfigDto {
+      if (outputConfig.type === "mqtt") {
+        return {
+          type: outputConfig.type,
+          endpoint: outputConfig.endpoint,
+          port: outputConfig.port,
+          username: outputConfig.username,
+          password: outputConfig.password,
+          tls: outputConfig.tls,
+          cert_check: outputConfig.certCheck,
+        };
+      } else if (outputConfig.type === "awsiot") {
+        return {
+          type: outputConfig.type,
+          endpoint: outputConfig.endpoint,
+          clientCertificate: outputConfig.clientCertificate,
+          privateKey: outputConfig.privateKey,
+          clientId: outputConfig.clientId,
+        };
+      }
+    }
+
     return {
       eui: output.eui,
       queued: output.queued,
-      config: {
-        type: output.config.type,
-        endpoint: output.config.endpoint,
-        port: output.config.port,
-        username: output.config.username,
-        password: output.config.password,
-        tls: output.config.tls,
-        cert_check: output.config.certCheck,
-      },
+      config: getOutConfigToDto(output.config),
       logs: output.logs,
       status: output.status,
     };
@@ -70,14 +128,13 @@ export class Output {
 
   eui: string;
   queued: number;
-  config: OutputConfig;
+  config: AwsIotConfig | MqttOutputConfig;
   logs: LogEntry[];
   status: string;
 
   constructor({
     eui = "",
     queued = 0,
-    type = "",
     config = {
       type: "mqtt",
       endpoint: "",
@@ -89,7 +146,7 @@ export class Output {
     },
     logs = [],
     status = "",
-  } = {}) {
+  }: OutputParameters) {
     this.eui = eui;
     this.queued = queued;
     this.config = config;

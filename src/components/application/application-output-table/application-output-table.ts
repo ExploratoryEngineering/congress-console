@@ -58,7 +58,7 @@ export class ApplicationOutputTable {
     this.dialogService.open({
       viewModel: PLATFORM.moduleName("dialogs/messageDialog"),
       model: {
-        messageHeader: `Delete ${outputToBeDeleted.config.endpoint}:${outputToBeDeleted.config.port}?`,
+        messageHeader: `Delete ${outputToBeDeleted.config.type}:${outputToBeDeleted.config.endpoint}?`,
         confirmButtonText: "Delete",
         cancelButtonText: "Cancel",
       },

@@ -12,7 +12,7 @@ export class CreateOutputDialog {
   dialogHeader: string = "Add new output";
 
   applicationEui: string;
-  output: Output = new Output();
+  output: Output = new Output({});
 
   formError: string;
 
