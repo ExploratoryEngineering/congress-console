@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.17"></a>
+# [1.0.0-beta.17](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2018-01-17)
+
+
+### Features
+
+* **awsiot:** add output support for AWS IoT ([bc4f54c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/bc4f54c))
+
+
+
 <a name="1.0.0-beta.16"></a>
 # [1.0.0-beta.16](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.14-patch.1...v1.0.0-beta.16) (2018-01-09)
 
