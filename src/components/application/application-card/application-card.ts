@@ -51,8 +51,6 @@ export class ApplicationCard {
   };
   chartType = "bar";
 
-  dataInterval;
-
   constructor(
     private eventAggregator: EventAggregator,
     private applicationService: ApplicationService,
@@ -85,11 +83,6 @@ export class ApplicationCard {
 
   deleteApplication() {
     this.eventAggregator.publish("application:delete", this.application);
-  }
-
-  unbind() {
-    clearInterval(this.dataInterval);
-    this.dataInterval = null;
   }
 
   bind() {

@@ -11,7 +11,7 @@ class ApplicationServiceStub {
 }
 
 describe("ApplicationCard component", () => {
-  let applicationCard;
+  let applicationCard: ApplicationCard;
 
   let eventAggregatorStub;
   let applicationServiceStub;
@@ -24,10 +24,6 @@ describe("ApplicationCard component", () => {
 
     applicationCard = new ApplicationCard(eventAggregatorStub, applicationServiceStub);
     applicationCard.application = applicationStub;
-  });
-
-  afterEach(() => {
-    applicationCard.unbind();
   });
 
   describe("Binding behaviour", () => {
