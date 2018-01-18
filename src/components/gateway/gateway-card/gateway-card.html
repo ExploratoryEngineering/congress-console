@@ -1,5 +1,6 @@
 <template bindable="gateway">
   <require from="./gateway-card.scss"></require>
+  <require from="components/common/graph-chart/graph-chart"></require>
   <require from="components/common/dropdown/dropdown"></require>
   <require from="components/common/dropdown/dropdown-title"></require>
   <require from="components/common/dropdown/dropdown-container"></require>
@@ -18,9 +19,8 @@
         </dropdown-container>
       </dropdown>
     </div>
-    <div class="card__body">
-      <div>IP: ${ gateway.ip }</div>
-      <div>GatewayEUI: ${ gateway.gatewayEUI }</div>
+    <div class="card__body card__body--no-padding">
+      <graph-chart chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
     </div>
   </div>
 </template>

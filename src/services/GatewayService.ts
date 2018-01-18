@@ -2,6 +2,11 @@ import { autoinject } from "aurelia-framework";
 import { ApiClient } from "Helpers/ApiClient";
 import { Gateway } from "Models/Gateway";
 
+interface GatewayStats {
+  messagesIn: number[];
+  messagesOut: number[];
+}
+
 @autoinject
 export class GatewayService {
   constructor(
@@ -18,6 +23,11 @@ export class GatewayService {
     return this.apiClient.http.get("/gateways/public")
       .then((data) => data.content.gateways)
       .then((gateways) => gateways.map(Gateway.newFromDto));
+  }
+
+  fetchGatewayStatsByEUI(gatewayEui: string): Promise<GatewayStats> {
+    return this.apiClient.http.get(`/gateways/${gatewayEui}/stats`)
+      .then((data) => JSON.parse(data.content));
   }
 
   createNewGateway(gateway: Gateway): Promise<Gateway> {
