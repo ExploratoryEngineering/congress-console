@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.18"></a>
+# [1.0.0-beta.18](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2018-01-20)
+
+
+### Features
+
+* **gatewaycard:** add graph from /stats to gateway card ([bc8f050](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/bc8f050))
+
+
+
 <a name="1.0.0-beta.17"></a>
 # [1.0.0-beta.17](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2018-01-17)
 
