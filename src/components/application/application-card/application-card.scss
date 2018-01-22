@@ -9,6 +9,7 @@ $service-card-color-secondary: $font-color-secondary--colored;
 
 .application-card {
   background-color: $service-card-background-color;
+  border: none;
   color: $service-card-color;
   cursor: pointer;
   height: 160px;
@@ -53,7 +54,7 @@ $service-card-color-secondary: $font-color-secondary--colored;
   }
 
   &__create-new-body {
-    align-items: center;
+    align-self: center;
   }
 
   &__create-new-icon {
