@@ -176,7 +176,8 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
         })),
         ...when(production, new CommonsChunkPlugin({
             name: "common",
-            minSize: 50
+            minSize: 50,
+            minChunks: Infinity
         })),
         ...when(production, new ModuleConcatenationPlugin())
     ]
