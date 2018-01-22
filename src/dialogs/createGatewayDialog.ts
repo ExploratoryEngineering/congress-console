@@ -64,23 +64,22 @@ export class CreateGatewayDialog {
   }
 
   private setCurrentPosition(position: Position) {
-    if (!this.hasLocation) {
+    Log.debug("Setting current position", position);
+    if (this.isNewGateway()) {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
     }
   }
 
   private setGatewayMarker() {
-    if (this.hasLocation()) {
-      this.mapMarkers = [{
-        longitude: this.gateway.longitude,
-        latitude: this.gateway.latitude,
-      }];
-    }
+    this.mapMarkers = [{
+      longitude: this.gateway.longitude,
+      latitude: this.gateway.latitude,
+    }];
   }
 
-  private hasLocation(): boolean {
-    return !!(this.gateway.latitude && this.gateway.longitude);
+  private isNewGateway(): boolean {
+    return this.gateway.gatewayEUI === "";
   }
 
 }
