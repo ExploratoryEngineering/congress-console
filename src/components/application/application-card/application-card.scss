@@ -40,6 +40,7 @@ $service-card-color-secondary: $font-color-secondary--colored;
     line-height: $grid-size * 3.5;
     margin: 0 auto 0 0;
     overflow: hidden;
+    padding-right: 32px;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -77,6 +78,6 @@ $service-card-color-secondary: $font-color-secondary--colored;
     color: $color--white;
     position: absolute;
     right: $grid-size * 2;
-    top: $grid-size * 2;
+    top: ($grid-size * 2) + 1px;
   }
 }
