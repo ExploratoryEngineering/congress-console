@@ -10,8 +10,8 @@ export class Dropdown {
   @bindable
   disabled: boolean = false;
 
-  dropdown;
-  container;
+  dropdown: HTMLDivElement;
+  container: HTMLDivElement;
   closeOnItemSelect = true;
   closeOnOutsideClick = true;
 
