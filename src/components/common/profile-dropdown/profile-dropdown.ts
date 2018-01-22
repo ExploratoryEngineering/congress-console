@@ -17,7 +17,7 @@ export class ProfileDropdown {
     this.myPageUrl = this.config.get("myConnectUrl");
   }
 
-  logOut() {
-    document.location.href = `${this.config.get("api.endpoint")}/connect/logout`;
+  logOutHref(): string {
+    return `${this.config.get("api.endpoint")}/connect/logout`;
   }
 }

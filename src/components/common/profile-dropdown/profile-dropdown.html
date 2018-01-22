@@ -18,7 +18,7 @@
         <span class="profile-username__name" title="${ userInformation.userProfile.email }">${ userInformation.userProfile.email }</span>
       </div>
       <a class="profile-dropdown__menu-item" target="_blank" rel="noopener noreferrer" href.bind="myPageUrl">My CONNECT Account</a>
-      <a class="profile-dropdown__menu-item" click.trigger="logOut()">Logout</a>
+      <a class="profile-dropdown__menu-item" href.bind="logOutHref()">Logout</a>
     </dropdown-container>
   </dropdown>
 </template>
