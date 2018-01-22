@@ -1,5 +1,5 @@
-<template class="form-group" bindable="name,value,label,floatinglabel,autocomplete,maxlength,inputType">
-  <input id="${name}" class="form-group__input ${value || value.length > 0 || value === 0 ? 'form-group__input--has-data' : ''}"
+<template class="form-group" bindable="name,value,label,floatinglabel,autocomplete,maxlength,inputType,attachfocus">
+  <input id="${name}" attach-focus="${attachfocus ? 'true' : 'false' }" class="form-group__input ${value || value.length > 0 || value === 0 ? 'form-group__input--has-data' : ''}"
     value.bind="value" type="${inputType ? inputType : 'text'}" autocomplete="${autocomplete ? 'on' : 'off'}" maxlength="${maxlength ? maxlength : '1024'}"
   />
   <label for="${name}" class="form-group__label ${floatinglabel ? 'form-group__label--floating' : '' }">${label}</label>
