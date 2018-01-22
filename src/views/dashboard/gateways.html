@@ -14,14 +14,11 @@
         <div class="grid__item grid__item--8 grid__item--no-stretch">
           <div class="gateway-container">
             <gateway-card repeat.for="gateway of personalGateways" gateway.bind="gateway"></gateway-card>
-            <a class="card card--selectable gateway-card gateway-card--create-new" click.trigger="createNewGateway()">
-              <div class="card__header">
+            <button class="card card--selectable gateway-card gateway-card--create-new" click.trigger="createNewGateway()">
+              <div class="card__body gateway-card__create-new-body">
                 <h3 class="h3">Add new gateway</h3>
               </div>
-              <div class="card__body card__body--no-padding gateway-card__create-new-body">
-                <i class="material-icons application-card__create-new-icon">add</i>
-              </div>
-            </a>
+            </button>
           </div>
         </div>
       </div>

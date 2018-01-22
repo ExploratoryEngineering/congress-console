@@ -22,6 +22,7 @@ $gateway-card-color: $color--white;
 
 .gateway-card {
   background-color: $gateway-card-background-color;
+  border: none;
   color: $gateway-card-color;
   display: flex;
   height: 160px;
@@ -33,8 +34,10 @@ $gateway-card-color: $color--white;
   }
 
   &--create-new {
+    align-items: stretch;
     background-color: $color--white;
     color: $font-color-disabled;
+    cursor: pointer;
 
     &:hover,
     &:active,
@@ -52,6 +55,6 @@ $gateway-card-color: $color--white;
   }
 
   &__create-new-body {
-    align-items: center;
+    justify-content: center;
   }
 }

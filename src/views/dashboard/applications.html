@@ -8,11 +8,8 @@
     <div class="applications-container">
       <application-card repeat.for="application of availableApplications | sort:'tags.name':'asc'" application.bind="application"></application-card>
       <button class="card card--selectable application-card application-card--create-new" click.trigger="createNewApplication()">
-        <div class="card__header">
-          <h2 class="h2">Create new application</h2>
-        </div>
         <div class="card__body card__body--no-padding application-card__create-new-body">
-          <i class="material-icons application-card__create-new-icon">add</i>
+          <h3 class="h3">Create new application</h3>
         </div>
       </button>
     </div>

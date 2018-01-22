@@ -28,6 +28,7 @@ $service-card-color-secondary: $font-color-secondary--colored;
   &--create-new {
     background-color: $color--white;
     color: $font-color-disabled;
+    align-items: center;
 
     &:hover,
     &:active,
@@ -54,7 +55,7 @@ $service-card-color-secondary: $font-color-secondary--colored;
   }
 
   &__create-new-body {
-    align-self: center;
+    justify-content: center;
   }
 
   &__create-new-icon {
