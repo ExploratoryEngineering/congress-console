@@ -5,6 +5,42 @@
   <meta charset="utf-8">
   <base href="/">
   <% if (htmlWebpackPlugin.options.metadata.production) { %>
+    <style>
+      .splash-container {
+        background-color: #eeeeee;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        position: fixed;
+        right: 0;
+        top: 0;
+        transition: opacity .75s cubic-bezier(.15, .99, .18, 1.01);
+      }
+
+      .splash-container--fade-out {
+        opacity: 0;
+      }
+
+      .splash {
+        box-sizing: border-box;
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        margin: 10% 0 0 0;
+        text-align: center;
+      }
+
+      .splash__message {
+        color: rgba(0, 0, 0, .54);
+        font-size: 72px;
+        line-height: 72px;
+        text-transform: uppercase;
+      }
+
+      .splash__logo {
+        display: inline-block;
+        margin: 24px;
+        width: 120px;
+      }
+    </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=${ htmlWebpackPlugin.options.metadata.googleAnalytics }"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

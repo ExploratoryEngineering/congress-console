@@ -3,37 +3,3 @@
 @import 'layout/layout';
 @import 'views/views';
 
-.splash-container {
-  background-color: #eeeeee;
-  bottom: 0;
-  left: 0;
-  opacity: 1;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity .75s $animation-cubic-bezier-1;
-
-  &--fade-out {
-    opacity: 0;
-  }
-}
-
-.splash {
-  box-sizing: border-box;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  margin: 10% 0 0 0;
-  text-align: center;
-}
-
-.splash__message {
-  color: $font-color-opacity--black-54;
-  font-size: 72px;
-  line-height: 72px;
-  text-transform: uppercase;
-}
-
-.splash__logo {
-  display: inline-block;
-  margin: 24px;
-  width: 120px;
-}
