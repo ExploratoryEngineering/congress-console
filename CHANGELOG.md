@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.19"></a>
+# [1.0.0-beta.19](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2018-01-22)
+
+
+### Bug Fixes
+
+* **applicationcard:** add overflow ellipsis and center dropdown ([391ffd6](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/391ffd6))
+* **createGatewayDialog:** actually use local position if provided ([a26cf1b](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/a26cf1b))
+
+
+### Features
+
+* **application-card:** add keyboard support for dropdown ([acf775a](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/acf775a))
+* **applicationDialog:** add autofocus of input field upon activation ([8b9fb0d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8b9fb0d))
+* **applications:** make add application keyboard friendly ([0f4699e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0f4699e))
+* **gatewaycard:** make dropdown keyboard friendly ([517bc46](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/517bc46))
+* **input:** add support for focus attachment for input-elements ([17b0db3](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/17b0db3))
+* **keyboardnav:** add support for keyboard navigation in dropdown ([6f807f0](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6f807f0))
+
+
+
 <a name="1.0.0-beta.18"></a>
 # [1.0.0-beta.18](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2018-01-20)
 
