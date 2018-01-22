@@ -19,7 +19,11 @@ $dropdown-menu-item-font-size: $font-size--12;
   user-select: none;
 
   &__title {
+    background: none;
+    border: none;
+    color: inherit;
     cursor: pointer;
+    padding: 0;
 
     &--disabled {
       cursor: default;
@@ -73,13 +77,18 @@ $dropdown-menu-item-font-size: $font-size--12;
   }
 
   &__menu-item {
+    background: none;
+    border: none;
+    color: $font-color-secondary;
     cursor: pointer;
     display: block;
     padding: $grid-size $grid-size * 2;
     text-align: left;
     white-space: nowrap;
+    width: 100%;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: $dropdown-menu-item-hover-background-color;
     }
 

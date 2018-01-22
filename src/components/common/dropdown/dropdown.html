@@ -1,9 +1,9 @@
 <template>
   <require from="./dropdown.scss"></require>
   <div ref="dropdown" class="dropdown">
-    <div class="dropdown__title ${ disabled ? 'dropdown__title--disabled' : ''}" click.delegate="toggleDropdown()">
+    <button type="button" class="dropdown__title ${ disabled ? 'dropdown__title--disabled' : ''}" click.delegate="toggleDropdown()">
       <slot name="dropdown-title">Fallback title</slot>
-    </div>
+    </button>
     <div ref="container" class="dropdown__container dropdown__container--${ dropdownPosition } ${active ? 'dropdown__container--visible' : ''} ${ containerClasses }">
       <slot name="dropdown-container">Fallback items</slot>
     </div>
