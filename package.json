@@ -42,7 +42,7 @@
     "release:minor": "npm run release -- --release-as minor",
     "release:major": "npm run release -- --release-as major",
     "server": "npm run server:dev:hmr",
-    "server:dev": "webpack-dev-server -d --devtool '#source-map' --inline --env.server",
+    "server:dev": "webpack-dev-server -d --devtool '#source-map' --inline --env.server --https",
     "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod": "npm run build:prod && http-server dist --cors -p 8080 --silent",
     "start": "npm run server",
