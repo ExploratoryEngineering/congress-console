@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.20"></a>
+# [1.0.0-beta.20](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2018-01-23)
+
+
+### Bug Fixes
+
+* **buttons:** better focus indicators on primary buttons. Fixes #136 ([2b2d31e](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2b2d31e)), closes [#136](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/136)
+* **profiledropdown:** set href to correcly enable keyboard bindings ([2f3a74f](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/2f3a74f))
+* **webpack:** set minChunks to Inifinity to avoid extra request ([6dd4d9d](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/6dd4d9d))
+
+
+### Features
+
+* **gatewaydialog:** add autofocus upon activation ([0ae3bed](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/0ae3bed))
+* **landingpage:** add initial commit for landing page ([82ccf6c](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/82ccf6c))
+* **tokendialog:** add autofocus upon activation ([8e786f1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8e786f1))
+
+
+
 <a name="1.0.0-beta.19"></a>
 # [1.0.0-beta.19](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2018-01-22)
 
