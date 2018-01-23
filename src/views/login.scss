@@ -1,0 +1,120 @@
+@import "setup/typography";
+
+@import "variables/colors";
+@import "variables/grid";
+@import "variables/animations";
+
+$capability-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+
+.landing-page {
+  width: 100%;
+
+  &__hero {
+    background: url("/images/telenor-start-iot.jpg");
+    background-position: center center;
+    background-size: cover;
+    min-height: 500px;    
+    text-align: center;
+    padding: $grid-size * 5 0;
+  }
+
+  &__hero-section {
+    background-color: $color--telenor-blue;
+    display: inline-block;
+    padding: 20px;
+
+    &--no-background {
+      background: none;
+    }
+  }
+
+  // &__header-icon {
+  //   color: $color--telenor-blue;
+  //   display: inline-block;
+  //   height: 64px;
+  //   width: 90px;
+  // }
+
+  &__main-header {
+    color: $color--white;
+    font-size: $font-size--34;
+    font-weight: $font-weight--bold;
+    text-transform: uppercase;
+  }
+  
+  &__section {
+    background-color: $color--white;
+    color: $font-color-secondary;
+
+    &--colored {
+      background-color: $color--telenor-blue-dark;
+      color: $font-color-primary--colored;
+    }
+  }
+  
+  &__section-header {
+    margin-bottom: $grid-size * 2;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: $grid-size * 5;
+  }
+
+  &__illustration-image {
+    padding-right: 24px;
+  }
+
+  &__capabilities {
+    align-items: flex-start;
+    color: $font-color-primary;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 960px;
+  }
+
+  &__capability {
+    background-color: $color--white;
+    border-top: solid 4px $color--telenor-blue;
+    box-shadow: $capability-box-shadow;
+    display: inline-block;
+    height: 380px;
+    margin: -40px 20px -40px;
+    padding: $grid-size * 4;
+    text-align: left;
+    transform: scale(.9);
+    width: 280px;
+
+    &--promoted {
+      transform: scale(1);
+    }
+  }
+
+  &__capability-header {
+    color: $color--telenor-blue;
+    margin-bottom: $grid-size * 2;
+  }
+
+  &__text {
+    font-size: $font-size--20;    
+    font-weight: $font-weight--light;
+  }
+
+  &__login-button {
+    height: 50px;
+  }
+
+  &__bullet-point {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__bullet-point-entry {
+    border-left: solid 4px $color--telenor-blue;
+    margin-bottom: $grid-size;
+    padding-left: $grid-size;
+  }
+}

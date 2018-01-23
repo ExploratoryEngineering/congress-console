@@ -1,10 +1,120 @@
 <template>
-  <div class="flex-container">
-    <div class="flex-container__body flex-container__body--centered">
-      <a click.trigger="login()">
-        <img class="login-view__login-button" src="/images/connect_button.png" alt="Log in with CONNECT" />
-      </a>
-      <span class="login-disclaimer">By clicking sign in, you agree to our <a class="login-disclaimer__link" href="">Terms and Data Policy, including our Cookie use</a></span>
+  <require from="./login.scss"></require>
+  <require from="components/common/svg/propeller.html"></require>
+  <section class="landing-page">
+    <div class="landing-page__section landing-page__section--colored"></div>
+    <div class="landing-page__hero">
+      <div class="landing-page__hero-section">
+        <h1 class="h1 landing-page__main-header">
+          We want more
+          <em>things</em> in IoT
+        </h1>
+      </div>
     </div>
-  </div>
+    <div class="landing-page__section landing-page__section--colored">
+      <div class="landing-page__content grid__row">
+        <section class="grid__item grid__item--6">
+          <div>
+            <h2 class="h2 landing-page__section-header">Get started now</h2>
+            <span class="landing-page__text">
+              Sign up for free using Telenor ConnectID
+            </span>
+          </div>
+        </section>
+        <section class="grid__item grid__item--6">
+          <div>
+            <a click.trigger="login()">
+              <img class="landing-page__login-button" src="/images/connect_button.png" alt="Log in with CONNECT" />
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="landing-page__section">
+      <div class="landing-page__content grid__row">
+        <section class="landing-page__illustration-image grid__item--6 grid__item--6">
+          <img class="img" src="/images/lora.application-overview.png" alt="Application overview" />
+        </section>
+        <section class="grid__item--6 grid__item--6">
+          <h2 class="h2 landing-page__section-header">Full self service</h2>
+          <span class="landing-page__text">
+            No interaction with us unless you want to. Manage your applications, devices, gateways and API keys at your pace.
+          </span>
+        </section>
+      </div>
+    </div>
+    <div class="landing-page__section">
+      <div class="landing-page__content grid__row">
+        <section class="grid__item--6 grid__item--6">
+          <h2 class="h2 landing-page__section-header">Things</h2>
+          <span class="landing-page__text">
+            Add any thing with LoRa-WAN support and watch data flow through our system.
+          </span>
+        </section>
+        <section class="grid__item--6 grid__item--6 landin-page__illustration-image">
+          <img class="img" src="/images/lora.device-details.png" alt="Device details" />
+        </section>
+      </div>
+    </div>
+    <div class="landing-page__section">
+      <div class="landing-page__content grid__row">
+        <section class="landing-page__illustration-image grid__item--6 grid__item--6">
+          <img class="img" src="/images/lora.gateway-overview.png" alt="Application overview" />
+        </section>
+        <section class="grid__item--6 grid__item--6">
+          <h2 class="h2 landing-page__section-header">Control your gateway</h2>
+          <span class="landing-page__text">
+            Add, track and see live traffic from your gateway.
+          </span>
+        </section>
+      </div>
+    </div>
+    <div class="section landing-page__section landing-page__section--colored"></div>
+    <div class="landing-page__section">
+      <div class="landing-page__capabilities">
+        <div class="landing-page__capability">
+          <header class="landing-page__capability-header">
+            <h2 class="h2">Things</h2>
+          </header>
+          <section class="landing-page__text">
+            Support all devices that support LoRa-WAN
+            <ul class="landing-page__bullet-point">
+              <li class="landing-page__bullet-point-entry">Telenor EE-02/04</li>
+              <li class="landing-page__bullet-point-entry">LoPy</li>
+              <li class="landing-page__bullet-point-entry">Semtech mBed shield</li>
+              <li class="landing-page__bullet-point-entry">Microchip RN2903</li>
+              <li class="landing-page__bullet-point-entry">And more...</li>
+            </ul>
+          </section>
+        </div>
+        <div class="landing-page__capability landing-page__capability--promoted">
+          <header class="landing-page__capability-header">
+            <h2 class="h2">Gateways</h2>
+          </header>
+          <section class="landing-page__text">
+            Use existing gateways or expand as much you want by registering new gateways
+            <ul class="landing-page__bullet-point">
+              <li class="landing-page__bullet-point-entry">LoRa range</li>
+              <li class="landing-page__bullet-point-entry">Private networks (soon)</li>
+            </ul>
+          </section>
+        </div>
+        <div class="landing-page__capability">
+          <header class="landing-page__capability-header">
+            <h2 class="h2">Outputs</h2>
+          </header>
+          <section class="landing-page__text">
+            We send the data where you want it
+            <ul class="landing-page__bullet-point">
+              <li class="landing-page__bullet-point-entry">MQTT</li>
+              <li class="landing-page__bullet-point-entry">WebSockets</li>
+              <li class="landing-page__bullet-point-entry">Amazon IoT</li>
+              <li class="landing-page__bullet-point-entry">More coming...</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="section landing-page__section landing-page__section--colored"></div>
+  </section>
 </template>
