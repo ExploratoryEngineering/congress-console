@@ -9,3 +9,12 @@ a,
     color: inherit;
   }
 }
+
+.link--colored {
+  color: $color--telenor-blue;
+
+  &:hover,
+  &:focus {
+    color: $color--telenor-blue-darker;
+  }
+}
