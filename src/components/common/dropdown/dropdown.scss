@@ -24,6 +24,8 @@ $dropdown-menu-item-font-size: $font-size--12;
     color: inherit;
     cursor: pointer;
     padding: 0;
+    text-align: left;
+    width: 100%;
 
     &--disabled {
       cursor: default;
