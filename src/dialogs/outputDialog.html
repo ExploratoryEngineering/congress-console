@@ -13,7 +13,7 @@
           <form-error form-error.bind="formError"></form-error>
           <div class="form-group">
             <h4 class="h4">Output type</h4>
-            <select value.bind="output.config.type" class="form-group__select">
+            <select attach-focus="true" value.bind="output.config.type" class="form-group__select">
               <option value="mqtt">MQTT</option>
               <option value="awsiot">Amazon IoT</option>
             </select>
