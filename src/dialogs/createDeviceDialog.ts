@@ -50,6 +50,8 @@ export class CreateDeviceDialog {
           Log.error("Create device: Error occured", error);
           this.dialogController.cancel();
         }
+
+        throw error;
       });
   }
 
@@ -67,7 +69,10 @@ export class CreateDeviceDialog {
       "c",
     ).then((cSource) => {
       this.cSource = cSource;
-    })]);
+    })]).catch((error) => {
+      Log.warn("Something went wrong when fetching source");
+      throw error;
+    });
   }
 
   getNewDevice(): NewABPDevice | NewOTAADevice {
@@ -120,17 +125,19 @@ export class CreateDeviceDialog {
     }
   }
 
-  next(): Promise<any> {
+  async next(): Promise<any> {
     if (this.isStep(1)) {
       this.step = 2;
       return Promise.resolve();
     } else if (this.isStep(2)) {
-      return this.submitDevice()
-        .then(() => this.fetchSource())
-        .then(() => {
-          this.dialogController.settings.overlayDismiss = false;
-          this.step = 3;
-        });
+      try {
+        await this.submitDevice();
+        await this.fetchSource();
+        this.dialogController.settings.overlayDismiss = false;
+        this.step = 3;
+      } catch (err) {
+        return;
+      }
     } else if (this.isStep(3)) {
       return this.dialogController.ok(this.createdDevice);
     }
