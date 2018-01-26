@@ -107,7 +107,7 @@ describe("Create device dialog", () => {
         ),
       );
 
-      Promise.all([createDeviceDialog.submitDevice()]).then(() => {
+      Promise.all([createDeviceDialog.submitDevice()]).catch(() => {
         expect(createDeviceDialog.formError).toBe("Stuff went wrong and its your fault");
         done();
       });
@@ -123,7 +123,7 @@ describe("Create device dialog", () => {
       );
       const cancelSpy = spyOn(dialogControllerStub, "cancel");
 
-      Promise.all([createDeviceDialog.submitDevice()]).then(() => {
+      Promise.all([createDeviceDialog.submitDevice()]).catch(() => {
         expect(cancelSpy).toHaveBeenCalled();
         done();
       });
