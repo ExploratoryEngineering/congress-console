@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.21"></a>
+# [1.0.0-beta.21](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.20-patch.1...v1.0.0-beta.21) (2018-01-29)
+
+
+### Bug Fixes
+
+* **deviceCreation:** fix better error handling for device creation. Fixes #134 ([f404543](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/f404543)), closes [#134](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/issues/134)
+* **landingpage:** spelling error ([ed6b555](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ed6b555))
+
+
+### Features
+
+* **devicekeys:** show different keys dependent on device type ([ed43218](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ed43218))
+* **outputDialog:** add focus on activate ([ac5be73](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/ac5be73))
+* **pagination:** add keyboard support ([bd5ecac](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/bd5ecac))
+
+
+
 <a name="1.0.0-beta.20-patch.1"></a>
 # [1.0.0-beta.20-patch.1](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.19...v1.0.0-beta.20-patch.1) (2018-01-23)
 
