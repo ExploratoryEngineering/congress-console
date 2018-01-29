@@ -1,4 +1,5 @@
 interface DeviceDto {
+  appKey: string;
   appSKey: string;
   devAddr: string;
   deviceEUI: string;
@@ -16,6 +17,7 @@ export class Device implements TagEntity {
     return new Device({
       deviceEUI: device.deviceEUI,
       devAddr: device.devAddr,
+      appKey: device.appKey,
       appSKey: device.appSKey,
       nwkSKey: device.nwkSKey,
       deviceType: device.deviceType,
@@ -31,6 +33,7 @@ export class Device implements TagEntity {
     return {
       deviceEUI: device.deviceEUI,
       devAddr: device.devAddr,
+      appKey: device.appKey,
       appSKey: device.appSKey,
       nwkSKey: device.nwkSKey,
       deviceType: device.deviceType,
@@ -42,6 +45,7 @@ export class Device implements TagEntity {
     };
   }
 
+  appKey: string;
   appSKey: string;
   devAddr: string;
   deviceEUI: string;
@@ -56,6 +60,7 @@ export class Device implements TagEntity {
   constructor({
     deviceEUI = "",
     devAddr = "",
+    appKey = "",
     appSKey = "",
     nwkSKey = "",
     deviceType = "ABP",
@@ -67,6 +72,7 @@ export class Device implements TagEntity {
   } = {}) {
     this.deviceEUI = deviceEUI;
     this.devAddr = devAddr;
+    this.appKey = appKey;
     this.appSKey = appSKey;
     this.nwkSKey = nwkSKey;
     this.deviceType = deviceType;

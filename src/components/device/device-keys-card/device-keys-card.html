@@ -20,12 +20,16 @@
       <p>
         ${ device.devAddr }
       </p>
-      <h5 class="h5">Application session key</h5>
-      <p>
+      <h5 show.bind="device.deviceType === 'OTAA'" class="h5">Application key</h5>
+      <p show.bind="device.deviceType === 'OTAA'">
+        <secret-text secret-text.bind="device.appKey"></secret-text>
+      </p>
+      <h5 show.bind="device.deviceType === 'ABP'" class="h5">Application session key</h5>
+      <p show.bind="device.deviceType === 'ABP'">
         <secret-text secret-text.bind="device.appSKey"></secret-text>
       </p>
-      <h5 class="h5">Network session key</h5>
-      <p>
+      <h5 show.bind="device.deviceType === 'ABP'" class="h5">Network session key</h5>
+      <p show.bind="device.deviceType === 'ABP'">
         <secret-text secret-text.bind="device.nwkSKey"></secret-text>
       </p>
     </div>
