@@ -50,18 +50,9 @@ export class ApplicationOutputs {
   }
 
   @computedFrom("application")
-  get wstaCodeExample() {
-    return `wsta -I
-    wss://api.lora.telenor.io/applications/${this.application.appEUI}/stream
-    -H X-API-Token:YOUR-API-TOKEN`;
-  }
-
-  @computedFrom("application")
-  get wstaCodeExampleWithJqPipe() {
-    return `wsta -I
-    wss://api.lora.telenor.io/applications/${this.application.appEUI}/stream
-    -H X-API-Token:YOUR-API-TOKEN
-    | jq  .type`;
+  get curlWebsocketExample() {
+    // tslint:disable-next-line:max-line-length
+    return `curl -i -N -H "Sec-WebSocket-Version: 13" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "X-API-Token: YOUR_API_TOKEN" -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: api.lora.telenor.io" -H "Origin: https://api.lora.telenor.io" https://api.lora.telenor.io/applications/${this.application.appEUI}/stream`;
   }
 
   activate(args) {

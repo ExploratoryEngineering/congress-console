@@ -26,34 +26,18 @@
     </div>
     <div class="card">
       <div class="card__header card__header--colored">
-        <h4 class="h4 card-header-heading">Available integrations</h4>
+        <h4 class="h4 card-header-heading">Available outputs from the box</h4>
       </div>
       <div class="card__body">
         <section>
-          <h4 class="h4">Websockets</h4>
-          <p>You can use your API key to access the websocket endpoint for your application. It will provide a continuous stream
-            of data from the devices connected to your application.</p>
-          <p>To access the websocket stream you will firstly need an
-            <a route-href="route: api-keys" class="link">API key</a> with access to the application you are to connect to. You can then use a simple websocket client
-            and use one of
-            <a route-href="route: applications_overview" class="link">your applications</a> EUI and attatch to the URL below along with the API-key which has access to the application.
+          <h4 class="h4">Websocket integrations</h4>
+          <p class="tn-p">
+            Several of the resources in Congress has a /stream-endpoint which allows for connection through a Websocket connection. Below
+            you will find a curl example for listening in on data on the selected application. To make it work you'd need
+            to provide a API key with the correct permissions which can be created under the
+            <a class="link" route-href="route: api-keys">API management tab</a>.
           </p>
-          <h5 class="h5">Websocket URL for selected application</h5>
-          <p>
-            <code-line icon='link' code='wss://api.lora.telenor.io/applications/${application.appEUI}/stream'></code-line>
-          </p>
-          <h5 class="h5">Example using WSTA</h5>
-          <p>You can use a simple websocket client such as
-            <a target="_blank" rel="nofollow" class="link" href="https://github.com/esphen/wsta">wsta</a> which allows you to connect to a websocket through the CLI. A full example using wsta would be:
-          </p>
-          <code-block heading='WSTA code example' icon='code' code.bind="wstaCodeExample"></code-block>
-          <p>You can even use wsta with pipe and
-            <a target="_blank" rel="nofollow" href="https://stedolan.github.io/jq/">jq</a> which can help you return the information you're interested in directly.
-          </p>
-          <h5 class="h5">Example using WSTA with pipe and JQ</h5>
-          <p>The example below will connect to the application websocket, pipe the incoming result to JQ and parse the JSON
-            and fetch the incoming message type</p>
-          <code-block heading='WSTA code example with pipe and JQ' icon='code' code.bind="wstaCodeExampleWithJqPipe"></code-block>
+          <code-block heading='Curl WebSocket Example' icon='code' code.bind="curlWebsocketExample"></code-block>
         </section>
       </div>
     </div>
