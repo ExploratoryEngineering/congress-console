@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.22"></a>
+# [1.0.0-beta.22](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.21...v1.0.0-beta.22) (2018-02-26)
+
+
+### Features
+
+* **deploytotest:** add script for test deployment ([8796328](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/commits/8796328))
+
+
+
 <a name="1.0.0-beta.21"></a>
 # [1.0.0-beta.21](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.20-patch.1...v1.0.0-beta.21) (2018-01-29)
 
