@@ -42,7 +42,9 @@ $container-desktop-large: 1221px;
     @media only screen and (min-width: $min) and (max-width: $max) {
       @content;
     }
-  } @else {
+  }
+
+  @else {
     @media only screen and (max-width: $min) {
       @content;
     }
@@ -95,7 +97,7 @@ $container-desktop-large: 1221px;
   }
 }
 
-@include phone() {
+@include phone {
   .hidden-phone {
     display: none;
 
@@ -182,7 +184,7 @@ td {
   &.hidden-phone {
     display: table-cell;
 
-    @include phone() {
+    @include phone {
       display: none;
     }
   }
@@ -206,7 +208,7 @@ td {
   &.visible-phone {
     display: none;
 
-    @include phone() {
+    @include phone {
       display: table-cell;
     }
   }
@@ -214,7 +216,7 @@ td {
   &.visible-tablet {
     display: none;
 
-    @include tablet() {
+    @include tablet {
       display: table-cell;
     }
   }
@@ -222,7 +224,7 @@ td {
   &.visible-desktop {
     display: none;
 
-    @include desktop() {
+    @include desktop {
       display: table-cell;
     }
   }
@@ -241,7 +243,7 @@ td {
   }
 }
 
-@include phone() {
+@include phone {
   .visible-phone {
     display: inherit;
 
@@ -267,7 +269,7 @@ td {
   }
 }
 
-@include tablet() {
+@include tablet {
   .visible-tablet {
     display: inherit;
 
@@ -293,7 +295,7 @@ td {
   }
 }
 
-@include desktop() {
+@include desktop {
   .visible-desktop {
     display: inherit;
 
@@ -310,6 +312,7 @@ td {
 // Retina stuff
 
 @mixin image-2x($image, $width, $height) {
+  /* stylelint-disable-next-line media-feature-name-no-vendor-prefix, media-feature-name-no-unknown, unit-no-unknown */
   @media (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 4/2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 2ddpx) {
     background-image: url($image);
     background-size: $width $height;

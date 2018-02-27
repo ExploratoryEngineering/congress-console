@@ -17,26 +17,26 @@
 $modal-background-color: $color-grey-theme--light;
 
 .modal {
-  background-color: $modal-background-color;
   display: flex;
+  position: absolute;
+  top: 10%;
+  right: 0;
   left: 0;
-  margin: 0 auto;
-  max-height: 80%;
+  min-width: 600px;
   max-width: 800px;
   min-height: 400px;
-  min-width: 600px;
-  position: absolute;
-  right: 0;
-  top: 10%;
-  transition: max-width 0.15s ease-out;
+  max-height: 80%;
+  margin: 0 auto;
+  transition: max-width .15s ease-out;
+  background-color: $modal-background-color;
 
   &--small {
-    left: 30%;
-    max-height: 340px;
-    min-height: 0;
-    min-width: 0;
-    right: 30%;
     top: 25%;
+    right: 30%;
+    left: 30%;
+    min-width: 0;
+    min-height: 0;
+    max-height: 340px;
   }
 
   &--large {
@@ -49,10 +49,12 @@ $modal-background-color: $color-grey-theme--light;
 }
 
 // Overlay component configuration
+/* stylelint-disable-next-line selector-type-no-unknown */
 ux-dialog-overlay {
-  opacity: 0;
   transition: background-color .5s $animation-cubic-bezier-1;
+  opacity: 0;
 
+  /* stylelint-disable-next-line selector-max-type */
   &.active {
     background-color: rgba(0, 0, 0, .54);
   }

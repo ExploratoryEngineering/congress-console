@@ -14,9 +14,8 @@
 	limitations under the License.
 */
 
-@import 'setup/typography';
-
-@import 'variables/grid';
+@import "setup/typography";
+@import "variables/grid";
 
 .gateway-map {
   &__search {
@@ -24,8 +23,8 @@
   }
 
   &__map {
-    flex-grow: 1;
     position: relative;
+    flex-grow: 1;
   }
 
   &__controls {
@@ -34,16 +33,16 @@
   }
 
   &__overlay {
-    align-items: center;
-    background-color: rgba(0,0,0,.56);
-    bottom: 0;
-    color: $font-color-primary--colored;
     display: flex;
-    justify-content:center;
-    left: 0;
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .56);
+    color: $font-color-primary--colored;
     z-index: 5;
   }
 }

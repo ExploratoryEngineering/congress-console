@@ -28,17 +28,17 @@ $table-data-border: 1px solid rgba(189, 193, 193, .2);
 $table-data-row-hover-background-color: rgba(229, 230, 230, .25);
 
 .table {
+  width: 100%;
   background-color: $table-background-color;
   border-collapse: collapse;
-  width: 100%;
 
   &__head-data {
+    height: $grid-size * 6;
+    padding: 0 $grid-size * 3;
     border-bottom: $table-head-border;
     color: $table-head-color;
     font-size: $table-head-font-size;
     font-weight: $table-head-font-weight;
-    height: $grid-size * 6;
-    padding: 0 $grid-size * 3;
     text-align: left;
 
     &--action-column {
@@ -47,23 +47,26 @@ $table-data-row-hover-background-color: rgba(229, 230, 230, .25);
   }
 
   tr > &__data {
+    height: $grid-size * 6;
+    padding: 0 $grid-size * 3;
     border-top: $table-data-border;
     color: $table-data-color;
     font-size: $table-data-font-size;
     font-weight: $table-data-font-weight;
-    height: $grid-size * 6;
-    padding: 0 $grid-size * 3;
 
+    /* stylelint-disable selector-max-type */
     &--align-right {
       text-align: right;
     }
 
     &--action-column {
-      color: $font-color-secondary;
       width: $grid-size * 8;
+      color: $font-color-secondary;
     }
+    /* stylelint-enable selector-max-type */
   }
 
+  /* stylelint-disable-next-line selector-max-type */
   tr:first-child > &__data {
     border-top: 0;
   }

@@ -1,4 +1,5 @@
 @charset 'UTF-8';
+
 /*
 	Copyright 2018 Telenor Digital AS
 
@@ -18,16 +19,15 @@
 // Force all following css to be interpreted as UTF-8. Must be on top of stylesheet
 
 // Normalize ALL the things
-@import '../node_modules/normalize.css/normalize.css';
+@import "../node_modules/normalize.css/normalize.css";
 
 // tn-components
-@import 'components/form-elements/toggles/tn-checkbox';
-@import 'components/typography/tn-p';
+@import "components/form-elements/toggles/tn-checkbox";
+@import "components/typography/tn-p";
 
 // Default setup
-@import 'setup/border-box';
-@import 'setup/img';
-@import 'setup/typography';
-
-@import 'variables/variables';
-@import 'mixins/mixins';
+@import "setup/border-box";
+@import "setup/img";
+@import "setup/typography";
+@import "variables/variables";
+@import "mixins/mixins";

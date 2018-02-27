@@ -14,36 +14,34 @@
 	limitations under the License.
 */
 
-
 @import "setup/typography";
-
 @import "variables/colors";
 @import "variables/grid";
 
 .application-dropdown {
-  color: $font-color-secondary;
-  line-height: 50px;
   min-height: 50px;
   padding: 0 $grid-size * 3;
+  color: $font-color-secondary;
+  line-height: 50px;
 
   &__title {
-    font-size: $font-size--14;
     margin-right: $grid-size * 2.5;
-    overflow: hidden;
+    font-size: $font-size--14;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
   }
 
   &__triangle {
     position: absolute;
-    right: $grid-size * 3;
     top: $grid-size * 1.5;
+    right: $grid-size * 3;
   }
 
   &__menu-item {
-    color: $font-color-secondary;
     display: block;
     padding: 0 $grid-size * 3;
+    color: $font-color-secondary;
 
     &:hover {
       background-color: $color-grey-theme--dark;

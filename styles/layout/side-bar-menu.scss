@@ -27,11 +27,11 @@ $side-bar-menu-entry-selected-color: $color--telenor-blue;
 $side-bar-menu-entry-selected-border-color: $color--telenor-blue;
 
 .side-bar {
-  background-color: $side-bar-background-color;
-  border-right: solid 1px $side-bar-border-color;
+  width: $grid-size * 25;
   min-width: $grid-size * 25;
   transition: width .5s $animation-cubic-bezier-1;
-  width: $grid-size * 25;
+  border-right: solid 1px $side-bar-border-color;
+  background-color: $side-bar-background-color;
 
   &__wrapper {
     display: flex;
@@ -44,26 +44,26 @@ $side-bar-menu-entry-selected-border-color: $color--telenor-blue;
   }
 
   &__menu-entry {
+    display: block;
+    position: relative;
+    padding: $grid-size $grid-size * 3;
+    transition: background .5s $animation-cubic-bezier-1;
     border-left: 0;
     color: $side-bar-color;
-    cursor: pointer;
-    display: block;
     font-size: $side-bar-font-size;
     font-weight: $side-bar-font-weight;
-    padding: $grid-size $grid-size * 3;
-    position: relative;
-    transition: background .5s $animation-cubic-bezier-1;
+    cursor: pointer;
 
     &::before {
-      background-color: transparent;
-      content: '';
       display: block;
-      height: 100%;
-      left: 0;
       position: absolute;
       top: 0;
-      transition: width .5s $animation-cubic-bezier-1;
+      left: 0;
       width: 2px;
+      height: 100%;
+      transition: width .5s $animation-cubic-bezier-1;
+      background-color: transparent;
+      content: "";
     }
 
     &:hover {
@@ -73,9 +73,9 @@ $side-bar-menu-entry-selected-border-color: $color--telenor-blue;
     &--selected {
       color: $side-bar-menu-entry-selected-color;
 
-      &:before {
-        background-color: $side-bar-menu-entry-selected-border-color;
+      &::before {
         width: $grid-size / 2;
+        background-color: $side-bar-menu-entry-selected-border-color;
       }
 
       &:hover,
@@ -91,9 +91,9 @@ $side-bar-menu-entry-selected-border-color: $color--telenor-blue;
   }
 
   &__footer {
+    width: 100%;
     margin-top: auto;
     padding: 0 $grid-size * 8 $grid-size * 4;
     text-align: center;
-    width: 100%;
   }
 }

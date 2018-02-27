@@ -14,18 +14,18 @@
 	limitations under the License.
 */
 
-@import 'variables/colors';
-@import 'variables/grid';
+@import "variables/colors";
+@import "variables/grid";
 
 .device-table {
   &__device-warning-icon {
+    margin-right: $grid-size;
     color: $color--yellow;
     cursor: default;
-    margin-right: $grid-size;
   }
 
   &__icon-cell {
-    align-items: center;
     display: flex;
+    align-items: center;
   }
 }

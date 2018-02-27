@@ -14,41 +14,40 @@
 	limitations under the License.
 */
 
-@import 'setup/typography';
-
-@import 'variables/colors';
-@import 'variables/grid';
+@import "setup/typography";
+@import "variables/colors";
+@import "variables/grid";
 
 .range-chooser {
   display: inline-block;
 
   &__title {
-    background-color: $color--telenor-blue-darker;
-    border-radius: 2px;
-    color: $color--white;
     display: inline-block;
-    font-size: $font-size--15;
+    position: relative;
     min-width: 120px;
     padding: $grid-size;
-    position: relative;
+    border-radius: 2px;
+    background-color: $color--telenor-blue-darker;
+    color: $color--white;
+    font-size: $font-size--15;
   }
 
   &__heading {
     display: inline-block;
-    font-weight: $font-weight--bold;
     margin: 0 18px;
+    font-weight: $font-weight--bold;
   }
 
   &__icon {
     display: inline-block;
-    font-size: $font-size--16;
     position: absolute;
-    right: 10px;
     top: 8px;
+    right: 10px;
+    font-size: $font-size--16;
 
     &--left {
-      left: 10px;
       right: auto;
+      left: 10px;
     }
   }
 
@@ -57,12 +56,12 @@
   }
 
   &__menu-item {
+    display: inline-block;
+    width: 100%;
+    padding: $grid-size;
     background-color: $color--telenor-blue;
     color: $color--white;
-    display: inline-block;
     font-weight: $font-weight--bold;
-    padding: $grid-size;
-    width: 100%;
 
     &:hover,
     &:active {

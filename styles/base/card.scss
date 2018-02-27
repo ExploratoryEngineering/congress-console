@@ -22,14 +22,14 @@ $card-selectable-transition: box-shadow .15s ease-out;
 $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
 
 .card {
-  background-color: $card-background-color;
-  border-radius: 2px;
-  box-shadow: $card-box-shadow;
-  color: $card-color;
   display: flex;
+  position: relative;
   flex-direction: column;
   margin-bottom: $grid-size * 3;
-  position: relative;
+  border-radius: 2px;
+  background-color: $card-background-color;
+  color: $card-color;
+  box-shadow: $card-box-shadow;
 
   &--inline {
     display: inline-flex;
@@ -55,8 +55,8 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
   }
 
   &__header {
-    align-items: center;
     display: flex;
+    align-items: center;
     min-height: 64px;
     padding: $grid-size * 2;
 
@@ -65,13 +65,13 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
     }
 
     &--colored {
-      border-top: solid 4px $color--telenor-blue;
       padding: (($grid-size * 2) - 4px) $grid-size * 2;
+      border-top: solid 4px $color--telenor-blue;
     }
 
     &--colored-yellow {
-      border-top: solid 4px $color--yellow;
       padding: (($grid-size * 2) - 4px) $grid-size * 2;
+      border-top: solid 4px $color--yellow;
     }
 
     &--table {
@@ -81,10 +81,10 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
 
   &__body {
     display: flex;
+    position: relative;
     flex-direction: column;
     flex-grow: 1;
     padding: $grid-size * 2;
-    position: relative;
 
     &--no-padding {
       padding: 0;
@@ -102,11 +102,11 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
 }
 
 .no-data-card-body {
-  align-items: center;
-  background-color: $color--white;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  background-color: $color--white;
 
   &__icon {
     color: $font-color-disabled;
@@ -131,18 +131,18 @@ $card-selectable-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
 }
 
 .card-header-heading {
-  align-items: center;
   display: flex;
   flex-grow: 1;
+  align-items: center;
   line-height: $grid-size * 4;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .card-header-actions {
-  align-self: flex-end;
   flex-shrink: 1;
-  font-size: $font-size--15;
+  align-self: flex-end;
   margin-left: $grid-size;
+  font-size: $font-size--15;
 }

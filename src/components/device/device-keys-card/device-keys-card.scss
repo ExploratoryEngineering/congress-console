@@ -14,12 +14,12 @@
 	limitations under the License.
 */
 
-@import 'variables/grid';
-@import 'variables/colors';
+@import "variables/grid";
+@import "variables/colors";
 
 .device-keys-card {
   &__key-warning-icon {
-    color: $color--yellow;
     margin-right: $grid-size;
+    color: $color--yellow;
   }
 }

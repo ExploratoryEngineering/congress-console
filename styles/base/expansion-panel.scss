@@ -14,19 +14,19 @@
 	limitations under the License.
 */
 
-$expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+$expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
 
 .expansion-panel {
+  max-height: $grid-size * 8;
+  margin: 0;
+  transition: background .5s $animation-cubic-bezier-1, max-height .5s $animation-cubic-bezier-1, margin .5s $animation-cubic-bezier-1;
   background-color: $color--white;
   box-shadow: $expansion-panel-box-shadow;
-  margin: 0;
-  max-height: $grid-size * 8;
   overflow: hidden;
-  transition: background .5s $animation-cubic-bezier-1, max-height .5s $animation-cubic-bezier-1, margin .5s $animation-cubic-bezier-1;
 
   &--expanded {
-    margin: $grid-size * 2 0;
     max-height: 700px;
+    margin: $grid-size * 2 0;
 
     &:first-of-type {
       margin: 0 0 $grid-size * 2 0;
@@ -47,13 +47,14 @@ $expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
     }
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   &__header {
-    cursor: pointer;
     display: flex;
     height: $grid-size * 8;
-    line-height: $grid-size * 8;
-    outline: none;
     padding: 0 $grid-size * 3;
+    outline: none;
+    line-height: $grid-size * 8;
+    cursor: pointer;
 
     &:active {
       background-color: $color--google-grey-200;
@@ -61,21 +62,21 @@ $expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   }
 
   &__title {
-    font-size: $font-size--15;
-    margin-right: $grid-size * 2;
     width: 200px;
+    margin-right: $grid-size * 2;
+    font-size: $font-size--15;
   }
 
   &__subtitle {
-    color: $font-color-secondary;
     flex-grow: 1;
+    color: $font-color-secondary;
   }
 
   &__chevron {
     align-self: flex-end;
+    width: $grid-size * 3;
     color: $font-color-opacity--black-38;
     line-height: 50px;
-    width: $grid-size * 3;
   }
 
   &__body {
@@ -94,15 +95,15 @@ $expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   &__body-section {
     width: 100%;
 
-    @include desktop() {
+    @include desktop {
       width: 50%;
     }
   }
 
   &__footer {
-    border-top: 1px solid $color--google-grey-200;
     display: flex;
     justify-content: flex-end;
     padding: $grid-size * 2 $grid-size $grid-size * 2 $grid-size * 3;
+    border-top: 1px solid $color--google-grey-200;
   }
 }

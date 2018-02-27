@@ -1,16 +1,3 @@
-@import "setup/typography";
-
-@import "variables/animations";
-@import "variables/colors";
-@import "variables/grid";
-@import "variables/opacities";
-
-$dropdown-container-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
-$dropdown-container-color: $font-color-secondary;
-$dropdown-container-font-weight: $font-weight--medium;
-$dropdown-container-background-color: $color--white;
-$dropdown-container-border-color: $color-grey-theme--dark;
-
 /*
 	Copyright 2018 Telenor Digital AS
 
@@ -27,6 +14,18 @@ $dropdown-container-border-color: $color-grey-theme--dark;
 	limitations under the License.
 */
 
+@import "setup/typography";
+@import "variables/animations";
+@import "variables/colors";
+@import "variables/grid";
+@import "variables/opacities";
+
+$dropdown-container-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+$dropdown-container-color: $font-color-secondary;
+$dropdown-container-font-weight: $font-weight--medium;
+$dropdown-container-background-color: $color--white;
+$dropdown-container-border-color: $color-grey-theme--dark;
+
 $dropdown-menu-item-hover-background-color: $color-grey-theme--dark;
 $dropdown-menu-item-font-size: $font-size--12;
 
@@ -35,13 +34,13 @@ $dropdown-menu-item-font-size: $font-size--12;
   user-select: none;
 
   &__title {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    padding: 0;
-    text-align: left;
     width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
 
     &--disabled {
       cursor: default;
@@ -49,38 +48,38 @@ $dropdown-menu-item-font-size: $font-size--12;
   }
 
   &__container {
-    background-color: $color--white;
-    border: 1px solid $dropdown-container-border-color;
-    border-radius: 2px;
-    box-shadow: $dropdown-container-box-shadow;
-    color: $dropdown-container-color;
-    left: 0;
-    min-width: 100%;
-    opacity: 0;
     position: absolute;
     top: 15%;
+    left: 0;
+    min-width: 100%;
     transition: all .25s $animation-cubic-bezier-1;
+    border: 1px solid $dropdown-container-border-color;
+    border-radius: 2px;
+    background-color: $color--white;
+    color: $dropdown-container-color;
+    box-shadow: $dropdown-container-box-shadow;
+    opacity: 0;
     visibility: hidden;
     z-index: 1;
 
     &--transform-top-right {
-      left: auto;
       right: 0;
+      left: auto;
       transform: scale(0);
       transform-origin: 100% 0;
     }
 
     &--transform-top-left {
-      left: 0;
       right: auto;
+      left: 0;
       transform: scale(0);
       transform-origin: 0 0;
     }
 
     &--visible {
-      opacity: 1;
       top: 0;
       transform: scale(1);
+      opacity: 1;
       visibility: visible;
     }
 
@@ -89,21 +88,21 @@ $dropdown-menu-item-font-size: $font-size--12;
     }
 
     &--top {
-      bottom: 0;
       top: auto;
+      bottom: 0;
     }
   }
 
   &__menu-item {
-    background: none;
-    border: none;
-    color: $font-color-secondary;
-    cursor: pointer;
     display: block;
+    width: 100%;
     padding: $grid-size $grid-size * 2;
+    border: none;
+    background: none;
+    color: $font-color-secondary;
     text-align: left;
     white-space: nowrap;
-    width: 100%;
+    cursor: pointer;
 
     &:hover,
     &:focus {
@@ -120,10 +119,10 @@ $dropdown-menu-item-font-size: $font-size--12;
   }
 
   &__icon {
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 100%;
     padding: 2px;
-    transition: background-color 0.15s ease-out;
+    transition: background-color .15s ease-out;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0);
 
     &:hover {
       background-color: rgba(0, 0, 0, .12);
@@ -137,6 +136,4 @@ $dropdown-menu-item-font-size: $font-size--12;
       }
     }
   }
-
-  
 }

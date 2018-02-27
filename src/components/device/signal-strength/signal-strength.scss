@@ -18,12 +18,12 @@
 @import "variables/colors";
 
 .signal-strength {
-  align-items: center;
   display: inline-flex;
+  align-items: center;
 
   &__icon {
-    cursor: default;
     margin-right: $grid-size;
+    cursor: default;
 
     &--low {
       color: $color--red;

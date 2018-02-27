@@ -15,13 +15,13 @@
 */
 
 .code {
-  background-color: $color--google-grey-200;
   position: relative;
+  background-color: $color--google-grey-200;
 
   &__header {
-    background-color: $color--white;
     display: flex;
     height: $grid-size * 6;
+    background-color: $color--white;
     line-height: $grid-size * 6;
 
     &--colored {
@@ -35,10 +35,10 @@
   }
 
   &__icon {
+    margin-right: $grid-size * 2;
+    margin-left: $grid-size * 2;
     color: $font-color-secondary;
     font-size: $grid-size * 4.5;
-    margin-left: $grid-size * 2;
-    margin-right: $grid-size * 2;
     text-align: center;
 
     &--colored {
@@ -48,10 +48,10 @@
 
   &__action-icons {
     align-self: flex-end;
-    color: $font-color-primary;
-    cursor: pointer;
-    font-size: $grid-size * 4;
     padding: 0 $grid-size * 2;
+    color: $font-color-primary;
+    font-size: $grid-size * 4;
+    cursor: pointer;
 
     &--colored {
       background-color: transparent;
@@ -65,29 +65,29 @@
 
   &__content {
     margin: 0;
-    overflow: scroll;
     padding: $grid-size * 2;
+    overflow: scroll;
   }
 }
 
 .code-line {
-  background-color: $color--google-grey-200;
   display: inline-flex;
   max-width: 100%;
+  background-color: $color--google-grey-200;
 
   &__content {
     flex-grow: 1;
-    line-height: $grid-size * 5;
-    overflow: auto;
     padding: 0 $grid-size * 2;
+    line-height: $grid-size * 5;
     white-space: nowrap;
+    overflow: auto;
   }
 
   &__icon {
+    padding-right: $grid-size * 1.5;
+    padding-left: $grid-size * 1.5;
     color: $font-color-secondary;
     font-size: $grid-size * 4.5;
-    padding-left: $grid-size * 1.5;
-    padding-right: $grid-size * 1.5;
     text-align: center;
     user-select: none;
 

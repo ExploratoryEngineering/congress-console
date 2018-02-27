@@ -19,40 +19,40 @@
 @import "setup/typography";
 
 .device-message-entry {
-  background-color: $color-grey-theme--light;
   display: block;
   margin-top: $grid-size;
   padding: 2 * $grid-size;
+  background-color: $color-grey-theme--light;
 
   &:first-of-type {
     margin-top: 0;
   }
 
   &__header {
-    align-items: center;
-    cursor: pointer;
     display: flex;
+    align-items: center;
     width: 100%;
+    cursor: pointer;
     user-select: none;
   }
 
   &__heading {
     display: inline-block;
-    font-size: $font-size--16;
     margin-right: 3 * $grid-size;
+    font-size: $font-size--16;
   }
 
   &__heading-details {
-    color: $font-color-secondary;
     display: inline-block;
     margin-right: 3 * $grid-size;
+    color: $font-color-secondary;
     font-size: $font-size--14;
   }
 
   &__heading-more-code {
     display: inline-block;
-    font-size: $font-size--16;
     margin-right: 2 * $grid-size;
+    font-size: $font-size--16;
   }
 
   &__heading-actions {
@@ -71,19 +71,19 @@
   }
 
   &__data-group {
-    border-bottom: solid 2px $font-color-dividers;
     display: flex;
     padding: $grid-size 0;
+    border-bottom: solid 2px $font-color-dividers;
   }
 
   &__data-name {
-    font-weight: $font-weight--bold;
-    min-width: 80px;
     width: 25%;
+    min-width: 80px;
+    font-weight: $font-weight--bold;
   }
 
   &__data-value {
-    color: $font-color-secondary;
     flex: 1;
+    color: $font-color-secondary;
   }
 }

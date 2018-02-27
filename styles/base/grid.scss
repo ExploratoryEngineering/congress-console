@@ -21,21 +21,21 @@
   &__row {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -$grid-gutter-size;
     margin-right: -$grid-gutter-size;
+    margin-left: -$grid-gutter-size;
   }
 
   &__item {
-    align-items: stretch;
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: $grid-gutter-size;
-    padding-right: $grid-gutter-size;
     width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $grid-gutter-size;
+    padding-left: $grid-gutter-size;
 
-    @include desktop() {
+    @include desktop {
       &--3 {
         width: 25%;
       }

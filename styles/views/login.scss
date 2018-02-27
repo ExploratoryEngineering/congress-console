@@ -21,11 +21,11 @@
 }
 
 .login-disclaimer {
-  color: $font-color-secondary;
   display: inline-block;
-  font-size: $font-size--14;
-  margin-top: $grid-size * 2;
   width: 400px;
+  margin-top: $grid-size * 2;
+  color: $font-color-secondary;
+  font-size: $font-size--14;
 
   &__link {
     color: $color--telenor-blue;

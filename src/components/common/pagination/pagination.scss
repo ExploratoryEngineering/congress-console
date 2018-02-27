@@ -14,31 +14,31 @@
 	limitations under the License.
 */
 
-@import 'variables/grid';
-@import 'styles/setup/typography';
+@import "variables/grid";
+@import "styles/setup/typography";
 
 .pagination {
-  align-items: center;
-  color: $font-color-secondary;
   display: flex;
-  font-size: $font-size--13;
+  align-items: center;
   justify-content: flex-end;
   padding: 2 * $grid-size;
+  color: $font-color-secondary;
+  font-size: $font-size--13;
 
   &__chevron {
-    cursor: pointer;
     margin: 0 $grid-size;
+    cursor: pointer;
   }
 
   &__dropdown-triangle {
     position: absolute;
-    right: 0;
     top: -5px;
+    right: 0;
   }
 
   &__page-control {
-    align-content: center;
     display: flex;
+    align-content: center;
     margin-left: 2 * $grid-size;
     user-select: none;
   }
@@ -49,8 +49,8 @@
 
   &__row-pr-page {
     display: inline-block;
+    width: 45px;
     margin: 0 2 * $grid-size;
     padding-top: 0;
-    width: 45px;
   }
 }

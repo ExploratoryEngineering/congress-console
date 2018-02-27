@@ -19,8 +19,8 @@ $flex-container-header-border-color: $color-grey-theme--dark;
 
 .flex-element {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   &--grow {
     flex-grow: 1;
@@ -44,9 +44,9 @@ $flex-container-header-border-color: $color-grey-theme--dark;
   overflow: auto;
 
   &__header {
+    padding: $grid-size * 4;
     border-bottom: solid 1px $flex-container-header-border-color;
     color: $flex-container-header-color;
-    padding: $grid-size * 4;
 
     &--compact {
       padding: $grid-size * 2;
@@ -59,10 +59,10 @@ $flex-container-header-border-color: $color-grey-theme--dark;
     padding: $grid-size*4;
 
     &--centered {
-      align-items: center;
       display: flex;
       flex: 1;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
     }
 
@@ -76,11 +76,11 @@ $flex-container-header-border-color: $color-grey-theme--dark;
   }
 
   &__footer {
-    align-self: flex-end;
     display: flex;
+    align-self: flex-end;
     justify-content: flex-end;
-    padding: $grid-size*4;
     width: 100%;
+    padding: $grid-size*4;
 
     &--align-left {
       justify-content: flex-start;
