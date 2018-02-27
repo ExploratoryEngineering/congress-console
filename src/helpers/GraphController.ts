@@ -72,15 +72,6 @@ const defaultColors = [
   "#f79cd4",
 ];
 
-const mapper = {
-  "00-09-09-00-00-00-00-0a": "Roald",
-  "00-09-09-00-00-00-00-09": "BRB",
-  "00-09-09-00-00-00-00-0b": "WTF",
-  "00-09-09-00-00-00-00-07": "Sune",
-  "00-09-09-00-00-00-00-0c": "Game room",
-  "00-09-09-00-00-00-00-08": "Column EE",
-};
-
 @autoinject()
 export class GraphController {
   chartDataColors: string[] = [];
@@ -226,7 +217,7 @@ export class GraphController {
       const countGraphData = this.createRssiGraphData(uid, graphMetaData.dataBucketSet);
 
       rssiGraphDataSet = rssiGraphDataSet.concat([{
-        label: `${mapper[uid] ? mapper[uid] : uid} - RSSI`,
+        label: `${uid} - RSSI`,
         fill: false,
         data: countGraphData.data,
         backgroundColor: this.getColorByIndex(idx),
@@ -266,12 +257,12 @@ export class GraphController {
       const co2GraphData = this.createCO2GraphData(uid, graphMetaData.dataBucketSet);
 
       co2GraphDataSets = co2GraphDataSets.concat([{
-        label: `${mapper[uid] ? mapper[uid] : uid} - Sensor #1`,
+        label: `${uid} - Sensor #1`,
         fill: false,
         data: co2GraphData.sensorOne,
         backgroundColor: this.getColorByIndex(idx),
       }, {
-        label: `${mapper[uid] ? mapper[uid] : uid} - Sensor #2`,
+        label: `${uid} - Sensor #2`,
         fill: false,
         data: co2GraphData.sensorTwo,
         backgroundColor: this.getColorByIndex(idx),
