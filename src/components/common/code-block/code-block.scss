@@ -14,27 +14,27 @@
 	limitations under the License.
 */
 
-@import 'styles/variables/colors';
-@import 'styles/variables/grid';
-@import 'styles/setup/typography';
+@import "styles/variables/colors";
+@import "styles/variables/grid";
+@import "styles/setup/typography";
 
 .code-block {
-  background-color: $color--google-grey-200;
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: $color--google-grey-200;
 
   &__header {
+    display: flex;
     background-color: $color--white;
     color: $font-color-secondary;
-    display: flex;
   }
 
   &__icon {
+    padding-right: $grid-size * 1.5;
+    padding-left: $grid-size * 1.5;
     color: $font-color-secondary;
     font-size: $grid-size * 4.5;
-    padding-left: $grid-size * 1.5;
-    padding-right: $grid-size * 1.5;
     text-align: center;
     user-select: none;
 
@@ -63,9 +63,9 @@
   }
 
   &__content {
-    line-height: 2;
     margin: 0;
     padding: $grid-size * 2;
+    line-height: 2;
     white-space: pre-wrap;
     word-wrap: break-word;
   }

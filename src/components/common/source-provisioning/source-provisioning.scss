@@ -15,27 +15,26 @@
 */
 
 @import "setup/typography";
-
 @import "variables/grid";
 @import "variables/colors";
 @import "variables/animations";
 
 .source-provisioning {
   &__source-selector {
-    align-items: center;
-    background-color: $color--google-grey-200;
-    border-bottom: solid 2px $color-grey-theme--darkest;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    border-bottom: solid 2px $color-grey-theme--darkest;
+    background-color: $color--google-grey-200;
   }
 
   &__source-option {
-    background-color: transparent;
-    border: 0;
-    color: $font-color-secondary;
-    cursor: pointer;
     padding: $grid-size * 2 $grid-size * 6;
     transition: color .15s $animation-cubic-bezier-1;
+    border: 0;
+    background-color: transparent;
+    color: $font-color-secondary;
+    cursor: pointer;
 
     &:hover {
       color: $color--telenor-blue;
@@ -53,9 +52,9 @@
   }
 
   &__copy-action {
+    margin-right: $grid-size * 2;
     color: $font-color-secondary;
     cursor: pointer;
-    margin-right: $grid-size * 2;
 
     &:hover {
       color: $color--telenor-blue;

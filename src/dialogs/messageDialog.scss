@@ -14,29 +14,28 @@
 	limitations under the License.
 */
 
-@import 'setup/typography';
-
-@import 'variables/colors';
-@import 'variables/grid';
+@import "setup/typography";
+@import "variables/colors";
+@import "variables/grid";
 
 $message-dialog-box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .38);
 
 .message-dialog {
-  background-color: $color--white;
-  box-shadow: $message-dialog-box-shadow;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   width: 360px;
+  margin: 0 auto;
+  background-color: $color--white;
+  box-shadow: $message-dialog-box-shadow;
 
   &__header {
     padding: $grid-size * 3 $grid-size * 3 $grid-size * 2.5 $grid-size * 3;
   }
 
   &__content {
-    color: $font-color-secondary;
     flex-grow: 1;
     padding: 0 $grid-size * 3 $grid-size * 3 $grid-size * 3;
+    color: $font-color-secondary;
   }
 
   &__actions {

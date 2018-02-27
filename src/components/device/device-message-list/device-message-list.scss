@@ -14,14 +14,14 @@
 	limitations under the License.
 */
 
-@import 'variables/grid';
-@import 'setup/typography';
+@import "variables/grid";
+@import "setup/typography";
 
 .device-message-list {
   &__no-messages {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: $grid-size * 6;
   }

@@ -19,20 +19,20 @@
 
 .application-output-card {
   &__output-header {
+    margin-top: auto;
+    margin-bottom: $grid-size;
     color: $font-color-secondary;
     font-size: $font-size--14;
     font-weight: $font-weight--regular;
-    margin-bottom: $grid-size;
-    margin-top: auto;
     text-align: center;
   }
 
   &__output-count {
-    color: $font-color-primary;
     display: flex;
+    margin: 0 auto auto auto;
+    color: $font-color-primary;
     font-size: $font-size--32;
     font-weight: $font-weight--bold;
-    margin: 0 auto auto auto;
     text-align: center;
   }
 }

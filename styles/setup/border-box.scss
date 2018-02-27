@@ -17,12 +17,14 @@
 // Why? It's amazing. https://www.paulirish.com/2012/box-sizing-border-box-ftw/
 // Low level selector so easy to override later
 
+/* stylelint-disable-next-line selector-max-type */
 html {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line selector-max-universal */
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }

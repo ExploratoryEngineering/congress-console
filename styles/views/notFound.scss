@@ -16,15 +16,15 @@
 
 .not-found {
   display: flex;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 15%;
   width: 100%;
+  margin-top: 15%;
+  margin-right: 20%;
+  margin-left: 20%;
 
   &__logo {
     display: inline-block;
-    margin: 20px 40px 20px 20px;
     width: 100px;
+    margin: 20px 40px 20px 20px;
   }
 
   &__header {

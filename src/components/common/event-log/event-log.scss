@@ -14,20 +14,20 @@
 	limitations under the License.
 */
 
-@import 'styles/variables/grid';
-@import 'styles/variables/colors';
+@import "styles/variables/grid";
+@import "styles/variables/colors";
 
 .event-log {
   width: 100%;
 
   &__entry {
-    background-color: $color--google-grey-200;
     display: block;
-    line-height: $grid-size * 5;
-    margin: 0 0 $grid-size / 2 0;
-    overflow: auto;
-    padding: 0 $grid-size;
-    white-space: nowrap;
     width: 100%;
+    margin: 0 0 $grid-size / 2 0;
+    padding: 0 $grid-size;
+    background-color: $color--google-grey-200;
+    line-height: $grid-size * 5;
+    white-space: nowrap;
+    overflow: auto;
   }
 }

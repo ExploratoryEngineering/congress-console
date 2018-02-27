@@ -14,19 +14,18 @@
 	limitations under the License.
 */
 
-@import 'setup/typography';
-
-@import 'variables/animations';
-@import 'variables/colors';
-@import 'variables/grid';
+@import "setup/typography";
+@import "variables/animations";
+@import "variables/colors";
+@import "variables/grid";
 
 .snackbar {
-  bottom: -$grid-size * 6;
   display: flex;
-  justify-content: center;
-  left: 0;
   position: fixed;
   right: 0;
+  bottom: -$grid-size * 6;
+  left: 0;
+  justify-content: center;
   transition: all .25s $animation-cubic-bezier-1;
   z-index: 10000;
 
@@ -36,27 +35,27 @@
   }
 
   &__message-container {
-    align-items: center;
-    background-color: #323232;
-    border-radius: 2px;
-    color: $color--white;
     display: inline-flex;
-    height: $grid-size * 6;
-    line-height: $grid-size * 6;
-    max-width: $grid-size * 71;
+    align-items: center;
     min-width: $grid-size * 36;
+    max-width: $grid-size * 71;
+    height: $grid-size * 6;
     padding: 0 $grid-size * 3;
+    border-radius: 2px;
+    background-color: #323232;
+    color: $color--white;
+    line-height: $grid-size * 6;
   }
 
   &__message {
     font-size: $font-size--14;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
   }
 
   &__dismiss-message-icon {
-    line-height: $grid-size * 6;
     margin-left: $grid-size * 6;
+    line-height: $grid-size * 6;
   }
 }

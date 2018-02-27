@@ -18,7 +18,7 @@
 
 .section {
   display: block;
-  overflow: auto;
-  padding: $grid-size * 4;
   width: 100%;
+  padding: $grid-size * 4;
+  overflow: auto;
 }

@@ -14,39 +14,37 @@
 	limitations under the License.
 */
 
-@import 'setup/typography';
-
-@import 'mixins/responsive';
-
-@import 'variables/colors';
-@import 'variables/grid';
+@import "setup/typography";
+@import "mixins/responsive";
+@import "variables/colors";
+@import "variables/grid";
 
 $gateway-card-background-color: $color--telenor-blue;
 $gateway-card-color: $color--white;
 
 .gateway-container {
-  align-items: flex-start;
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: space-between;
 
-  @include desktop() {
+  @include desktop {
     justify-content: flex-start;
   }
 }
 
 .gateway-card {
-  background-color: $gateway-card-background-color;
-  border: none;
-  color: $gateway-card-color;
   display: flex;
-  height: 160px;
   width: 48%;
+  height: 160px;
+  border: none;
+  background-color: $gateway-card-background-color;
+  color: $gateway-card-color;
 
-  @include desktop() {
-    margin-right: 20px;
+  @include desktop {
     width: 300px;
+    margin-right: 20px;
   }
 
   &--create-new {
@@ -63,11 +61,11 @@ $gateway-card-color: $color--white;
   }
 
   &__heading {
-    line-height: $grid-size * 3.5;
     margin: 0 auto 0 0;
-    overflow: hidden;
+    line-height: $grid-size * 3.5;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
   }
 
   &__create-new-body {

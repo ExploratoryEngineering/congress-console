@@ -14,8 +14,9 @@
 	limitations under the License.
 */
 
-@import 'variables/colors';
+@import "variables/colors";
 
+/* stylelint-disable selector-max-specificity, selector-max-id */
 #nprogress {
   position: relative;
   z-index: 1031;
@@ -30,3 +31,4 @@
 #nprogress .peg {
   box-shadow: 0 0 10px $color--telenor-blue-dark, 0 0 5px $color--telenor-blue-dark;
 }
+/* stylelint-enable selector-max-specificity, selector-max-id */

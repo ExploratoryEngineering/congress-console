@@ -14,14 +14,14 @@
 	limitations under the License.
 */
 
-@import 'variables/grid';
-@import 'variables/colors';
+@import "variables/grid";
+@import "variables/colors";
 
 .device-message-panel {
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 100%;
+  height: 100%;
 
   &__header {
     display: flex;
@@ -29,25 +29,25 @@
   }
 
   &__data-entry {
-    background-color: $color--google-grey-200;
     display: block;
-    line-height: $grid-size * 3;
-    margin: 0 0 $grid-size / 2 0;
-    overflow: auto;
-    padding: 0 $grid-size;
     width: 100%;
+    margin: 0 0 $grid-size / 2 0;
+    padding: 0 $grid-size;
+    background-color: $color--google-grey-200;
+    line-height: $grid-size * 3;
+    overflow: auto;
   }
 }
 
 .message-panel-form {
-  align-items: center;
   display: flex;
-  padding: $grid-size 0;
+  align-items: center;
   width: 100%;
+  padding: $grid-size 0;
 
   &__input {
-    margin-right: $grid-size;
     min-width: 140px;
+    margin-right: $grid-size;
   }
 }
 

@@ -17,9 +17,10 @@
 a,
 .link {
   color: inherit;
-  cursor: pointer;
   text-decoration: none;
+  cursor: pointer;
 
+  /* stylelint-disable-next-line selector-max-type */
   &:hover,
   &:focus {
     color: inherit;

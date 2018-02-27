@@ -14,28 +14,27 @@
 	limitations under the License.
 */
 
-@import 'setup/typography';
-
-@import 'variables/grid';
-@import 'variables/animations';
-@import 'variables/colors';
+@import "setup/typography";
+@import "variables/grid";
+@import "variables/animations";
+@import "variables/colors";
 
 .profile-dropdown {
   display: inline-block;
   line-height: $grid-size * 4;
 
   &__container {
-    left: -160px;
-    right: 0;
     top: 105%;
+    right: 0;
+    left: -160px;
   }
 
   &__menu-item {
-    cursor: pointer;
     display: block;
     min-width: 180px;
     padding: $grid-size / 2 $grid-size * 2;
     transition: background .5s $animation-cubic-bezier-1;
+    cursor: pointer;
 
     &:hover {
       background-color: $color--google-grey-200;
@@ -44,22 +43,22 @@
 }
 
 .profile-username {
-  border-bottom: solid 2px $color--google-grey-200;
-  border-top: solid 2px $color--google-grey-200;
   padding: $grid-size $grid-size * 2;
+  border-top: solid 2px $color--google-grey-200;
+  border-bottom: solid 2px $color--google-grey-200;
 
   &__name {
     display: block;
     font-size: $font-size--15;
     font-weight: $font-weight--medium;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
   }
 
   &__name-label {
-    color: $font-color-secondary;
     display: block;
+    color: $font-color-secondary;
     font-size: $font-size--13;
   }
 
@@ -70,15 +69,15 @@
 }
 
 .avatar-container {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: $grid-size * 2;
 
   &__avatar {
-    background-color: $color-grey-theme--light;
+    display: inline-block;
     border: solid 1px $color--google-grey-200;
     border-radius: 100%;
-    display: inline-block;
+    background-color: $color-grey-theme--light;
   }
 }
