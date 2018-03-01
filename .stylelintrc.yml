@@ -1,0 +1,3 @@
+{
+  extends: "@telenorfrontend/stylelint-config-telenor"
+}
