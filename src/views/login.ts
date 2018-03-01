@@ -14,7 +14,6 @@
 	limitations under the License.
 */
 
-import { AureliaConfiguration } from "aurelia-configuration";
 import { autoinject } from "aurelia-framework";
 
 import { Router } from "aurelia-router";
@@ -24,7 +23,6 @@ import { UserInformation } from "Helpers/UserInformation";
 export class Login {
   constructor(
     private router: Router,
-    private config: AureliaConfiguration,
   ) { }
 
   login() {
@@ -36,10 +34,10 @@ export class Login {
   }
 
   getLoginUrl(): string {
-    return `${this.config.get("api.endpoint")}/connect/login`;
+    return `${CONGRESS_ENDPOINT}/connect/login`;
   }
 
   getLogoutUrl(): string {
-    return `${this.config.get("api.endpoint")}/connect/logout`;
+    return `${CONGRESS_ENDPOINT}/connect/logout`;
   }
 }

@@ -14,7 +14,6 @@
 	limitations under the License.
 */
 
-import { AureliaConfiguration } from "aurelia-configuration";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { autoinject } from "aurelia-framework";
 import { LogBuilder } from "Helpers/LogBuilder";
@@ -32,7 +31,6 @@ export class ApplicationStream {
 
   constructor(
     private eventAggregator: EventAggregator,
-    private config: AureliaConfiguration,
   ) { }
 
   onApplicationStreamMessage(message) {
@@ -50,7 +48,7 @@ export class ApplicationStream {
   openApplicationDataStream(applicationEUI: string) {
     if (!this.websocket) {
       this.websocket = new Websocket({
-        url: `${this.config.get("api.wsEndpoint")}/applications/${applicationEUI}/stream`,
+        url: `${CONGRESS_WS_ENDPOINT}/applications/${applicationEUI}/stream`,
         onerror: (err) => { Log.error("WS Error", err); },
         onopen: (msg) => { Log.debug("WS Open: ", msg); },
         onclose: (msg) => { Log.debug("WS Close: ", msg); },

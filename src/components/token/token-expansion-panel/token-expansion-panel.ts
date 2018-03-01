@@ -15,7 +15,6 @@
 */
 
 import { computedFrom } from "aurelia-binding";
-import { AureliaConfiguration } from "aurelia-configuration";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { autoinject, bindable, containerless } from "aurelia-framework";
 
@@ -46,7 +45,6 @@ export class TokenExpansionPanel {
 
   constructor(
     private eventAggregator: EventAggregator,
-    private config: AureliaConfiguration,
   ) { }
 
   toggle() {
@@ -92,49 +90,49 @@ export class TokenExpansionPanel {
 
   curlGetRoot() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}/
+    -XGET ${CONGRESS_ENDPOINT}/
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetTokens() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}/tokens
+    -XGET ${CONGRESS_ENDPOINT}/tokens
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplications() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}/applications
+    -XGET ${CONGRESS_ENDPOINT}/applications
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetGateways() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}/gateways
+    -XGET ${CONGRESS_ENDPOINT}/gateways
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetGatewayInformation() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}${this.token.resource}
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplicationInformation() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}${this.token.resource}
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplicationDevices() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}${this.token.resource}/devices
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}/devices
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplicationData() {
     return `curl
-    -XGET ${this.config.get("api.endpoint")}${this.token.resource}/data
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}/data
     -HX-API-Token:${this.token.token}
     `;
   }
