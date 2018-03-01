@@ -1,4 +1,5 @@
-@charset 'UTF-8';
+@charset "UTF-8";
+// Force all following css to be interpreted as UTF-8. Must be on top of stylesheet
 
 /*
 	Copyright 2018 Telenor Digital AS
@@ -15,8 +16,6 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-
-// Force all following css to be interpreted as UTF-8. Must be on top of stylesheet
 
 // Normalize ALL the things
 @import "../node_modules/normalize.css/normalize.css";
