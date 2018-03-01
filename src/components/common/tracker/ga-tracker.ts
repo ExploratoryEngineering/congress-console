@@ -14,7 +14,6 @@
 	limitations under the License.
 */
 
-import { AureliaConfiguration } from "aurelia-configuration";
 import { EventAggregator, Subscription } from "aurelia-event-aggregator";
 import { autoinject, bindable, noView } from "aurelia-framework";
 import { customElement } from "aurelia-templating";
@@ -39,7 +38,6 @@ export class GATracker {
 
   constructor(
     private eventAggregator: EventAggregator,
-    private config: AureliaConfiguration,
   ) { }
 
   bind() {
@@ -56,7 +54,7 @@ export class GATracker {
   handleNavigationComplete(navigationEvent) {
     const instruction: NavigationInstruction = navigationEvent.instruction;
 
-    this.getGtag()("config", this.config.get("googleAnalytics"), {
+    this.getGtag()("config", GOOGLE_ANALYTICS_TOKEN, {
       page_title: this.getPageTitle(instruction),
       page_path: this.getPagePath(instruction),
       anonymize_ip: true,

@@ -14,7 +14,6 @@
 	limitations under the License.
 */
 
-import { AureliaConfiguration } from "aurelia-configuration";
 import { autoinject } from "aurelia-framework";
 
 import { ResponseHandler } from "Helpers/ResponseHandler";
@@ -26,12 +25,11 @@ const Log = LogBuilder.create("Http client config");
 export class HttpClientConfiguration {
   constructor(
     private responseHandler: ResponseHandler,
-    private config: AureliaConfiguration,
   ) { }
 
   apiEndpointConfiguration() {
     return (client) => {
-      client.withBaseUrl(this.config.get("api.endpoint"));
+      client.withBaseUrl(CONGRESS_ENDPOINT);
       client.withCredentials(true);
       client.withInterceptor({
         responseError: (responseError) => {

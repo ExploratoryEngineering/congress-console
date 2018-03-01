@@ -1,3 +1,19 @@
+/* Configuration variables */
+
+// Boolean which signalizes production build
+declare const PRODUCTION: boolean;
+
+// Congress backend endpoint
+declare const CONGRESS_ENDPOINT: string;
+// Congress websocket backend endpoint
+declare const CONGRESS_WS_ENDPOINT: string;
+// Connect URL
+declare const MY_CONNECT_URL: string;
+// Google Analytics Token
+declare const GOOGLE_ANALYTICS_TOKEN: string;
+// Google maps API Key
+declare const GOOGLE_MAPS_KEY: string;
+
 /**
  * Data model received from WebSocket events and from /data endpoints
  */

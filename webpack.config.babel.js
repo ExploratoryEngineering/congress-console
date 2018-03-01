@@ -16,7 +16,16 @@
 
 const path = require("path");
 const appConfig = require("./config/config.json");
-const { optimize: { CommonsChunkPlugin, ModuleConcatenationPlugin }, ProvidePlugin, ContextReplacementPlugin, LoaderOptionsPlugin } = require("webpack");
+const {
+    optimize: {
+        CommonsChunkPlugin,
+        ModuleConcatenationPlugin
+    },
+    ContextReplacementPlugin,
+    DefinePlugin,
+    LoaderOptionsPlugin,
+    ProvidePlugin
+} = require("webpack");
 const { AureliaPlugin } = require("aurelia-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -68,7 +77,15 @@ const sassLoaderConfig = [{
     }
 }];
 
-module.exports = ({ production, server, extractCss, coverage } = {}) => ({
+module.exports = ({
+    production,
+    server,
+    extractCss,
+    coverage,
+    congressEndpoint = "https://api.lora.telenor.io",
+    congressWsEndpoint = "wss://api.lora.telenor.io",
+    myConnectUrl = "https://connect.telenordigital.com/"
+} = { }) => ({
     resolve: {
         extensions: [".ts", ".js"],
         modules: [srcDir, "node_modules"],
@@ -186,6 +203,14 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
                 to: "config/"
             }
         ]),
+        new DefinePlugin({
+            MY_CONNECT_URL: JSON.stringify(myConnectUrl),
+            CONGRESS_ENDPOINT: JSON.stringify(congressEndpoint),
+            CONGRESS_WS_ENDPOINT: JSON.stringify(congressWsEndpoint),
+            PRODUCTION: JSON.stringify(production),
+            GOOGLE_ANALYTICS_TOKEN: JSON.stringify(appConfig.googleAnalytics),
+            GOOGLE_MAPS_KEY: JSON.stringify(appConfig.googleMaps)
+        }),
         ...when(extractCss, new ExtractTextPlugin({
             filename: production ? "[contenthash].css" : "[id].css",
             allChunks: true
