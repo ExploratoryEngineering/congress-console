@@ -14,6 +14,23 @@ Run `npm start`
 
 This will start a web server on https://localhost:8080. Accept the untrusted certificate, well, because it's unsigned and for localhost.
 
+### Configuration
+
+We default the backend to go towards `https://api.lora.telenor.io`, but when developing this might not be preferrable as you might have your own congress running. Ex: To set the backend to http://localhost:8080 and websocket server to ws://localhost:9090
+
+```bash
+npm start  -- --env.congressEndpoint=http://localhost:8080 --env.congressWsEndpoint=ws://localhost:9090
+```
+
+The environment variables who can be configured through the CLI is the following
+- myConnectUrl: string
+- congressEndpoint: string
+- congressWsEndpoint: string
+- production: boolean
+
+#### Tokens
+Tokens and other keys are found under `config/config.json`. The credentials are restricted so change these if you plan to deploy your own congress.
+
 ## Test
 
 Run all tests
