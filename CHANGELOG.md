@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ExploratoryEngineering/congress-console/compare/v1.0.0-beta.22...v1.0.0) (2018-03-05)
+
+
+### Bug Fixes
+
+* **background-image:** fix faulty background image style ([fec9a38](https://github.com/ExploratoryEngineering/congress-console/commit/fec9a38))
+* **lodash:** update types due to 2.7.x for lodash ([c92d4c6](https://github.com/ExploratoryEngineering/congress-console/commit/c92d4c6))
+
+
+### Features
+
+* **package:** remove aurelia-conf and allow for setting custom congress backend with cli ([f73d8eb](https://github.com/ExploratoryEngineering/congress-console/commit/f73d8eb))
+* **stylelint:** add .rc-file with telenorfrontend conf ([75d0d61](https://github.com/ExploratoryEngineering/congress-console/commit/75d0d61))
+* **stylelint:** add stylelint config from telenorfrontend ([03efa92](https://github.com/ExploratoryEngineering/congress-console/commit/03efa92))
+
+
+
 <a name="1.0.0-beta.22"></a>
 # [1.0.0-beta.22](https://ghe.telenordigital.com/per-kristian-kummermo/ee-lora-self-service-portal/compare/v1.0.0-beta.21...v1.0.0-beta.22) (2018-02-26)
 
