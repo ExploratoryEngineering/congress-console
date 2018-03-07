@@ -1,7 +1,12 @@
 {
   "globals": {
     "ts-jest": {
-      "tsConfigFile": "tsconfig.json"
+      "tsConfigFile": "tsconfig.json",
+      "babelConfig": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
     }
   },
   "verbose": false,
