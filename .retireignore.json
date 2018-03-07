@@ -10,5 +10,13 @@
   {
     "component": "brace-expansion",
     "justification": "only used in fsevents and used in dev-dependencies"
+  },
+  {
+    "component": "hoek",
+    "justification": "only used in test and build tools"
+  },
+  {
+    "component": "mixin-deep",
+    "justification": "only used in webpack loader"
   }
 ]
