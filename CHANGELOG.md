@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/ExploratoryEngineering/congress-console/compare/v1.0.0...v1.0.1) (2018-03-07)
+
+
+### Bug Fixes
+
+* **moment:** fix vulnerability by updating moment ([98b75f5](https://github.com/ExploratoryEngineering/congress-console/commit/98b75f5))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/ExploratoryEngineering/congress-console/compare/v1.0.0-beta.22...v1.0.0) (2018-03-05)
 
