@@ -12,7 +12,7 @@
       </div>
     </dropdown-title>
     <dropdown-container>
-      <a class="range-chooser__menu-item" repeat.for="range of selectableRanges" click.delegate="selectRange(range)">${ range.id }</a>
+      <button class="range-chooser__menu-item" repeat.for="range of selectableRanges" click.delegate="selectRange(range)">${ range.id }</button>
     </dropdown-container>
   </dropdown>
 </template>
