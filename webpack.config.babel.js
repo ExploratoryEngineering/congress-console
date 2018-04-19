@@ -32,7 +32,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const { TsConfigPathsPlugin, CheckerPlugin } = require("awesome-typescript-loader");
 const autoprefixer = require("autoprefixer");
-const { Config } = require("aurelia-template-lint");
 
 // config helpers:
 const ensureArray = (config) => config && (Array.isArray(config) ? config : [config]) || [];
@@ -45,13 +44,6 @@ const outDir = path.resolve(__dirname, "dist");
 const srcDir = path.resolve(__dirname, "src");
 const nodeModulesDir = path.resolve(__dirname, "node_modules");
 const baseUrl = "/";
-
-// Aurelia lint config
-let aureliaLintSettings = new Config();
-
-aureliaLintSettings.useRuleAureliaBindingAccess = true;
-aureliaLintSettings.reflectionOpts.typingsFileGlob = [`${path.resolve(__dirname, "globalTypings")}/**/*.d.ts`];
-aureliaLintSettings.reflectionOpts.sourceFileGlob = [`${ srcDir }/**/*.ts`];
 
 const sassLoaderConfig = [{
     loader: "css-loader", // translates CSS into CommonJS
@@ -117,7 +109,6 @@ module.exports = ({
     },
     module: {
         rules: [
-            { test: /\.html$/, enforce: "pre", use: "aurelia-template-lint-loader" },
             {
                 test: /\.(scss|css)$/i,
                 issuer: [{ test: /\.html$/i }],
@@ -153,19 +144,6 @@ module.exports = ({
     plugins: [
         new AureliaPlugin({
             features: { svg: false, unparser: false, polyfills: "es2015" }
-        }),
-        new LoaderOptionsPlugin({
-            options: {
-                aureliaTemplateLinter: {
-                    // you can pass an configuration class
-                    // config reference https://github.com/MeirionHughes/aurelia-template-lint#config
-                    configuration: aureliaLintSettings,
-
-                    // aurelia errors are displayed by default as warnings
-                    // set emitErrors to true to display them as errors
-                    emitErrors: true
-                }
-            }
         }),
         new ProvidePlugin({
             "Promise": "bluebird"
