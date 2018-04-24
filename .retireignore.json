@@ -18,5 +18,13 @@
   {
     "component": "mixin-deep",
     "justification": "only used in webpack loader"
+  },
+  {
+    "component": "sshpk",
+    "justification": "only used in jest and testing libs"
+  },
+  {
+    "component": "https-proxy-agent",
+    "justification": "only used in e2e testing"
   }
 ]
