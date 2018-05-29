@@ -79,7 +79,7 @@ export class Snackbar {
   }
 
   bind() {
-    this.eventAggregator.subscribe(`${this.scope}:message`, (message) => this.publishMessage(message));
+    this.subscriptions.push(this.eventAggregator.subscribe(`${this.scope}:message`, (message) => this.publishMessage(message)));
   }
 
   unbind() {
