@@ -21,54 +21,11 @@
 .range-chooser {
   display: inline-block;
 
-  &__title {
-    display: inline-block;
-    position: relative;
-    min-width: 120px;
+  &__option {
     padding: $grid-size;
-    border-radius: 2px;
-    background-color: $color--telenor-blue-darker;
-    color: $color--white;
-    font-size: $font-size--15;
-  }
 
-  &__heading {
-    display: inline-block;
-    margin: 0 18px;
-    font-weight: $font-weight--bold;
-  }
-
-  &__icon {
-    display: inline-block;
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    font-size: $font-size--16;
-
-    &--left {
-      right: auto;
-      left: 10px;
-    }
-  }
-
-  &__container {
-    border: 0;
-  }
-
-  &__menu-item {
-    display: inline-block;
-    width: 100%;
-    padding: $grid-size;
-    border: none;
-    background-color: $color--telenor-blue;
-    color: $color--white;
-    font-weight: $font-weight--bold;
-    text-align: left;
-
-    &:hover,
-    &:active {
-      background-color: $color--telenor-blue-darker;
-      color: $color--white;
+    &--selected {
+      background-color: rgba(12, 12, 12, .07);
     }
   }
 }

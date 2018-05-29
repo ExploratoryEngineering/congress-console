@@ -23,15 +23,15 @@ export interface Range {
 
 export const Range = {
   ONE_HOUR_AGO: {
-    id: "Last hour",
+    id: "1h",
     value: Time.ONE_HOUR_AGO.format("x"),
   },
   LAST_SIX_HOURS: {
-    id: "Last six hours",
+    id: "6h",
     value: Time.SIX_HOURS_AGO.format("x"),
   },
   START_OF_DAY: {
-    id: "Start of day",
+    id: "24h",
     value: Time.START_OF_DAY.format("x"),
   },
   DAWN_OF_TIME: {

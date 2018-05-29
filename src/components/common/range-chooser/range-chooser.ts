@@ -33,13 +33,6 @@ export class RangeChooser {
     private eventAggregator: EventAggregator,
   ) { }
 
-  @computedFrom("selectedRange")
-  get selectableRanges(): Range[] {
-    return this.availableRanges.filter((range: Range) => {
-      return this.selectedRange.id !== range.id;
-    });
-  }
-
   selectRange(range: Range) {
     this.selectedRange = range;
   }
