@@ -2,7 +2,11 @@ export class ToIntValueConverter {
   fromView(inputString) {
     if (inputString) {
       try {
-        return parseInt(inputString, 10);
+        const parsedNumber = parseInt(inputString, 10);
+        if (Number.isNaN(parsedNumber)) {
+          return 0;
+        }
+        return parsedNumber;
       } catch (e) {
         return 0;
       }
