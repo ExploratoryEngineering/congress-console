@@ -85,5 +85,8 @@
   &__data-value {
     flex: 1;
     color: $font-color-secondary;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
