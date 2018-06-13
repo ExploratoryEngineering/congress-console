@@ -18,7 +18,6 @@ import { DialogService } from "aurelia-dialog";
 import { EventAggregator, Subscription } from "aurelia-event-aggregator";
 import { autoinject, bindable, PLATFORM } from "aurelia-framework";
 import { Router } from "aurelia-router";
-import { GraphController, GraphData } from "Helpers/GraphController";
 
 import { ApplicationService } from "Services/ApplicationService";
 import { DeviceService } from "Services/DeviceService";
@@ -28,7 +27,6 @@ import { Device } from "Models/Device";
 
 import { ApplicationStream } from "Helpers/ApplicationStream";
 import { LogBuilder } from "Helpers/LogBuilder";
-import { Range } from "Helpers/Range";
 import { WebsocketDeviceDataMessage } from "Helpers/Websocket";
 
 const Log = LogBuilder.create("Application details");
@@ -40,13 +38,7 @@ export class ApplicationDetails {
   application: Application = new Application();
   allApplications: Application[] = [];
   selectableApplications: Application[] = [];
-  hasMessageData: boolean = false;
   subscriptions: Subscription[] = [];
-
-  chartData: GraphData;
-
-  @bindable
-  selectedRange: Range = Range.LAST_SIX_HOURS;
 
   devices: Device[] = [];
 
@@ -55,35 +47,10 @@ export class ApplicationDetails {
     private deviceService: DeviceService,
     private eventAggregator: EventAggregator,
     private dialogService: DialogService,
-    private graphController: GraphController,
     private applicationStream: ApplicationStream,
     router: Router,
   ) {
     this.router = router;
-  }
-
-  initiateChartData() {
-    Log.debug("Initiating chart data");
-    this.applicationService.fetchApplicationDataByEUI(this.application.appEUI, { since: this.selectedRange.value }).then((messageData) => {
-      this.hasMessageData = messageData.length > 0;
-      this.chartData = this.getChartData(messageData);
-
-      Log.debug("Got chart data", this.chartData);
-    });
-  }
-
-  getChartData(messageData: MessageData[]) {
-    return this.graphController.getGraph(messageData, { graphType: "rssi" });
-  }
-
-  addChartData(wsMessage: WebsocketDeviceDataMessage) {
-    Log.debug("Adding data");
-    const messageData: MessageData = wsMessage.data;
-    this.chartData = this.graphController.addToGraph(messageData, this.chartData);
-  }
-
-  selectedRangeChanged() {
-    this.initiateChartData();
   }
 
   editApplication(application: Application) {
@@ -128,10 +95,6 @@ export class ApplicationDetails {
       this.subscriptions.push(this.eventAggregator.subscribe("application:edit", (application: Application) => {
         this.editApplication(application);
       }));
-      this.subscriptions.push(this.eventAggregator.subscribe("deviceData", (deviceData: WebsocketDeviceDataMessage) => {
-        this.addChartData(deviceData);
-      }));
-      this.initiateChartData();
       this.applicationStream.openApplicationDataStream(this.application.appEUI);
     }).catch((err) => {
       Log.error(err);
