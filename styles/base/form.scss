@@ -92,6 +92,10 @@ $form-label-font-size: $font-size--13;
           visibility: visible;
         }
       }
+
+      ~ .form-group__select-label {
+        color: $form-color-active;
+      }
     }
 
     &[readonly] {
@@ -135,6 +139,15 @@ $form-label-font-size: $font-size--13;
     margin: $grid-size 0;
     border-radius: 2px;
     background-color: transparent;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  &__select-label {
+    position: absolute;
+    top: 0;
+    transition: $form-element-transition;
+    color: $form-color;
+    font-size: $form-label-font-size;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
