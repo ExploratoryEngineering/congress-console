@@ -1,5 +1,6 @@
-<template class="form-group" bindable="name,value,values,label,floatinglabel">
-  <select id="${name}" class="form-group__input ${value ? 'form-group__input--has-data' : ''}" value.bind="value" if.bind="values">
+<template class="form-group" bindable="name,value,values,label,floatinglabel,attachfocus">
+  <select id="${name}" attach-focus="${attachfocus ? 'true' : 'false' }" class="form-group__input ${value ? 'form-group__input--has-data' : ''}"
+    value.bind="value" if.bind="values">
     <option value.bind="option.id" repeat.for="option of values">${option.value}</option>
   </select>
   <label for="${name}" class="form-group__select-label">${label}</label>
