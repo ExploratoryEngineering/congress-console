@@ -1,5 +1,5 @@
 <template bindable="tagEntity">
   <require from="components/tag/tag-chip/tag-chip.html"></require>
   <require from="valueConverters/tagList"></require>
-  <tag-chip repeat.for="tag of tagEntity.tags | tagList:['name']" tag.bind="tag"></tag-chip>
+  <tag-chip repeat.for="tag of tagEntity.tags | tagList:['name', 'data-mapper-chain']" tag.bind="tag"></tag-chip>
 </template>
