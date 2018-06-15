@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/ExploratoryEngineering/congress-console/compare/v1.0.2...v1.1.0) (2018-06-15)
+
+
+### Bug Fixes
+
+* **device-message-entry:** fix overflow on data ([c989b34](https://github.com/ExploratoryEngineering/congress-console/commit/c989b34))
+* **select-input:** set fixed floating label and restrict label ([b9b67b0](https://github.com/ExploratoryEngineering/congress-console/commit/b9b67b0))
+* **snackbar:** remove subscriptions upon unbind ([adbfc40](https://github.com/ExploratoryEngineering/congress-console/commit/adbfc40))
+* **toInt:** check for NaN ([80b1e3d](https://github.com/ExploratoryEngineering/congress-console/commit/80b1e3d))
+
+
+### Features
+
+* **data-mapper-chain:** add ability to map data ([92398f6](https://github.com/ExploratoryEngineering/congress-console/commit/92398f6))
+* **range-chooser:** simplify range chooser ([6b7db88](https://github.com/ExploratoryEngineering/congress-console/commit/6b7db88))
+* **select-input:** add attach-focus attribute ([741da1a](https://github.com/ExploratoryEngineering/congress-console/commit/741da1a))
+* **toInt:** add value converter for string -> int ([e6e11d8](https://github.com/ExploratoryEngineering/congress-console/commit/e6e11d8))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/ExploratoryEngineering/congress-console/compare/v1.0.1...v1.0.2) (2018-03-08)
 
