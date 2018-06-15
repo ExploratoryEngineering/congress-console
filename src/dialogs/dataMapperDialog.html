@@ -1,0 +1,72 @@
+<template>
+  <require from="components/common/form/text-input.html"></require>
+  <require from="components/common/form/select-input.html"></require>
+  <require from="components/common/form/checkbox-input.html"></require>
+  <require from="valueConverters/stringify"></require>
+  <require from="valueConverters/toInt"></require>
+  <require from="./createDataMapperDialog.scss"></require>
+  <div class="modal modal--small">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">${ headerText }</h2>
+      </div>
+      <div class="flex-container__body">
+        <form class="form" submit.trigger="submitDataMapper()">
+          <select-input attachfocus="true" label="Choose mapper type" name="mapper-type" value.two-way="selectedMapperType" values.bind="availableMappers"></select-input>
+          <div if.bind="selectedMapperType === 'CHUNK'">
+            <p class="tn-p">The "Chunk"-mapper is used to take a chunk of a longer string to be further processed in a another chain step.
+              It takes a start index and a size of the chunk.</p>
+            <text-input label="Chunk start index" name="chunk-start" value.two-way="dataMapper.start | toInt"></text-input>
+            <text-input label="Chunk size" name="chunk-size" value.two-way="dataMapper.size | toInt"></text-input>
+          </div>
+          <div if.bind="selectedMapperType === 'HEXTOFLOAT'">
+            <p class="tn-p">The "Hex to float"-mapper takes the input and transforms it from a hex value to an float. You can provide information
+              wheter the data is of a big endian or little endian. It also supports signed values.</p>
+            <div class="form-group">
+              <select id="hextoint-endian" class="form-group__input ${dataMapper.endianness ? 'form-group__input--has-data' : ''}" value.bind="dataMapper.endianness">
+                <option value="be">Big endian</option>
+                <option value="le">Little endian</option>
+              </select>
+              <label for="hextoint-endian" class="form-group__label">Endianness</label>
+            </div>
+          </div>
+          <div if.bind="selectedMapperType === 'HEXTOINT'">
+            <p class="tn-p">The "Hex to int"-mapper takes the input and transforms it from a hex value to an integer. You can provide information
+              wheter the data is of a big endian or little endian. It also supports signed values.</p>
+            <div class="form-group">
+              <select id="hextoint-endian" class="form-group__input ${dataMapper.endianness ? 'form-group__input--has-data' : ''}" value.bind="dataMapper.endianness">
+                <option value="be">Big endian</option>
+                <option value="le">Little endian</option>
+              </select>
+              <label for="hextoint-endian" class="form-group__label">Endianness</label>
+            </div>
+            <checkbox-input name="hextoint-signed" checked.two-way="dataMapper.signed" label="Signed int"></checkbox-input>
+          </div>
+          <div if.bind="selectedMapperType === 'OFFSET'">
+            <p class="tn-p">The "Offset"-mapper offsets the given value with the configured value below. This could be useful for adding
+              a offset found from other sensors or simply normalize data.</p>
+            <text-input label="Offset number (can be negative)" name="offset-number" value.two-way="dataMapper.offset | toInt"></text-input>
+          </div>
+          <div if.bind="selectedMapperType ==='BASE64'">
+            <p class="tn-p">The "Base64"-mapper decodes/encodes the payload to make data usable for the next steps in the mapper chain.</p>
+            <div class="form-group">
+              <select id="base64-action" class="form-group__input ${dataMapper.action ? 'form-group__input--has-data' : ''}" value.bind="dataMapper.action">
+                <option value="decode">Decode</option>
+                <option value="encode">Encode</option>
+              </select>
+              <label for="base64-action" class="form-group__label">Base64 action</label>
+            </div>
+          </div>
+          <div if.bind="selectedMapperType === 'FROMJSON'">
+            <p class="tn-p">The "JSON"-mapper lets you access attributes on a JSON payload. To dig down the object use "." as a separator.</p>
+            <text-input label="Property accessor" name="json-property-string" value.two-way="dataMapper.propertyString"></text-input>
+          </div>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary button--raised" type="submit" click.delegate="submitDataMapper()">${ confirmButtonText }</button>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,21 @@
+@import "variables/colors";
+@import "variables/grid";
+
+.chain {
+  display: block;
+  margin: $grid-size * 2 0;
+
+  &__item {
+    display: inline-block;
+    position: relative;
+    margin-right: $grid-size / 2;
+    padding: $grid-size;
+    border: solid 2px $color--google-grey-200;
+    border-radius: 2px;
+    background-color: $color--white;
+
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+}

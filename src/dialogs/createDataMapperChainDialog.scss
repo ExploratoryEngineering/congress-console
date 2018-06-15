@@ -1,0 +1,62 @@
+@import "variables/colors";
+@import "variables/grid";
+@import "setup/typography";
+
+.chain {
+  display: block;
+  margin: $grid-size * 2 0;
+
+  &__item {
+    display: inline-block;
+    position: relative;
+    margin-right: $grid-size / 2;
+    padding: $grid-size;
+    transition: padding ease .2s;
+    border: solid 2px $color--google-grey-200;
+    border-radius: 2px;
+    background-color: $color--white;
+
+    &--input,
+    &--output {
+      background-color: $color-grey-theme--lightest;
+      color: $font-color-secondary;
+    }
+
+    .chain__item-actions {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 3px 2px;
+      transition: all ease .2s;
+      opacity: 0;
+    }
+
+    &--with-actions:hover,
+    &--with-actions:focus-within {
+      padding-right: 64px;
+
+      .chain__item-actions {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__item-action-icon {
+    margin: 0;
+    padding: 0;
+    transition: .2s ease color;
+    border: 0;
+    background: none;
+    color: $font-color-opacity--black-38;
+
+    &:hover {
+      color: $font-color-opacity--black-54;
+    }
+  }
+
+  &__test-result {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

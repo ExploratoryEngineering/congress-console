@@ -1,0 +1,41 @@
+<template>
+  <require from="components/common/form/text-input.html"></require>
+  <require from="components/common/form/select-input.html"></require>
+  <require from="valueConverters/stringify"></require>
+  <require from="./createDataMapperChainDialog.scss"></require>
+  <div class="modal">
+    <div class="flex-container">
+      <div class="flex-container__header">
+        <h2 class="h2">Create new data mapper chain</h2>
+      </div>
+      <div class="flex-container__body">
+        <form class="form" submit.delegate="submitDataMapper()">
+          <div class="form-errors" if.bind="formError">
+            <span class="form-errors__heading">Error when submitting mapper:</span>
+            <span class="form-errors__error">- ${formError}</span>
+          </div>
+          <text-input attachfocus="true" value.two-way="dataMapper.name" name="data-mapper-name" label="Mapper name" floatinglabel="true"></text-input>
+          <div class="chain">
+            <span class="chain__item chain__item--input">Input</span>
+            <div class="chain__item chain__item--with-actions" repeat.for="mapper of dataMapper.mappers">
+              <span>${mapper.name}</span>
+              <div class="chain__item-actions">
+                <button type="button" class="chain__item-action-icon material-icons" click.delegate="updateDataMapper(mapper)">edit</button>
+                <button type="button" class="chain__item-action-icon material-icons" click.delegate="removeDataMapper($index)">cancel</span>
+              </div>
+            </div>
+            <button type="button" class="button button--primary" click.delegate="addDataMapper()">Add chain step</button>
+            <span class="chain__item chain__item--output">Output</span>
+          </div>
+          <text-input value.two-way="testString" name="test-string" label="Test string" floatinglabel="true"></text-input>
+          Result:
+          <pre class="chain__test-result">${testResult | stringify}</pre>
+        </form>
+      </div>
+      <div class="flex-container__footer">
+        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
+        <button class="button button--primary button--raised" type="submit" click.delegate="submitDataMapper()">Create mapper chain</button>
+      </div>
+    </div>
+  </div>
+</template>

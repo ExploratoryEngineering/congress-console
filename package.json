@@ -68,6 +68,7 @@
     "webpack-dev-server": "cross-env BABEL_ENV=node ./node_modules/.bin/webpack-dev-server"
   },
   "dependencies": {
+    "@exploratoryengineering/data-mapper-chain": "^0.5.2",
     "@telenorfrontend/tn-components": "^0.1.2",
     "aurelia-binding": "^1.7.1",
     "aurelia-bootstrapper": "^2.2.0",

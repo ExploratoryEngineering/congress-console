@@ -16,7 +16,7 @@
 
 import { autoinject } from "aurelia-framework";
 
-import { ApiClient } from "Helpers/ApiClient";
+import { ApiClient, HttpResponseMessage } from "Helpers/ApiClient";
 import { Application } from "Models/Application";
 
 import { LogBuilder } from "Helpers/LogBuilder";
@@ -98,5 +98,20 @@ export class ApplicationService {
     ).then((res) => {
       Log.debug("Delete success!", res);
     });
+  }
+
+  async createApplicationTag(application: Application, tag: Tag): Promise<HttpResponseMessage> {
+    return this.apiClient.http.post(
+      `/applications/${application.appEUI}/tags`,
+      {
+        [tag.key]: tag.value,
+      },
+    );
+  }
+
+  async deleteApplicationTag(application: Application, tagName: string): Promise<HttpResponseMessage> {
+    return this.apiClient.http.delete(
+      `/applications/${application.appEUI}/tags/${tagName}`,
+    );
   }
 }
