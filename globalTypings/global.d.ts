@@ -31,7 +31,7 @@ interface MessageData {
 }
 
 /**
- * Input search parameters when getting data for either applications 
+ * Input search parameters when getting data for either applications
  * or devices
  */
 interface DataSearchParameters {
