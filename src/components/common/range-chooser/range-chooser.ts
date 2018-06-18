@@ -26,7 +26,7 @@ export class RangeChooser {
   availableRanges: Range[] = [
     Range.ONE_HOUR_AGO,
     Range.LAST_SIX_HOURS,
-    Range.START_OF_DAY,
+    Range.LAST_24_HOURS,
   ];
 
   constructor(

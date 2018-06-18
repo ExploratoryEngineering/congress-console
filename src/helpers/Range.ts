@@ -30,9 +30,9 @@ export const Range = {
     id: "6h",
     value: Time.SIX_HOURS_AGO.format("x"),
   },
-  START_OF_DAY: {
+  LAST_24_HOURS: {
     id: "24h",
-    value: Time.START_OF_DAY.format("x"),
+    value: Time.TWENTY_FOUR_HOURS_AGO.format("x"),
   },
   DAWN_OF_TIME: {
     id: "Dawn of time",
