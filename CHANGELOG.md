@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/ExploratoryEngineering/congress-console/compare/v1.1.0...v1.1.1) (2018-06-18)
+
+
+### Bug Fixes
+
+* **range-chooser:** make 24h be 24h ([86c7f72](https://github.com/ExploratoryEngineering/congress-console/commit/86c7f72))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/ExploratoryEngineering/congress-console/compare/v1.0.2...v1.1.0) (2018-06-15)
 
