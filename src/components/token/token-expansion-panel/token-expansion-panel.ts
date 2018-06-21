@@ -89,44 +89,44 @@ export class TokenExpansionPanel {
   }
 
   curlGetRoot() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}/
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}/ \\
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetTokens() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}/tokens
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}/tokens \\
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplications() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}/applications
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}/applications \\
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetGateways() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}/gateways
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}/gateways \\
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetGatewayInformation() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource} \\
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplicationInformation() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource} \\
     -HX-API-Token:${this.token.token}`;
   }
 
   curlGetApplicationDevices() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}/devices
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}/devices \\
     -HX-API-Token:${this.token.token}`;
   }
 

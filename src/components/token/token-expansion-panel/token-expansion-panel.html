@@ -1,5 +1,6 @@
 <template>
   <require from="components/common/code-line/code-line"></require>
+  <require from="components/common/code-block/code-block"></require>
   <require from="valueConverters/tagName"></require>
   <require from="valueConverters/tagDescription"></require>
   <div class="device-expansion-panel expansion-panel ${ active ? 'expansion-panel--expanded' : '' }">
@@ -19,31 +20,31 @@
       <section if.bind="hasFullAccessToAllResources">
         <p>This token has full access to all resources. You can access resources in the API by using the examples below.</p>
         <p>Curl example for fetching the API root by using your API key</p>
-        <code-line icon="code" code.bind="curlGetRoot()"></code-line>
+        <code-block icon="code" code.bind="curlGetRoot()"></code-block>
       </section>
       <section if.bind="hasAccessAllApplications">
         <p>This token allows access for all applications. You can access the applications in the API by using the examples below</p>
         <p>Curl example for fetching all applications by using your API key</p>
-        <code-line icon="code" code.bind="curlGetApplications()"></code-line>
+        <code-block icon="code" code.bind="curlGetApplications()"></code-block>
       </section>
       <section if.bind="hasAccessToAllGateways">
         <p>This token allows access for all gateways. You can access the gateways in the API by using the examples below</p>
         <p>Curl example for fetching all applications by using your API key</p>
-        <code-line icon="code" code.bind="curlGetGateways()"></code-line>
+        <code-block icon="code" code.bind="curlGetGateways()"></code-block>
       </section>
       <section if.bind="hasAccessToSpecificApplication">
         <p>To interact with your application you need to provide the applicationEUI which can be found in the examples below.</p>
         <p>Curl example for fetching information about the application by using your API key</p>
-        <code-line icon="code" code.bind="curlGetApplicationInformation()"></code-line>
+        <code-block icon="code" code.bind="curlGetApplicationInformation()"></code-block>
         <p>Curl example for fetching devices for application by using your API key</p>
-        <code-line icon="code" code.bind="curlGetApplicationDevices()"></code-line>
+        <code-block icon="code" code.bind="curlGetApplicationDevices()"></code-block>
         <p>Curl example for fetching data for all your devices in your application by using your API key</p>
-        <code-line icon="code" code.bind="curlGetApplicationData()"></code-line>
+        <code-block icon="code" code.bind="curlGetApplicationData()"></code-block>
       </section>
       <section if.bind="hasAccessToSpecificGateway">
         <p>To interact with your gateway you need to provide the gatewayEUI which can be found in the examples below.</p>
         <p>Curl example for fetching information about the gateway by using your API key</p>
-        <code-line icon="code" code.bind="curlGetGatewayInformation()"></code-line>
+        <code-block icon="code" code.bind="curlGetGatewayInformation()"></code-block>
       </section>
       <p>For a full list of the different endpoints check out our
         <a class="link" target="_blank" rel="nofollow" href="#">API documentation</a>
