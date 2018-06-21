@@ -23,6 +23,7 @@ import * as moment from "moment";
 import { ApplicationService } from "Services/ApplicationService";
 
 import { create, DataMapperChain } from "@exploratoryengineering/data-mapper-chain";
+import { ChartOptions } from "chart.js";
 import { GraphController, GraphData } from "Helpers/GraphController";
 import { Application } from "Models/Application";
 import { Device } from "Models/Device";
@@ -36,19 +37,15 @@ export class ApplicationGraphCard {
 
   @bindable
   chartData: GraphData;
-  chartOptions = {
+  chartOptions: ChartOptions = {
     maintainAspectRatio: false,
     showLines: true,
     spanGaps: true,
-    gridLines: {
-      display: true,
-    },
     scales: {
       yAxes: [{
         display: true,
         ticks: {
           beginAtZero: true,
-          suggestedMax: 3,
         },
       }],
       xAxes: [{
@@ -64,7 +61,7 @@ export class ApplicationGraphCard {
       enabled: true,
       callbacks: {
         title: function (tooltipItem, data) {
-          return moment(parseInt(data.labels[tooltipItem[0].index], 10)).format("LTS");
+          return moment(parseInt(data.labels[tooltipItem[0].index].toString(), 10)).format("LTS");
         },
       },
     },
@@ -105,9 +102,11 @@ export class ApplicationGraphCard {
   }
 
   addChartData(wsMessage: MessageData) {
-    Log.debug("Adding data", wsMessage, this.chartData);
     const messageData: MessageData = wsMessage;
-    this.chartData = this.graphController.addToGraph(messageData, this.chartData);
+    if (messageData) {
+      this.graphController.addToGraph(messageData, this.chartData);
+      this.eventAggregator.publish("global:graphUpdated");
+    }
   }
 
   createNewDataMapper() {

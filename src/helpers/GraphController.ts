@@ -1,5 +1,6 @@
 import { DataMapperChain } from "@exploratoryengineering/data-mapper-chain";
 import { autoinject } from "aurelia-framework";
+import { ChartData } from "chart.js";
 import { DataTransformer } from "Helpers/DataTransformer";
 import { LogBuilder } from "Helpers/LogBuilder";
 import { TagHelper } from "Helpers/TagHelper";
@@ -18,9 +19,7 @@ interface MessageDataSet {
   [dataEUI: string]: MessageData[];
 }
 
-export interface GraphData {
-  datasets: GraphDataSet[];
-  labels: any[];
+export interface GraphData extends ChartData {
   graphConfig: GraphConfig;
   graphMetaData: GraphMetaData;
   messageData: MessageData[];
@@ -136,6 +135,7 @@ export class GraphController {
       graphConfig: {
         graphType: graphType,
         chartDataColors: this.chartDataColors,
+        labels: labels,
       },
       graphMetaData: graphMetaData,
       messageData: messageData,
@@ -146,17 +146,53 @@ export class GraphController {
    * Convenience method to add data to an existing GraphData object
    */
   addToGraph(messageData: MessageData, graphData: GraphData): GraphData {
-    Log.debug("Adding to graph");
     graphData.messageData.push(messageData);
 
-    const newGraphData = this.getGraph(graphData.messageData, graphData.graphConfig);
+    // Fetch the new dataset.
+    const newGraphData = this.getGraph([messageData], graphData.graphConfig);
 
     // Copy meta data
     graphData.graphMetaData = newGraphData.graphMetaData;
 
-    // Copy the actual data sets
-    graphData.labels = this.getLabelsFromDataBucket(newGraphData.graphMetaData.dataBucketSet);
-    graphData.datasets = newGraphData.datasets;
+    // APPEND the data sets.
+    // So, long story. Chart.js does some min-max'ing in terms for optimization. They keep the reference and never diff internally. Yay.
+    // That means we need to keep the internal reference, never overwrite the data object or labels. Super yay. That means a one-liner becomes
+    // THIS
+    const diffLabels = this.getLabelsFromDataBucket(newGraphData.graphMetaData.dataBucketSet)
+      .filter((label) => graphData.labels.indexOf(label) < 0);
+    diffLabels.forEach((newLabel) => {
+      graphData.labels.push(newLabel);
+    });
+
+    newGraphData.datasets.forEach((newDataSet) => {
+      const foundDataSet = graphData.datasets.find((dataSet) => {
+        return newDataSet.label === dataSet.label;
+      });
+
+      if (foundDataSet) {
+        (newDataSet.data as number[]).forEach((data) => {
+          (foundDataSet.data as number[]).push(data);
+        });
+
+        graphData.datasets.filter((dataset) => {
+          return dataset.label !== foundDataSet.label;
+        }).forEach((dataSet) => {
+          // Why add undefines I hear you say. Haha, well, otherwise everything will be skewed. Fun.
+          (dataSet.data as any[]).push(undefined);
+        });
+      } else {
+        newGraphData.datasets.forEach((dataset) => {
+          (dataset.data as any[]).push(undefined);
+        });
+        // Fill with k undefined due to reason stated further up.
+        const freshArrayWithUndefined = [];
+        freshArrayWithUndefined[graphData.labels.length] = newDataSet.data[0];
+        newDataSet.data = freshArrayWithUndefined;
+
+        Log.debug("All new dataset.", newDataSet);
+        newGraphData.datasets.push(newDataSet);
+      }
+    });
 
     return graphData;
   }
