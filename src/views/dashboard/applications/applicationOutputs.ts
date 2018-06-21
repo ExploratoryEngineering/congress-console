@@ -66,8 +66,15 @@ export class ApplicationOutputs {
 
   @computedFrom("application")
   get curlWebsocketExample() {
-    // tslint:disable-next-line:max-line-length
-    return `curl -i -N -H "Sec-WebSocket-Version: 13" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "X-API-Token: YOUR_API_TOKEN" -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: api.lora.telenor.io" -H "Origin: https://api.lora.telenor.io" https://api.lora.telenor.io/applications/${this.application.appEUI}/stream`;
+    return `curl -i -N \\
+    -H "Sec-WebSocket-Version: 13" \\
+    -H "Sec-WebSocket-Key: ${ window.btoa(this.application.appEUI)}" \\
+    -H "X-API-Token: YOUR_API_TOKEN" \\
+    -H "Connection: Upgrade" \\
+    -H "Upgrade: websocket" \\
+    -H "Host: api.lora.telenor.io" \\
+    -H "Origin: https://api.lora.telenor.io" \\
+    https://api.lora.telenor.io/applications/${this.application.appEUI}/stream`;
   }
 
   activate(args) {
