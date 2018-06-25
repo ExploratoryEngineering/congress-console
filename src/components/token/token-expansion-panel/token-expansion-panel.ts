@@ -131,8 +131,8 @@ export class TokenExpansionPanel {
   }
 
   curlGetApplicationData() {
-    return `curl
-    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}/data
+    return `curl \\
+    -XGET ${CONGRESS_ENDPOINT}${this.token.resource}/data \\
     -HX-API-Token:${this.token.token}
     `;
   }
