@@ -18,6 +18,7 @@ import { autoinject } from "aurelia-framework";
 
 import { ResponseHandler } from "Helpers/ResponseHandler";
 
+import { RequestBuilder } from "aurelia-http-client";
 import { LogBuilder } from "./LogBuilder";
 const Log = LogBuilder.create("Http client config");
 
@@ -27,20 +28,47 @@ export class HttpClientConfiguration {
     private responseHandler: ResponseHandler,
   ) { }
 
-  apiEndpointConfiguration() {
+  apiEndpointConfiguration(): ((builder: RequestBuilder) => void) {
+    Log.debug("Creating api endpoint config");
     return (client) => {
-      client.withBaseUrl(CONGRESS_ENDPOINT);
-      client.withCredentials(true);
-      client.withInterceptor({
-        responseError: (responseError) => {
-          const customError = this.responseHandler.handleResponse(responseError);
+      client
+        .withBaseUrl(CONGRESS_ENDPOINT)
+        .withCredentials(true)
+        .withInterceptor({
+          responseError: (responseError) => {
+            const customError = this.responseHandler.handleResponse(responseError);
 
-          Log.debug("In responseError", responseError, customError);
-          if (customError) {
-            throw customError;
-          }
-        },
-      });
+            Log.debug("In responseError", responseError, customError);
+            if (customError) {
+              throw customError;
+            }
+
+            return responseError;
+          },
+        });
+    };
+  }
+
+  tokenEndpointConfiguration(): ((builder: RequestBuilder) => void) {
+    Log.debug("Creating token endpoint config");
+    return (client) => {
+      client.withBaseUrl(CONGRESS_ENDPOINT)
+        .withCredentials(true)
+        .withInterceptor({
+          responseError: (responseError) => {
+            if (responseError.statusCode === 401) {
+              Log.debug("401 in token endpoint config. Will not handle.", responseError);
+              return Promise.reject(responseError);
+            }
+
+            const customError = this.responseHandler.handleResponse(responseError);
+
+            Log.debug("In responseError", responseError, customError);
+            if (customError) {
+              throw customError;
+            }
+          },
+        });
     };
   }
 }
