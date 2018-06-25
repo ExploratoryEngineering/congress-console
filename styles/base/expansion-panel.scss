@@ -25,7 +25,7 @@ $expansion-panel-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
   overflow: hidden;
 
   &--expanded {
-    max-height: 700px;
+    max-height: 2000px;
     margin: $grid-size * 2 0;
 
     &:first-of-type {
