@@ -16,9 +16,7 @@
 
 import { EventAggregator } from "aurelia-event-aggregator";
 import { autoinject } from "aurelia-framework";
-import { HttpResponseMessage } from "aurelia-http-client";
 import { Router } from "aurelia-router";
-import { Promise } from "bluebird";
 import { LogBuilder } from "Helpers/LogBuilder";
 
 const Log = LogBuilder.create("Response handler");
