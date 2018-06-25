@@ -60,6 +60,16 @@ export let routes: RouteConfig[] = [
     },
   },
   {
+    route: ["share"],
+    name: "share",
+    moduleId: PLATFORM.moduleName("views/share/token-graph"),
+    nav: false,
+    title: "Graph from shared token",
+    settings: {
+      auth: false,
+    },
+  },
+  {
     route: ["server-error"],
     name: "server-error",
     moduleId: PLATFORM.moduleName("views/serverError"),

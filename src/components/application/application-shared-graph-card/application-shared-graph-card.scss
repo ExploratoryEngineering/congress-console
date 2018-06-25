@@ -1,0 +1,14 @@
+@import "variables/grid";
+
+.application-data-details-card {
+  &__data-mappers {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: $grid-size;
+  }
+
+  &__data-mapper-name {
+    margin-right: $grid-size;
+  }
+}

@@ -1,0 +1,50 @@
+<template>
+  <require from="components/common/form/text-input.html"></require>
+  <require from="components/application/application-shared-graph-card/application-shared-graph-card"></require>
+  <require from="valueConverters/tagName"></require>
+  <section class="section">
+    <div class="grid__row">
+      <div class="grid__item grid__item--6">
+        <div class="card">
+          <div class="card__header card__header--colored">
+            <h2 class="h4">Share page</h2>
+          </div>
+          <div class="card__body">
+            <p class="tn-p">
+              Welcome to the share-page of https://lora.engineering. Here you can use a shared API token which will give you access to
+              visualization of data based on the token access levels. Please paste the token underneath and we'll see what
+              kind of data we find.
+            </p>
+            <form>
+              <div class="form-group">
+                <text-input value.two-way="token & debounce:500" name="api-token" label="API Token" floatinglabel="true"></text-input>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="grid__item grid__item--6">
+        <div class="card card--full-width" if.bind="token">
+          <div class="card__header card__header--colored">
+            <h4 class="h4">Select your application</h4>
+          </div>
+          <div class="card__body">
+            <select if.bind="accessToApplications" value.bind="selectedApplication" class="form-group__select">
+              <option repeat.for="application of applications" value="${application.appEUI}">${ application | tagName:'appEUI' }</option>
+            </select>
+            <div if.bind="!accessToApplications">
+              <h4 class="h4">You do not have access to all applications</h4>
+              <p class="tn-p">Please supply an appEUI which you believe the API key has access to</p>
+              <text-input value.two-way="selectedApplication & debounce:500" name="app-eui" label="Application EUI" floatinglabel="true"></text-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid__row">
+      <div class="grid__item grid__item--12">
+        <application-shared-graph-card if.bind="application && devices.length > 0" application.bind="application" devices.bind="devices"></application-shared-graph-card>
+      </div>
+    </div>
+  </section>
+</template>
