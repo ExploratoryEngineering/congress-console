@@ -35,6 +35,7 @@ export async function configure(aurelia: Aurelia) {
 
   aurelia.use
     .standardConfiguration()
+    .feature(PLATFORM.moduleName("components/index"))
     .plugin(PLATFORM.moduleName("aurelia-dialog"), (config) => {
       config.useDefaults();
       config.settings.keyboard = true;

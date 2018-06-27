@@ -5,30 +5,30 @@
   <require from="components/common/code-block/code-block"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <section class="section">
-    <div class="card">
-      <div class="card__header card__header--table card__header--colored">
-        <h4 class="h4 card-header-heading">Your outputs</h4>
-        <div class="card-header-actions" show.bind="outputs.length > 0">
+    <card>
+      <card-header>
+        <card-title>Your outputs</card-title>
+        <card-header-actions show.bind="outputs.length > 0">
           <button click.delegate="createNewOutput()" class="button button--primary button--raised">Add output</button>
-        </div>
-      </div>
-      <div class="card__body card__body--no-padding" show.bind="outputs.length > 0">
-        <application-output-table application-eui.bind="application.appEUI" outputs.bind="outputs"></application-output-table>
-      </div>
-      <div class="card__body no-data-card-body" show.bind="outputs.length === 0">
-        <i class="no-data-card-body__icon material-icons">call_split</i>
-        <div class="no-data-card-body__heading h2">No outputs found.
-          <div class="button-group">
-            <button class="button button--primary button--raised" click.delegate="createNewOutput()">Create one?</button>
+        </card-header-actions>
+      </card-header>
+      <card-body no-padding>
+        <application-output-table show.bind="outputs.length > 0" application-eui.bind="application.appEUI" outputs.bind="outputs"></application-output-table>
+        <div class="no-data-card-body" show.bind="outputs.length === 0">
+          <i class="no-data-card-body__icon material-icons">call_split</i>
+          <div class="no-data-card-body__heading h2">No outputs found.
+            <div class="button-group">
+              <button class="button button--primary button--raised" click.delegate="createNewOutput()">Create one?</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__header card__header--colored">
-        <h4 class="h4 card-header-heading">Available outputs from the box</h4>
-      </div>
-      <div class="card__body">
+      </card-body>
+    </card>
+    <card>
+      <card-header>
+        <card-title>Available outputs from the box</card-title>
+      </card-header>
+      <card-body>
         <section>
           <h4 class="h4">Websocket integrations</h4>
           <p class="tn-p">
@@ -39,7 +39,7 @@
           </p>
           <code-block heading='Curl WebSocket Example' icon='code' code.bind="curlWebsocketExample"></code-block>
         </section>
-      </div>
-    </div>
+        <card-body>
+    </card>
   </section>
 </template>

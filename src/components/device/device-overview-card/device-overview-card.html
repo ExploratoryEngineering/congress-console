@@ -4,14 +4,14 @@
   <require from="components/tag/tag-chip-list/tag-chip-list.html"></require>
   <require from="valueConverters/tagName"></require>
   <require from="./device-overview-card.scss"></require>
-  <div class="card card--full-width device-overview-card">
-    <div class="card__header card__header--colored">
-      <h4 class="h4 card-header-heading">${ device | tagName }</h4>
-      <div class="card-header-actions">
+  <card class="device-overview-card">
+    <card-header>
+      <card-title>${ device | tagName }</card-title>
+      <card-header-actions>
         <range-chooser selected-range.bind="selectedRange"></range-chooser>
-      </div>
-    </div>
-    <div class="card__body">
+      </card-header-actions>
+    </card-header>
+    <card-body>
       <div class="device-overview-card__metric device-overview-card__metric--large">
         <div class="device-overview-card__metric-header">Number of messages</div>
         <div class="device-overview-card__metric-value">${ messageData.length }</div>
@@ -38,10 +38,10 @@
       <div class="device-overview-card__chip-list">
         <tag-chip-list tag-entity.bind="device" namespace="device"></tag-chip-list>
       </div>
-    </div>
-    <div class="card__actions card__actions--align-right">
+    </card-body>
+    <card-actions align-right>
       <button class="button button--flat" click.delegate="editDevice()">Edit device</button>
       <button class="button button--flat" click.delegate="deleteDevice()">Delete device</button>
-    </div>
-  </div>
+    </card-actions>
+  </card>
 </template>

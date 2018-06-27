@@ -3,33 +3,33 @@
   <require from="components/application/application-nav-bar-menu/application-nav-bar-menu.html"></require>
   <application-nav-bar-menu application.bind="application" selectableapplications.bind="selectableApplications" router.bind="router"></application-nav-bar-menu>
   <div class="section">
-    <div class="card" if.bind="hasDevicesWithWarnings">
-      <div class="card__header card__header--colored-yellow">
-        <h4 class="h4">Warning!</h4>
-      </div>
-      <div class="card__body">
+    <card if.bind="hasDevicesWithWarnings">
+      <card-header warning>
+        <card-title>Warning!</card-title>
+      </card-header>
+      <card-body>
         One or more of your devices have keys that are in use by one or more other devices. Your data might not be secure and may
         be read by others. To fix this, change both the application key and network key for the marked device underneath.
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__header card__header--table card__header--colored">
-        <h4 class="h4 card-header-heading">Your devices</h4>
-        <div class="card-header-actions" show.bind="devices.length > 0">
+      </card-body>
+    </card>
+    <card>
+      <card-header table>
+        <card-title>Your devices</card-title>
+        <card-header-actions show.bind="devices.length > 0">
           <button click.trigger="createNewDevice()" class="button button--primary button--raised">Add device</button>
-        </div>
-      </div>
-      <div class="card__body card__body--no-padding" show.bind="devices.length> 0">
-        <device-table devices.bind="devices" application-eui.bind="application.appEUI"></device-table>
-      </div>
-      <div class="card__body no-data-card-body" show.bind="devices.length === 0">
-        <i class="no-data-card-body__icon material-icons">settings</i>
-        <div class="no-data-card-body__heading h2">No devices found.
-          <div class="button-group">
-            <button class="button button--primary button--raised" click.delegate="createNewDevice()">Create one?</button>
+        </card-header-actions>
+      </card-header>
+      <card-body no-padding>
+        <device-table show.bind="devices.length > 0" devices.bind="devices" application-eui.bind="application.appEUI"></device-table>
+        <div class="no-data-card-body" show.bind="devices.length === 0">
+          <i class="no-data-card-body__icon material-icons">settings</i>
+          <div class="no-data-card-body__heading h2">No devices found.
+            <div class="button-group">
+              <button class="button button--primary button--raised" click.delegate="createNewDevice()">Create one?</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </card-body>
+    </card>
   </div>
 </template>

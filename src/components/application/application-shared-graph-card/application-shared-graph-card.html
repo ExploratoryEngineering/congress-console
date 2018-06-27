@@ -1,25 +1,25 @@
-<template class="card application-data-details-card">
+<template>
   <require from="components/common/range-chooser/range-chooser"></require>
   <require from="components/common/graph-chart/graph-chart"></require>
+  <require from="components/common/graph-chart/no-graph-available.html"></require>
   <require from="valueConverters/tagName"></require>
   <require from="./application-shared-graph-card.scss"></require>
-  <div class="card__header card__header--colored">
-    <h4 class="h4 card-header-heading">Graph for ${application | tagName}</h4>
-    <div class="card-header-actions">
-      <range-chooser selected-range.bind="selectedRange"></range-chooser>
-    </div>
-  </div>
-  <div class="card__body">
-    <graph-chart chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
-    <div class="no-graph-data" if.bind="!chartData || chartData.datasets.length === 0">
-      <i class="material-icons no-graph-data__icon">insert_chart</i>
-      <h2 class="h2 no-graph-data__heading">No data to graph</h2>
-    </div>
-  </div>
-  <div class="card__actions card__actions--align-right">
-    <div class="application-data-details-card__data-mappers" if.bind="mapperChain">
-      <span class="application-data-details-card__data-mapper-name">Mapper: ${mapperChain.name || "Unnamed mapper"}</span>
-    </div>
-    <button class="button button--flat" click.delegate="createNewDataMapper()">New data mapper</button>
-  </div>
+  <card>
+    <card-header>
+      <card-title>Graph for ${application | tagName}</card-title>
+      <card-header-actions>
+        <range-chooser selected-range.bind="selectedRange"></range-chooser>
+      </card-header-actions>
+    </card-header>
+    <card-body>
+      <graph-chart chart-data.bind="chartData" chart-options.bind="chartOptions" chart-type.bind="chartType"></graph-chart>
+      <no-graph-available if.bind="!chartData || chartData.datasets.length === 0"></no-graph-available>
+    </card-body>
+    <card-actions align-right>
+      <div class="application-data-details-card__data-mappers" if.bind="mapperChain">
+        <span class="application-data-details-card__data-mapper-name">Mapper: ${mapperChain.name || "Unnamed mapper"}</span>
+      </div>
+      <button class="button button--flat" click.delegate="createNewDataMapper()">New data mapper</button>
+    </card-actions>
+  </card>
 </template>

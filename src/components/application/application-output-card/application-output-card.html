@@ -1,16 +1,17 @@
 <template>
-  <div class="application-output-card card card--full-width">
-    <div class="card__header card__header--colored"></div>
-    <div class="card__body card__body--centered">
-      <div class="application-output-card__output-header">
-        Number of outputs:
-      </div>
-      <div class="application-output-card__output-count">
-        ${outputs.length}
-      </div>
-    </div>
-    <div class="card__actions card__actions--align-right">
-      <a class="button button--flat" route-href="route: application_outputs; params.bind: { applicationId: applicationEui }">Outputs details</a>
-    </div>
-  </div>
+  <card class="application-output-card">
+    <card-header></card-header>
+      <card-body>
+        <div class="application-output-card__output-header">
+          Number of outputs:
+        </div>
+        <div class="application-output-card__output-count">
+          ${outputs.length}
+        </div>
+        </div>
+      </card-body>
+      <card-actions align-right>
+        <a class="button button--flat" route-href="route: application_outputs; params.bind: { applicationId: applicationEui }">Outputs details</a>
+      </card-actions>
+  </card>
 </template>

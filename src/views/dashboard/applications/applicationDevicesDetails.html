@@ -13,24 +13,24 @@
       <device-keys-card class="grid__item grid__item--4" device.bind="device" provision-device.delegate="showDeviceProvisionDetails($event)"></device-keys-card>
       <tag-entity-map-card class="grid__item grid__item--4" tag-entity.bind="device" new-marker-position.delegate="updatePositionTag($event)"></tag-entity-map-card>
       <div class="grid__item grid__item--6">
-        <div class="card card--full-width">
-          <div class="card__header card__header--colored">
-            <h4 class="h4 card-header-heading">Device messages</h4>
-          </div>
-          <div class="card__body">
+        <card>
+          <card-header>
+            <card-title>Device messages</card-title>
+          </card-header>
+          <card-body>
             <device-message-panel app-eui.bind="application.appEUI" device.bind="device"></device-message-panel>
-          </div>
-        </div>
+          </card-body>
+        </card>
       </div>
       <div class="grid__item grid__item--6">
-        <div class="card card--full-width">
-          <div class="card__header card__header--colored">
-            <h4 class="h4 card-header-heading">Device data</h4>
-          </div>
-          <div class="card__body">
+        <card>
+          <card-header>
+            <card-title>Device data</card-title>
+          </card-header>
+          <card-body>
             <device-message-list app-eui.bind="application.appEUI" device.bind="device"></device-message-list>
-          </div>
-        </div>
+          </card-body>
+        </card>
       </div>
     </div>
   </div>

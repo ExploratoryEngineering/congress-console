@@ -15,12 +15,13 @@
 */
 
 import { EventAggregator } from "aurelia-event-aggregator";
-import { autoinject, bindable } from "aurelia-framework";
+import { autoinject, bindable, containerless } from "aurelia-framework";
 import { Application } from "Models/Application";
 
 import "./application-details-card.scss";
 
 @autoinject
+@containerless
 export class ApplicationDetailsCard {
   @bindable
   application: Application;

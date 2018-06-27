@@ -20,14 +20,14 @@
     </div>
     <div class="grid__row">
       <div class="grid__item grid__item--12">
-        <div class="card card--full-width" if.bind="devices.length">
-          <div class="card__header card__header--table card__header--colored">
-            <h4 class="h4">Your devices</h4>
-          </div>
-          <div class="card__body card__body--no-padding">
+        <card if.bind="devices.length">
+          <card-header table>
+            <card-title>Your devices</card-title>
+          </card-header>
+          <card-body no-padding>
             <device-table devices.bind="devices" application-eui.bind="application.appEUI"></device-table>
-          </div>
-        </div>
+          </card-body>
+        </card>
       </div>
     </div>
   </div>

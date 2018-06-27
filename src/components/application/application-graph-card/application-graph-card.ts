@@ -16,7 +16,7 @@ limitations under the License.
 
 import { DialogService } from "aurelia-dialog";
 import { EventAggregator, Subscription } from "aurelia-event-aggregator";
-import { autoinject, bindable, PLATFORM } from "aurelia-framework";
+import { autoinject, bindable, containerless, PLATFORM } from "aurelia-framework";
 import { LogBuilder } from "Helpers/LogBuilder";
 import { Range } from "Helpers/Range";
 import * as moment from "moment";
@@ -31,6 +31,7 @@ import { Device } from "Models/Device";
 const Log = LogBuilder.create("Application graph card");
 
 @autoinject
+@containerless
 export class ApplicationGraphCard {
   @bindable
   selectedRange = Range.LAST_SIX_HOURS;
