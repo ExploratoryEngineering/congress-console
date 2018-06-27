@@ -23,7 +23,6 @@ const {
     },
     ContextReplacementPlugin,
     DefinePlugin,
-    LoaderOptionsPlugin,
     ProvidePlugin
 } = require("webpack");
 const { AureliaPlugin } = require("aurelia-webpack-plugin");
