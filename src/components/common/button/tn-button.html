@@ -1,0 +1,11 @@
+<template class="tn-button">
+  <require from="./tn-button.scss"></require>
+  <button ref="button" class="button
+  ${ hasProp('disabled') ? 'button--disabled' : '' }
+  ${ hasProp('primary') ? 'button--primary' : '' }
+  ${ hasProp('flat') ? 'button--flat' : '' }
+  ${ hasProp('raised') ? 'button--raised' : '' }
+  ">
+    <slot></slot>
+  </button>
+</template>

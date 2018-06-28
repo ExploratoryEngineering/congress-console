@@ -9,7 +9,7 @@
       <card-header>
         <card-title>Your outputs</card-title>
         <card-header-actions show.bind="outputs.length > 0">
-          <button click.delegate="createNewOutput()" class="button button--primary button--raised">Add output</button>
+          <tn-button primary raised click.delegate="createNewOutput()">Add output</tn-button>
         </card-header-actions>
       </card-header>
       <card-body no-padding>
@@ -18,7 +18,7 @@
           <i class="no-data-card-body__icon material-icons">call_split</i>
           <div class="no-data-card-body__heading h2">No outputs found.
             <div class="button-group">
-              <button class="button button--primary button--raised" click.delegate="createNewOutput()">Create one?</button>
+              <tn-button primary raised click.delegate="createNewOutput()">Create one?</tn-button>
             </div>
           </div>
         </div>

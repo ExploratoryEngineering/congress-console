@@ -16,7 +16,7 @@
       <card-header table>
         <card-title>Your devices</card-title>
         <card-header-actions show.bind="devices.length > 0">
-          <button click.trigger="createNewDevice()" class="button button--primary button--raised">Add device</button>
+          <tn-button click.trigger="createNewDevice()" primary raised>Add device</tn-button>
         </card-header-actions>
       </card-header>
       <card-body no-padding>
@@ -25,7 +25,7 @@
           <i class="no-data-card-body__icon material-icons">settings</i>
           <div class="no-data-card-body__heading h2">No devices found.
             <div class="button-group">
-              <button class="button button--primary button--raised" click.delegate="createNewDevice()">Create one?</button>
+              <tn-button primary raised click.delegate="createNewDevice()">Create one?</tn-button>
             </div>
           </div>
         </div>

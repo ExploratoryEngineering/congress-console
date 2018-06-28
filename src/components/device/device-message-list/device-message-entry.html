@@ -8,7 +8,7 @@
     <span class="device-message-entry__heading-more-code">{ ... }</span>
     <span class="material-icons">${ toggled ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }</span>
     <span class="device-message-entry__heading-actions">
-      <button class="button button--flat" click.delegate="copyAsJson($event)">Copy as JSON</button>
+      <tn-button flat click.delegate="copyAsJson($event)">Copy as JSON</tn-button>
     </span>
   </div>
   <div class="device-message-entry__data ${ toggled ? 'device-message-entry__data--expanded' : '' }">

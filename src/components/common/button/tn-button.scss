@@ -1,0 +1,10 @@
+@import "variables/grid";
+
+.tn-button {
+  appearance: none;
+
+  + .button,
+  + .tn-button {
+    margin-left: $grid-size;
+  }
+}

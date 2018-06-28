@@ -73,8 +73,8 @@
         </div>
       </div>
       <div class="flex-container__footer">
-        <button class="button button--flat" if.bind="step !== 3" click.delegate="cancel()">Cancel</button>
-        <button class="button button--primary button--raised" type="submit" click.delegate="next()">${ nextText }</button>
+        <tn-button flat if.bind="step !== 3" click.delegate="cancel()">Cancel</tn-button>
+        <tn-button primary raised type="submit" click.delegate="next()">${ nextText }</tn-button>
       </div>
     </div>
   </div>

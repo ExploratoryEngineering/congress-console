@@ -19,7 +19,7 @@
       <div class="application-data-details-card__data-mappers" if.bind="mapperChain">
         <span class="application-data-details-card__data-mapper-name">Mapper: ${mapperChain.name || "Unnamed mapper"}</span>
       </div>
-      <button class="button button--flat" click.delegate="createNewDataMapper()">New data mapper</button>
+      <tn-button flat click.delegate="createNewDataMapper()">New data mapper</tn-button>
     </card-actions>
   </card>
 </template>

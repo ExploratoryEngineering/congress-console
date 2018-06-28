@@ -64,6 +64,7 @@ $button-floating-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
 $button-floating-hover-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .38);
 
 .button {
+  appearance: none;
   display: inline-block;
   margin-bottom: 0;
   padding: $button-padding;

@@ -11,7 +11,7 @@
       <google-map latitude.bind="latitude" longitude.bind="longitude" markers.bind="tagEntityMarkers" zoom="15" map-click.delegate="mapClickEvent($event)"></google-map>
     </card-body>
     <card-actions align-right>
-      <button class="button button--flat" click.delegate="updateLocation()">Update location</button>
+      <tn-button flat click.delegate="updateLocation()">Update location</button>
     </card-actions>
   </card>
 </template>

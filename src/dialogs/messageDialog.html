@@ -9,8 +9,8 @@
         ${message}
       </div>
       <div class="message-dialog__actions">
-        <button show.bind="cancelButtonText" attach-focus="true" class=" button button--flat" click.delegate="cancel()">${cancelButtonText}</button>
-        <button show.bind="confirmButtonText" attach-focus="true" class="button button--primary button--raised" type="submit" click.delegate="ok()">${confirmButtonText}</button>
+        <tn-button flat show.bind="cancelButtonText" focused click.delegate="cancel()">${cancelButtonText}</tn-button>
+        <tn-button primary raised focused show.bind="confirmButtonText" type="submit" click.delegate="ok()">${confirmButtonText}</tn-button>
       </div>
     </div>
   </div>

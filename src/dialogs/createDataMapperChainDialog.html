@@ -24,7 +24,7 @@
                 <button type="button" class="chain__item-action-icon material-icons" click.delegate="removeDataMapper($index)">cancel</span>
               </div>
             </div>
-            <button type="button" class="button button--primary" click.delegate="addDataMapper()">Add chain step</button>
+            <tn-button primary click.delegate="addDataMapper()">Add chain step</tn-button>
             <span class="chain__item chain__item--output">Output</span>
           </div>
           <text-input value.two-way="testString" name="test-string" label="Test string" floatinglabel="true"></text-input>
@@ -33,8 +33,8 @@
         </form>
       </div>
       <div class="flex-container__footer">
-        <button class="button button--flat" click.delegate="dialogController.cancel()">Cancel</button>
-        <button class="button button--primary button--raised" type="submit" click.delegate="submitDataMapper()">Create mapper chain</button>
+        <tn-button flat click.delegate="dialogController.cancel()">Cancel</tn-button>
+        <tn-button primary raised type="submit" click.delegate="submitDataMapper()">Create mapper chain</tn-button>
       </div>
     </div>
   </div>

@@ -3,6 +3,7 @@ import { FrameworkConfiguration, PLATFORM } from "aurelia-framework";
 export const configure = (config: FrameworkConfiguration) => {
   config
     .globalResources([
+      PLATFORM.moduleName("components/common/button/tn-button"),
       PLATFORM.moduleName("components/common/card/card"),
       PLATFORM.moduleName("components/common/card/card-header"),
       PLATFORM.moduleName("components/common/card/card-title"),
