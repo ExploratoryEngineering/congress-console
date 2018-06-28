@@ -11,7 +11,8 @@ export const configure = (config: FrameworkConfiguration) => {
       PLATFORM.moduleName("components/common/card/card-body"),
       PLATFORM.moduleName("components/common/card/card-actions"),
       PLATFORM.moduleName("components/common/dropdown/dropdown"),
-      PLATFORM.moduleName("components/common/dropdown/dropdown-container"),
+      PLATFORM.moduleName("components/common/dropdown/dropdown-item.html"),
       PLATFORM.moduleName("components/common/dropdown/dropdown-title"),
+      PLATFORM.moduleName("components/common/dropdown/dropdown-container"),
     ]);
 };

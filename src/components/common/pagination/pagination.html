@@ -8,7 +8,7 @@
           <span class="material-icons pagination__dropdown-triangle">arrow_drop_down</span>
         </dropdown-title>
         <dropdown-container>
-          <button repeat.for="rowsPrPageNumber of availableRowsPrPage" class="dropdown__menu-item" click.delegate="setRowsPrPage(rowsPrPageNumber)">${rowsPrPageNumber}</button>
+          <dropdown-item repeat.for="rowsPrPageNumber of availableRowsPrPage" click.delegate="setRowsPrPage(rowsPrPageNumber)">${rowsPrPageNumber}</dropdown-item>
         </dropdown-container>
       </dropdown>
     </div>
