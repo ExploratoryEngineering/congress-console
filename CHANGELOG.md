@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/ExploratoryEngineering/congress-console/compare/v1.1.2...v1.2.0) (2018-06-28)
+
+
+### Bug Fixes
+
+* **expansion-panel:** increase max height for expansion panel ([97e28b4](https://github.com/ExploratoryEngineering/congress-console/commit/97e28b4))
+* **token-expansion-panel:** add newline breaks on example ([5ce1279](https://github.com/ExploratoryEngineering/congress-console/commit/5ce1279))
+
+
+### Features
+
+* **button:** use button component ([02fa34d](https://github.com/ExploratoryEngineering/congress-console/commit/02fa34d))
+* **card:** componentize card ([101a71b](https://github.com/ExploratoryEngineering/congress-console/commit/101a71b))
+* **dropdown:** make dropdown element public ([0596ef7](https://github.com/ExploratoryEngineering/congress-console/commit/0596ef7))
+* **dropdown-item:** add abstraction for default dropdown item ([d879a24](https://github.com/ExploratoryEngineering/congress-console/commit/d879a24))
+* **httpclientconfig:** add token configuration ([d0907ab](https://github.com/ExploratoryEngineering/congress-console/commit/d0907ab))
+* **sharing:** initial implementation of share mechanism ([80fc032](https://github.com/ExploratoryEngineering/congress-console/commit/80fc032))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/ExploratoryEngineering/congress-console/compare/v1.1.1...v1.1.2) (2018-06-21)
 
