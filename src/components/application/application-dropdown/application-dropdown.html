@@ -1,8 +1,5 @@
 <template bindable="selectedApplication, selectableApplications, router">
   <require from="./application-dropdown.scss"></require>
-  <require from="components/common/dropdown/dropdown"></require>
-  <require from="components/common/dropdown/dropdown-title"></require>
-  <require from="components/common/dropdown/dropdown-container"></require>
   <require from="valueConverters/tagName"></require>
   <dropdown disabled.bind="selectableApplications.length === 0">
     <dropdown-title>

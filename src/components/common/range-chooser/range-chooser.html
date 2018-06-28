@@ -1,8 +1,5 @@
 <template>
   <require from="./range-chooser.scss"></require>
-  <require from="components/common/dropdown/dropdown"></require>
-  <require from="components/common/dropdown/dropdown-title"></require>
-  <require from="components/common/dropdown/dropdown-container"></require>
   <button class="button button--flat range-chooser__option ${ range === selectedRange ? 'range-chooser__option--selected' : '' }"
     repeat.for="range of availableRanges" click.delegate="selectRange(range)">${ range.id }</button>
 </template>
