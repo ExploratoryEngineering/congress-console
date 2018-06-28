@@ -23,7 +23,7 @@ import * as moment from "moment";
 import { ApplicationService } from "Services/ApplicationService";
 
 import { create, DataMapperChain } from "@exploratoryengineering/data-mapper-chain";
-import { ChartOptions } from "chart.js";
+import { ChartOptions, ChartType } from "chart.js";
 import { GraphController, GraphData } from "Helpers/GraphController";
 import { Application } from "Models/Application";
 import { Device } from "Models/Device";
@@ -52,6 +52,9 @@ export class ApplicationGraphCard {
       xAxes: [{
         display: true,
         type: "time",
+        time: {
+          unit: "hour",
+        },
         ticks: {
           max: 8,
           min: 0,
@@ -67,7 +70,7 @@ export class ApplicationGraphCard {
       },
     },
   };
-  chartType = "line";
+  chartType: ChartType = "line";
 
   @bindable
   application: Application;
