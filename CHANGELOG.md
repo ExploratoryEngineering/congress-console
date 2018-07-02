@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.0...v1.2.1) (2018-07-02)
+
+
+### Bug Fixes
+
+* **application-header:** set fixed height due to FF bug ([cd6cc66](https://github.com/ExploratoryEngineering/congress-console/commit/cd6cc66))
+* **eventaggregator:** set subscriptions to empty array after dispose ([804071a](https://github.com/ExploratoryEngineering/congress-console/commit/804071a))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/ExploratoryEngineering/congress-console/compare/v1.1.2...v1.2.0) (2018-06-28)
 
