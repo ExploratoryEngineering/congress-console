@@ -84,5 +84,6 @@ export class DeviceMessagePanel {
 
   unbind() {
     this.subscriptions.map((subscription) => subscription.dispose());
+    this.subscriptions = [];
   }
 }

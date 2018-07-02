@@ -116,5 +116,6 @@ export class DeviceOverviewCard {
 
   unbind() {
     this.subscriptions.map((subscription) => subscription.dispose());
+    this.subscriptions = [];
   }
 }

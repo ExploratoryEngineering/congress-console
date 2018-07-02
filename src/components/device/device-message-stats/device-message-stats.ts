@@ -68,5 +68,6 @@ export class DeviceMessageStats {
 
   unbind() {
     this.subscriptions.map((subscription) => subscription.dispose());
+    this.subscriptions = [];
   }
 }
