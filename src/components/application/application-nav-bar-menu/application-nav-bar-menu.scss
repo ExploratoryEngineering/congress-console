@@ -34,6 +34,7 @@ $application-header-menu-entry-selected-color: $color--telenor-blue;
 
   &__application-chooser {
     width: 250px;
+    height: 50px;
     border-right: solid 1px $font-color-dividers;
     border-left: solid 1px $font-color-dividers;
   }
