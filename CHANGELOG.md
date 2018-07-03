@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.1...v1.2.2) (2018-07-03)
+
+
+### Features
+
+* **share:** add check for access to specific application ([824352d](https://github.com/ExploratoryEngineering/congress-console/commit/824352d))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.0...v1.2.1) (2018-07-02)
 
