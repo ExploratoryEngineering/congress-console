@@ -48,6 +48,7 @@
     "server:prod": "npm run build:prod && http-server dist --cors -p 8080 --silent",
     "start": "npm run server --",
     "test": "npm run test:jest && npm run test:lint && npm run test:stylelint && npm run test:retire && npm run test:build",
+    "test:travis": "npm run test:jest && npm run test:lint && npm run test:stylelint && npm run test:retire && npm run build:prod && npm run test:bundlesize",
     "test:build": "npm run build:prod && npm run test:bundlesize && npm run e2e",
     "test:bundlesize": "bundlesize",
     "test:jest": "del-cli test/coverage-jest && jest --config jest.config.json --forceExit",
