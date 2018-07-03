@@ -37,6 +37,10 @@
               <p class="tn-p">Please supply an appEUI which you believe the API key has access to</p>
               <text-input value.two-way="selectedApplication & debounce:500" name="app-eui" label="Application EUI" floatinglabel="true"></text-input>
             </div>
+            <div if.bind="failedFetchOfApplication">
+              <h4 class="h4">Hm, you do not have access to that specific application</h4>
+              <p class="tn-p">Please double check that you have the correct API key and correct application</p>
+            </div>
           </card-body>
         </card>
       </div>

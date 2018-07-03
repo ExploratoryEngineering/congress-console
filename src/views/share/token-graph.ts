@@ -33,6 +33,7 @@ export class TokenGraph {
   devices: Device[] = [];
 
   accessToApplications: boolean = false;
+  failedFetchOfApplication: boolean = false;
 
   constructor(
     private shareService: ShareService,
@@ -81,8 +82,11 @@ export class TokenGraph {
     });
 
     if (!this.application) {
-      this.shareService.fetchApplicationWithToken(applicationEUI).then((application) => {
+      this.failedFetchOfApplication = false;
+      await this.shareService.fetchApplicationWithToken(applicationEUI).then((application) => {
         this.application = application;
+      }).catch(() => {
+        this.failedFetchOfApplication = true;
       });
     }
 
@@ -97,5 +101,6 @@ export class TokenGraph {
     this.devices = [];
     this.applications = [];
     this.accessToApplications = false;
+    this.failedFetchOfApplication = false;
   }
 }
