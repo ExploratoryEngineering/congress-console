@@ -90,7 +90,7 @@ export class TokenGraph {
       });
     }
 
-    if (applicationEUI) {
+    if (applicationEUI && !this.failedFetchOfApplication) {
       this.fetchDevicesForSelectedApplication();
     }
   }
