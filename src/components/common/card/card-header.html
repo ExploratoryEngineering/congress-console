@@ -1,5 +1,5 @@
 <template>
-  <div class="card__header card__header--colored ${ warning ? 'card__header--colored-yellow' : '' } ${ useTableSpacing() ? 'card__header--table': '' }">
+  <div class="card__header card__header--colored ${ hasProp('warning') ? 'card__header--colored-yellow' : '' } ${ hasProp('table') ? 'card__header--table': '' }">
     <slot></slot>
     <slot name="card-header-actions"></slot>
   </div>

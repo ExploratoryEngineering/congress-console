@@ -7,7 +7,7 @@ export class CardHeader {
   @bindable
   table: string;
 
-  useTableSpacing() {
-    return this.table || this.table === "";
+  hasProp(property: string) {
+    return this[property] || this[property] === "";
   }
 }
