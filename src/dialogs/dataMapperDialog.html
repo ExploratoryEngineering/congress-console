@@ -27,7 +27,7 @@
                 <option value="be">Big endian</option>
                 <option value="le">Little endian</option>
               </select>
-              <label for="hextoint-endian" class="form-group__label">Endianness</label>
+              <label for="hextoint-endian" class="form-group__select-label">Endianness</label>
             </div>
           </div>
           <div if.bind="selectedMapperType === 'HEXTOINT'">
@@ -38,7 +38,7 @@
                 <option value="be">Big endian</option>
                 <option value="le">Little endian</option>
               </select>
-              <label for="hextoint-endian" class="form-group__label">Endianness</label>
+              <label for="hextoint-endian" class="form-group__select-label">Endianness</label>
             </div>
             <checkbox-input name="hextoint-signed" checked.two-way="dataMapper.signed" label="Signed int"></checkbox-input>
           </div>
@@ -54,7 +54,7 @@
                 <option value="decode">Decode</option>
                 <option value="encode">Encode</option>
               </select>
-              <label for="base64-action" class="form-group__label">Base64 action</label>
+              <label for="base64-action" class="form-group__select-label">Base64 action</label>
             </div>
           </div>
           <div if.bind="selectedMapperType === 'FROMJSON'">
