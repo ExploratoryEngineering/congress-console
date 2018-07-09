@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.2...v1.2.3) (2018-07-09)
+
+
+### Bug Fixes
+
+* **card-header:** add hasProps for card header warning. Fixes [#8](https://github.com/ExploratoryEngineering/congress-console/issues/8) ([11f4322](https://github.com/ExploratoryEngineering/congress-console/commit/11f4322))
+* **token-graph:** do not fetch devices if application fetch failed ([e810ac7](https://github.com/ExploratoryEngineering/congress-console/commit/e810ac7))
+
+
+### Features
+
+* **graph-chart:** add min-height prop to ensure rendering of graph ([35e49ce](https://github.com/ExploratoryEngineering/congress-console/commit/35e49ce))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.1...v1.2.2) (2018-07-03)
 
