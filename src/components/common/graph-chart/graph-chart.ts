@@ -30,6 +30,8 @@ export class GraphChart {
   @bindable chartType = "line";
   @bindable({ defaultBindingMode: bindingMode.twoWay }) chart: Chart;
 
+  @bindable minHeight: string | boolean = false;
+
   canvas;
   subscriptions: Subscription[] = [];
 
@@ -83,5 +85,9 @@ export class GraphChart {
 
   chartTypeChanged() {
     this.resetChart();
+  }
+
+  hasProp(property: string) {
+    return this[property] || this[property] === "";
   }
 }
