@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.4...v1.2.5) (2018-07-12)
+
+
+### Bug Fixes
+
+* **applicationOutputs:** add http1.1 flag to websocket example ([3892796](https://github.com/ExploratoryEngineering/congress-console/commit/3892796))
+
+
+
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/ExploratoryEngineering/congress-console/compare/v1.2.3...v1.2.4) (2018-07-09)
 
