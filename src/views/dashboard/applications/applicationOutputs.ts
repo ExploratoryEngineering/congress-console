@@ -66,7 +66,7 @@ export class ApplicationOutputs {
 
   @computedFrom("application")
   get curlWebsocketExample() {
-    return `curl -i -N \\
+    return `curl -i -N --http1.1 \\
     -H "Sec-WebSocket-Version: 13" \\
     -H "Sec-WebSocket-Key: ${ window.btoa(this.application.appEUI)}" \\
     -H "X-API-Token: YOUR_API_TOKEN" \\
