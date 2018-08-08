@@ -20,8 +20,6 @@ import { LogBuilder } from "Helpers/LogBuilder";
 import { Gateway } from "Models/Gateway";
 import { GatewayService } from "Services/GatewayService";
 
-import Debug from "Helpers/Debug";
-import { Time } from "Helpers/Time";
 import * as moment from "moment";
 
 const Log = LogBuilder.create("Gateway-card");
@@ -52,11 +50,6 @@ export class GatewayCard {
         display: false,
         type: "time",
         barThickness: 1,
-        time: {
-          min: Time.ONE_HOUR_AGO,
-          max: Time.NOW,
-          unit: "hour",
-        },
       }],
     },
     tooltips: {

@@ -17,12 +17,9 @@
 import { EventAggregator } from "aurelia-event-aggregator";
 import { autoinject, bindable, containerless } from "aurelia-framework";
 import { LogBuilder } from "Helpers/LogBuilder";
-import { Time } from "Helpers/Time";
 import { Application } from "Models/Application";
 import * as moment from "moment";
 import { ApplicationService } from "Services/ApplicationService";
-
-import Debug from "Helpers/Debug";
 
 const Log = LogBuilder.create("Application-card");
 
@@ -54,11 +51,6 @@ export class ApplicationCard {
         display: false,
         type: "time",
         barThickness: 1,
-        time: {
-          min: Time.ONE_HOUR_AGO,
-          max: Time.NOW,
-          unit: "hour",
-        },
       }],
     },
     tooltips: {
