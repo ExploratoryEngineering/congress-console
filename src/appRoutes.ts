@@ -25,14 +25,14 @@ export let routes: RouteConfig[] = [
   {
     route: ["login"],
     name: "login",
-    moduleId: PLATFORM.moduleName("views/login"),
+    moduleId: PLATFORM.moduleName("views/login", "login"),
     nav: false,
     title: "Login",
   },
   {
     route: ["dashboard"],
     name: "dashboard",
-    moduleId: PLATFORM.moduleName("views/application-dashboard"),
+    moduleId: PLATFORM.moduleName("views/application-dashboard", "app-dash"),
     nav: true,
     title: "Applications",
     settings: {
@@ -42,7 +42,7 @@ export let routes: RouteConfig[] = [
   {
     route: ["gateway-dashboard"],
     name: "gateway-dashboard",
-    moduleId: PLATFORM.moduleName("views/dashboard/gateways"),
+    moduleId: PLATFORM.moduleName("views/dashboard/gateways", "gateway-dash"),
     nav: true,
     title: "Gateways",
     settings: {
@@ -52,7 +52,7 @@ export let routes: RouteConfig[] = [
   {
     route: ["api-keys"],
     name: "api-keys",
-    moduleId: PLATFORM.moduleName("views/dashboard/apiKeys"),
+    moduleId: PLATFORM.moduleName("views/dashboard/apiKeys", "api-dash"),
     nav: true,
     title: "API keys",
     settings: {
@@ -62,7 +62,7 @@ export let routes: RouteConfig[] = [
   {
     route: ["share"],
     name: "share",
-    moduleId: PLATFORM.moduleName("views/share/token-graph"),
+    moduleId: PLATFORM.moduleName("views/share/token-graph", "share-dash"),
     nav: false,
     title: "Graph from shared token",
     settings: {
