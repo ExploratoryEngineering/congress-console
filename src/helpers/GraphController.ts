@@ -1,8 +1,5 @@
 import { DataMapperChain } from "@exploratoryengineering/data-mapper-chain";
-import { autoinject } from "aurelia-framework";
 import { ChartData } from "chart.js";
-import { DataTransformer } from "Helpers/DataTransformer";
-import { LogBuilder } from "Helpers/LogBuilder";
 import { TagHelper } from "Helpers/TagHelper";
 import { Device } from "Models/Device";
 
@@ -47,9 +44,7 @@ interface GraphConfig {
   labels?: LabelSet;
 }
 
-type GraphType = Array<DataMapperChain | "count" | "count-aggregated" | "rssi">;
-
-const Log = LogBuilder.create("Graph controller");
+type GraphType = Array<DataMapperChain | "count" | "rssi" | "count-aggregated">;
 
 // A bunch of colors from http://epub.wu.ac.at/1692/1/document.pdf
 const defaultColors = [
@@ -81,14 +76,9 @@ const defaultColors = [
 
 const tagHelper = new TagHelper();
 
-@autoinject()
 export class GraphController {
   chartDataColors: string[] = [];
   chartLabels: LabelSet = {};
-
-  constructor(
-    private dataTransformer: DataTransformer,
-  ) { }
 
   generateLabelSetFromDevices(devices: Device[]): LabelSet {
     const labelSet: LabelSet = {};
@@ -109,7 +99,6 @@ export class GraphController {
 
     graphType.forEach((type) => {
       if (type instanceof DataMapperChain) {
-        Log.debug("Got chain", type);
         graphDataSets = graphDataSets.concat(this.createDataMapperChainGraphDataSet(graphMetaData, type));
       } else {
         switch (type) {
@@ -149,48 +138,32 @@ export class GraphController {
     graphData.messageData.push(messageData);
 
     // Fetch the new dataset.
-    const newGraphData = this.getGraph([messageData], graphData.graphConfig);
+    // NOTE: This is the place you want to optimize if stuff goes slow. We strictly doesn't need a full
+    // getGraph, but it simplifies things. Otherwise we would need to delta stuff which is heavy on
+    // complexity.
+    const newGraphData = this.getGraph(graphData.messageData.concat(messageData), graphData.graphConfig);
 
-    // Copy meta data
+    // Overwrite meta data
     graphData.graphMetaData = newGraphData.graphMetaData;
 
-    // APPEND the data sets.
-    // So, long story. Chart.js does some min-max'ing in terms for optimization. They keep the reference and never diff internally. Yay.
-    // That means we need to keep the internal reference, never overwrite the data object or labels. Super yay. That means a one-liner becomes
-    // THIS
+    // Add the diffed labels to the old dataSet
     const diffLabels = this.getLabelsFromDataBucket(newGraphData.graphMetaData.dataBucketSet)
       .filter((label) => graphData.labels.indexOf(label) < 0);
     diffLabels.forEach((newLabel) => {
       graphData.labels.push(newLabel);
     });
 
+    // Iterate through all datasets in the new dataset and match with existing data
     newGraphData.datasets.forEach((newDataSet) => {
       const foundDataSet = graphData.datasets.find((dataSet) => {
         return newDataSet.label === dataSet.label;
       });
-
+      // Found the dataset in old graph data. This means we just overwrite local data
       if (foundDataSet) {
-        (newDataSet.data as number[]).forEach((data) => {
-          (foundDataSet.data as number[]).push(data);
-        });
-
-        graphData.datasets.filter((dataset) => {
-          return dataset.label !== foundDataSet.label;
-        }).forEach((dataSet) => {
-          // Why add undefines I hear you say. Haha, well, otherwise everything will be skewed. Fun.
-          (dataSet.data as any[]).push(undefined);
-        });
+        foundDataSet.backgroundColor = newDataSet.backgroundColor;
+        foundDataSet.data = newDataSet.data;
       } else {
-        newGraphData.datasets.forEach((dataset) => {
-          (dataset.data as any[]).push(undefined);
-        });
-        // Fill with k undefined due to reason stated further up.
-        const freshArrayWithUndefined = [];
-        freshArrayWithUndefined[graphData.labels.length] = newDataSet.data[0];
-        newDataSet.data = freshArrayWithUndefined;
-
-        Log.debug("All new dataset.", newDataSet);
-        newGraphData.datasets.push(newDataSet);
+        graphData.datasets.push(newDataSet);
       }
     });
 
@@ -198,7 +171,7 @@ export class GraphController {
   }
 
   /**
-   * Create GraphDataSet based on the type 'count'
+   * Create GraphDataSet based on the type MapperChain
    */
   createDataMapperChainGraphDataSet(graphMetaData: GraphMetaData, dataMapperChain: DataMapperChain): GraphDataSet[] {
     let mapperChainGraphDataSet: GraphDataSet[] = [];
@@ -207,7 +180,7 @@ export class GraphController {
       const countGraphData = this.createDataMapperChainGraphData(uid, graphMetaData.dataBucketSet, dataMapperChain);
 
       mapperChainGraphDataSet = mapperChainGraphDataSet.concat([{
-        label: `${this.chartLabels[uid] || uid} - ${dataMapperChain.name}`,
+        label: `${this.chartLabels[uid] || uid} - ${dataMapperChain.name || "Unnamed mapper"}`,
         fill: false,
         data: countGraphData.data,
         backgroundColor: this.getColorByIndex(idx),
@@ -218,7 +191,7 @@ export class GraphController {
   }
 
   /**
-   * Create GraphData based on the type 'count'
+   * Create GraphData based on the type MapperChain
    */
   createDataMapperChainGraphData(dataEUI: string, dataBucketSet: DataBucketSet, dataMapperChain: DataMapperChain) {
     const countData: { data: Array<number | undefined> } = { data: [] };
@@ -360,7 +333,6 @@ export class GraphController {
    */
   private createGraphMetaData(messageData: MessageData[]): GraphMetaData {
     const dataBucketSet: DataBucketSet = {};
-    const messageDataSet: MessageDataSet = {};
 
     const dataEUIs: string[] = [];
 
