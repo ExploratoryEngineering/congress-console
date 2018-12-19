@@ -12,3 +12,4 @@ npm-debug.log*
 test-report.xml
 .idea
 .chrome
+version.json
