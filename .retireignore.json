@@ -26,5 +26,17 @@
   {
     "component": "https-proxy-agent",
     "justification": "only used in e2e testing"
+  },
+  {
+    "component": "extend",
+    "justification": "only used in build tools"
+  },
+  {
+    "component": "merge",
+    "justification": "only used in test-libraries and tooling"
+  },
+  {
+    "component": "lodash",
+    "justification": "only used in test-libs"
   }
 ]
