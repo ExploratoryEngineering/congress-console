@@ -15,10 +15,12 @@
 */
 
 const path = require("path");
+const fs = require("fs");
 const appConfig = require("./config/config.json");
+const pkg = require("./package.json");
+
 const {
     optimize: {
-        CommonsChunkPlugin,
         ModuleConcatenationPlugin
     },
     ContextReplacementPlugin,
@@ -28,9 +30,10 @@ const {
 const { AureliaPlugin } = require("aurelia-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const { TsConfigPathsPlugin, CheckerPlugin } = require("awesome-typescript-loader");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const autoprefixer = require("autoprefixer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 // config helpers:
 const ensureArray = (config) => config && (Array.isArray(config) ? config : [config]) || [];
@@ -38,11 +41,13 @@ const when = (condition, config, negativeConfig) =>
     condition ? ensureArray(config) : ensureArray(negativeConfig);
 
 // primary config:
-const title = "Telenor LoRa";
+const title = "Telenor NB-IoT";
 const outDir = path.resolve(__dirname, "dist");
 const srcDir = path.resolve(__dirname, "src");
-const nodeModulesDir = path.resolve(__dirname, "node_modules");
 const baseUrl = "/";
+const buildVersion = `v${pkg.version}-${new Date().toISOString()}`;
+
+fs.writeFileSync("version.json", JSON.stringify({ version: buildVersion }), (err) => {});
 
 const sassLoaderConfig = [{
     loader: "css-loader", // translates CSS into CommonJS
@@ -64,12 +69,14 @@ const sassLoaderConfig = [{
         sourceMap: true,
         includePaths: [
             "styles",
-            "node_modules/@telenorfrontend/tn-components"]
+            "node_modules/@telenorfrontend/tn-components"
+        ]
     }
 }];
 
 module.exports = ({
     production,
+    analyze,
     server,
     extractCss,
     coverage,
@@ -80,20 +87,18 @@ module.exports = ({
     resolve: {
         extensions: [".ts", ".js"],
         modules: [srcDir, "node_modules"],
+        plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })],
         alias: {
-            Services: path.resolve(__dirname, "src/services/"),
-            Helpers: path.resolve(__dirname, "src/helpers/"),
-            Models: path.resolve(__dirname, "src/models/"),
-            Components: path.resolve(__dirname, "src/components/"),
-            Dialogs: path.resolve(__dirname, "src/dialogs/"),
-            "aurelia-pal": path.resolve("node_modules/aurelia-pal/dist/commonjs/aurelia-pal.js")
+            "aurelia-pal": path.resolve("node_modules/aurelia-pal/dist/commonjs/aurelia-pal.js"),
+            "aurelia-binding": path.resolve(__dirname, "node_modules/aurelia-binding")
         }
     },
     devtool: production ? "source-map" : "cheap-module-eval-source-map",
     entry: {
-        app: ["aurelia-bootstrapper"],
-        vendor: ["bluebird", "chart.js", "moment"]
+        app: ["aurelia-bootstrapper"]
     },
+    mode: production ? "production" : "development",
+    performance: { hints: false },
     output: {
         path: outDir,
         publicPath: baseUrl,
@@ -115,15 +120,15 @@ module.exports = ({
                 // because Aurelia would try to require it again in runtime
                 use: sassLoaderConfig
             }, {
-                test: /\.(scss|css)$/,
+                test: /\.s?[c]ss$/,
                 issuer: [{ not: [{ test: /\.html$/i }] }],
-                use: extractCss ? ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: sassLoaderConfig
-                }) : ["style-loader", ...sassLoaderConfig]
+                use: [
+                    !extractCss ? "style-loader" : MiniCssExtractPlugin.loader,
+                    ...sassLoaderConfig
+                ]
             },
             { test: /\.html$/i, loader: "html-loader" },
-            { test: /\.ts$/i, loader: "awesome-typescript-loader", exclude: nodeModulesDir },
+            { test: /\.ts$/i, loader: "ts-loader" },
             { test: /\.json$/i, loader: "json-loader" },
             // use Bluebird as the global Promise implementation:
             { test: /[/\\]node_modules[/\\]bluebird[/\\].+\.js$/, loader: "expose-loader?Promise" },
@@ -142,18 +147,24 @@ module.exports = ({
     },
     plugins: [
         new AureliaPlugin({
-            features: { svg: false, unparser: false, polyfills: "es2015" }
+            features: { svg: true, unparser: false, polyfills: "es2015" }
         }),
         new ProvidePlugin({
-            "Promise": "bluebird"
+            Promise: "bluebird"
         }),
-        new TsConfigPathsPlugin(),
-        new CheckerPlugin(),
         new HtmlWebpackPlugin({
             template: "index.ejs",
             minify: production ? {
                 removeComments: true,
-                collapseWhitespace: true
+                collapseWhitespace: true,
+                collapseInlineTagWhitespace: true,
+                collapseBooleanAttributes: true,
+                removeAttributeQuotes: true,
+                minifyCSS: true,
+                minifyJS: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                ignoreCustomFragments: [/\${.*?}/g]
             } : undefined,
             metadata: {
                 // available in index.ejs //
@@ -162,7 +173,8 @@ module.exports = ({
                 title,
                 server,
                 baseUrl,
-                production
+                production,
+                buildVersion
             }
         }),
         new ContextReplacementPlugin(/moment[\\/]locale$/, /^\.\/(en)$/),
@@ -170,6 +182,9 @@ module.exports = ({
             {
                 from: "favicon.png",
                 to: "favicon.png"
+            }, {
+                from: "version.json",
+                to: "version.json"
             },
             {
                 from: "images/",
@@ -188,15 +203,10 @@ module.exports = ({
             GOOGLE_ANALYTICS_TOKEN: JSON.stringify(appConfig.googleAnalytics),
             GOOGLE_MAPS_KEY: JSON.stringify(appConfig.googleMaps)
         }),
-        ...when(extractCss, new ExtractTextPlugin({
-            filename: production ? "[contenthash].css" : "[id].css",
-            allChunks: true
+        ...when(extractCss, new MiniCssExtractPlugin({
+            filename: production ? "[contenthash].css" : "[id].css"
         })),
-        ...when(production, new CommonsChunkPlugin({
-            name: "common",
-            minSize: 50,
-            minChunks: Infinity
-        })),
-        ...when(production, new ModuleConcatenationPlugin())
+        ...when(production, new ModuleConcatenationPlugin()),
+        ...when(analyze, new BundleAnalyzerPlugin())
     ]
 });
